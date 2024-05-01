@@ -26,6 +26,15 @@
 # JetBrains Rider
 .idea/
 
+# Wwise
+.backup*
+.cache*
+*.akd
+*.prof
+*.validationcache
+*.wsettings
+IncrementalSoundBankData.xml
+
 # Visual Studio cache directory
 .vs/
 
