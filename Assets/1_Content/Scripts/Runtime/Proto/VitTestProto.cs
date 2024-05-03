@@ -6,9 +6,6 @@ namespace BH.Runtime
 {
     public class VitTestProto : MonoBehaviour
     {
-        private void Update()
-        {
-            
-        }
+        
     }
 }

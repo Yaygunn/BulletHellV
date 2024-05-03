@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BH.Utilities
+namespace BH.Utilities.Extensions
 {
     /// <summary>
     /// Enhances Unity's Vector2 with additional vector operations, facilitating complex vector manipulations such as
@@ -25,14 +25,25 @@ namespace BH.Utilities
             return new Vector2(self.x, self.y);
         }
 
-        public static Vector2 Add(this Vector2 self, float x, float y)
+        /// <summary>
+        /// Adds to any x y values of a Vector2
+        /// </summary>
+        public static Vector2 Add(this Vector2 vector2, float x = 0, float y = 0) 
         {
-            return new Vector2(self.x + x, self.y + y);
+            return new Vector2(vector2.x + x, vector2.y + y);
         }
 
         public static Vector2 Multiply(this Vector2 self, Vector2 other)
         {
             return new Vector2(self.x * other.x, self.y * other.y);
+        }
+        
+        /// <summary>
+        /// Sets any x y values of a Vector2
+        /// </summary>
+        public static Vector2 With(this Vector2 vector2, float? x = null, float? y = null) 
+        {
+            return new Vector2(x ?? vector2.x, y ?? vector2.y);
         }
 
         public static Vector2 WithX(this Vector2 self, float x)
@@ -83,6 +94,17 @@ namespace BH.Utilities
             {
                 throw new InvalidOperationException("Vector parameter is not a scalar of target Vector");
             }
+        }
+        
+        /// <summary>
+        /// Returns a Boolean indicating whether the current Vector2 is in a given range from another Vector2
+        /// </summary>
+        /// <param name="current">The current Vector2 position</param>
+        /// <param name="target">The Vector2 position to compare against</param>
+        /// <param name="range">The range value to compare against</param>
+        /// <returns>True if the current Vector2 is in the given range from the target Vector2, false otherwise</returns>
+        public static bool InRangeOf(this Vector2 current, Vector2 target, float range) {
+            return (current - target).sqrMagnitude <= range * range;
         }
     }
 }

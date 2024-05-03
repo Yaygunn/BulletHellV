@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BH.Utilities
+namespace BH.Utilities.Extensions
 {
     /// <summary>
     /// Extends Texture2D with methods for manipulating and querying texture properties,
