@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.PlayerLoop;
 
-namespace BH.Utility.ImprovedTimers
+namespace BH.Utilities.ImprovedTimers
 {
     public static class TimerManager 
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BH.Utility.ImprovedTimers
+namespace BH.Utilities.ImprovedTimers
 {
     public abstract class Timer
     {

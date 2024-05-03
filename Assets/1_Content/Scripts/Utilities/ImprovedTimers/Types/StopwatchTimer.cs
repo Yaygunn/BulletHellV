@@ -1,4 +1,4 @@
-﻿namespace BH.Utility.ImprovedTimers
+﻿namespace BH.Utilities.ImprovedTimers
 {
     /// <summary>
     /// A timer counts up from zero to measure the duration of an event.

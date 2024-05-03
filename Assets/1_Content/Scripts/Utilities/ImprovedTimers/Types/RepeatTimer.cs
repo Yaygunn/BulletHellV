@@ -1,4 +1,4 @@
-﻿namespace BH.Utility.ImprovedTimers
+﻿namespace BH.Utilities.ImprovedTimers
 {
     /// <summary>
     /// A timer that automatically restarts each time it finishes.

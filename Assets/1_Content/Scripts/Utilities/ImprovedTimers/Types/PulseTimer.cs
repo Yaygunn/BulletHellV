@@ -1,4 +1,4 @@
-﻿namespace BH.Utility.ImprovedTimers
+﻿namespace BH.Utilities.ImprovedTimers
 {
     public class PulseTimer : Timer
     {

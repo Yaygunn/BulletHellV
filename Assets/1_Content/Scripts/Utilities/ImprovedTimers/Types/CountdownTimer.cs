@@ -1,4 +1,4 @@
-﻿namespace BH.Utility.ImprovedTimers
+﻿namespace BH.Utilities.ImprovedTimers
 {
     /// <summary>
     /// Basic Timer that counts down from a specified value.
