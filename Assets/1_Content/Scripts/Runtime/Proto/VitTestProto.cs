@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using BH.Runtime.Managers;
+using BH.Runtime.Scenes;
+using BH.Scriptables.Scenes;
 using BH.Utilities;
 using UnityEngine;
 using Zenject;
@@ -10,13 +13,13 @@ namespace BH.Runtime
     {
         [Inject]
         private GameManager _gameManager;
-        
-        private void Update()
+
+        [Inject]
+        private SceneLoader _sceneLoader;
+
+        private void Start()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _gameManager.TestMethod();
-            }
+            _sceneLoader.LoadSceneAsync(SceneType.MainMenu);
         }
     }
 }

@@ -1,10 +1,17 @@
 ﻿using System.Collections.Generic;
 using BH.Runtime.Scenes;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace BH.Scriptables.SceneManagement
+namespace BH.Scriptables.Scenes
 {
+    public enum SceneType
+    {
+        Loader,
+        MainMenu,
+        Game,
+        Credits
+    }
+    
     [CreateAssetMenu(fileName = "SceneSettings", menuName = "BH/Scenes/SceneSettings")]
     public class SceneSettingsSO : ScriptableObject
     {
