@@ -13,10 +13,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -24,14 +24,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -54,10 +54,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -65,14 +65,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -95,10 +95,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -106,14 +106,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -136,10 +136,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -147,14 +147,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -177,10 +177,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -188,14 +188,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -218,10 +218,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -229,14 +229,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -259,10 +259,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -270,14 +270,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -300,10 +300,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -311,14 +311,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 
@@ -341,10 +341,10 @@ namespace Zenject
         {
         }
 
-        protected override void OnCreated(TValue item)
+        protected override void OnCreated(TValue projectile)
         {
-            item.gameObject.SetActive(false);
-            _originalParent = item.transform.parent;
+            projectile.gameObject.SetActive(false);
+            _originalParent = projectile.transform.parent;
         }
 
         protected override void OnDestroyed(TValue item)
@@ -352,14 +352,14 @@ namespace Zenject
             GameObject.Destroy(item.gameObject);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDespawned(TValue projectile)
         {
-            item.OnDespawned();
-            item.gameObject.SetActive(false);
+            projectile.OnDespawned();
+            projectile.gameObject.SetActive(false);
 
-            if (item.transform.parent != _originalParent)
+            if (projectile.transform.parent != _originalParent)
             {
-                item.transform.SetParent(_originalParent, false);
+                projectile.transform.SetParent(_originalParent, false);
             }
         }
 

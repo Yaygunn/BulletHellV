@@ -7,19 +7,32 @@ using BH.Utilities;
 using UnityEngine;
 using Zenject;
 
-namespace BH.Runtime
+namespace BH.Runtime.Test
 {
     public class VitTestProto : MonoBehaviour
     {
+        // [Inject]
+        // private GameManager _gameManager;
+        //
+        // [Inject]
+        // private SceneLoader _sceneLoader;
+        
         [Inject]
-        private GameManager _gameManager;
+        private SignalBus _signalBus;
 
-        [Inject]
-        private SceneLoader _sceneLoader;
-
-        private void Start()
+        private void OnEnable()
         {
-            _sceneLoader.LoadSceneAsync(SceneType.MainMenu);
+            _signalBus.Subscribe<TestSpawnSignal>(OnTestSpawnSignal);
+        }
+
+        private void OnDisable()
+        {
+            _signalBus.Unsubscribe<TestSpawnSignal>(OnTestSpawnSignal);
+        }
+
+        private void OnTestSpawnSignal()
+        {
+            Debug.Log("Projectile Spawned!");
         }
     }
 }
