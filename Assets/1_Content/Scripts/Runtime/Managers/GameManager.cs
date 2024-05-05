@@ -1,5 +1,7 @@
 ﻿using System;
+using QFSW.QC;
 using UnityEngine;
+using Zenject;
 
 namespace BH.Runtime.Managers
 {
@@ -13,15 +15,24 @@ namespace BH.Runtime.Managers
         GameOver
     }
     
-    public class GameManager : IGameStateHandler
+    public class GameManager : IInitializable, IGameStateHandler
     {
+        private QuantumConsole _console;
+        
         public GameState CurrentGameState { get; private set; } = GameState.Initialization;
-
         public Action<GameState> OnGameStateChanged { get; }
         
-        public GameManager()
+        public GameManager(QuantumConsole console)
         {
+            _console = console;
             
+            // TODO: probably input could be injected here...
+        }
+        
+        public void Initialize()
+        {
+            _console.Activate();
+            _console.Toggle();
         }
         
         public void SetGameState(GameState gameState)
