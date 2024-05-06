@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{19A42ADD-AD91-F276-5C14-E1E5AD5170A1}">
+			<ShortName>SFX</ShortName>
+			<Path>SFX.bnk</Path>
+			<Media>
+				<File Id="535973059" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133.wav</ShortName>
+					<CachePath>SFX/Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2338340215" Name="ambTest" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="535973059"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{70DA1D89-D64A-C838-EBF0-A558FECEB16B}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<StateGroups>
+				<StateGroup Id="610342619" Name="SFX_None">
+					<States>
+						<State Id="748895195" Name="None"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="620878633" Name="Music_Gameplay">
+					<States>
+						<State Id="748895195" Name="None"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="2993614867" Name="Music_Paused">
+					<States>
+						<State Id="748895195" Name="None"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="3587590657" Name="SFX_Gameplay">
+					<States>
+						<State Id="748895195" Name="None"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="3762574363" Name="SFX_Paused">
+					<States>
+						<State Id="748895195" Name="None"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="4032045187" Name="Music_None">
+					<States>
+						<State Id="748895195" Name="None"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{0E3E9487-2562-8161-CF73-30D6CFA3E27A}">
+			<ShortName>MUSIC</ShortName>
+			<Path>MUSIC.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{70263D32-BFE3-0A33-9425-66DCAEECD894}</FileHash>
+</SoundBanksInfo>
