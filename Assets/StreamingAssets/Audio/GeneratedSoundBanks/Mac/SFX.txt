@@ -1,6 +1,15 @@
 Event	ID	Name			Wwise Object Path	Notes
 	2338340215	ambTest			\Default Work Unit\ambTest	
 
+State Group	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\SFX	
+
+State	ID	Name	State Group			Notes
+	610342619	SFX_None	SFX			
+	748895195	None	SFX			
+	3587590657	SFX_Gameplay	SFX			
+	3762574363	SFX_Paused	SFX			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	535973059	ambTest	Y:\Wwise Projects\BulletHellV\.cache\Mac\SFX\Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\ambTest		2945274
+	535973059	ambTest	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\ambTest		2945274
 

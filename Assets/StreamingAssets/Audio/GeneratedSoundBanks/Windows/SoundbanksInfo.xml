@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
 	<RootPaths>
-		<ProjectRoot>../..</ProjectRoot>
-		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<ProjectRoot>../../../../../WwiseBulletHellV</ProjectRoot>
+		<SourceFilesRoot>../../../../../WwiseBulletHellV/.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../../../WwiseBulletHellV/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{D42F48CE-636D-8058-26C9-7D46ED1D14AD}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{871CDA09-C682-8010-3C64-0F16E1BD04B2}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
@@ -26,7 +26,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{986487A9-2683-E47A-8688-3D0FE6FDB954}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{77951467-6F57-EE41-B746-E5CDCA7DBC7E}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -38,7 +38,27 @@
 			<Busses>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
+			<StateGroups>
+				<StateGroup Id="393239870" Name="SFX">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="3587590657" Name="SFX_Gameplay"/>
+						<State Id="3762574363" Name="SFX_Paused"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="3991942870" Name="Music">
+					<States>
+						<State Id="620878633" Name="Music_Gameplay"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2993614867" Name="Music_Paused"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{0E3E9487-2562-8161-CF73-30D6CFA3E27A}">
+			<ShortName>MUSIC</ShortName>
+			<Path>MUSIC.bnk</Path>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8ECF390A-4E37-A46F-55D2-EDB8F393354A}</FileHash>
+	<FileHash>{1E582AF6-8BD4-5E00-47C3-D4DAB09C8F91}</FileHash>
 </SoundBanksInfo>

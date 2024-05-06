@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2338340215	ambTest			\Default Work Unit\ambTest	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	535973059	ambTest	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\ambTest		2945274
+
