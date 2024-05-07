@@ -1,156 +1,127 @@
-using System.Collections;
-using System.Collections.Generic;
+using BH.Scriptables;
 using UnityEngine;
+using Zenject;
 
-public enum WwiseSFXState { Gameplay, Paused, None };
-public enum WwiseMusicState { Gameplay, Paused, None };
-public enum WwiseEvent { MusicPlay, SFXPlay };
-
-public class AudioManager : MonoBehaviour
+namespace BH.Runtime.Managers
 {
-
-    public static AudioManager Instance;
-    private bool isInitialized = false;
-
-    [Header("Startup SoundBanks")]
-    [SerializeField] private List<AK.Wwise.Bank> Soundbanks;
-
-    [Header("Sfx State variables")]
-    [SerializeField] private AK.Wwise.State SFX_Gameplay;
-    [SerializeField] private AK.Wwise.State SFX_Paused;
-    [SerializeField] private AK.Wwise.State SFX_None;
-
-    private WwiseSFXState currentSFXState;
-
-    [Header("Music State variables")]
-    [SerializeField] private AK.Wwise.State Music_Gameplay;
-    [SerializeField] private AK.Wwise.State Music_Paused;
-    [SerializeField] private AK.Wwise.State Music_None;
-
-    private WwiseMusicState currentMusicState;
-
-    [Header("Wwise Music Events")]
-    [SerializeField] public AK.Wwise.Event MusicPlay;
-    [SerializeField] public AK.Wwise.Event SFXPlay;
-
-    private void Awake()
+    public enum WwiseSFXState { Gameplay, Paused, None };
+    public enum WwiseMusicState { Gameplay, Paused, None };
+    public enum WwiseEvent { MusicPlay, SFXPlay };
+    
+    public class AudioManager : IInitializable
     {
-        Initialize();
-        currentMusicState = WwiseMusicState.None;
-        currentSFXState = WwiseSFXState.None;
+        private AudioSettingsSO _audioSettings;
+        private GameObject _postableObject;
+        private bool _isInitialized;
+        private WwiseSFXState _currentSFXState;
+        private WwiseMusicState _currentMusicState;
+
+        public AudioManager(GameObject postableObject, AudioSettingsSO audioSettings)
+        {
+            _postableObject = postableObject;
+            _audioSettings = audioSettings;
+        }
+    
+        public void Initialize()
+        {
+            if (!_isInitialized)
+                LoadSoundbanks();
+            _isInitialized = true;
+        
+            _currentMusicState = WwiseMusicState.None;
+            _currentSFXState = WwiseSFXState.None;
+        }
+    
+        private void LoadSoundbanks()
+        {
+            if (_audioSettings.Soundbanks.Count > 0)
+            {
+                foreach (AK.Wwise.Bank bank in _audioSettings.Soundbanks)
+                    bank.Load();
+                Debug.Log("[AudioManager] Startup Soundbanks have been loaded.");
+            }
+            else
+                Debug.LogError("[AudioManager] Soundbanks list is Empty");
+        }
+
+        public void SetWwiseSFXState(WwiseSFXState state)
+        {
+            if (state == _currentSFXState)
+            {
+                Debug.Log($"[AudioManager] SFX state is already {state}.");
+                return;
+            }
+        
+            switch (state)
+            {
+                default:
+                case (WwiseSFXState.None):
+                    _audioSettings.SFX_None.SetValue();
+                    break;
+                case (WwiseSFXState.Gameplay):
+                    _audioSettings.SFX_Gameplay.SetValue();
+                    break;
+                case (WwiseSFXState.Paused):
+                    _audioSettings.SFX_Paused.SetValue();
+                    break;
+
+            }
+        
+            Debug.Log($"[AudioManager] New Wwise SFX state: {state}");
+            _currentSFXState = state;
+        }
+        public void SetWwiseMusicState(WwiseMusicState state)
+        {
+            if (state == _currentMusicState)
+            {
+                Debug.Log($"[AudioManager] Music state is already {state}");
+                return;
+            }
+
+            switch (state)
+            {
+                default:
+                case (WwiseMusicState.None):
+                    _audioSettings.Music_None.SetValue();
+                    break;
+                case (WwiseMusicState.Gameplay):
+                    _audioSettings.Music_Gameplay.SetValue();
+                    break;
+                case (WwiseMusicState.Paused):
+                    _audioSettings.Music_Paused.SetValue();
+                    break;
+
+            }
+        
+            Debug.Log($"[AudioManager] New Wwise Music state: {state}");
+            _currentMusicState = state;
+        }
+
+        public void PostWWiseEvent(AK.Wwise.Event wwiseEvent)
+        {
+            if (wwiseEvent == null)
+            {
+                Debug.LogError("[AudioManager] WWise event is null!");
+                return;
+            }
+        
+            if (wwiseEvent.IsValid())
+                wwiseEvent.Post(_postableObject);
+            else
+                Debug.LogError($"[AudioManager] {wwiseEvent.Name} Wwise event is invalid!");
+        }
+        public void PostWWiseEvent(AK.Wwise.Event wwiseEvent, GameObject targetObject)
+        {
+            if (wwiseEvent == null || targetObject == null)
+            {
+                Debug.LogError("[AudioManager] WWise event or target gameobject is null!");
+                return;
+            }
+            
+            if (wwiseEvent.IsValid())
+                wwiseEvent.Post(targetObject);
+            else
+                Debug.LogError($"[AudioManager] {wwiseEvent.Name} Wwise event is invalid!");
+        }
     }
-    void Start()
-    {
-    }
-    void Initialize()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Debug.Log("AudioManager already exists!");
-            Destroy(this);
-        }
-
-        if (!isInitialized)
-            LoadSoundbanks();
-        isInitialized = true;
-    }
-    void LoadSoundbanks()
-    {
-        if (Soundbanks.Count > 0)
-        {
-            foreach (AK.Wwise.Bank bank in Soundbanks)
-                bank.Load();
-            Debug.Log("Startup Soundbanks have been loaded.");
-        }
-
-        else
-            Debug.LogError("Soundbanks list is Empty");
-    }
-
-    public void SetWwiseSFXState(WwiseSFXState state)
-    {
-        if (state == currentSFXState)
-        {
-            Debug.Log("SFX state is already " + state + ".");
-            return;
-        }
-        switch (state)
-        {
-            default:
-            case (WwiseSFXState.None):
-                SFX_None.SetValue();
-                break;
-            case (WwiseSFXState.Gameplay):
-                SFX_Gameplay.SetValue();
-                break;
-            case (WwiseSFXState.Paused):
-                SFX_Paused.SetValue();
-                break;
-
-        }
-        Debug.Log("New Wwise SFX state: " + state + ".");
-        currentSFXState = state;
-    }
-    public void SetWwiseMusicState(WwiseMusicState state)
-    {
-        if (state == currentMusicState)
-        {
-            Debug.Log("Music state is already " + state + ".");
-            return;
-        }
-
-        switch (state)
-        {
-            default:
-            case (WwiseMusicState.None):
-                Music_None.SetValue();
-                break;
-            case (WwiseMusicState.Gameplay):
-                Music_Gameplay.SetValue();
-                break;
-            case (WwiseMusicState.Paused):
-                Music_Paused.SetValue();
-                break;
-
-        }
-        Debug.Log("New Wwise Music state: " + state + ".");
-        currentMusicState = state;
-    }
-
-    public void PostWWiseEvent(AK.Wwise.Event wwiseEvent)
-    {
-        if (wwiseEvent == null)
-        {
-            Debug.LogError(wwiseEvent.Name + "WWise event is null!");
-            return;
-        }
-        if (wwiseEvent.IsValid())
-            wwiseEvent.Post(this.gameObject);
-        else
-            Debug.LogError(wwiseEvent.Name + "Wwise event is invalid!");
-    }
-    public void PostWWiseEvent(AK.Wwise.Event wwiseEvent, GameObject targetObject)
-    {
-        if (wwiseEvent == null)
-        {
-            Debug.LogError(wwiseEvent.Name + " WWise event is null!");
-            return;
-        }
-        else if (targetObject == null)
-        {
-            Debug.LogError(targetObject.name + " WWise target gameobject is null!");
-            return;
-        }
-        if (wwiseEvent.IsValid())
-            wwiseEvent.Post(targetObject);
-        else
-            Debug.LogError(wwiseEvent.Name + " Wwise event is invalid!");
-
-    }
-
 }
