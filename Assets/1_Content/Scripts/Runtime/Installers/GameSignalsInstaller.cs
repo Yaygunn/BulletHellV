@@ -1,4 +1,5 @@
-﻿using BH.Runtime.Test;
+﻿using BH.Runtime.Systems;
+using BH.Runtime.Test;
 using Zenject;
 
 namespace BH.Runtime.Installers
@@ -10,6 +11,7 @@ namespace BH.Runtime.Installers
             SignalBusInstaller.Install(Container);
             
             Container.DeclareSignal<TestSpawnSignal>();
+            Container.DeclareSignal<HealthChangedSignal>();
         }
     }
 }

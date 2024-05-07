@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using BH.Runtime.Systems;
+using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace BH.Runtime.Test
 {
@@ -7,15 +9,24 @@ namespace BH.Runtime.Test
     {
         [SerializeField]
         private Slider _slider;
-        
-        private void Start()
+
+        [Inject]
+        private SignalBus _signalBus;
+
+        private void OnEnable()
         {
-            _slider.value = 1f;
+            _signalBus.Subscribe<HealthChangedSignal>(OnHealthChanged);
         }
-        
-        public void SetSliderValue(float value)
+
+        private void OnDisable()
         {
-            _slider.value = value;
+            _signalBus.Unsubscribe<HealthChangedSignal>(OnHealthChanged);
+        }
+
+        private void OnHealthChanged(HealthChangedSignal signal)
+        {
+            _slider.maxValue = signal.MaxHealth;
+            _slider.value = signal.CurrentHealth;
         }
         
         public float GetSliderValue()
