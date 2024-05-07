@@ -11,6 +11,12 @@ namespace BH.Runtime.Systems
         [SerializeField]
         private float _speed;
 
+        [SerializeField]
+        private int _damage;
+
+        [SerializeField]
+        private bool _destroyOnHit;
+
         private ProjectilePool _pool;
         
         private Vector2 _direction;
@@ -43,6 +49,15 @@ namespace BH.Runtime.Systems
         {
             Vector2 inNormal = other.GetContact(0).normal;
             _direction = Vector2.Reflect(_direction, inNormal).normalized;
+
+            if (other.gameObject.TryGetComponent(out IDamageable component))
+            {
+                component.Damage(_damage);
+                if (_destroyOnHit)
+                {
+                    ReturnToPool();
+                }
+            }
 
             //ReturnToPool();
         }
