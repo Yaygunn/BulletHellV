@@ -1,24 +1,26 @@
 ﻿using BH.Runtime.Systems;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace BH.Runtime.Test
+namespace BH.Runtime.UI
 {
-    public class TestHUD : MonoBehaviour
+    public class PlayerHUD : MonoBehaviour
     {
-        [SerializeField]
+        [BoxGroup("UI Elements"), SerializeField]
         private Slider _slider;
 
-        [Inject]
         private SignalBus _signalBus;
 
-        private void OnEnable()
+        [Inject]
+        private void Construct(SignalBus signalBus)
         {
+            _signalBus = signalBus;
             _signalBus.Subscribe<HealthChangedSignal>(OnHealthChanged);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _signalBus.Unsubscribe<HealthChangedSignal>(OnHealthChanged);
         }
