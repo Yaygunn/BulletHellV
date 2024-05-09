@@ -14,24 +14,26 @@ namespace BH.Runtime.Test
         [SerializeField]
         private PlayerSFX _playerSFXToTest = PlayerSFX.Hurt;
         
-        private AudioManager _audioManager;
+        private IWwiseEventHandler _wwiseEventHandler;
+        private SignalBus _signalBus;
         
         [Inject]
-        private void Construct(AudioManager audioManager)
+        private void Construct(IWwiseEventHandler wwiseEventHandler, SignalBus signalBus)
         {
-            _audioManager = audioManager;
+            _wwiseEventHandler = wwiseEventHandler;
+            _signalBus = signalBus;
         }
         
         [Button(ButtonSizes.Large)]
         public void SetTestState()
         {
-            _audioManager.ChangeAudioState(_stateToTest);
+            _signalBus.Fire(new AudioStateSignal(_stateToTest));
         }
         
         [Button(ButtonSizes.Large)]
         public void PlayTestSFX()
         {
-            _audioManager.PostAudioEvent(_playerSFXToTest);
+            _wwiseEventHandler.PostAudioEvent(_playerSFXToTest);
         }
     }
 }

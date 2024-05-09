@@ -1,4 +1,5 @@
-﻿using BH.Runtime.Systems;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.Systems;
 using BH.Runtime.Test;
 using Zenject;
 
@@ -12,6 +13,9 @@ namespace BH.Runtime.Installers
             
             Container.DeclareSignal<TestSpawnSignal>();
             Container.DeclareSignal<HealthChangedSignal>();
+            
+            // Audio
+            Container.DeclareSignal<AudioStateSignal>();
         }
     }
 }

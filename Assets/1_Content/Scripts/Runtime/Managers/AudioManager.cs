@@ -8,23 +8,32 @@ using Event = AK.Wwise.Event;
 
 namespace BH.Runtime.Managers
 {
-    public class AudioManager : IInitializable
+    public class AudioManager : IInitializable, IDisposable, IWwiseEventHandler
     {
         private AudioSettingsSO _audioSettings;
         private GameObject _postableObject;
+        private SignalBus _signalBus;
         
         private AudioState _currentAudioState = AudioState.Loading;
         private readonly Dictionary<Enum, Event> _eventCache = new ();
 
-        public AudioManager(GameObject postableObject, AudioSettingsSO audioSettings)
+        public AudioManager(GameObject postableObject, AudioSettingsSO audioSettings, SignalBus signalBus)
         {
             _postableObject = postableObject;
             _audioSettings = audioSettings;
+            _signalBus = signalBus;
         }
     
         public void Initialize()
         {
             LoadSoundbanks();
+            
+            _signalBus.Subscribe<AudioStateSignal>(x => ChangeAudioState(x.AudioState));
+        }
+        
+        public void Dispose()
+        {
+            _signalBus.TryUnsubscribe<AudioStateSignal>(x => ChangeAudioState(x.AudioState));
         }
     
         private void LoadSoundbanks()
@@ -43,7 +52,7 @@ namespace BH.Runtime.Managers
             Debug.Log("[AudioManager] Sound Banks have been loaded.");
         }
 
-        public void ChangeAudioState(AudioState newState)
+        private void ChangeAudioState(AudioState newState)
         {
             if (newState == _currentAudioState)
                 return;
