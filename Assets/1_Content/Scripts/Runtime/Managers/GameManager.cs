@@ -37,6 +37,9 @@ namespace BH.Runtime.Managers
         
         public void SetGameState(GameState gameState)
         {
+            if (CurrentGameState == gameState)
+                return;
+            
             CurrentGameState = gameState;
             OnGameStateChanged?.Invoke(CurrentGameState);
             Debug.Log($"[GameManager] Game state changed to: {CurrentGameState}");

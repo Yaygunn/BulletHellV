@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BH.Runtime.Entities
 {
-    public class MovementComponent : MonoBehaviour
+    public class MovementComponent : MonoBehaviour, IEntityComponent
     {
         [BoxGroup("Settings"), SerializeField]
         private float _speed = 5f;

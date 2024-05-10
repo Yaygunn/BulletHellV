@@ -17,15 +17,15 @@ namespace BH.Runtime.UI
         private void Construct(SignalBus signalBus)
         {
             _signalBus = signalBus;
-            _signalBus.Subscribe<HealthChangedSignal>(OnHealthChanged);
+            _signalBus.Subscribe<PlayerHealthChangedSignal>(OnHealthChanged);
         }
 
         private void OnDestroy()
         {
-            _signalBus.Unsubscribe<HealthChangedSignal>(OnHealthChanged);
+            _signalBus.Unsubscribe<PlayerHealthChangedSignal>(OnHealthChanged);
         }
 
-        private void OnHealthChanged(HealthChangedSignal signal)
+        private void OnHealthChanged(PlayerHealthChangedSignal signal)
         {
             _slider.maxValue = signal.MaxHealth;
             _slider.value = signal.CurrentHealth;

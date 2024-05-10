@@ -12,7 +12,7 @@ namespace BH.Runtime.Installers
             SignalBusInstaller.Install(Container);
             
             Container.DeclareSignal<TestSpawnSignal>();
-            Container.DeclareSignal<HealthChangedSignal>();
+            Container.DeclareSignal<PlayerHealthChangedSignal>();
             
             // Audio
             Container.DeclareSignal<AudioStateSignal>();

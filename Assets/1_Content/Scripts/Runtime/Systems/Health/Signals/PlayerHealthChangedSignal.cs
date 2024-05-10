@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BH.Runtime.Systems
 {
-    public struct HealthChangedSignal
+    public struct PlayerHealthChangedSignal
     {
         public int MaxHealth { get; }
         public int CurrentHealth { get; }
 
-        public HealthChangedSignal(int maxHealth, int currentHealth)
+        public PlayerHealthChangedSignal(int maxHealth, int currentHealth)
         {
             MaxHealth = maxHealth;
             CurrentHealth = currentHealth;

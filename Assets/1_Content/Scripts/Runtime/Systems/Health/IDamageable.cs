@@ -8,6 +8,6 @@ namespace BH.Runtime.Systems
 {
     public interface IDamageable
     {
-        public void Damage(int ammount);
+        public void Damage(int amount);
     }
 }
