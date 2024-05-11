@@ -23,7 +23,7 @@ namespace BH.Runtime.Entities
 
         private void FixedUpdate()
         {
-            _rigidbody.velocity = _direction * _speed;
+            _rigidbody.velocity = _direction.normalized * _speed;
         }
         
         public void Move(Vector2 direction)

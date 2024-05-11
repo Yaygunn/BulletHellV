@@ -9,6 +9,8 @@ namespace BH.Runtime.Systems
     {
         [SerializeField]
         private int _initialHealth;
+        [SerializeField]
+        private bool _isInvincible;
 
         [SerializeField, ReadOnly]
         private int _currentHealth;
@@ -24,6 +26,9 @@ namespace BH.Runtime.Systems
 
         public void TakeDamage(int ammount)
         {
+            if (_isInvincible)
+                return;
+            
             _currentHealth = (_currentHealth <= ammount) ? 0 : (_currentHealth - ammount);
             HealthChangedEvent?.Invoke(_initialHealth, _currentHealth);
 
@@ -31,6 +36,11 @@ namespace BH.Runtime.Systems
             {
                 DiedEvent?.Invoke();
             }
+        }
+        
+        public void SetInvincibility(bool isInvincible)
+        {
+            _isInvincible = isInvincible;
         }
     }
 }

@@ -17,22 +17,22 @@ namespace BH.Runtime.Test
         // [Inject]
         // private SceneLoader _sceneLoader;
         
-        [Inject]
-        private SignalBus _signalBus;
-
-        private void OnEnable()
-        {
-            _signalBus.Subscribe<TestSpawnSignal>(OnTestSpawnSignal);
-        }
-
-        private void OnDisable()
-        {
-            _signalBus.Unsubscribe<TestSpawnSignal>(OnTestSpawnSignal);
-        }
-
-        private void OnTestSpawnSignal()
-        {
-            Debug.Log("Projectile Spawned!");
-        }
+        // [Inject]
+        // private SignalBus _signalBus;
+        //
+        // private void OnEnable()
+        // {
+        //     _signalBus.Subscribe<TestSpawnSignal>(OnTestSpawnSignal);
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     _signalBus.Unsubscribe<TestSpawnSignal>(OnTestSpawnSignal);
+        // }
+        //
+        // private void OnTestSpawnSignal()
+        // {
+        //     Debug.Log("Projectile Spawned!");
+        // }
     }
 }

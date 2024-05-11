@@ -1,4 +1,5 @@
-﻿using BH.Runtime.Managers;
+﻿using BH.Runtime.Input;
+using BH.Runtime.Managers;
 using BH.Runtime.Scenes;
 using BH.Scriptables;
 using BH.Scriptables.Scenes;
@@ -20,37 +21,42 @@ namespace BH.Runtime.Installers
         public override void InstallBindings()
         {
             // Scenes
-            SceneSettingsSO sceneSettings = Resources.Load<SceneSettingsSO>(_sceneSettingsName);
-            if (sceneSettings == null)
+            if (TryLoadResource(_sceneSettingsName, out SceneSettingsSO sceneSettings))
             {
-                Debug.LogError($"SceneSettingsSO asset file '{_sceneSettingsName}' not found in the resources folder.");
-                return;
+                Container.BindInstance(sceneSettings).AsSingle();
+                Container.Bind<SceneLoader>().AsSingle().NonLazy();
             }
-            Container.BindInstance(sceneSettings).AsSingle();
-            Container.Bind<SceneLoader>().AsSingle().NonLazy();
             
             // Audio
-            AudioSettingsSO audioSettings = Resources.Load<AudioSettingsSO>(_audioSettingsName);
-            if (audioSettings == null)
+            if (TryLoadResource(_audioSettingsName, out AudioSettingsSO audioSettings))
             {
-                Debug.LogError($"AudioSettingsSO asset file '{_audioSettingsName}' not found in the resources folder.");
-                return;
+                Container.BindInstance(audioSettings).AsSingle();
+                Container.Bind<GameObject>().FromInstance(gameObject).WhenInjectedInto<AudioManager>();
+                Container.BindInterfacesAndSelfTo<AudioManager>().AsSingle().NonLazy();
             }
-            Container.BindInstance(audioSettings).AsSingle();
-            Container.Bind<GameObject>().FromInstance(gameObject).WhenInjectedInto<AudioManager>();
-            Container.BindInterfacesAndSelfTo<AudioManager>().AsSingle().NonLazy();
             
             // Console
-            GameObject consolePrefab = Resources.Load<GameObject>(_consoleName);
-            if (consolePrefab == null)
+            if (TryLoadResource(_consoleName, out GameObject consolePrefab))
             {
-                Debug.LogError($"Console prefab '{_consoleName}' not found in the resources folder.");
-                return;
+                Container.Bind<QuantumConsole>().FromComponentInNewPrefab(consolePrefab).AsSingle().NonLazy();
             }
-            Container.Bind<QuantumConsole>().FromComponentInNewPrefab(consolePrefab).AsSingle().NonLazy();
+            
+            // Input
+            // TODO: Check for optimization
+            InputHandler inputHandler = GetComponent<InputHandler>();
+            Container.BindInterfacesTo<InputHandler>().FromInstance(inputHandler).AsSingle().NonLazy();
             
             // Other
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().NonLazy();
+        }
+        
+        private bool TryLoadResource<T>(string resourceName, out T asset) where T : Object
+        { 
+            asset = Resources.Load<T>(resourceName);
+            if (asset != null) return true;
+            
+            Debug.LogError($"{typeof(T).Name} asset file '{resourceName}' not found in the resources folder.");
+            return false;
         }
     }
 }

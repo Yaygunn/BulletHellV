@@ -1,7 +1,9 @@
 using System;
+using BH.Runtime.Input;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
 using BH.Runtime.Test;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -12,15 +14,20 @@ namespace BH.Runtime.Entities
     /// </summary>
     public class PlayerController : Entity, IDamageable
     {
-        [field: SerializeField]
+        [field: FoldoutGroup("Health"), SerializeField, HideLabel]
         public Health Health { get; private set; }
+
+        [field: BoxGroup("Debug"), SerializeField, ReadOnly]
+        public string StateName { get; set; }
         
         // TODO: inject this through a construct method...
         [Inject]
         private SignalBus _signalBus;
         
         // TODO: this is temporary, pending input system creation...
-        public Vector2 Direction { get; private set; }
+        //public Vector2 Direction { get; private set; }
+        
+        public IInputProvider InputProvider { get; private set; }
         
         // TODO: Add animator params..?
         
@@ -31,6 +38,7 @@ namespace BH.Runtime.Entities
         #region Components
         
         public MovementComponent Movement { get; private set; }
+        public DashComponent Dash { get; private set; }
 
         #endregion
 
@@ -38,7 +46,9 @@ namespace BH.Runtime.Entities
         
         public StateMachine<PlayerState> PlayerHFSM { get; private set; }
         
-        public PlayerActiveState ActiveState { get; private set; }
+        public PlayerIdleState IdleState { get; private set; }
+        public PlayerMoveState MoveState { get; private set; }
+        public PlayerDashState DashState { get; private set; }
         public PlayerBusyState BusyState { get; private set; }
         public PlayerDeadState DeadState { get; private set; }
         
@@ -51,9 +61,14 @@ namespace BH.Runtime.Entities
             base.Awake();
             
             Movement = VerifyComponent<MovementComponent>();
+            Dash = VerifyComponent<DashComponent>();
             
             PlayerHFSM = new StateMachine<PlayerState>();
-            ActiveState = new PlayerActiveState(this, PlayerHFSM);
+            // Active States
+            IdleState = new PlayerIdleState(this, PlayerHFSM);
+            MoveState = new PlayerMoveState(this, PlayerHFSM);
+            DashState = new PlayerDashState(this, PlayerHFSM);
+            
             BusyState = new PlayerBusyState(this, PlayerHFSM);
             DeadState = new PlayerDeadState(this, PlayerHFSM);
             
@@ -68,11 +83,11 @@ namespace BH.Runtime.Entities
 
         private void Update()
         {
-            // TODO: This will be redone with the new input system.
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-            
-            Direction = new Vector2(horizontal, vertical).normalized;
+            // // TODO: This will be redone with the new input system.
+            // float horizontal = Input.GetAxisRaw("Horizontal");
+            // float vertical = Input.GetAxisRaw("Vertical");
+            //
+            // Direction = new Vector2(horizontal, vertical).normalized;
             
             PlayerHFSM.CurrentState.LogicUpdate();
         }
@@ -90,10 +105,15 @@ namespace BH.Runtime.Entities
         
         #endregion
 
+        public void Initialize(IInputProvider inputProvider)
+        {
+            InputProvider = inputProvider;
+        }
+
         public void Activate()
         {
             Health.ResetHealth();
-            PlayerHFSM.ChangeState(ActiveState);
+            PlayerHFSM.ChangeState(IdleState);
         }
 
         public void Damage(int amount)

@@ -2,7 +2,7 @@
 
 namespace BH.Runtime.Entities
 {
-    public class PlayerActiveState : PlayerState
+    public abstract class PlayerActiveState : PlayerState
     {
         public PlayerActiveState(PlayerController player, StateMachine<PlayerState> stateMachine) : base(player, stateMachine)
         {
@@ -17,8 +17,10 @@ namespace BH.Runtime.Entities
         {
             base.LogicUpdate();
             
-            // TODO: We should avoid polling each update frame...
-            _player.Movement.Move(_player.Direction);
+            if (ShouldDash())
+            {
+                _stateMachine.ChangeState(_player.DashState);
+            }
         }
 
         public override void PhysicsUpdate()
@@ -29,6 +31,17 @@ namespace BH.Runtime.Entities
         public override void Exit()
         {
             base.Exit();
+        }
+        
+        private bool ShouldDash()
+        {
+            if (_player.PlayerHFSM.CurrentState == _player.DashState)
+                return false;
+            
+            if (_player.Dash.IsOnCooldown)
+                return false;
+            
+            return _player.InputProvider.DashInput.Pressed;
         }
     }
 }
