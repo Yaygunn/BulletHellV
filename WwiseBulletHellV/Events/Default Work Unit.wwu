@@ -3,17 +3,123 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="ambTest" ID="{C7AA6D13-2627-4FB4-A756-3A30407E64BD}">
+				<Folder Name="MUSIC" ID="{283BA409-654B-49DD-923A-7F05A654A91F}" ShortID="892160136">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="9"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+				</Folder>
+				<Folder Name="SFX" ID="{CB758310-CA9A-43BC-9AA3-C568A4CF5531}" ShortID="596989588">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="4"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<Action Name="" ID="{0E6A1675-06A2-4346-B041-1932B176D11C}" ShortID="939787205">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="ambTest" ID="{3F012C1A-5559-47B2-8568-A099F10CBADA}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Folder Name="BULLETS" ID="{E13A1D07-B3AE-43DA-8FC3-753608B9BB24}" ShortID="367966352">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="13"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Event Name="bulletTest" ID="{8716A50E-7B91-48DD-9A7F-FB49F9AAAF7E}">
+									<ChildrenList>
+										<Action Name="" ID="{B64170E3-F250-411E-90BB-00CCF9054310}" ShortID="15042757">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_shoot" ID="{500A73FE-BA34-4A1B-BD6C-785C65A1AA85}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{6084A588-2643-4948-B2D0-D7453FAED5D7}" ShortID="1050239557">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}" WorkUnitID="{E682EDCF-8399-4E75-9DA7-A46CCC5E31AE}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="ENEMIES" ID="{DA2596E7-2794-49D8-A341-144FACAB74AB}" ShortID="76802006">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Folder>
+						<Folder Name="ENVIRONMENT" ID="{95F387AB-FA09-463E-949E-440CDADEA0A3}" ShortID="98198469">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Folder>
+						<Folder Name="AMBIENCE" ID="{8CA5A897-0168-4F97-8991-A7C02EAB325D}" ShortID="216995650">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Event Name="ambTest" ID="{C7AA6D13-2627-4FB4-A756-3A30407E64BD}">
+									<ChildrenList>
+										<Action Name="" ID="{0E6A1675-06A2-4346-B041-1932B176D11C}" ShortID="939787205">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ambTest" ID="{3F012C1A-5559-47B2-8568-A099F10CBADA}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ambUnderwater" ID="{E6857089-36B7-4893-830A-814DDF82A6F3}">
+									<ChildrenList>
+										<Action Name="" ID="{780FBEAF-5CF4-4523-8F18-7385CB4CEE9E}" ShortID="338240660">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="amb_underwater" ID="{CDF47991-57DB-49AC-85C8-B62353ACF462}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{0921A263-E84C-4F05-A057-6F7F19DEAF9E}" ShortID="35463231">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}" WorkUnitID="{E682EDCF-8399-4E75-9DA7-A46CCC5E31AE}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{B008DD1B-A31F-4F5E-8949-CFE0D5D72E07}" ShortID="956232274">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="38"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Water_Intensity" ID="{AC7CDDBA-5B3F-4B17-B2E2-47125221F507}" WorkUnitID="{84B3F3AE-4AD3-44CF-BE7B-C25D26FC9F18}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="PLAYER" ID="{6915E4DF-929E-4A84-94D8-4456C6426F30}" ShortID="441965264">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="2"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Folder>
+						<Folder Name="UI" ID="{3C5E327F-A10E-4500-8426-660F062A8D0E}" ShortID="620142276">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="24"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Folder>
 					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

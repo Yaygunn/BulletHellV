@@ -4,6 +4,10 @@
 		<WorkUnit Name="Default Work Unit" ID="{C3565565-7650-4F97-878D-064BF81AAC95}" PersistMode="Standalone">
 			<ChildrenList>
 				<ActorMixer Name="PLAYER" ID="{4FC3E433-315D-4560-9513-9670515C8943}" ShortID="748382345">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="2"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -13,7 +17,11 @@
 						</Reference>
 					</ReferenceList>
 				</ActorMixer>
-				<ActorMixer Name="AMBIENCE" ID="{3306FC6D-AD40-4E70-BB18-7FAAECC67D7A}" ShortID="210959394">
+				<ActorMixer Name="ENVIRONMENT" ID="{15D7B6EE-667A-43D0-81C8-0780D950AD71}" ShortID="659631551">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -22,10 +30,54 @@
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
 						</Reference>
 					</ReferenceList>
+				</ActorMixer>
+				<ActorMixer Name="BULLETS" ID="{C1D04B59-63AC-4B73-827B-40ED50D2EF15}" ShortID="736533435">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="13"/>
+						<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UserAuxSendVolume0" Type="Real64">
+							<ValueList>
+								<Value>-11</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PlayerMaster" ID="{DE5172FF-0D88-4042-AE10-C8EFAADA6348}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+						</Reference>
+					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="ambTest" ID="{3F012C1A-5559-47B2-8568-A099F10CBADA}" ShortID="70382745">
+						<RandomSequenceContainer Name="bullet_shoot" ID="{500A73FE-BA34-4A1B-BD6C-785C65A1AA85}" ShortID="356057762">
 							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{CFD1B376-13A4-4EAF-B996-502B7F864E9B}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+													<Property Name="Min" Type="Real64" Value="-10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -36,35 +88,153 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133" ID="{7E8F7773-A5BD-4333-8161-060223A937B7}">
-									<Language>SFX</Language>
-									<AudioFile>Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="535973059"/>
-									</MediaIDList>
-								</AudioFileSource>
+								<Sound Name="shoot" ID="{233AA753-5682-4BAD-8C4C-FBF1DF309008}" ShortID="563343838">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{F5940ED3-B871-4162-AE6C-F9FBE6CD32CC}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0112041970952785"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.113442495589695"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.826239143472307"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.24837598516588"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="971597346"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{F5940ED3-B871-4162-AE6C-F9FBE6CD32CC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="shoot_01" ID="{2D4263DC-F53F-40DE-85B3-D2D0EB07BAF6}" ShortID="197929065">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{3E8D9AA2-716F-479B-B113-7ECD63215B95}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.10240944191805"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.113442495589695"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="4.28503289987624"/>
+												<Property Name="TrimEnd" Type="Real64" Value="4.72499268833583"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="785141224"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{3E8D9AA2-716F-479B-B113-7ECD63215B95}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="shoot_02" ID="{461FDF51-19BE-4966-866F-32E64FC79480}" ShortID="946314178">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{09253BF9-32C8-4640-8C69-D9662503B0BC}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.10240944191805"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.113442495589695"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="7.72594804286733"/>
+												<Property Name="TrimEnd" Type="Real64" Value="8.26359103395969"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="201371888"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{09253BF9-32C8-4640-8C69-D9662503B0BC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="shoot_03" ID="{75319193-C187-48B1-8648-9FA9752C82BD}" ShortID="161272084">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{4F1C5E07-85E2-4AFF-AB80-1587C8B9F6BB}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.10240944191805"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.113442495589695"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="11.7009490599365"/>
+												<Property Name="TrimEnd" Type="Real64" Value="12.1346205698247"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="19329742"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{4F1C5E07-85E2-4AFF-AB80-1587C8B9F6BB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="shoot_04" ID="{14CD4FC2-E4E4-40AA-81CE-6828AEE5CD6E}" ShortID="1052896548">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{9B760795-AE41-4702-ABA0-5C84F951462A}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.10240944191805"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.113442495589695"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="16.777432986772"/>
+												<Property Name="TrimEnd" Type="Real64" Value="17.2464559582731"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="149755117"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793" ID="{9B760795-AE41-4702-ABA0-5C84F951462A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
-							<StateInfo>
-								<StateGroupList>
-									<StateGroupInfo>
-										<StateGroupRef Name="SFX" ID="{9B63D0AE-AF01-4D77-8920-EF4360487C9A}"/>
-									</StateGroupInfo>
-								</StateGroupList>
-								<CustomStateList>
-									<CustomState>
-										<StateRef Name="Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
-										<CustomState Name="" ID="{7F080D30-A48A-480B-BF35-677A43EF4936}" ShortID="932772487"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
-										<CustomState Name="" ID="{B118158A-CA93-4E92-B8CC-3C87F0D2AE0F}" ShortID="103996592"/>
-									</CustomState>
-								</CustomStateList>
-							</StateInfo>
-							<ActiveSourceList>
-								<ActiveSource Name="Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133" ID="{7E8F7773-A5BD-4333-8161-060223A937B7}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
+						</RandomSequenceContainer>
 					</ChildrenList>
 					<StateInfo>
 						<StateGroupList>
@@ -74,37 +244,21 @@
 						</StateGroupList>
 						<CustomStateList>
 							<CustomState>
-								<StateRef Name="Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
-								<CustomState Name="" ID="{3359628E-6D05-442C-8BFF-B23C65BF7551}" ShortID="246465480"/>
+								<StateRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+								<CustomState Name="" ID="{15587B46-80D4-4ED5-BC90-9A967CBAAF24}" ShortID="1027380209"/>
 							</CustomState>
 							<CustomState>
-								<StateRef Name="Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
-								<CustomState Name="" ID="{6EE8E8C8-D5F0-4EC6-84A1-958341007CDC}" ShortID="306943755"/>
+								<StateRef Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+								<CustomState Name="" ID="{6124216A-578B-49BB-892F-BC18EE66E018}" ShortID="689144765"/>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
 				</ActorMixer>
-				<ActorMixer Name="ENVIRONMENT" ID="{15D7B6EE-667A-43D0-81C8-0780D950AD71}" ShortID="659631551">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
-						</Reference>
-					</ReferenceList>
-				</ActorMixer>
-				<ActorMixer Name="ITEM" ID="{C1D04B59-63AC-4B73-827B-40ED50D2EF15}" ShortID="736533435">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
-						</Reference>
-					</ReferenceList>
-				</ActorMixer>
 				<ActorMixer Name="ENEMIES" ID="{7B257DBA-E05B-439D-ACDA-27FDAA4C95B5}" ShortID="396959464">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="10"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -115,6 +269,10 @@
 					</ReferenceList>
 				</ActorMixer>
 				<ActorMixer Name="UI" ID="{AEE70D3A-9273-4DCB-802F-F66E75B8F1C5}" ShortID="658167609">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="24"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -123,6 +281,327 @@
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
 						</Reference>
 					</ReferenceList>
+				</ActorMixer>
+				<ActorMixer Name="AMBIENCE" ID="{3306FC6D-AD40-4E70-BB18-7FAAECC67D7A}" ShortID="210959394">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="4"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AmbMaster" ID="{71E26BBA-D855-48B9-A951-F26F7767A5F7}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="3D" ID="{E98876DA-4A94-4F6B-839F-9FA4232C6F19}" ShortID="183646285">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="3DAmb" ID="{1DE7C1A6-1A5B-4D24-A054-11CBA26CE292}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="ambTest" ID="{3F012C1A-5559-47B2-8568-A099F10CBADA}" ShortID="70382745">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-1</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="3DAmb" ID="{1DE7C1A6-1A5B-4D24-A054-11CBA26CE292}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133" ID="{7E8F7773-A5BD-4333-8161-060223A937B7}">
+											<Language>SFX</Language>
+											<AudioFile>Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="535973059"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<StateInfo>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="SFX" ID="{9B63D0AE-AF01-4D77-8920-EF4360487C9A}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+												<CustomState Name="" ID="{7F080D30-A48A-480B-BF35-677A43EF4936}" ShortID="932772487"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+												<CustomState Name="" ID="{B118158A-CA93-4E92-B8CC-3C87F0D2AE0F}" ShortID="103996592"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
+									<ActiveSourceList>
+										<ActiveSource Name="Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133" ID="{7E8F7773-A5BD-4333-8161-060223A937B7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<BlendContainer Name="amb_underwater" ID="{CDF47991-57DB-49AC-85C8-B62353ACF462}" ShortID="672522754">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-20</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="UnderwaterBed" ID="{AD03A78C-F24B-4C3B-9DC9-FDAEA925CC2C}" ShortID="904968090">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverrideOutput" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="3DAmb" ID="{1DE7C1A6-1A5B-4D24-A054-11CBA26CE292}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ambience, Underwater, Complex 01 SND12354" ID="{457E51F9-A834-4199-8021-197907DCD174}">
+													<PropertyList>
+														<Property Name="CrossfadeDuration" Type="Real64" Value="2210.526"/>
+														<Property Name="LoopBegin" Type="Real64" Value="2.20540540540541"/>
+														<Property Name="LoopEnd" Type="Real64" Value="117.535135135135"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Ambience, Underwater, Complex 01 SND12354.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="227329552"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ambience, Underwater, Complex 01 SND12354" ID="{457E51F9-A834-4199-8021-197907DCD174}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HighIntensity" ID="{789428B2-8FEC-491D-A2C9-88266C0BBF50}" ShortID="547157871">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048" ID="{36B122CD-0716-4993-8085-90BDA5F57D8B}">
+													<PropertyList>
+														<Property Name="CrossfadeDuration" Type="Real64" Value="1650.206"/>
+														<Property Name="LoopBegin" Type="Real64" Value="1.49934341303329"/>
+														<Property Name="LoopEnd" Type="Real64" Value="59.7091465072668"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="305928203"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048" ID="{36B122CD-0716-4993-8085-90BDA5F57D8B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LowIntensity" ID="{FCF727D2-F21E-425E-9BE6-9544F246EFBE}" ShortID="192375535">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1" ID="{E39EB35D-D8BD-4C61-BB1C-7002AF1A371F}">
+													<PropertyList>
+														<Property Name="CrossfadeDuration" Type="Real64" Value="1424.928"/>
+														<Property Name="FadeInDuration" Type="Real64" Value="1.3"/>
+														<Property Name="LoopBegin" Type="Real64" Value="1.32937844611529"/>
+														<Property Name="LoopEnd" Type="Real64" Value="36.1009334273183"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1001388230"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1" ID="{E39EB35D-D8BD-4C61-BB1C-7002AF1A371F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<BlendTrackList>
+										<BlendTrack Name="New Blend Track" ID="{108ED938-F7FF-4277-B59E-5406231DCDCE}" ShortID="648433018">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="Water_Intensity" ID="{AC7CDDBA-5B3F-4B17-B2E2-47125221F507}" WorkUnitID="{84B3F3AE-4AD3-44CF-BE7B-C25D26FC9F18}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{B449FCA4-43A5-4749-B93A-A303257B80D1}" ShortID="584186660">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="Water_Intensity" ID="{AC7CDDBA-5B3F-4B17-B2E2-47125221F507}" WorkUnitID="{84B3F3AE-4AD3-44CF-BE7B-C25D26FC9F18}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{A86AB2F7-FEA8-4CCD-8EFE-1DBC773AFE85}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>100</XPos>
+																						<YPos>4.88828</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="LowIntensity" ID="{FCF727D2-F21E-425E-9BE6-9544F246EFBE}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>9.9680018219265</LeftEdgePos>
+														<LeftFadingMode>Manual</LeftFadingMode>
+														<LeftFadingSegmentShape>Log2</LeftFadingSegmentShape>
+														<LeftFadingPos>16.5586228612167</LeftFadingPos>
+														<RightEdgePos>50.3735785012674</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="HighIntensity" ID="{789428B2-8FEC-491D-A2C9-88266C0BBF50}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>42.2747191856781</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>100</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="2D" ID="{B0C34B63-FE6A-4D66-89C5-D2C43C003B30}" ShortID="37803646">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="2DAmb" ID="{D2441E1A-1A54-4E57-A35E-9E587152BF04}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+							</ReferenceList>
+						</ActorMixer>
+					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="SFX" ID="{9B63D0AE-AF01-4D77-8920-EF4360487C9A}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+								<CustomState Name="" ID="{3359628E-6D05-442C-8BFF-B23C65BF7551}" ShortID="246465480"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+								<CustomState Name="" ID="{6EE8E8C8-D5F0-4EC6-84A1-958341007CDC}" ShortID="306943755">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16" Value="40"/>
+										<Property Name="Lowpass" Type="int16" Value="60"/>
+										<Property Name="Volume" Type="Real64" Value="-3"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
