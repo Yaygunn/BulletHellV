@@ -14,6 +14,8 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AMBTEST = 2338340215U;
+        static const AkUniqueID AMBUNDERWATER = 3813711432U;
+        static const AkUniqueID BULLETTEST = 1248641489U;
     } // namespace EVENTS
 
     namespace STATES
@@ -44,6 +46,11 @@ namespace AK
 
     } // namespace STATES
 
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID WATER_INTENSITY = 1348429472U;
+    } // namespace GAME_PARAMETERS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
@@ -53,8 +60,20 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID _2DAMB = 1387833709U;
+        static const AkUniqueID _3DAMB = 2616461496U;
+        static const AkUniqueID AMBMASTER = 2786823217U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID NPCMASTER = 2033911932U;
+        static const AkUniqueID PLAYERMASTER = 3538689948U;
     } // namespace BUSSES
+
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID REVERBS = 3545700988U;
+        static const AkUniqueID SFX = 393239870U;
+        static const AkUniqueID UNDERWATER = 2213237662U;
+    } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {
