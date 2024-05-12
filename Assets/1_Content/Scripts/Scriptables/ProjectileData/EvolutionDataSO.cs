@@ -4,28 +4,30 @@ using UnityEngine;
 
 namespace BH.Scriptables
 {
-    public abstract class ProjectileDataSO : ScriptableObject
+    public abstract class EvolutionDataSO : ScriptableObject
     {
         [field: BoxGroup("General"), SerializeField]
-        public string ProjectileName { get; private set; }
-        [field: BoxGroup("General"), SerializeField, Range(0, 3)]
-        public int ProjectileLevel { get; private set; }
+        public string EvolutionName { get; private set; }
+        [field: BoxGroup("General"), SerializeField, Range(1, 3)]
+        public int EvolutionLevel { get; private set; }
         [field: BoxGroup("General"), SerializeField, TextArea]
         public string Description { get; private set; }
         [field: BoxGroup("General"), SerializeField]
         public Sprite Icon { get; private set; }
 
         [field: BoxGroup("General"), SerializeField]
-        public float Damage { get; private set; } = 10f;
+        public int Damage { get; private set; } = 10;
 
         [field: BoxGroup("General"), SerializeField]
         public float Speed { get; private set; } = 10f;
 
         [field: BoxGroup("General"), SerializeField]
-        public float MaxBounces { get; private set; } = 12f;
+        public float ActivationBounces { get; private set; } = 12f;
 
         //public abstract void OnHit();
 
         public abstract ProjectileType GetProjectileType();
+
+        public abstract void OnEvolve(Projectile projectile);
     }
 }

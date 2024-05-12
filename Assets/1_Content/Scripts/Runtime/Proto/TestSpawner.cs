@@ -2,6 +2,7 @@
 using System.Collections;
 using BH.Runtime.Factories;
 using BH.Runtime.Systems;
+using BH.Scriptables.Databases;
 using BH.Utilities.ImprovedTimers;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -34,6 +35,9 @@ namespace BH.Runtime.Test
         
         [Inject]
         private IProjectileFactory _projectileFactory;
+        
+        [Inject]
+        private DatabaseSO _database;
         
         private void Start()
         {

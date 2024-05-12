@@ -1,40 +1,46 @@
 ﻿using System;
 using BH.Runtime.Factories;
 using BH.Runtime.Test;
+using BH.Scriptables;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
 namespace BH.Runtime.Systems
 {
-    // NOTE: Adding a new type here will try to spawn a pool for it, make sure the new type exists in resources...
+    // NOTE: Adding a new type here will try to spawn a pool for it, make sure the new type exists in prefab resources...
     public enum ProjectileType
     {
         AttractorBullet,
         ChainReactionBullet,
         EnemyBasicBullet,
+        ExpandingBullet,
         ExplodingBullet,
         HealingBullet,
         HomingBullet,
         PlayerBasicBullet
     }
     
-    public class Projectile : MonoBehaviour
+    public abstract class Projectile : MonoBehaviour
     {
-        //[SerializeField]
-        //private float _speed;
-
         [SerializeField]
-        private int _damage;
-
+        private int _baseDamage = 10;
         [SerializeField]
-        private bool _destroyOnHit;
+        private float _baseSpeed = 10f;
+        [SerializeField]
+        private int _baseEvolutionBounces = 1;
+        [SerializeField]
+        private int _baseActivationBounces = 3;
         
         [SerializeField]
-        private LayerMask _collisionMask;
+        private LayerMask _obsticleMask;
 
         private ProjectilePool _pool;
         private Vector2 _direction;
+        private EvolutionDataSO _evolutionData;
+
+        //private bool _isEvolved;
+        private int _bounces;
         
         private IProjectileFactory _projectileFactory;
         
@@ -49,16 +55,18 @@ namespace BH.Runtime.Systems
             _pool = pool;
         }
         
-        public void SetUp()
+        public void SetUp(Vector2 initialPosition, EvolutionDataSO evolutionData)
         {
-            transform.position = Vector3.zero;
+            _evolutionData = evolutionData;
+            transform.position = initialPosition;
             RandomizeDirection();
         }
         
-        public void SetUp(Vector2 initialPosition, Vector2 initialDirection)
+        public void SetUp(Vector2 initialPosition, Vector2 initialDirection, EvolutionDataSO evolutionData = null)
         {
             transform.position = initialPosition;
             _direction = initialDirection;
+            _evolutionData = evolutionData;
         }
 
         private void RandomizeDirection()
@@ -70,50 +78,69 @@ namespace BH.Runtime.Systems
 
         private void Update()
         {
-            transform.position += new Vector3(_direction.x, _direction.y, 0f) * (/*_speed **/ Time.deltaTime);
+            transform.position += new Vector3(_direction.x, _direction.y, 0f) * Time.deltaTime;
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        protected virtual void OnCollisionEnter2D(Collision2D other)
         {
-            if ((_collisionMask & (1 << other.gameObject.layer)) != 0)
+            if ((_obsticleMask & (1 << other.gameObject.layer)) != 0)
             {
-                Vector2 inNormal = other.GetContact(0).normal;
-                _direction = Vector2.Reflect(_direction, inNormal).normalized;
-                
-                Projectile projectile = _projectileFactory.CreateProjectile(ProjectileType.ExplodingBullet);
-                projectile.SetUp(transform.position, _direction);
-                
+                HandleObstacleCollision(other);
+                return;
+            }
+
+            if (!other.gameObject.TryGetComponent(out IDamageable damageable)) 
+                return;
+            
+            HandleDamage(damageable);
+            ReturnToPool();
+        }
+        
+        private void HandleObstacleCollision(Collision2D other)
+        {
+            Vector2 inNormal = other.GetContact(0).normal;
+            _direction = Vector2.Reflect(_direction, inNormal).normalized;
+            _bounces++;
+
+            if (_bounces >= GetEvolutionBounces() && _evolutionData != null)
+            {
+                Projectile projectile = _projectileFactory.CreateProjectile(_evolutionData.GetProjectileType());
+                projectile.SetUp(transform.position, _direction, _evolutionData);
                 ReturnToPool();
             }
-            
-            
-            if (other.gameObject.TryGetComponent(out IDamageable component))
+            else if (_bounces >= GetActivationBounces())
             {
-                component.Damage(_damage);
-                if (_destroyOnHit)
-                {
-                    ReturnToPool();
-                    return;
-                }
+                HandleActivation();
             }
-            
-            
-
-            
-            
-            
-            
-            
-            // TODO: Can return to pool here if needed..
+        }
+        
+        private void HandleDamage(IDamageable damageable)
+        {
+            int damage = _baseDamage;
+            damageable.Damage(damage);
+        }
+        
+        private int GetEvolutionBounces()
+        {
+            return _baseEvolutionBounces;
+        }
+        
+        private int GetActivationBounces()
+        {
+            return _baseActivationBounces;
+        }
+        
+        private void HandleActivation()
+        {
+            Debug.Log("Projectile Activated!");
+            ReturnToPool();
         }
 
-        private void OnDisable()
+        protected void ReturnToPool()
         {
-            // TODO: Additional possible cleanup.
-        }
-
-        private void ReturnToPool()
-        {
+            _evolutionData = null;
+            _bounces = 0;
+            
             _pool.Despawn(this);
         }
     }

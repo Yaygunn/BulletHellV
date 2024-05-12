@@ -11,8 +11,8 @@ namespace BH.Runtime.Systems
     {
         AddBullet,
         UpgradeBullet,
-        //UpgradeWeapon,
-        //UpgradePlayer
+        UpgradeWeapon,
+        UpgradePlayer
     }
 
     public class UpgradesHandler : IInitializable, IDisposable

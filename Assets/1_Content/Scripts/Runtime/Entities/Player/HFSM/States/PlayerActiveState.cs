@@ -1,4 +1,5 @@
 ﻿using BH.Runtime.StateMachines;
+using BH.Runtime.Systems;
 using UnityEngine;
 
 namespace BH.Runtime.Entities
@@ -24,7 +25,7 @@ namespace BH.Runtime.Entities
             }
             else if (ShouldShoot())
             {
-                _player.Weapon.Fire(GetMouseDirection());
+                _player.Weapon.Fire(GetMouseDirection(), ProjectileType.PlayerBasicBullet);
             }
         }
 

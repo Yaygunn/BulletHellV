@@ -27,12 +27,15 @@ namespace BH.Runtime.Managers
         private IPLayerFactory _playerFactory;
         private SignalBus _signalBus;
         
-        private PlayerController _player;
+        
         private Vector3 _playerSpawnPosition;
         private CountdownTimer _respawnTimer;
         
         private LevelState _previousLevelState;
         public LevelState CurrentLevelState { get; private set; }
+        
+        public PlayerController Player { get; private set; }
+        
         public event Action<LevelState> OnLevelStateChanged;
         
         private LevelManager(LevelSettingsSO levelSettings, IGameStateHandler gameState, IPLayerFactory playerFactory, SignalBus signalBus)
@@ -70,8 +73,8 @@ namespace BH.Runtime.Managers
         {
             SetLevelState(LevelState.SpawningPlayer);
             
-            _player = _playerFactory.CreatePlayer();
-            if (_player == null)
+            Player = _playerFactory.CreatePlayer();
+            if (Player == null)
             {
                 Debug.LogError("Failed to spawn player.");
                 return;
@@ -83,15 +86,15 @@ namespace BH.Runtime.Managers
                 _playerSpawnPosition = _levelSettings.SpawnPosition;
 
             // TODO: Any setup on player spawn...
-            _player.transform.position = _playerSpawnPosition;
+            Player.transform.position = _playerSpawnPosition;
             // TODO: We need to request state, not directly change it like this...
-            _player.Activate();
+            Player.Activate();
         }
         
         private void RespawnPlayer()
         {
             SetLevelState(LevelState.SpawningPlayer);
-            _player.gameObject.SetActive(false);
+            Player.gameObject.SetActive(false);
             
             _respawnTimer = new CountdownTimer(_levelSettings.RespawnDelay);
             _respawnTimer.OnTimerStop += HandleRespawnTimerStop;
@@ -101,11 +104,11 @@ namespace BH.Runtime.Managers
         private void HandleRespawnTimerStop()
         {
             _respawnTimer.OnTimerStop -= HandleRespawnTimerStop;
-            _player.transform.position = _playerSpawnPosition;
-            _player.gameObject.SetActive(true);
+            Player.transform.position = _playerSpawnPosition;
+            Player.gameObject.SetActive(true);
             SetLevelState(_previousLevelState);
             // TODO: Need to request state change here
-            _player.Activate();
+            Player.Activate();
         }
 
         public void SetLevelState(LevelState newState)

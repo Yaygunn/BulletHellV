@@ -25,17 +25,18 @@ namespace BH.Runtime.Entities
         [SerializeField]
         private int _startingBulletLevel = 0;
 
-        [SerializeField]
-        private BulletContainer[] _bulletContainers = new BulletContainer[6];
-        private int _currentBulletIndex = 0;
+        [SerializeField, ReadOnly]
+        private EvolutionDataSO[] _evolutionsList = new EvolutionDataSO[6];
         
         [SerializeField]
         private GeneralWeaponMod _generalWeaponMod;
         
-        private IProjectileFactory _projectileFactory;
-
+        [BoxGroup("Debugging"), SerializeField, ReadOnly]
+        private int _currentBulletIndex = 0;
+        
         public bool IsOnCooldown { get; private set; }
 
+        private IProjectileFactory _projectileFactory;
         private CountdownTimer _cooldownCountdown;
         private DatabaseSO _database;
         private Dictionary<ProjectileType, int> _bulletLevels;
@@ -47,32 +48,16 @@ namespace BH.Runtime.Entities
             _database = database;
         }
         
-        // TODO: TESTING
-        [Inject]
-        private ILevelStateHandler _levelStateHandler;
-        [Button]
-        private void TestUpgrades()
-        {
-            _levelStateHandler.SetLevelState(LevelState.Upgrading);
-        }
-        
         private void Start()
         {
             _cooldownCountdown = new CountdownTimer(GetFireRate());
             _cooldownCountdown.OnTimerStop += OnCooldownEnd;
 
-            ProjectileDataSO basicBullet = _database.GetProjectileData(_startingBullets, 0);
-            foreach (BulletContainer container in _bulletContainers)
-            {
-                container.SetBulletData(basicBullet);
-            }
-
             _bulletLevels = new Dictionary<ProjectileType, int>()
             {
                 { ProjectileType.AttractorBullet, 1 },
-                { ProjectileType.PlayerBasicBullet, 0 },
-                { ProjectileType.EnemyBasicBullet, 0 },
                 { ProjectileType.ChainReactionBullet, 1 },
+                { ProjectileType.ExpandingBullet, 1 },
                 { ProjectileType.ExplodingBullet, 1 },
                 { ProjectileType.HealingBullet, 1 },
                 { ProjectileType.HomingBullet, 1 }
@@ -84,46 +69,86 @@ namespace BH.Runtime.Entities
             _cooldownCountdown.OnTimerStop -= OnCooldownEnd;
         }
 
-        public void Fire(Vector2 direction)
+        public void Fire(Vector2 direction, ProjectileType initialType)
         {
-            SpawnBullet(direction, transform.position);
+            if (initialType != ProjectileType.PlayerBasicBullet && initialType != ProjectileType.EnemyBasicBullet)
+            {
+                Debug.LogError("Invalid initial bullet type. Make sure it's player/enemy basic bullet.");
+                return;
+            }
+            
+            SpawnBullet(direction, transform.position, initialType);
             IsOnCooldown = true;
             _cooldownCountdown.Reset(GetFireRate());
             _cooldownCountdown.Start();
         }
         
-        public void AddBullet(ProjectileType type)
+        public bool CanAddBulletEvolution() => _evolutionsList.Any(x => x == null);
+        
+        public void AddBulletEvolution(ProjectileType type)
         {
-            BulletContainer container = _bulletContainers.FirstOrDefault(x => x.BulletData.GetProjectileType() == ProjectileType.PlayerBasicBullet);
-            if (container == null)
+            if (!CanAddBulletEvolution())
             {
-                Debug.LogError("No more basic bullets to replace.");
+                Debug.LogError("Attempted to add bullet evolution but no slots available.");
                 return;
             }
-            
-            ProjectileDataSO data = _database.GetProjectileData(type, 0);
-            
-            container.SetBulletData(data);
-            _bulletContainers[_currentBulletIndex] = container;
+    
+            int index = Array.FindIndex(_evolutionsList, x => x == null);
+            if (index == -1)
+            {
+                Debug.LogError("No null slots found despite earlier check.");
+                return;
+            }
+
+            if (_database.TryGetNextEvolutionData(type, _bulletLevels[type], out EvolutionDataSO newEvolutionData))
+            {
+                _evolutionsList[index] = newEvolutionData;
+            }
+            else
+            {
+                Debug.LogError($"[WeaponComponent] Failed to get evolution data for {type} at level {_bulletLevels[type]}.");
+            }
+        }
+        
+        public bool CanUpgradeEvolution(ProjectileType type)
+        {
+            return _database.TryGetNextEvolutionData(type, _bulletLevels[type] + 1, out EvolutionDataSO evolutionData);
+        }
+        
+        public void UpgradeEvolutions(ProjectileType type)
+        {
+            if (_database.TryGetNextEvolutionData(type, _bulletLevels[type] + 1, out EvolutionDataSO evolutionData))
+            {
+                _bulletLevels[type] += 1;
+
+                for (int i = 0; i < _evolutionsList.Length; i++)
+                {
+                    if (_evolutionsList[i] != null && _evolutionsList[i].GetProjectileType() == type)
+                    {
+                        _evolutionsList[i] = evolutionData;
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Max level reached for projectile type or evolution data not found.");
+            }
         }
 
-        private void SpawnBullet(Vector3 velocity, Vector2 position)
+        private void SpawnBullet(Vector3 velocity, Vector2 position, ProjectileType type)
         {
-            ProjectileType type = GetNextBulletType();
+            EvolutionDataSO evolution = GetNextEvolutionIfAny();
             Projectile projectile = _projectileFactory.CreateProjectile(type);
-            projectile.SetUp(position, velocity.normalized);
+            projectile.SetUp(position, velocity.normalized, evolution);
         }
         
-        private void OnCooldownEnd()
+        private void OnCooldownEnd() => IsOnCooldown = false;
+
+        private EvolutionDataSO GetNextEvolutionIfAny()
         {
-            IsOnCooldown = false;
-        }
-        
-        private ProjectileType GetNextBulletType()
-        {
-            ProjectileType type = _bulletContainers[_currentBulletIndex].BulletData.GetProjectileType();
-            _currentBulletIndex = (_currentBulletIndex + 1) % _bulletContainers.Length;
-            return type;
+            EvolutionDataSO evolution = _evolutionsList[_currentBulletIndex];
+            _currentBulletIndex = (_currentBulletIndex + 1) % _evolutionsList.Length;
+            return evolution;
         }
         
         private float GetFireRate()
