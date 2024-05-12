@@ -15,6 +15,7 @@ namespace BH.Runtime.Managers
         SpawningPlayer,
         NormalRound,
         BossRound,
+        Upgrading,
         GameOver
     }
     
@@ -32,7 +33,7 @@ namespace BH.Runtime.Managers
         
         private LevelState _previousLevelState;
         public LevelState CurrentLevelState { get; private set; }
-        public Action<LevelState> OnLevelStateChanged { get; }
+        public event Action<LevelState> OnLevelStateChanged;
         
         private LevelManager(LevelSettingsSO levelSettings, IGameStateHandler gameState, IPLayerFactory playerFactory, SignalBus signalBus)
         {

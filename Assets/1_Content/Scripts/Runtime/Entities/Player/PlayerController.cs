@@ -1,8 +1,6 @@
-using System;
 using BH.Runtime.Input;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
-using BH.Runtime.Test;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -24,6 +22,9 @@ namespace BH.Runtime.Entities
         [Inject]
         private SignalBus _signalBus;
         
+        [field: Inject(Id = "MainCamera")]
+        public Camera Camera { get; }
+        
         // TODO: this is temporary, pending input system creation...
         //public Vector2 Direction { get; private set; }
         
@@ -39,6 +40,7 @@ namespace BH.Runtime.Entities
         
         public MovementComponent Movement { get; private set; }
         public DashComponent Dash { get; private set; }
+        public WeaponComponent Weapon { get; private set; }
 
         #endregion
 
@@ -62,6 +64,7 @@ namespace BH.Runtime.Entities
             
             Movement = VerifyComponent<MovementComponent>();
             Dash = VerifyComponent<DashComponent>();
+            Weapon = VerifyComponent<WeaponComponent>();
             
             PlayerHFSM = new StateMachine<PlayerState>();
             // Active States
@@ -83,12 +86,6 @@ namespace BH.Runtime.Entities
 
         private void Update()
         {
-            // // TODO: This will be redone with the new input system.
-            // float horizontal = Input.GetAxisRaw("Horizontal");
-            // float vertical = Input.GetAxisRaw("Vertical");
-            //
-            // Direction = new Vector2(horizontal, vertical).normalized;
-            
             PlayerHFSM.CurrentState.LogicUpdate();
         }
 

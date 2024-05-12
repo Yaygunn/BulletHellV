@@ -1,19 +1,23 @@
 ﻿using BH.Runtime.Systems;
+using Zenject;
 
 namespace BH.Runtime.Factories
 {
     public class ProjectileFactory : IProjectileFactory
     {
-        private ProjectilePool _pool;
+        private DiContainer _container;
         
-        public ProjectileFactory(ProjectilePool pool)
+        public ProjectileFactory(DiContainer container)
         {
-            _pool = pool;
+            _container = container;
         }
         
-        public Projectile CreateProjectile()
+        public Projectile CreateProjectile(ProjectileType type)
         {
-            return _pool.Spawn();
+            ProjectilePool pool = _container.ResolveId<ProjectilePool>(type);
+            Projectile projectile = pool.Spawn();
+            projectile.SetPool(pool);
+            return projectile;
         }
     }
 }

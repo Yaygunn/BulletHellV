@@ -17,8 +17,6 @@ namespace BH.Runtime.Installers
         private string _playerObjectName = "Player";
         
         [BoxGroup("Projectiles"), SerializeField]
-        private GameObject _projectilePrefab;
-        [BoxGroup("Projectiles"), SerializeField]
         private int _initialPoolSize = 50;
         
         public override void InstallBindings()
@@ -33,14 +31,34 @@ namespace BH.Runtime.Installers
             Container.Bind<IPLayerFactory>().To<PlayerFactory>().AsSingle().WithArguments(playerPrefab);
             
             // Projectiles
-            Container.BindMemoryPool<Projectile, ProjectilePool>()
-                .WithInitialSize(_initialPoolSize)
-                .FromComponentInNewPrefab(_projectilePrefab)
-                .UnderTransformGroup("Projectiles");
+            BindProjectilePools();
             Container.Bind<IProjectileFactory>().To<ProjectileFactory>().AsSingle();
+            
+            // Upgrades
+            Container.BindInterfacesAndSelfTo<UpgradesHandler>().AsSingle();
             
             // Other
             Container.BindInterfacesAndSelfTo<LevelManager>().AsSingle().WithArguments(_levelSettings).NonLazy();
+        }
+        
+        private void BindProjectilePools()
+        {
+            foreach (ProjectileType type in System.Enum.GetValues(typeof(ProjectileType)))
+            {
+                GameObject prefab = Resources.Load<GameObject>($"Projectiles/{type}");
+                if (prefab == null)
+                {
+                    Debug.LogError($"Projectile prefab for {type} not found in Resources/Projectiles/");
+                    continue;
+                }
+                Container.BindMemoryPool<Projectile, ProjectilePool>()
+                    .WithId(type)
+                    .WithInitialSize(_initialPoolSize)
+                    .FromComponentInNewPrefab(prefab)
+                    .UnderTransformGroup($"{type}Pool")
+                    .AsCached()
+                    .NonLazy();
+            }
         }
     }
 }

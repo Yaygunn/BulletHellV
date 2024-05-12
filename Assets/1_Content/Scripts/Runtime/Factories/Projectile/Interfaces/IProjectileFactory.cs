@@ -4,6 +4,6 @@ namespace BH.Runtime.Factories
 {
     public interface IProjectileFactory
     {
-        public Projectile CreateProjectile();
+        public Projectile CreateProjectile(ProjectileType type);
     }
 }

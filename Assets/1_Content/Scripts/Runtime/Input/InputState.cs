@@ -55,12 +55,12 @@ namespace BH.Runtime.Input
         public void OnCanceled()
         {
             Held = false;
-            Pressed = false;
             Released = true;
         }
 
         public void Reset()
         {
+            Pressed = false;
             Released = false;
         }
     }

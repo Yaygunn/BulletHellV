@@ -1,4 +1,5 @@
 ﻿using BH.Runtime.Entities;
+using BH.Scripts.Runtime.UI;
 using Zenject;
 
 namespace BH.Runtime.Installers
@@ -9,6 +10,10 @@ namespace BH.Runtime.Installers
         {
             // Player
             Container.DeclareSignal<PlayerDiedSignal>();
+            
+            // Upgrades
+            Container.DeclareSignal<UpgradeSelectedSignal>();
+            Container.DeclareSignal<UpgradesShowSignal>();
         }
     }
 }

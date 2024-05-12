@@ -55,6 +55,12 @@ namespace BH.Runtime.Test
         
         private void GeneratePattern()
         {
+            if (BulletCounter >= 200)
+            {
+                _spawnTimer.Stop();
+                return;
+            }
+            
             float angleStep = (_endAngle - _startAngle) / _numBullets;
             float currentAngle = _startAngle;
             
@@ -73,9 +79,9 @@ namespace BH.Runtime.Test
         private void SpawnBullet(Vector3 velocity, Vector3? position = null)
         {
             BulletCounter++;
-            Projectile projectile = _projectileFactory.CreateProjectile();
+            Projectile projectile = _projectileFactory.CreateProjectile(ProjectileType.EnemyBasicBullet);
             projectile.transform.position = position ?? Vector3.zero;
-            projectile.SetUp(velocity.normalized, this);
+            projectile.SetUp(Vector2.zero, velocity.normalized);
         }
     }
 }

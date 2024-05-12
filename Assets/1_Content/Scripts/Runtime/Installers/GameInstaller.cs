@@ -2,6 +2,7 @@
 using BH.Runtime.Managers;
 using BH.Runtime.Scenes;
 using BH.Scriptables;
+using BH.Scriptables.Databases;
 using BH.Scriptables.Scenes;
 using QFSW.QC;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace BH.Runtime.Installers
         private string _audioSettingsName = "AudioSettings";
         [SerializeField, Tooltip("Name of the console prefab in resources folder.")]
         private string _consoleName = "Console";
+        [SerializeField, Tooltip("Name of the Game Database prefab in resources folder.")]
+        private string _databaseName = "GameDatabase";
         
         public override void InstallBindings()
         {
@@ -45,6 +48,12 @@ namespace BH.Runtime.Installers
             // TODO: Check for optimization
             InputHandler inputHandler = GetComponent<InputHandler>();
             Container.BindInterfacesTo<InputHandler>().FromInstance(inputHandler).AsSingle().NonLazy();
+            
+            // Database
+            if (TryLoadResource(_databaseName, out DatabaseSO database))
+            {
+                Container.BindInstance(database).AsSingle();
+            }
             
             // Other
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().NonLazy();

@@ -7,6 +7,18 @@ using Random = UnityEngine.Random;
 
 namespace BH.Runtime.Systems
 {
+    // NOTE: Adding a new type here will try to spawn a pool for it, make sure the new type exists in resources...
+    public enum ProjectileType
+    {
+        AttractorBullet,
+        ChainReactionBullet,
+        EnemyBasicBullet,
+        ExplodingBullet,
+        HealingBullet,
+        HomingBullet,
+        PlayerBasicBullet
+    }
+    
     public class Projectile : MonoBehaviour
     {
         //[SerializeField]
@@ -24,11 +36,15 @@ namespace BH.Runtime.Systems
         private ProjectilePool _pool;
         private Vector2 _direction;
         
-        // TODO: REMOVE THIS TEST
-        private TestSpawner _spawner;
+        private IProjectileFactory _projectileFactory;
         
         [Inject]
-        private void Construct(ProjectilePool pool)
+        private void Construct(IProjectileFactory projectileFactory)
+        {
+            _projectileFactory = projectileFactory;
+        }
+        
+        public void SetPool(ProjectilePool pool)
         {
             _pool = pool;
         }
@@ -39,18 +55,10 @@ namespace BH.Runtime.Systems
             RandomizeDirection();
         }
         
-        public void SetUp(Vector2 initialDirection)
+        public void SetUp(Vector2 initialPosition, Vector2 initialDirection)
         {
-            transform.position = Vector3.zero;
+            transform.position = initialPosition;
             _direction = initialDirection;
-        }
-        
-        // TODO: THIS IS FOR TESTING, NEED TO REMOVE...
-        public void SetUp(Vector2 initialDirection, TestSpawner spawner)
-        {
-            transform.position = Vector3.zero;
-            _direction = initialDirection;
-            _spawner = spawner;
         }
 
         private void RandomizeDirection()
@@ -67,26 +75,32 @@ namespace BH.Runtime.Systems
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            if ((_collisionMask & (1 << other.gameObject.layer)) != 0)
+            {
+                Vector2 inNormal = other.GetContact(0).normal;
+                _direction = Vector2.Reflect(_direction, inNormal).normalized;
+                
+                Projectile projectile = _projectileFactory.CreateProjectile(ProjectileType.ExplodingBullet);
+                projectile.SetUp(transform.position, _direction);
+                
+                ReturnToPool();
+            }
+            
+            
             if (other.gameObject.TryGetComponent(out IDamageable component))
             {
                 component.Damage(_damage);
                 if (_destroyOnHit)
                 {
-                    _spawner.BulletCounter--;
                     ReturnToPool();
                     return;
                 }
             }
             
-            if ((_collisionMask & (1 << other.gameObject.layer)) != 0)
-            {
-                _spawner.BulletCounter--;
-                ReturnToPool();
-            }
+            
 
             
-            //Vector2 inNormal = other.GetContact(0).normal;
-            //_direction = Vector2.Reflect(_direction, inNormal).normalized;
+            
             
             
             

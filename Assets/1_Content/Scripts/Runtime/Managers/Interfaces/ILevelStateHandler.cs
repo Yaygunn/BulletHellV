@@ -6,7 +6,7 @@ namespace BH.Runtime.Managers
     {
         public LevelState CurrentLevelState { get; }
 
-        public Action<LevelState> OnLevelStateChanged { get; }
+        public event Action<LevelState> OnLevelStateChanged;
 
         public void SetLevelState(LevelState newState);
     }
