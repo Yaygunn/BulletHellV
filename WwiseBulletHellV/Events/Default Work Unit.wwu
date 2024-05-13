@@ -111,12 +111,71 @@
 								<Property Name="Color" Type="int16" Value="2"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ChildrenList>
+								<Event Name="plyDash" ID="{924B1269-2DB2-49AF-9936-389DD0B48EC9}">
+									<ChildrenList>
+										<Action Name="" ID="{6473A12F-0419-4C85-820E-5E7D6A13EE18}" ShortID="834746892">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_dash" ID="{983F2BD9-283F-42B0-BC71-DD371605DF83}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="plyMove" ID="{39444151-F73C-438C-AF5B-F47669F3D8AD}">
+									<ChildrenList>
+										<Action Name="" ID="{8831C1AB-99A0-4EC8-9171-F8BEF2096392}" ShortID="778245282">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_move_loop" ID="{76EF4ECC-810D-4E4E-A812-C0653867D0B7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
 						</Folder>
 						<Folder Name="UI" ID="{3C5E327F-A10E-4500-8426-660F062A8D0E}" ShortID="620142276">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="24"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ChildrenList>
+								<Event Name="uiNav" ID="{FB8D99CD-C7B7-46EB-9A1F-4AAB39DD3DC8}">
+									<ChildrenList>
+										<Action Name="" ID="{F5E77FAB-13B5-4E13-BA55-192ACA3DD6B9}" ShortID="122421558">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_nav" ID="{16DFBE20-CA5B-4016-B3EC-1083838B6898}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="uiClose" ID="{A95825D4-31F8-41C2-A718-0C025EF602B6}">
+									<ChildrenList>
+										<Action Name="" ID="{FFEFC9ED-1A96-4E71-BF0D-55299CF9BE0C}" ShortID="795775702">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_close" ID="{6B1A85AD-6B26-4F64-8C06-4476CCB2EBFC}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="uiOpen" ID="{A93D8E02-92CE-4FD3-8947-81AC42DE5321}">
+									<ChildrenList>
+										<Action Name="" ID="{535966B3-3D9B-484D-9EE2-9AD3A0F0A2B3}" ShortID="656655222">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_open" ID="{3FF58B33-D5EF-4F84-B29A-443618642E37}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
 						</Folder>
 					</ChildrenList>
 				</Folder>

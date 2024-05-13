@@ -1,6 +1,11 @@
 Event	ID	Name			Wwise Object Path	Notes
+	216950137	plyMove			\Default Work Unit\SFX\PLAYER\plyMove	
+	474402578	plyDash			\Default Work Unit\SFX\PLAYER\plyDash	
+	1038020662	uiNav			\Default Work Unit\SFX\UI\uiNav	
 	1248641489	bulletTest			\Default Work Unit\SFX\BULLETS\bulletTest	
+	1389761091	uiOpen			\Default Work Unit\SFX\UI\uiOpen	
 	2338340215	ambTest			\Default Work Unit\SFX\AMBIENCE\ambTest	
+	3030481697	uiClose			\Default Work Unit\SFX\UI\uiClose	
 	3813711432	ambUnderwater			\Default Work Unit\SFX\AMBIENCE\ambUnderwater	
 
 State Group	ID	Name			Wwise Object Path	Notes
@@ -18,13 +23,22 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	1348429472	Water_Intensity			\Default Work Unit\Water_Intensity	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	19329742	shoot_03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_A08EA170.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_03		83360
-	149755117	shoot_04	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_7D74040D.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_04		90148
-	201371888	shoot_02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_2483C7B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_02		103320
-	227329552	UnderwaterBed	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Complex 01 SND12354_52EAFD2E.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\UnderwaterBed		23040144
-	305928203	HighIntensity	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048_7B688DED.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\HighIntensity		12040048
+	19329742	shoot_03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_21630847.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_03		83360
+	144925876	dash-04	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-04_A3B5FC3C.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-04		182404
+	149755117	shoot_04	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_E59E0B85.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_04		90148
+	201371888	shoot_02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1733C08D.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_02		103320
+	227329552	UnderwaterBed	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Complex 01 SND12354_EC0D8036.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\UnderwaterBed		23040144
+	239347221	dash-02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-02_EFD29FCF.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-02		172916
+	284901163	dash	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash_E7AA3AB6.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash		152708
+	294914401	ply_move_loop	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\movement_loop_C83A4088.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_move_loop		2691440
+	305928203	HighIntensity	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048_A826F326.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\HighIntensity		12040048
+	322638156	dash-01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-01_FF31AA45.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-01		118060
 	535973059	ambTest	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\ambTest		2945274
-	785141224	shoot_01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_A221A5A0.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_01		84568
-	971597346	shoot	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_92FBD71F.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot		81148
-	1001388230	LowIntensity	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1_A183B8FB.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\LowIntensity		7426052
+	671312817	ui_open	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_open_B621806C.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\ui_open		56372
+	785141224	shoot_01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1EBF40A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_01		84568
+	846594018	ui_nav	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_nav_FD7744A0.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\ui_nav		41296
+	872505889	dash-03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-03_DDE185F9.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-03		191476
+	971597346	shoot	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_0A94827C.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot		81148
+	1001388230	LowIntensity	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1_9EAC2E3C.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\LowIntensity		7426052
+	1042962566	ui_close	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_close_4A479DDC.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\ui_close		31436
 

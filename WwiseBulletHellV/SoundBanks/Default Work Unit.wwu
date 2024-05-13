@@ -6,6 +6,8 @@
 				<SoundBank Name="SFX" ID="{C7C55254-1503-453D-A53F-6D019589F17B}">
 					<ObjectInclusionList>
 						<ObjectRef Name="BULLETS" ID="{E13A1D07-B3AE-43DA-8FC3-753608B9BB24}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI" ID="{3C5E327F-A10E-4500-8426-660F062A8D0E}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PLAYER" ID="{6915E4DF-929E-4A84-94D8-4456C6426F30}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AMBIENCE" ID="{8CA5A897-0168-4F97-8991-A7C02EAB325D}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

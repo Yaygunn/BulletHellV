@@ -9,45 +9,81 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{14814287-30CA-F0B3-2200-B7E285EB743B}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{328FC199-391A-B9A7-D358-6E96ABD36C9D}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
 				<File Id="19329742" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
-					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_A08EA170.wem</CachePath>
+					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_21630847.wem</CachePath>
+				</File>
+				<File Id="144925876" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\dash-04.wav</ShortName>
+					<CachePath>SFX/Player/dash-04_A3B5FC3C.wem</CachePath>
 				</File>
 				<File Id="149755117" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
-					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_7D74040D.wem</CachePath>
+					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_E59E0B85.wem</CachePath>
 				</File>
 				<File Id="201371888" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
-					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_2483C7B7.wem</CachePath>
+					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1733C08D.wem</CachePath>
 				</File>
 				<File Id="227329552" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience, Underwater, Complex 01 SND12354.wav</ShortName>
-					<CachePath>SFX/Ambience, Underwater, Complex 01 SND12354_52EAFD2E.wem</CachePath>
+					<CachePath>SFX/Ambience, Underwater, Complex 01 SND12354_EC0D8036.wem</CachePath>
+				</File>
+				<File Id="239347221" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\dash-02.wav</ShortName>
+					<CachePath>SFX/Player/dash-02_EFD29FCF.wem</CachePath>
+				</File>
+				<File Id="284901163" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\dash.wav</ShortName>
+					<CachePath>SFX/Player/dash_E7AA3AB6.wem</CachePath>
+				</File>
+				<File Id="294914401" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\movement_loop.wav</ShortName>
+					<CachePath>SFX/Player/movement_loop_C83A4088.wem</CachePath>
 				</File>
 				<File Id="305928203" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048.wav</ShortName>
-					<CachePath>SFX/Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048_7B688DED.wem</CachePath>
+					<CachePath>SFX/Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048_A826F326.wem</CachePath>
+				</File>
+				<File Id="322638156" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\dash-01.wav</ShortName>
+					<CachePath>SFX/Player/dash-01_FF31AA45.wem</CachePath>
 				</File>
 				<File Id="535973059" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133.wav</ShortName>
 					<CachePath>SFX/Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="671312817" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ui_open.wav</ShortName>
+					<CachePath>SFX/ui_open_B621806C.wem</CachePath>
+				</File>
 				<File Id="785141224" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
-					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_A221A5A0.wem</CachePath>
+					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1EBF40A9.wem</CachePath>
+				</File>
+				<File Id="846594018" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ui_nav.wav</ShortName>
+					<CachePath>SFX/ui_nav_FD7744A0.wem</CachePath>
+				</File>
+				<File Id="872505889" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\dash-03.wav</ShortName>
+					<CachePath>SFX/Player/dash-03_DDE185F9.wem</CachePath>
 				</File>
 				<File Id="971597346" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
-					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_92FBD71F.wem</CachePath>
+					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_0A94827C.wem</CachePath>
 				</File>
 				<File Id="1001388230" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1.wav</ShortName>
-					<CachePath>SFX/Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1_A183B8FB.wem</CachePath>
+					<CachePath>SFX/Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1_9EAC2E3C.wem</CachePath>
+				</File>
+				<File Id="1042962566" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ui_close.wav</ShortName>
+					<CachePath>SFX/ui_close_4A479DDC.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -80,9 +116,56 @@
 						<MediaRef Id="785141224"/>
 						<MediaRef Id="971597346"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
 					<ActionSetState>
 						<ActionSetStateEntry GroupId="393239870" Id="3587590657" Name="SFX_Gameplay"/>
 					</ActionSetState>
+				</Event>
+				<Event Id="474402578" Name="plyDash" DurationType="OneShot" DurationMin="0.61085445" DurationMax="1.0025519">
+					<MediaRefs>
+						<MediaRef Id="144925876"/>
+						<MediaRef Id="239347221"/>
+						<MediaRef Id="284901163"/>
+						<MediaRef Id="322638156"/>
+						<MediaRef Id="872505889"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="216950137" Name="plyMove" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="294914401"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3030481697" Name="uiClose" DurationType="OneShot" DurationMin="0.16322917" DurationMax="0.16322917">
+					<MediaRefs>
+						<MediaRef Id="1042962566"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="1038020662" Name="uiNav" DurationType="OneShot" DurationMin="0.21458334" DurationMax="0.21458334">
+					<MediaRefs>
+						<MediaRef Id="846594018"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="1389761091" Name="uiOpen" DurationType="OneShot" DurationMin="0.29310417" DurationMax="0.29310417">
+					<MediaRefs>
+						<MediaRef Id="671312817"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
 				</Event>
 			</Events>
 			<GameParameters>
@@ -98,7 +181,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{8F83D95A-CEA4-51F1-22F4-AE961C022A71}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{0A36E055-BA14-A444-C60F-3577410BC405}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -169,5 +252,5 @@
 			<Path>MUSIC.bnk</Path>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{81140216-141F-6857-AB7D-90EDC4CA9E15}</FileHash>
+	<FileHash>{FA30F705-9566-7FD2-7998-B1271F20D301}</FileHash>
 </SoundBanksInfo>

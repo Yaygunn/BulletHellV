@@ -16,6 +16,11 @@ namespace AK
         static const AkUniqueID AMBTEST = 2338340215U;
         static const AkUniqueID AMBUNDERWATER = 3813711432U;
         static const AkUniqueID BULLETTEST = 1248641489U;
+        static const AkUniqueID PLYDASH = 474402578U;
+        static const AkUniqueID PLYMOVE = 216950137U;
+        static const AkUniqueID UICLOSE = 3030481697U;
+        static const AkUniqueID UINAV = 1038020662U;
+        static const AkUniqueID UIOPEN = 1389761091U;
     } // namespace EVENTS
 
     namespace STATES
