@@ -8,12 +8,13 @@ namespace BH.Scriptables
     {
         [field: BoxGroup("General"), SerializeField]
         public string EvolutionName { get; private set; }
-        [field: BoxGroup("General"), SerializeField, Range(1, 3)]
-        public int EvolutionLevel { get; private set; }
         [field: BoxGroup("General"), SerializeField, TextArea]
         public string Description { get; private set; }
         [field: BoxGroup("General"), SerializeField]
         public Sprite Icon { get; private set; }
+
+        [field: BoxGroup("General"), SerializeField]
+        public Color Color { get; private set; } = Color.white;
 
         [field: BoxGroup("General"), SerializeField]
         public int Damage { get; private set; } = 10;

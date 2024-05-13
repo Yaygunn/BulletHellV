@@ -36,7 +36,7 @@ namespace BH.Scriptables.Databases
             {
                 { ProjectileType.AttractorBullet, () => AttractorEvolutionData.Cast<EvolutionDataSO>().ToList() },
                 { ProjectileType.ChainReactionBullet, () => ChainReactionEvolutionData.Cast<EvolutionDataSO>().ToList() },
-                { ProjectileType.ExpandingBullet, () => ExplodingEvolutionData.Cast<EvolutionDataSO>().ToList() },
+                { ProjectileType.ExpandingBullet, () => ExpandingEvolutionData.Cast<EvolutionDataSO>().ToList() },
                 { ProjectileType.ExplodingBullet, () => ExplodingEvolutionData.Cast<EvolutionDataSO>().ToList() },
                 { ProjectileType.HealingBullet, () => HealingEvolutionData.Cast<EvolutionDataSO>().ToList() },
                 { ProjectileType.HomingBullet, () => HomingEvolutionData.Cast<EvolutionDataSO>().ToList() },

@@ -2,6 +2,9 @@
 {
     public class BasicBullet : Projectile
     {
-        
+        protected override void HandleActivation()
+        {
+            ReturnToPool();
+        }
     }
 }

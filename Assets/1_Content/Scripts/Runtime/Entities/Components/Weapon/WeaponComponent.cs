@@ -5,6 +5,7 @@ using BH.Runtime.Factories;
 using BH.Runtime.Input;
 using BH.Runtime.Managers;
 using BH.Runtime.Systems;
+using BH.Runtime.UI;
 using BH.Scriptables;
 using BH.Scriptables.Databases;
 using BH.Scripts.Runtime.UI;
@@ -40,12 +41,14 @@ namespace BH.Runtime.Entities
         private CountdownTimer _cooldownCountdown;
         private DatabaseSO _database;
         private Dictionary<ProjectileType, int> _bulletLevels;
+        private SignalBus _signalBus;
 
         [Inject] 
-        private void Construct(IProjectileFactory projectileFactory, DatabaseSO database)
+        private void Construct(IProjectileFactory projectileFactory, DatabaseSO database, SignalBus signalBus)
         {
             _projectileFactory = projectileFactory;
             _database = database;
+            _signalBus = signalBus;
         }
         
         private void Start()
@@ -103,6 +106,7 @@ namespace BH.Runtime.Entities
             if (_database.TryGetNextEvolutionData(type, _bulletLevels[type], out EvolutionDataSO newEvolutionData))
             {
                 _evolutionsList[index] = newEvolutionData;
+                UpdatePlayerHUD();
             }
             else
             {
@@ -128,11 +132,36 @@ namespace BH.Runtime.Entities
                         _evolutionsList[i] = evolutionData;
                     }
                 }
+                
+                UpdatePlayerHUD();
             }
             else
             {
                 Debug.LogError("Max level reached for projectile type or evolution data not found.");
             }
+        }
+        
+        // TODO: Need a better way to handle this...
+        private void UpdatePlayerHUD()
+        {
+            List<Color> colors = new ();
+            List<int> levels = new ();
+            
+            foreach (EvolutionDataSO evolution in _evolutionsList)
+            {
+                if (evolution == null)
+                {
+                    colors.Add(Color.white);
+                    levels.Add(0);
+                }
+                else
+                {
+                    colors.Add(evolution.Color);
+                    levels.Add(_bulletLevels[evolution.GetProjectileType()]);
+                }
+            }
+            
+            _signalBus.Fire(new PlayerBulletsChangedSignal(colors, levels));
         }
 
         private void SpawnBullet(Vector3 velocity, Vector2 position, ProjectileType type)
