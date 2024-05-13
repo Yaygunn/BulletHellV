@@ -17,7 +17,7 @@ namespace BH.Runtime.Entities
             
             _player.Dash.DashCompletedEvent += OnDashCompleted;
 
-            _player.Health.SetInvincibility(true);
+            _player.Stats.SetInvincibility(true);
             _player.Dash.StartDash(GetDashDirection());
         }
 
@@ -33,7 +33,7 @@ namespace BH.Runtime.Entities
 
         public override void Exit()
         {
-            _player.Health.SetInvincibility(false);
+            _player.Stats.SetInvincibility(false);
             _player.Dash.DashCompletedEvent -= OnDashCompleted;
             
             base.Exit();

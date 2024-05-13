@@ -7,21 +7,21 @@ namespace BH.Runtime.Entities
     public class GeneralWeaponMod
     {
         [field: SerializeField]
-        public float IncreasedDamage { get; private set; } = 0;
+        public float IncreasedDamage { get; set; } = 0;
 
         [field: SerializeField]
-        public float DamageMultiplier { get; private set; } = 1;
+        public float DamageMultiplier { get; set; } = 1;
 
         [field: SerializeField]
-        public float IncreasedProjSpeed { get; private set; } = 0;
+        public float IncreasedProjSpeed { get; set; } = 0;
 
         [field: SerializeField]
-        public float ProjSpeedMultiplier { get; private set; } = 1;
+        public float ProjSpeedMultiplier { get; set; } = 1;
 
         [field: SerializeField]
-        public float IncreasedFireRate { get; private set; } = 0;
+        public float IncreasedFireRate { get; set; } = 0;
 
         [field: SerializeField]
-        public float FireRateMultiplier { get; private set; } = 1;
+        public float FireRateMultiplier { get; set; } = 1;
     }
 }

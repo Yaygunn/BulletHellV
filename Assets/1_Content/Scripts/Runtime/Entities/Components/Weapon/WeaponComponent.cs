@@ -7,6 +7,7 @@ using BH.Runtime.UI;
 using BH.Scriptables;
 using BH.Scriptables.Databases;
 using BH.Utilities.ImprovedTimers;
+using GH.Scriptables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -135,6 +136,11 @@ namespace BH.Runtime.Entities
             {
                 Debug.LogError("Max level reached for projectile type or evolution data not found.");
             }
+        }
+        
+        public void UpgradeWeapon(WeaponUpgradeSO upgradeData)
+        {
+            upgradeData.ApplyUpgrade(_generalWeaponMod);
         }
         
         // TODO: Need a better way to handle this...
