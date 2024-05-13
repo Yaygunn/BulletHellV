@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BH.Runtime.Systems;
+using GH.Scriptables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace BH.Scriptables.Databases
     [CreateAssetMenu(fileName = "GameDatabase", menuName = "BH/Databases/New Game Database")]
     public class DatabaseSO : ScriptableObject
     {
+        [field: BoxGroup("Weapon Upgrades"), SerializeField]
+        public List<WeaponUpgradeSO> WeaponUpgradeData { get; private set; }
+        
         [field: BoxGroup("Projectile Evolutions"), SerializeField]
         public List<AttractorEvolutionDataSO> AttractorEvolutionData { get; private set; }
         

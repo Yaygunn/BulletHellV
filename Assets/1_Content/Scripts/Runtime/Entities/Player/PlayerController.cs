@@ -13,7 +13,7 @@ namespace BH.Runtime.Entities
     public class PlayerController : Entity, IDamageable
     {
         [field: FoldoutGroup("Health"), SerializeField, HideLabel]
-        public Health Health { get; private set; }
+        public Stats Stats { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -80,8 +80,8 @@ namespace BH.Runtime.Entities
         
         private void OnEnable()
         {
-            Health.HealthChangedEvent += OnHealthChanged;
-            Health.DiedEvent += OnDied;
+            Stats.HealthChangedEvent += OnHealthChanged;
+            Stats.DiedEvent += OnDied;
         }
 
         private void Update()
@@ -96,8 +96,8 @@ namespace BH.Runtime.Entities
         
         private void OnDisable()
         {
-            Health.HealthChangedEvent -= OnHealthChanged;
-            Health.DiedEvent -= OnDied;
+            Stats.HealthChangedEvent -= OnHealthChanged;
+            Stats.DiedEvent -= OnDied;
         }
         
         #endregion
@@ -109,13 +109,13 @@ namespace BH.Runtime.Entities
 
         public void Activate()
         {
-            Health.ResetHealth();
+            Stats.ResetHealth();
             PlayerHFSM.ChangeState(IdleState);
         }
 
         public void Damage(int amount)
         {
-            Health.TakeDamage(amount);
+            Stats.TakeDamage(amount);
         }
         
         private void OnHealthChanged(int maxHealth, int currentHealth)
