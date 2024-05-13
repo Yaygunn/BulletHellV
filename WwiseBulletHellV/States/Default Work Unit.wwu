@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E682EDCF-8399-4E75-9DA7-A46CCC5E31AE}" SchemaVersion="110">
+	<States>
+		<WorkUnit Name="Default Work Unit" ID="{E682EDCF-8399-4E75-9DA7-A46CCC5E31AE}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Music" ID="{8D372099-E9CB-4F0E-AAC1-31A625EA67BF}">
+					<ChildrenList>
+						<State Name="None" ID="{208BF124-7991-450D-BB26-C0E688F89CB3}"/>
+						<State Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
+						<State Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="None" ID="{208BF124-7991-450D-BB26-C0E688F89CB3}"/>
+							<EndState Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
+							<EndState Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
+							<EndState Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
+							<EndState Name="None" ID="{208BF124-7991-450D-BB26-C0E688F89CB3}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="None" ID="{208BF124-7991-450D-BB26-C0E688F89CB3}"/>
+							<EndState Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
+							<EndState Name="None" ID="{208BF124-7991-450D-BB26-C0E688F89CB3}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+				<StateGroup Name="SFX" ID="{9B63D0AE-AF01-4D77-8920-EF4360487C9A}">
+					<ChildrenList>
+						<State Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
+						<State Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+						<State Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
+							<EndState Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+							<EndState Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+							<EndState Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
+							<EndState Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+							<EndState Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
+							<EndState Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

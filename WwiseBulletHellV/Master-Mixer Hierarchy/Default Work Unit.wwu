@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}" SchemaVersion="110">
+	<Busses>
+		<WorkUnit Name="Default Work Unit" ID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}" PersistMode="Standalone">
+			<ChildrenList>
+				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{97A948B9-95C8-47D1-89B2-99E295139FF5}" WorkUnitID="{ABC32CBC-DFB4-4C95-9045-66FC9BA8F66A}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="AmbMaster" ID="{71E26BBA-D855-48B9-A951-F26F7767A5F7}">
+							<ChildrenList>
+								<Bus Name="3DAmb" ID="{1DE7C1A6-1A5B-4D24-A054-11CBA26CE292}">
+									<ReferenceList/>
+								</Bus>
+								<Bus Name="2DAmb" ID="{D2441E1A-1A54-4E57-A35E-9E587152BF04}"/>
+							</ChildrenList>
+						</Bus>
+						<Bus Name="PlayerMaster" ID="{DE5172FF-0D88-4042-AE10-C8EFAADA6348}"/>
+						<Bus Name="NPCMaster" ID="{CB22D257-C556-414C-9646-6B547CE1F329}"/>
+						<AuxBus Name="Reverbs" ID="{90A53895-37A0-4193-85A6-BA5289E7AE7C}">
+							<ChildrenList>
+								<AuxBus Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Hall_Large_Dark" ID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="Dual_Filters_Narrow_Bandwidth" ID="{A24607C6-04E1-4D41-B513-28C0914D138D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Not_A_Yellow_Submarine" ID="{B5719071-C58D-49FA-8766-B1D986D017EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+							</ChildrenList>
+						</AuxBus>
+					</ChildrenList>
+				</Bus>
+			</ChildrenList>
+		</WorkUnit>
+	</Busses>
+</WwiseDocument>

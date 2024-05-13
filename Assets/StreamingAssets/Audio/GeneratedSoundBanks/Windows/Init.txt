@@ -1,0 +1,34 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\SFX	
+	3991942870	Music			\Default Work Unit\Music	
+
+State	ID	Name	State Group			Notes
+	748895195	None	SFX			
+	3587590657	SFX_Gameplay	SFX			
+	3762574363	SFX_Paused	SFX			
+	620878633	Music_Gameplay	Music			
+	748895195	None	Music			
+	2993614867	Music_Paused	Music			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	1387833709	2DAmb			\Default Work Unit\Master Audio Bus\AmbMaster\2DAmb	
+	2033911932	NPCMaster			\Default Work Unit\Master Audio Bus\NPCMaster	
+	2616461496	3DAmb			\Default Work Unit\Master Audio Bus\AmbMaster\3DAmb	
+	2786823217	AmbMaster			\Default Work Unit\Master Audio Bus\AmbMaster	
+	3538689948	PlayerMaster			\Default Work Unit\Master Audio Bus\PlayerMaster	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\Master Audio Bus\Reverbs\SFX	
+	2213237662	Underwater			\Default Work Unit\Master Audio Bus\Reverbs\Underwater	
+	3545700988	Reverbs			\Default Work Unit\Master Audio Bus\Reverbs	
+
+Effect plug-ins	ID	Name	Type				Notes
+	2265839006	Not_A_Yellow_Submarine	Wwise RoomVerb			
+	3442768367	Hall_Large_Dark	Wwise RoomVerb			
+	4239446561	Dual_Filters_Narrow_Bandwidth	Wwise Parametric EQ			
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

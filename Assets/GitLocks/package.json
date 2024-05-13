@@ -1,0 +1,31 @@
+{
+  "name": "com.krelistudio.gitlock",
+  "version": "1.0.2",
+  "displayName": "Git LFS Locks",
+  "description": "Effective plugin for conflict protection. You don't need to write a message to the entire team that you are working on the scene to avoid conflicts. Git LFS Locks plugin will take care of it.",
+  "unity": "2018.1",
+  "category": "Editor Plugin",
+  "documentationUrl": "https://krelistudio.pl/git-lfs-locks/",
+  "dependencies": {
+    "com.unity.editorcoroutines": "1.0.0",
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  },
+  "keywords": [
+    "git",
+    "lfs",
+    "large",
+    "file",
+    "storage",
+    "lock",
+    "locks",
+    "conflict",
+    "conflicts"
+  ],
+  "author": {
+    "name": "Kreli Studio",
+    "email": "kamil.kreli@gmail.com",
+    "url": "https://assetstore.unity.com/packages/slug/232715"
+  },
+  "hideInEditor": false,
+  "type": "library"
+}

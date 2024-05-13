@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B404298A-3D91-4F60-89F6-3D46152DAAC5}" SchemaVersion="110">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{B404298A-3D91-4F60-89F6-3D46152DAAC5}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="SFX" ID="{C7C55254-1503-453D-A53F-6D019589F17B}">
+					<ObjectInclusionList>
+						<ObjectRef Name="BULLETS" ID="{E13A1D07-B3AE-43DA-8FC3-753608B9BB24}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="AMBIENCE" ID="{8CA5A897-0168-4F97-8991-A7C02EAB325D}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="MUSIC" ID="{AE244DE5-C351-4DB2-BDBF-D79B129962FD}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
