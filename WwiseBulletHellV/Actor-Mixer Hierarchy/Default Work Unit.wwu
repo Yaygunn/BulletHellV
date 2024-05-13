@@ -314,7 +314,7 @@
 						</Property>
 						<Property Name="UserAuxSendVolume0" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-6</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -332,6 +332,22 @@
 					<ChildrenList>
 						<RandomSequenceContainer Name="bullet_shoot" ID="{500A73FE-BA34-4A1B-BD6C-785C65A1AA85}" ShortID="356057762">
 							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>30</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{89DE2E19-629C-4596-BAAC-1EC6626FD935}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+													<Property Name="Min" Type="Real64" Value="-10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
@@ -363,12 +379,22 @@
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="shoot" ID="{233AA753-5682-4BAD-8C4C-FBF1DF309008}" ShortID="563343838">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -692,7 +718,7 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 						<Property Name="UserAuxSendVolume0" Type="Real64">
 							<ValueList>
-								<Value>-5</Value>
+								<Value>-9</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
