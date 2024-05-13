@@ -4,8 +4,10 @@ using BH.Runtime.Entities;
 using BH.Runtime.Managers;
 using BH.Runtime.Scenes;
 using BH.Runtime.Systems;
+using BH.Scriptables.Databases;
 using BH.Scriptables.Scenes;
 using BH.Utilities;
+using GH.Scriptables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -15,6 +17,8 @@ namespace BH.Runtime.Test
     public class VitTestProto : MonoBehaviour
     {
         // TODO: TESTING
+        
+        
         [Inject]
         private ILevelStateHandler _levelStateHandler;
         [Button]
@@ -46,6 +50,24 @@ namespace BH.Runtime.Test
             {
                 playerWeapon.UpgradeEvolutions(_projectileType);
             }
+        }
+        
+        [Inject]
+        private DatabaseSO _database;
+        [Button]
+        private void TestUpgradeWeapon()
+        {
+            WeaponComponent playerWeapon = _levelManager.Player.Weapon;
+            WeaponUpgradeSO upgrade = GetRandomUpgrade();
+            playerWeapon.UpgradeWeapon(upgrade);
+        }
+        
+        private WeaponUpgradeSO GetRandomUpgrade()
+        {
+            WeaponUpgradeSO[] upgrades = _database.WeaponUpgradeData.ToArray();
+            
+            int randomIndex = UnityEngine.Random.Range(0, upgrades.Length);
+            return upgrades[randomIndex];
         }
         
 

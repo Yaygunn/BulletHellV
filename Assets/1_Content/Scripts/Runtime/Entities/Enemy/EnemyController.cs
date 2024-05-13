@@ -10,8 +10,8 @@ namespace BH.Runtime.Entities
 {
     public class EnemyController : Entity, IDamageable
     {
-        [field: FoldoutGroup("Health"), SerializeField, HideLabel]
-        public Health Health { get; private set; }
+        [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
+        public Stats Stats { get; private set; }
 
         public Transform AttackTarget { get; private set; }
 
@@ -55,7 +55,7 @@ namespace BH.Runtime.Entities
             EnemyHFSM.Initialize(IdleState);
 
             // Plan to move to Enemy Spawner
-            Health.ResetHealth();
+            Stats.ResetHealth();
         }
 
         private void Update()
@@ -72,7 +72,7 @@ namespace BH.Runtime.Entities
 
         public void Damage(int ammount)
         {
-            Health.TakeDamage(ammount);
+            Stats.TakeDamage(ammount);
         }
 
         // TODO: Impliment Health Features

@@ -22,7 +22,7 @@ namespace GH.Scriptables
         [field: BoxGroup("Modifications"), SerializeField]
         public float FireRateIncrease { get; private set; }
         [field: BoxGroup("Modifications"), SerializeField]
-        public float fireRateMultiplier { get; private set; }
+        public float FireRateMultiplier { get; private set; }
 
         public string GetDescription()
         {
@@ -33,7 +33,7 @@ namespace GH.Scriptables
             if (SpeedIncrease != 0) parts.Add($"Speed +{SpeedIncrease}");
             if (SpeedMultiplier != 0) parts.Add($"Speed x{1 + SpeedMultiplier:F2}");
             if (FireRateIncrease != 0) parts.Add($"Fire Rate +{FireRateIncrease}");
-            if (fireRateMultiplier != 0) parts.Add($"Fire Rate x{1 + fireRateMultiplier:F2}");
+            if (FireRateMultiplier != 0) parts.Add($"Fire Rate x{1 + FireRateMultiplier:F2}");
 
             return $"{UpgradeName}: " + string.Join(", ", parts);
         }
@@ -45,7 +45,7 @@ namespace GH.Scriptables
             mod.IncreasedProjSpeed += SpeedIncrease;
             mod.ProjSpeedMultiplier *= (1 + SpeedMultiplier);
             mod.IncreasedFireRate += FireRateIncrease;
-            mod.FireRateMultiplier *= (1 + fireRateMultiplier);
+            mod.FireRateMultiplier *= (1 + FireRateMultiplier);
         }
     }
 }

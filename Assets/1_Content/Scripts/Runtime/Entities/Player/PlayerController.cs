@@ -12,7 +12,7 @@ namespace BH.Runtime.Entities
     /// </summary>
     public class PlayerController : Entity, IDamageable
     {
-        [field: FoldoutGroup("Health"), SerializeField, HideLabel]
+        [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
