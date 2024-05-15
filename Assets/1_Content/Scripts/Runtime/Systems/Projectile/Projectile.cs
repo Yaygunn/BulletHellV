@@ -46,7 +46,7 @@ namespace BH.Runtime.Systems
 
         private ProjectilePool _pool;
         private bool _isInPool;
-        private EvolutionDataSO _evolutionData;
+        protected EvolutionDataSO _evolutionData;
         protected float _initialSize;
         protected float _currentSize;
         private float _currentSpeed;
@@ -125,10 +125,17 @@ namespace BH.Runtime.Systems
             _evolutionData = evolutionData;
             _isEvolved = hasEvolved;
             
+            SetUpInternal();
+            
             if (_isEvolved && _evolutionData != null)
             {
                 HandleEvolution();
             }
+        }
+        
+        protected virtual void SetUpInternal()
+        {
+            
         }
         
         public void ChangeDirection(Vector2 newDirection)

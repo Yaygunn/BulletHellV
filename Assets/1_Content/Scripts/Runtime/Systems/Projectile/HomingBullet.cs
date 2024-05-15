@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BH.Scriptables;
 using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -16,11 +17,27 @@ namespace BH.Runtime.Systems
 
         private Transform _target;
         private CoroutineHandle _targetCheckCoroutine;
+        
+        private HomingEvolutionDataSO _homingEvolutionData;
 
         protected override void OnEnable()
         {
             base.OnEnable();
             _targetCheckCoroutine = Timing.RunCoroutine(TargetCheckCoroutine().CancelWith(gameObject));
+        }
+
+        protected override void SetUpInternal()
+        {
+            base.SetUpInternal();
+
+            if (_evolutionData is HomingEvolutionDataSO homingEvolutionData)
+            {
+                _homingEvolutionData = homingEvolutionData;
+            }
+            else
+            {
+                Debug.LogError("[HomingBullet] HomingEvolutionDataSO is not set for HomingBullet");
+            }
         }
 
         protected override void Update()

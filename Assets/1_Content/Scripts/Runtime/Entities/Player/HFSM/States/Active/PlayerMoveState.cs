@@ -23,6 +23,8 @@ namespace BH.Runtime.Entities
             // TODO: We should avoid polling each update frame...
             _player.Movement.Move(_player.InputProvider.MoveInput);
             
+            //VerifyFacingDirection();
+            
             if (ShouldIdle())
             {
                 _stateMachine.ChangeState(_player.IdleState);
@@ -42,6 +44,19 @@ namespace BH.Runtime.Entities
         private bool ShouldIdle()
         {
             return _player.InputProvider.MoveInput == Vector2.zero;
+        }
+        
+        private void VerifyFacingDirection()
+        {
+            switch (_player.InputProvider.MoveInput.x)
+            {
+                case > 0 when !_player.IsFacingRight:
+                    _player.FlipCharacter(true);
+                    break;
+                case < 0 when _player.IsFacingRight:
+                    _player.FlipCharacter(false);
+                    break;
+            }
         }
     }
 }

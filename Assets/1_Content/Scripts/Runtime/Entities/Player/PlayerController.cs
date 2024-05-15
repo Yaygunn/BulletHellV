@@ -28,6 +28,8 @@ namespace BH.Runtime.Entities
         // TODO: this is temporary, pending input system creation...
         //public Vector2 Direction { get; private set; }
         
+        public bool IsFacingRight => transform.localScale.x > 0;
+        
         public IInputProvider InputProvider { get; private set; }
         
         // TODO: Add animator params..?
@@ -117,7 +119,14 @@ namespace BH.Runtime.Entities
         {
             Stats.TakeDamage(amount);
         }
-        
+
+        public void FlipCharacter(bool faceRight)
+        {
+            transform.localScale = faceRight ? new Vector3(
+                Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z) 
+                : new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
         private void OnHealthChanged(int maxHealth, int currentHealth)
         {
             _signalBus.Fire(new PlayerHealthChangedSignal(maxHealth, currentHealth));

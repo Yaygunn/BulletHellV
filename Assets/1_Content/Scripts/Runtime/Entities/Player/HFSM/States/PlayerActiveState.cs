@@ -19,6 +19,8 @@ namespace BH.Runtime.Entities
         {
             base.LogicUpdate();
             
+            FaceMouse();
+            
             if (ShouldDash())
             {
                 _stateMachine.ChangeState(_player.DashState);
@@ -59,6 +61,13 @@ namespace BH.Runtime.Entities
                 return false;
             
             return _player.InputProvider.FireInput.Pressed;
+        }
+        
+        private void FaceMouse()
+        {
+            Vector2 mouseWorldPosition = GetMouseWorldPosition();
+            Vector2 direction = (mouseWorldPosition - (Vector2)_player.transform.position).normalized;
+            _player.FlipCharacter(direction.x > 0);
         }
         
         protected Vector2 GetMouseWorldPosition()
