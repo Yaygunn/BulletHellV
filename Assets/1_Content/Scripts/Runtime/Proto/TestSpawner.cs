@@ -2,6 +2,7 @@
 using System.Collections;
 using BH.Runtime.Factories;
 using BH.Runtime.Systems;
+using BH.Scriptables;
 using BH.Scriptables.Databases;
 using BH.Utilities.ImprovedTimers;
 using Sirenix.OdinInspector;
@@ -85,7 +86,8 @@ namespace BH.Runtime.Test
             BulletCounter++;
             Projectile projectile = _projectileFactory.CreateProjectile(ProjectileType.EnemyBasicBullet);
             projectile.transform.position = position ?? Vector3.zero;
-            projectile.SetUp(Vector2.zero, velocity.normalized);
+            _database.TryGetProjectileData(ProjectileType.EnemyBasicBullet, 1, out ProjectileDataSO projectileData);
+            projectile.SetUp(Vector2.zero, velocity.normalized, projectileData);
         }
     }
 }

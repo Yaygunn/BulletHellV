@@ -8,36 +8,23 @@ namespace BH.Runtime.Systems
 {
     public class HomingBullet : Projectile
     {
-        [BoxGroup("Homing Bullet"), SerializeField]
-        private float _homingStrength = 0.1f;
-        [BoxGroup("Homing Bullet"), SerializeField]
-        private float _targetDetectionRadius = 10f;
-        [BoxGroup("Homing Bullet"), SerializeField]
-        private float _targetCheckInterval = 1f;
-
         private Transform _target;
         private CoroutineHandle _targetCheckCoroutine;
         
-        private HomingEvolutionDataSO _homingEvolutionData;
+        private HomingProjectileDataSO _homingData;
 
-        protected override void OnEnable()
+        protected override void SetUpInternal(ProjectileDataSO projectileData)
         {
-            base.OnEnable();
-            _targetCheckCoroutine = Timing.RunCoroutine(TargetCheckCoroutine().CancelWith(gameObject));
-        }
-
-        protected override void SetUpInternal()
-        {
-            base.SetUpInternal();
-
-            if (_evolutionData is HomingEvolutionDataSO homingEvolutionData)
+            if (projectileData is HomingProjectileDataSO homingEvolutionData)
             {
-                _homingEvolutionData = homingEvolutionData;
+                _homingData = homingEvolutionData;
             }
             else
             {
                 Debug.LogError("[HomingBullet] HomingEvolutionDataSO is not set for HomingBullet");
             }
+            
+            _targetCheckCoroutine = Timing.RunCoroutine(TargetCheckCoroutine().CancelWith(gameObject));
         }
 
         protected override void Update()
@@ -45,8 +32,8 @@ namespace BH.Runtime.Systems
             if (_target != null)
             {
                 Vector2 directionToTarget = (_target.position - transform.position).normalized;
-                ChangeDirection(Vector2.Lerp(CurrentDirection, directionToTarget, _homingStrength * Time.deltaTime));
-                transform.position += new Vector3(CurrentDirection.x, CurrentDirection.y, 0) * (_baseSpeed * Time.deltaTime);
+                ChangeDirection(Vector2.Lerp(CurrentDirection, directionToTarget, _homingData.HomingStrength * Time.deltaTime));
+                transform.position += new Vector3(CurrentDirection.x, CurrentDirection.y, 0) * (_homingData.Speed * Time.deltaTime);
             }
             else
             {
@@ -74,13 +61,13 @@ namespace BH.Runtime.Systems
             while (true)
             {
                 FindClosestTarget();
-                yield return Timing.WaitForSeconds(_targetCheckInterval);
+                yield return Timing.WaitForSeconds(_homingData.TargetCheckInterval);
             }
         }
 
         private void FindClosestTarget()
         {
-            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _targetDetectionRadius);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _homingData.TargetDetectionRadius);
             float closestDistance = float.MaxValue;
             Transform closestTarget = null;
 

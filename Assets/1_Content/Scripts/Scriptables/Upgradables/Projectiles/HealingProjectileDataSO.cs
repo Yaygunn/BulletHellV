@@ -5,16 +5,13 @@ using UnityEngine;
 namespace BH.Scriptables
 {
     [CreateAssetMenu(fileName = "HealingEvolution", menuName = "BH/Projectiles/New Healing Evolution")]
-    public class HealingEvolutionDataSO : EvolutionDataSO
+    public class HealingProjectileDataSO : ProjectileDataSO
     {
         [field: BoxGroup("Healing Evolution"), SerializeField, ReadOnly]
         public ProjectileType Type { get; private set; } = ProjectileType.HealingBullet;
+        [field: BoxGroup("Healing Evolution"), SerializeField]
+        public int HealAmount { get; private set; } = 25;
         
         public override ProjectileType GetProjectileType() => Type;
-        
-        public override void OnEvolve(Projectile projectile)
-        {
-            Debug.Log("Evolved into Helaing Bullet");
-        }
     }
 }

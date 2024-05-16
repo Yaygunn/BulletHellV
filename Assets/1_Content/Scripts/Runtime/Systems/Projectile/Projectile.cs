@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using BH.Runtime.Factories;
-using BH.Runtime.Managers;
 using BH.Scriptables;
 using MEC;
 using Sirenix.OdinInspector;
@@ -24,15 +23,8 @@ namespace BH.Runtime.Systems
     
     public abstract class Projectile : MonoBehaviour
     {
-        [BoxGroup("General Settings"), SerializeField]
-        private int _baseDamage = 10;
-        [BoxGroup("General Settings"), SerializeField]
-        protected float _baseSpeed = 10f;
-        [BoxGroup("General Settings"), SerializeField]
-        private int _baseEvolutionBounces = 1;
-        [BoxGroup("General Settings"), SerializeField]
-        private int _baseActivationBounces = 3;
-        [BoxGroup("General Settings"), SerializeField]
+
+        [BoxGroup("General"), SerializeField]
         private LayerMask _obsticleMask;
         
         [BoxGroup("Speed Monitor"), SerializeField]
@@ -46,14 +38,15 @@ namespace BH.Runtime.Systems
 
         private ProjectilePool _pool;
         private bool _isInPool;
-        protected EvolutionDataSO _evolutionData;
         protected float _initialSize;
         protected float _currentSize;
         private float _currentSpeed;
         private CoroutineHandle _speedCheckCoroutine;
-        private bool _isEvolved;
         private int _bounces;
         private IProjectileFactory _projectileFactory;
+        
+        private ProjectileDataSO _currentProjData;
+        private ProjectileDataSO _evolutionProjData;
         
         public Vector2 CurrentDirection { get; private set; }
         
@@ -67,7 +60,6 @@ namespace BH.Runtime.Systems
 
         protected virtual void OnEnable()
         {
-            _currentSpeed = _baseSpeed;
             if (_enableSpeedMonitoring) 
             {
                 _speedCheckCoroutine = Timing.RunCoroutine(MonitorSpeedCoroutine().CancelWith(gameObject));
@@ -114,29 +106,27 @@ namespace BH.Runtime.Systems
         {
             _pool = pool;
             _isInPool = false;
-            _currentSpeed = _baseSpeed;
         }
         
-        public void SetUp(Vector2 initialPosition, Vector2 initialDirection, EvolutionDataSO evolutionData = null,
-            bool hasEvolved = false)
+        public void SetUp(Vector2 initialPosition, Vector2 initialDirection, ProjectileDataSO projectileData,
+            ProjectileDataSO evolutionData = null, bool isEvolved = false)
         {
+            _evolutionProjData = evolutionData;
+            _currentProjData = projectileData;
+            
+            _currentSpeed = _currentProjData.Speed;
             transform.position = initialPosition;
             CurrentDirection = initialDirection.normalized;
-            _evolutionData = evolutionData;
-            _isEvolved = hasEvolved;
             
-            SetUpInternal();
+            SetUpInternal(_currentProjData);
             
-            if (_isEvolved && _evolutionData != null)
+            if (isEvolved)
             {
                 HandleEvolution();
             }
         }
-        
-        protected virtual void SetUpInternal()
-        {
-            
-        }
+
+        protected abstract void SetUpInternal(ProjectileDataSO projectileData);
         
         public void ChangeDirection(Vector2 newDirection)
         {
@@ -154,7 +144,7 @@ namespace BH.Runtime.Systems
             while (true) 
             {
                 yield return Timing.WaitForSeconds(_speedCheckInterval);
-                if (!(_currentSpeed < _baseSpeed * _lowSpeedThresholdFactor)) continue;
+                if (!(_currentSpeed < _currentProjData.Speed * _lowSpeedThresholdFactor)) continue;
 
                 float checkEndTime = Time.time + _recoveryCheckDuration;
                 bool speedRecovered = false;
@@ -162,7 +152,7 @@ namespace BH.Runtime.Systems
                 while (Time.time < checkEndTime) 
                 {
                     yield return Timing.WaitForSeconds(0.1f);
-                    if (!(_currentSpeed >= _baseSpeed * _lowSpeedThresholdFactor)) continue;
+                    if (!(_currentSpeed >= _currentProjData.Speed * _lowSpeedThresholdFactor)) continue;
                     
                     speedRecovered = true;
                     break;
@@ -181,13 +171,13 @@ namespace BH.Runtime.Systems
             CurrentDirection = Vector2.Reflect(CurrentDirection, inNormal).normalized;
             _bounces++;
 
-            if (!_isEvolved && _bounces >= GetEvolutionBounces() && _evolutionData != null)
+            if (_evolutionProjData != null && _bounces >= _currentProjData.EvolutionBounces)
             {
-                Projectile projectile = _projectileFactory.CreateProjectile(_evolutionData.GetProjectileType());
-                projectile.SetUp(transform.position, CurrentDirection, _evolutionData, true);
+                Projectile projectile = _projectileFactory.CreateProjectile(_evolutionProjData.GetProjectileType());
+                projectile.SetUp(transform.position, CurrentDirection, _evolutionProjData, null, true);
                 ReturnToPool();
             }
-            else if (_bounces >= GetActivationBounces())
+            else if (_bounces >= _currentProjData.ActivationBounces)
             {
                 HandleActivation();
             }
@@ -195,18 +185,8 @@ namespace BH.Runtime.Systems
         
         private void HandleDamage(IDamageable damageable)
         {
-            int damage = _baseDamage;
+            int damage = _currentProjData.Damage;
             damageable.Damage(damage);
-        }
-        
-        private int GetEvolutionBounces()
-        {
-            return _baseEvolutionBounces;
-        }
-        
-        private int GetActivationBounces()
-        {
-            return _baseActivationBounces;
         }
         
         protected virtual void HandleEvolution()
@@ -227,11 +207,12 @@ namespace BH.Runtime.Systems
         
         protected virtual void ResetProperties()
         {
-            _evolutionData = null;
-            _isEvolved = false;
+            _currentSpeed = _currentProjData.Speed;
+            
+            _currentProjData = null;
+            _evolutionProjData = null;
             _bounces = 0;
             _isInPool = true;
-            _currentSpeed = _baseSpeed;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace BH.Runtime.Entities
             }
             else if (ShouldShoot())
             {
-                _player.Weapon.Fire(GetMouseDirection(), ProjectileType.PlayerBasicBullet);
+                _player.Weapon.Fire(GetMouseDirection());
             }
         }
 
