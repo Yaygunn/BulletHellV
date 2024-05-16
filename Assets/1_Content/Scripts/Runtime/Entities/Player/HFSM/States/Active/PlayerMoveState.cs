@@ -21,7 +21,7 @@ namespace BH.Runtime.Entities
             base.LogicUpdate();
             
             // TODO: We should avoid polling each update frame...
-            _player.Movement.Move(_player.InputProvider.MoveInput);
+            _player.Movement.Move(_player.InputProvider.MoveInput, _player.Stats.CurrentSpeed);
             
             //VerifyFacingDirection();
             

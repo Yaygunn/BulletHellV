@@ -190,7 +190,6 @@ namespace BH.Runtime.Systems
         private void HandleDamage(IDamageable damageable)
         {
             int damage = (int)((_currentProjData.Damage + _weaponMod.IncreasedDamage) * _weaponMod.DamageMultiplier);
-            Debug.Log("Damage Dealt: " + damage);
             damageable.Damage(damage);
         }
         

@@ -13,16 +13,19 @@ namespace GH.Scriptables
         
         [field: BoxGroup("Modifications"), SerializeField]
         public int DamageIncrease { get; private set; }
+
         [field: BoxGroup("Modifications"), SerializeField]
-        public float DamageMultiplier { get; private set; }
+        public float DamageMultiplier { get; private set; } = 1f;
         [field: BoxGroup("Modifications"), SerializeField]
         public float SpeedIncrease { get; private set; }
+
         [field: BoxGroup("Modifications"), SerializeField]
-        public float SpeedMultiplier { get; private set; }
+        public float SpeedMultiplier { get; private set; } = 1f;
         [field: BoxGroup("Modifications"), SerializeField]
         public float FireRateIncrease { get; private set; }
+
         [field: BoxGroup("Modifications"), SerializeField]
-        public float FireRateMultiplier { get; private set; }
+        public float FireRateMultiplier { get; private set; } = 1f;
 
         public string GetDescription()
         {
@@ -41,11 +44,11 @@ namespace GH.Scriptables
         public void ApplyUpgrade(GeneralWeaponMod mod)
         {
             mod.IncreasedDamage += DamageIncrease;
-            mod.DamageMultiplier *= (1 + DamageMultiplier);
+            mod.DamageMultiplier *= DamageMultiplier;
             mod.IncreasedProjSpeed += SpeedIncrease;
-            mod.ProjSpeedMultiplier *= (1 + SpeedMultiplier);
+            mod.ProjSpeedMultiplier *= SpeedMultiplier;
             mod.IncreasedFireRate += FireRateIncrease;
-            mod.FireRateMultiplier *= (1 + FireRateMultiplier);
+            mod.FireRateMultiplier *= FireRateMultiplier;
         }
     }
 }

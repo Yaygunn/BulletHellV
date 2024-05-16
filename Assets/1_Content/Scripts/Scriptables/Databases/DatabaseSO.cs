@@ -14,6 +14,9 @@ namespace BH.Scriptables.Databases
         [field: BoxGroup("Weapon Upgrades"), SerializeField]
         public List<WeaponUpgradeSO> WeaponUpgradeData { get; private set; }
         
+        [field: BoxGroup("Stat Upgrades"), SerializeField]
+        public List<StatUpgradeSO> StatUpgradeData { get; private set; }
+        
         [field: BoxGroup("Projectile Evolutions"), SerializeField]
         public List<AttractorProjectileDataSO> AttractorEvolutionData { get; private set; }
         

@@ -55,7 +55,7 @@ namespace BH.Runtime.Entities
             EnemyHFSM.Initialize(IdleState);
 
             // Plan to move to Enemy Spawner
-            Stats.ResetHealth();
+            Stats.ResetStats();
         }
 
         private void Update()

@@ -24,7 +24,7 @@ namespace BH.Runtime.Entities
         [SerializeField, ReadOnly]
         private ProjectileDataSO[] _evolutionsList = new ProjectileDataSO[6];
         
-        [FoldoutGroup("Weapon Mod"), SerializeField]
+        [FoldoutGroup("Weapon Mod"), SerializeField, HideLabel]
         private GeneralWeaponMod _generalWeaponMod;
         
         [BoxGroup("Debugging"), SerializeField, ReadOnly]

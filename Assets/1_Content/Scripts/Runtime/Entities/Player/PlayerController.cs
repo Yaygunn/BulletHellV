@@ -111,7 +111,7 @@ namespace BH.Runtime.Entities
 
         public void Activate()
         {
-            Stats.ResetHealth();
+            Stats.ResetStats();
             PlayerHFSM.ChangeState(IdleState);
         }
 

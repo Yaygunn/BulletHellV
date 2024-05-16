@@ -5,11 +5,10 @@ namespace BH.Runtime.Entities
 {
     public class MovementComponent : MonoBehaviour, IEntityComponent
     {
-        [BoxGroup("Settings"), SerializeField]
-        private float _speed = 5f;
-
-        private Vector2 _direction;
         private Rigidbody2D _rigidbody;
+        
+        private Vector2 _direction;
+        private float _speed = 5f;
 
         private void Awake()
         {
@@ -29,6 +28,12 @@ namespace BH.Runtime.Entities
         public void Move(Vector2 direction)
         {
             _direction = direction;
+        }
+        
+        public void Move(Vector2 direction, float speed)
+        {
+            _direction = direction;
+            _speed = speed;
         }
         
         public void Stop()
