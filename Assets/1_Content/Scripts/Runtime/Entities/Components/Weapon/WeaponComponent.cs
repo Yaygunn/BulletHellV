@@ -92,7 +92,7 @@ namespace BH.Runtime.Entities
         {
             ProjectileDataSO evolutionData = GetEvolutionIfAny();
             Projectile projectile = _projectileFactory.CreateProjectile(_baseProjectile);
-            projectile.SetUp(position, velocity.normalized, _baseProjectileData, evolutionData);
+            projectile.SetUp(position, velocity.normalized, _baseProjectileData, evolutionData, _generalWeaponMod);
         }
         
         private ProjectileDataSO GetEvolutionIfAny()

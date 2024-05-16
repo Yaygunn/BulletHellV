@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BH.Runtime.Entities;
 using BH.Runtime.Factories;
 using BH.Scriptables;
 using MEC;
@@ -47,6 +48,7 @@ namespace BH.Runtime.Systems
         
         private ProjectileDataSO _currentProjData;
         private ProjectileDataSO _evolutionProjData;
+        private GeneralWeaponMod _weaponMod;
         
         public Vector2 CurrentDirection { get; private set; }
         
@@ -109,11 +111,12 @@ namespace BH.Runtime.Systems
         }
         
         public void SetUp(Vector2 initialPosition, Vector2 initialDirection, ProjectileDataSO projectileData,
-            ProjectileDataSO evolutionData = null, bool isEvolved = false)
+            ProjectileDataSO evolutionData = null, GeneralWeaponMod weaponMod = null, bool isEvolved = false)
         {
             _evolutionProjData = evolutionData;
             _currentProjData = projectileData;
-            
+            _weaponMod = weaponMod ?? new GeneralWeaponMod();
+
             _currentSpeed = _currentProjData.Speed;
             transform.position = initialPosition;
             CurrentDirection = initialDirection.normalized;
@@ -174,7 +177,8 @@ namespace BH.Runtime.Systems
             if (_evolutionProjData != null && _bounces >= _currentProjData.EvolutionBounces)
             {
                 Projectile projectile = _projectileFactory.CreateProjectile(_evolutionProjData.GetProjectileType());
-                projectile.SetUp(transform.position, CurrentDirection, _evolutionProjData, null, true);
+                projectile.SetUp(transform.position, CurrentDirection, _evolutionProjData,
+                    null, _weaponMod, true);
                 ReturnToPool();
             }
             else if (_bounces >= _currentProjData.ActivationBounces)
@@ -185,7 +189,8 @@ namespace BH.Runtime.Systems
         
         private void HandleDamage(IDamageable damageable)
         {
-            int damage = _currentProjData.Damage;
+            int damage = (int)((_currentProjData.Damage + _weaponMod.IncreasedDamage) * _weaponMod.DamageMultiplier);
+            Debug.Log("Damage Dealt: " + damage);
             damageable.Damage(damage);
         }
         
@@ -211,6 +216,7 @@ namespace BH.Runtime.Systems
             
             _currentProjData = null;
             _evolutionProjData = null;
+            _weaponMod = null;
             _bounces = 0;
             _isInPool = true;
         }

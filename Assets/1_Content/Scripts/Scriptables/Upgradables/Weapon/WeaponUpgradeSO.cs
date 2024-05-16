@@ -12,7 +12,7 @@ namespace GH.Scriptables
         public string UpgradeName { get; private set; } = "New Upgrade";
         
         [field: BoxGroup("Modifications"), SerializeField]
-        public float DamageIncrease { get; private set; }
+        public int DamageIncrease { get; private set; }
         [field: BoxGroup("Modifications"), SerializeField]
         public float DamageMultiplier { get; private set; }
         [field: BoxGroup("Modifications"), SerializeField]
