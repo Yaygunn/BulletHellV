@@ -44,6 +44,12 @@ namespace BH.Runtime.Systems
                     Vector2 directionAwayFromExplosion = (projectile.transform.position - transform.position).normalized;
                     projectile.ChangeDirection(directionAwayFromExplosion * _explodingData.ExplosionForce);
                 }
+                
+                if (hit.TryGetComponent(out IDamageable damageable))
+                {
+                    Vector2 direction = (hit.transform.position - transform.position).normalized;
+                    damageable.HandleDamageWithForce(_explodingData.Damage, direction, _explodingData.ExplosionForce);
+                }
             }
         }
     }

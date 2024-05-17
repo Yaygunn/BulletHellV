@@ -1,7 +1,9 @@
-﻿using BH.Runtime.Factories;
+﻿using BH.Runtime.Entities;
+using BH.Runtime.Factories;
 using BH.Runtime.Managers;
 using BH.Runtime.Systems;
 using BH.Scriptables;
+using DP.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -22,13 +24,22 @@ namespace BH.Runtime.Installers
         public override void InstallBindings()
         {
             // Player
-            GameObject playerPrefab = Resources.Load<GameObject>(_playerObjectName);
-            if (playerPrefab == null)
+            if (Tools.TryLoadResource(_playerObjectName, out GameObject playerPrefab))
             {
-                Debug.LogError($"Console prefab '{_playerObjectName}' not found in a resources folder.");
-                return;
+                Container.Bind<IPLayerFactory>().To<PlayerFactory>().AsSingle().WithArguments(playerPrefab);
             }
-            Container.Bind<IPLayerFactory>().To<PlayerFactory>().AsSingle().WithArguments(playerPrefab);
+            
+            // Enemies
+            if (Tools.TryLoadResource($"Enemies/AIMelee", out GameObject aiMeleePrefab))
+            {
+                Container.BindMemoryPool<AIMeleeController, AIMeleePool>()
+                    .WithInitialSize(20)
+                    .FromComponentInNewPrefab(aiMeleePrefab)
+                    .UnderTransformGroup("Enemies")
+                    .AsCached()
+                    .NonLazy();
+                Container.Bind<IAIFactory>().To<AIFactory>().AsSingle();
+            }
             
             // Projectiles
             BindProjectilePools();
@@ -45,19 +56,16 @@ namespace BH.Runtime.Installers
         {
             foreach (ProjectileType type in System.Enum.GetValues(typeof(ProjectileType)))
             {
-                GameObject prefab = Resources.Load<GameObject>($"Projectiles/{type}");
-                if (prefab == null)
+                if (Tools.TryLoadResource($"Projectiles/{type}", out GameObject prefab))
                 {
-                    Debug.LogError($"Projectile prefab for {type} not found in Resources/Projectiles/");
-                    continue;
+                    Container.BindMemoryPool<Projectile, ProjectilePool>()
+                        .WithId(type)
+                        .WithInitialSize(_initialPoolSize)
+                        .FromComponentInNewPrefab(prefab)
+                        .UnderTransformGroup("ProjectilePools")
+                        .AsCached()
+                        .NonLazy();
                 }
-                Container.BindMemoryPool<Projectile, ProjectilePool>()
-                    .WithId(type)
-                    .WithInitialSize(_initialPoolSize)
-                    .FromComponentInNewPrefab(prefab)
-                    .UnderTransformGroup($"{type}Pool")
-                    .AsCached()
-                    .NonLazy();
             }
         }
     }

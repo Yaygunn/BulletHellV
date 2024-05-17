@@ -4,6 +4,7 @@ using BH.Runtime.Scenes;
 using BH.Scriptables;
 using BH.Scriptables.Databases;
 using BH.Scriptables.Scenes;
+using DP.Utilities;
 using QFSW.QC;
 using UnityEngine;
 using Zenject;
@@ -24,14 +25,14 @@ namespace BH.Runtime.Installers
         public override void InstallBindings()
         {
             // Scenes
-            if (TryLoadResource(_sceneSettingsName, out SceneSettingsSO sceneSettings))
+            if (Tools.TryLoadResource(_sceneSettingsName, out SceneSettingsSO sceneSettings))
             {
                 Container.BindInstance(sceneSettings).AsSingle();
                 Container.Bind<SceneLoader>().AsSingle().NonLazy();
             }
             
             // Audio
-            if (TryLoadResource(_audioSettingsName, out AudioSettingsSO audioSettings))
+            if (Tools.TryLoadResource(_audioSettingsName, out AudioSettingsSO audioSettings))
             {
                 Container.BindInstance(audioSettings).AsSingle();
                 Container.Bind<GameObject>().FromInstance(gameObject).WhenInjectedInto<AudioManager>();
@@ -39,7 +40,7 @@ namespace BH.Runtime.Installers
             }
             
             // Console
-            if (TryLoadResource(_consoleName, out GameObject consolePrefab))
+            if (Tools.TryLoadResource(_consoleName, out GameObject consolePrefab))
             {
                 Container.Bind<QuantumConsole>().FromComponentInNewPrefab(consolePrefab).AsSingle().NonLazy();
             }
@@ -50,22 +51,13 @@ namespace BH.Runtime.Installers
             Container.BindInterfacesTo<InputHandler>().FromInstance(inputHandler).AsSingle().NonLazy();
             
             // Database
-            if (TryLoadResource(_databaseName, out DatabaseSO database))
+            if (Tools.TryLoadResource(_databaseName, out DatabaseSO database))
             {
                 Container.BindInstance(database).AsSingle();
             }
             
             // Other
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().NonLazy();
-        }
-        
-        private bool TryLoadResource<T>(string resourceName, out T asset) where T : Object
-        { 
-            asset = Resources.Load<T>(resourceName);
-            if (asset != null) return true;
-            
-            Debug.LogError($"{typeof(T).Name} asset file '{resourceName}' not found in the resources folder.");
-            return false;
         }
     }
 }

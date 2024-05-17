@@ -54,5 +54,14 @@ namespace DP.Utilities
             canvasGroup.blocksRaycasts = isVisible;
             canvasGroup.interactable = isVisible;
         }
+        
+        public static bool TryLoadResource<T>(string resourceName, out T asset) where T : Object
+        { 
+            asset = Resources.Load<T>(resourceName);
+            if (asset != null) return true;
+            
+            Debug.LogError($"{typeof(T).Name} asset file '{resourceName}' not found in the resources folder.");
+            return false;
+        }
     }
 }

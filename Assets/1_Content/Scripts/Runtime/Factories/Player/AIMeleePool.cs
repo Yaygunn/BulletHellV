@@ -1,23 +1,23 @@
-﻿using BH.Runtime.Systems;
+﻿using BH.Runtime.Entities;
 using Zenject;
 
 namespace BH.Runtime.Factories
 {
-    public class ProjectilePool : MonoMemoryPool<Projectile>
+    public class AIMeleePool : MonoMemoryPool<AIMeleeController>
     {
-        protected override void OnCreated(Projectile meleeAI)
+        protected override void OnCreated(AIMeleeController meleeAI)
         {
             base.OnCreated(meleeAI);
             meleeAI.gameObject.SetActive(false);
         }
         
-        protected override void OnSpawned(Projectile meleeAI)
+        protected override void OnSpawned(AIMeleeController meleeAI)
         {
             base.OnSpawned(meleeAI);
             meleeAI.gameObject.SetActive(true);
         }
         
-        protected override void OnDespawned(Projectile meleeAI)
+        protected override void OnDespawned(AIMeleeController meleeAI)
         {
             base.OnDespawned(meleeAI);
             meleeAI.gameObject.SetActive(false);
