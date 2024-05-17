@@ -117,7 +117,7 @@ namespace BH.Runtime.Systems
             _currentProjData = projectileData;
             _weaponMod = weaponMod ?? new GeneralWeaponMod();
 
-            _currentSpeed = _currentProjData.Speed;
+            _currentSpeed = (_currentProjData.Speed + _weaponMod.IncreasedProjSpeed) * _weaponMod.ProjSpeedMultiplier;
             transform.position = initialPosition;
             CurrentDirection = initialDirection.normalized;
             
@@ -190,7 +190,7 @@ namespace BH.Runtime.Systems
         private void HandleDamage(IDamageable damageable)
         {
             int damage = (int)((_currentProjData.Damage + _weaponMod.IncreasedDamage) * _weaponMod.DamageMultiplier);
-            damageable.Damage(damage);
+            damageable?.HandleDamage(damage);
         }
         
         protected virtual void HandleEvolution()
@@ -211,8 +211,6 @@ namespace BH.Runtime.Systems
         
         protected virtual void ResetProperties()
         {
-            _currentSpeed = _currentProjData.Speed;
-            
             _currentProjData = null;
             _evolutionProjData = null;
             _weaponMod = null;

@@ -5,22 +5,22 @@ namespace BH.Runtime.Factories
 {
     public class ProjectilePool : MonoMemoryPool<Projectile>
     {
-        protected override void OnCreated(Projectile projectile)
+        protected override void OnCreated(Projectile meleeAI)
         {
-            base.OnCreated(projectile);
-            projectile.gameObject.SetActive(false);
+            base.OnCreated(meleeAI);
+            meleeAI.gameObject.SetActive(false);
         }
         
-        protected override void OnSpawned(Projectile projectile)
+        protected override void OnSpawned(Projectile meleeAI)
         {
-            base.OnSpawned(projectile);
-            projectile.gameObject.SetActive(true);
+            base.OnSpawned(meleeAI);
+            meleeAI.gameObject.SetActive(true);
         }
         
-        protected override void OnDespawned(Projectile projectile)
+        protected override void OnDespawned(Projectile meleeAI)
         {
-            base.OnDespawned(projectile);
-            projectile.gameObject.SetActive(false);
+            base.OnDespawned(meleeAI);
+            meleeAI.gameObject.SetActive(false);
         }
     }
 }

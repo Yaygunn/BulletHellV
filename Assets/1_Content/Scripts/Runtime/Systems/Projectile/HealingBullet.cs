@@ -24,7 +24,7 @@ namespace BH.Runtime.Systems
         {
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.Damage(-_healingData.HealAmount);
+                damageable.HandleDamage(-_healingData.HealAmount);
                 ReturnToPool();
                 return;
             }

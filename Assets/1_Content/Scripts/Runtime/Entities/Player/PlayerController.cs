@@ -115,9 +115,15 @@ namespace BH.Runtime.Entities
             PlayerHFSM.ChangeState(IdleState);
         }
 
-        public void Damage(int amount)
+        public void HandleDamage(int amount)
         {
             Stats.TakeDamage(amount);
+        }
+        
+        public void HandleDamageWithForce(int amount, Vector2 direction, float force)
+        {
+            Stats.TakeDamage(amount);
+            Movement.AddForce(direction, force);
         }
 
         public void FlipCharacter(bool faceRight)

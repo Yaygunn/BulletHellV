@@ -38,7 +38,8 @@ namespace BH.Runtime.Managers
         
         public event Action<LevelState> OnLevelStateChanged;
         
-        private LevelManager(LevelSettingsSO levelSettings, IGameStateHandler gameState, IPLayerFactory playerFactory, SignalBus signalBus)
+        private LevelManager(LevelSettingsSO levelSettings, IGameStateHandler gameState, IPLayerFactory playerFactory, 
+            SignalBus signalBus)
         {
             _levelSettings = levelSettings;
             _gameState = gameState;
