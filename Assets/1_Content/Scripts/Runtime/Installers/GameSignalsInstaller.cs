@@ -11,7 +11,6 @@ namespace BH.Runtime.Installers
         {
             SignalBusInstaller.Install(Container);
             
-            Container.DeclareSignal<TestSpawnSignal>();
             Container.DeclareSignal<PlayerHealthChangedSignal>();
             
             // Audio

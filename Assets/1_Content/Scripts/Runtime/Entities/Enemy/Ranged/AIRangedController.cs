@@ -28,6 +28,9 @@ namespace BH.Runtime.Entities
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
+        
+        [field: Inject(Id = "MainCamera")]
+        public Camera Camera { get; }
 
         [Inject]
         private LevelManager _levelManager;
@@ -42,6 +45,7 @@ namespace BH.Runtime.Entities
 
         #region Components
         public MovementComponent Movement { get; private set; }
+        public ShootPatternComponent ShootPattern { get; private set; }
         #endregion
 
         #region State Machine
@@ -62,6 +66,7 @@ namespace BH.Runtime.Entities
             base.Awake();
 
             Movement = VerifyComponent<MovementComponent>();
+            ShootPattern = VerifyComponent<ShootPatternComponent>();
 
             EnemyHFSM = new StateMachine<RangedAIState>();
 

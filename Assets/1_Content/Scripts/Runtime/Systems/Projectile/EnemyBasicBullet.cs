@@ -18,6 +18,11 @@ namespace BH.Runtime.Systems
                 Debug.LogError("[EnemyBasicBullet] EnemyBasicProjectileDataSo is not set for EnemyBasicBullet");
             }
         }
+        
+        protected override void HandleEvolution()
+        {
+            ReturnToPool();
+        }
 
         protected override void HandleActivation()
         {
