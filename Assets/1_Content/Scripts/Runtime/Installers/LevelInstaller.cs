@@ -38,8 +38,17 @@ namespace BH.Runtime.Installers
                     .UnderTransformGroup("Enemies")
                     .AsCached()
                     .NonLazy();
-                Container.Bind<IAIFactory>().To<AIFactory>().AsSingle();
             }
+            if (Tools.TryLoadResource($"Enemies/AIRanged", out GameObject aiRangedPrefab))
+            {
+                Container.BindMemoryPool<AIRangedController, AIRangedPool>()
+                    .WithInitialSize(20)
+                    .FromComponentInNewPrefab(aiRangedPrefab)
+                    .UnderTransformGroup("Enemies")
+                    .AsCached()
+                    .NonLazy();
+            }
+            Container.Bind<IAIFactory>().To<AIFactory>().AsSingle();
             
             // Projectiles
             BindProjectilePools();

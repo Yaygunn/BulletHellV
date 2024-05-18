@@ -18,17 +18,17 @@ namespace BH.Runtime.Entities
         private Wave[] _waves;
         [SerializeField, ReadOnly]
         private int _currentWaveIndex = 0;
-        
+
         private IAIFactory _aiFactory;
         private ILevelStateHandler _levelStateHandler;
-        private List<Entity> _spawnedEnemies = new ();
-        
+        private List<Entity> _spawnedEnemies = new();
+
         [Inject(Id = "MainCamera")]
         private Camera _mainCamera;
 
         public event Action WaveFinishedEvent;
         public event Action AllWavesCompletedEvent;
-        
+
         [Inject]
         public void Construct(IAIFactory aiFactory, ILevelStateHandler levelStateHandler)
         {
@@ -53,17 +53,29 @@ namespace BH.Runtime.Entities
 
             _spawnedEnemies.Add(enemy);
         }
-        
+
+        private void SpawnRangedAI()
+        {
+            AIRangedController enemy = _aiFactory.CreateAIRanged();
+            enemy.SetUp(this);
+            enemy.EnemyHFSM.ChangeState(enemy.MoveState);
+
+            Vector2 spawnPosition = GetRandomSpawnOffCamera();
+            enemy.transform.position = spawnPosition;
+
+            _spawnedEnemies.Add(enemy);
+        }
+
         public Wave GetCurrentWave()
         {
             return _waves[_currentWaveIndex];
         }
-        
+
         public void EntityDied(Entity entity)
         {
             _spawnedEnemies.Remove(entity);
         }
-        
+
         private void OnLevelStateChanged(LevelState levelState)
         {
             if (levelState == LevelState.NormalRound)
@@ -71,7 +83,7 @@ namespace BH.Runtime.Entities
                 Timing.RunCoroutine(StartNextWaveCoroutine());
             }
         }
-        
+
         private IEnumerator<float> StartNextWaveCoroutine()
         {
             if (_currentWaveIndex >= _waves.Length)
@@ -88,15 +100,26 @@ namespace BH.Runtime.Entities
             }
 
             Wave currentWave = _waves[_currentWaveIndex];
-            
-            for (int i = 0; i < currentWave.MeleeAICount; i++)
+            int meleeSpawned = 0;
+            int rangedSpawned = 0;
+
+            while (meleeSpawned < currentWave.MeleeAICount || rangedSpawned < currentWave.RangedAICount)
             {
-                if (_spawnedEnemies.Count < currentWave.MeleeAICount)
+                bool spawnMelee = Random.Range(0, 2) == 0;
+
+                if (spawnMelee && meleeSpawned < currentWave.MeleeAICount)
                 {
                     SpawnMeleeAI();
-                    float interval = Random.Range(currentWave.MinSpawnInterval, currentWave.MaxSpawnInterval);
-                    yield return Timing.WaitForSeconds(interval);
+                    meleeSpawned++;
                 }
+                else if (!spawnMelee && rangedSpawned < currentWave.RangedAICount)
+                {
+                    SpawnRangedAI();
+                    rangedSpawned++;
+                }
+
+                float interval = Random.Range(currentWave.MinSpawnInterval, currentWave.MaxSpawnInterval);
+                yield return Timing.WaitForSeconds(interval);
             }
 
             yield return Timing.WaitUntilDone(WaitForAllEnemiesDefeated());
@@ -118,7 +141,7 @@ namespace BH.Runtime.Entities
                 }
             }
         }
-        
+
         private IEnumerator<float> WaitForAllEnemiesDefeated()
         {
             while (_spawnedEnemies.Count > 0)
@@ -126,7 +149,7 @@ namespace BH.Runtime.Entities
                 yield return Timing.WaitForOneFrame;
             }
         }
-        
+
         private Vector2 GetRandomSpawnOffCamera()
         {
             Vector3 cameraPos = _mainCamera.transform.position;
