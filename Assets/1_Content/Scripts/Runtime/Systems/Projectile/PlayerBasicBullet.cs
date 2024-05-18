@@ -18,6 +18,11 @@ namespace BH.Runtime.Systems
                 Debug.LogError("[PlayerBasicBullet] PlayerBasicProjectileDataSO is not set for PlayerBasicBullet");
             }
         }
+        
+        protected override void HandleEvolution()
+        {
+            _currentSpeed *= _basicProjData.SpeedMultiAfterEvolution;
+        }
 
         protected override void HandleActivation()
         {

@@ -25,6 +25,16 @@
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{65697E95-FB80-4B29-9675-E98DC39FDCF8}">
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="ply_health" ID="{C2A664AC-F31A-4FF9-81EA-36E648E705F3}"/>
+							<Value>56</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundcasterSessions>

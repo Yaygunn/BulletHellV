@@ -19,7 +19,7 @@ public class MeleeAIChaseState : MeleeAIActiveState
         base.LogicUpdate();
 
         Vector2 direction = GetAttackTargetDirection();
-        _meleeAI.Movement.Move(direction);
+        _meleeAI.Movement.Move(direction, _meleeAI.Stats.CurrentSpeed);
         
         ShouldIdle();
     }

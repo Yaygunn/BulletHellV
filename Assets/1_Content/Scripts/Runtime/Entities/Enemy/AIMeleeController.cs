@@ -11,8 +11,10 @@ namespace BH.Runtime.Entities
 {
     public class AIMeleeController : Entity, IDamageable
     {
-        [field: FoldoutGroup("Stats"), SerializeField]
-        public int Damage { get; private set; } = 20;
+        [field: FoldoutGroup("Stats"), SerializeField, ReadOnly]
+        public int CurrentDamage { get; private set; }
+        [FoldoutGroup("Stats"), SerializeField]
+        private int _initialDamage = 20;
         [field: FoldoutGroup("Stats"), SerializeField]
         public float PushForce { get; private set; } = 10f;
         
@@ -33,6 +35,7 @@ namespace BH.Runtime.Entities
         //private SignalBus _signalBus;
         
         private AIMeleePool _pool;
+        private bool _inPool; 
         private EnemySpawner _spawner;
 
         #region Components
@@ -71,6 +74,7 @@ namespace BH.Runtime.Entities
 
             // Plan to move to Enemy Spawner
             Stats.ResetStats();
+            CurrentDamage = _initialDamage;
         }
         
         private void Start()
@@ -109,6 +113,10 @@ namespace BH.Runtime.Entities
         public void SetUp(EnemySpawner spawner)
         {
             _spawner = spawner;
+            _inPool = false;
+            Wave wave = _spawner.GetCurrentWave();
+            Stats.ModifyStatsManual(wave.HealthMultiplier, wave.ShieldMultiplier, wave.SpeedMultiplier);
+            CurrentDamage = (int)(CurrentDamage * wave.DamageMultiplier);
         }
 
         public void HandleDamage(int ammount)
@@ -125,8 +133,13 @@ namespace BH.Runtime.Entities
         private void OnDied()
         {
             Stats.ResetStats();
+            CurrentDamage = _initialDamage;
             EnemyHFSM.ChangeState(BusyState);
             _spawner.EntityDied(this);
+
+            if (_inPool) return;
+            
+            _inPool = true;
             _pool.Despawn(this);
         }
 

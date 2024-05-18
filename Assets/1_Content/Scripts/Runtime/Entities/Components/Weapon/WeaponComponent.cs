@@ -100,59 +100,69 @@ namespace BH.Runtime.Entities
             return _evolutionsList[_currentBulletIndex].IsEvolution ? _evolutionsList[_currentBulletIndex] : null;
         }
         
-        public bool CanAddBulletEvolution() => _evolutionsList.Any(x => x.IsEvolution == false);
-        
-        public void AddBulletEvolution(ProjectileType type)
+        public bool CanAddBulletEvolution()
         {
-            if (!CanAddBulletEvolution())
+            return _evolutionsList.Any(x => !x.IsEvolution);
+        }
+        
+        public bool CanAddBulletEvolution(ProjectileType type)
+        {
+            return _evolutionsList.Any(x => !x.IsEvolution) && !_evolutionsList.Any(x => x.GetProjectileType() == type);
+        }
+        
+        public void AddBulletEvolution(ProjectileType type, ProjectileDataSO newEvolutionData)
+        {
+            if (!CanAddBulletEvolution(type))
             {
-                Debug.LogError("Attempted to add bullet evolution but no slots available.");
+                Debug.LogError("Attempted to add bullet evolution but no slots available or already contains type.");
                 return;
             }
     
-            int index = Array.FindIndex(_evolutionsList, x => x.IsEvolution == false);
+            int index = Array.FindIndex(_evolutionsList, x => !x.IsEvolution);
             if (index == -1)
             {
                 Debug.LogError("No unevolved slots found despite earlier check.");
                 return;
             }
 
-            if (_database.TryGetProjectileData(type, _bulletLevels[type], out ProjectileDataSO newEvolutionData))
-            {
-                _evolutionsList[index] = newEvolutionData;
-                UpdatePlayerHUD();
-            }
-            else
-            {
-                Debug.LogError($"[WeaponComponent] Failed to get evolution data for {type} at level {_bulletLevels[type]}.");
-            }
+            _evolutionsList[index] = newEvolutionData;
+            UpdatePlayerHUD();
         }
         
         public bool CanUpgradeEvolution(ProjectileType type)
         {
-            return _database.TryGetProjectileData(type, _bulletLevels[type] + 1, out ProjectileDataSO evolutionData);
+            return _database.TryGetProjectileData(type, _bulletLevels[type] + 1, out _);
         }
         
-        public void UpgradeEvolutions(ProjectileType type)
+        public bool HasBulletEvolution(ProjectileType type)
         {
-            if (_database.TryGetProjectileData(type, _bulletLevels[type] + 1, out ProjectileDataSO evolutionData))
-            {
-                _bulletLevels[type] += 1;
-
-                for (int i = 0; i < _evolutionsList.Length; i++)
-                {
-                    if (_evolutionsList[i].GetProjectileType() == type)
-                    {
-                        _evolutionsList[i] = evolutionData;
-                    }
-                }
-                
-                UpdatePlayerHUD();
-            }
-            else
+            return _evolutionsList.Any(x => x.GetProjectileType() == type && x.IsEvolution);
+        }
+        
+        public bool CanUpgradeAnyEvolution()
+        {
+            return _evolutionsList.Any(x => x.IsEvolution && _database.TryGetProjectileData(x.GetProjectileType(), _bulletLevels[x.GetProjectileType()] + 1, out _));
+        }
+        
+        public void UpgradeEvolutions(ProjectileType type, ProjectileDataSO newEvolutionData)
+        {
+            if (!_database.TryGetProjectileData(type, _bulletLevels[type] + 1, out _))
             {
                 Debug.LogError("Max level reached for projectile type or evolution data not found.");
+                return;
             }
+            
+            _bulletLevels[type] += 1;
+
+            for (int i = 0; i < _evolutionsList.Length; i++)
+            {
+                if (_evolutionsList[i].GetProjectileType() == type)
+                {
+                    _evolutionsList[i] = newEvolutionData;
+                }
+            }
+                
+            UpdatePlayerHUD();
         }
         
         public void UpgradeWeapon(WeaponUpgradeSO upgradeData)
@@ -160,7 +170,6 @@ namespace BH.Runtime.Entities
             upgradeData.ApplyUpgrade(_generalWeaponMod);
         }
         
-        // TODO: Need a better way to handle this...
         private void UpdatePlayerHUD()
         {
             List<Color> colors = new ();
@@ -182,6 +191,11 @@ namespace BH.Runtime.Entities
         {
             float fireRate = (_fireRate + _generalWeaponMod.IncreasedFireRate) * _generalWeaponMod.FireRateMultiplier;
             return fireRate < 0f ? 0f : fireRate;
+        }
+
+        public int GetProjectileLevel(ProjectileType type)
+        {
+            return _bulletLevels.TryGetValue(type, out int level) ? level : 0;
         }
     }
 }

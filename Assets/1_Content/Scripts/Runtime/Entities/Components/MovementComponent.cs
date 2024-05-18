@@ -10,7 +10,7 @@ namespace BH.Runtime.Entities
         private Rigidbody2D _rigidbody;
         
         private Vector2 _direction;
-        private float _speed = 5f;
+        private float _defaultSpeed = 5f;
         //private bool _isControlLocked;
 
         private void Awake()
@@ -27,7 +27,7 @@ namespace BH.Runtime.Entities
         {
             //if (_isControlLocked) return;
             
-            _rigidbody.velocity = _direction.normalized * _speed;
+            _rigidbody.velocity = _direction.normalized * _defaultSpeed;
         }
         
         public void Move(Vector2 direction)
@@ -42,7 +42,7 @@ namespace BH.Runtime.Entities
             //if (_isControlLocked) return;
             
             _direction = direction;
-            _speed = speed;
+            _defaultSpeed = speed;
         }
         
         public void AddForce(Vector2 direction, float force)

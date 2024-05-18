@@ -18,7 +18,7 @@ namespace BH.Runtime.Entities
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
                 Vector2 direction = (other.transform.position - _meleeAI.transform.position).normalized;
-                damageable.HandleDamageWithForce(_meleeAI.Damage, direction, _meleeAI.PushForce);
+                damageable.HandleDamageWithForce(_meleeAI.CurrentDamage, direction, _meleeAI.PushForce);
             }
         }
     }

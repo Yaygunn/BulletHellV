@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BH.Runtime.Entities;
 using BH.Runtime.Managers;
-using BH.Runtime.Scenes;
 using BH.Runtime.Systems;
+using BH.Scriptables;
 using BH.Scriptables.Databases;
-using BH.Scriptables.Scenes;
-using BH.Utilities;
 using BH.Utilities.Extensions;
 using GH.Scriptables;
 using Sirenix.OdinInspector;
@@ -19,19 +16,14 @@ namespace BH.Runtime.Test
 {
     public class VitTestProto : MonoBehaviour
     {
-        // TODO: TESTING
-        
-        
         [Inject]
         private ILevelStateHandler _levelStateHandler;
-        // [Button]
-        // private void TestUpgradesShow()
-        // {
-        //     _levelStateHandler.SetLevelState(LevelState.Upgrading);
-        // }
         
         [Inject]
         private LevelManager _levelManager;
+
+        [Inject]
+        private DatabaseSO _database;
 
         [SerializeField]
         private ProjectileType _projectileSelection = ProjectileType.HomingBullet;
@@ -40,9 +32,10 @@ namespace BH.Runtime.Test
         private void AddSelectedProjectile()
         {
             WeaponComponent playerWeapon = _levelManager.Player.Weapon;
-            if (playerWeapon.CanAddBulletEvolution())
+            if (playerWeapon.CanAddBulletEvolution(_projectileSelection))
             {
-                playerWeapon.AddBulletEvolution(_projectileSelection);
+                var projectileData = GetNextProjectileEvolutionData(_projectileSelection);
+                playerWeapon.AddBulletEvolution(_projectileSelection, projectileData);
             }
         }
         
@@ -52,7 +45,8 @@ namespace BH.Runtime.Test
             WeaponComponent playerWeapon = _levelManager.Player.Weapon;
             if (playerWeapon.CanUpgradeEvolution(_projectileSelection))
             {
-                playerWeapon.UpgradeEvolutions(_projectileSelection);
+                var projectileData = GetNextProjectileEvolutionData(_projectileSelection);
+                playerWeapon.UpgradeEvolutions(_projectileSelection, projectileData);
             }
         }
         
@@ -70,9 +64,10 @@ namespace BH.Runtime.Test
 
             foreach (ProjectileType type in projectileTypes)
             {
-                if (playerWeapon.CanAddBulletEvolution())
+                if (playerWeapon.CanAddBulletEvolution(type))
                 {
-                    playerWeapon.AddBulletEvolution(type);
+                    var projectileData = GetNextProjectileEvolutionData(type);
+                    playerWeapon.AddBulletEvolution(type, projectileData);
                     break;
                 }
             }
@@ -94,14 +89,13 @@ namespace BH.Runtime.Test
             {
                 if (playerWeapon.CanUpgradeEvolution(type))
                 {
-                    playerWeapon.UpgradeEvolutions(type);
+                    var projectileData = GetNextProjectileEvolutionData(type);
+                    playerWeapon.UpgradeEvolutions(type, projectileData);
                     break;
                 }
             }
         }
         
-        [Inject]
-        private DatabaseSO _database;
         [TitleGroup("Random"), Button(ButtonSizes.Large)]
         private void RandomWeaponUpgrade()
         {
@@ -132,6 +126,14 @@ namespace BH.Runtime.Test
             
             int randomIndex = UnityEngine.Random.Range(0, stats.Length);
             return stats[randomIndex];
+        }
+
+        private ProjectileDataSO GetNextProjectileEvolutionData(ProjectileType type)
+        {
+            WeaponComponent playerWeapon = _levelManager.Player.Weapon;
+            int currentLevel = playerWeapon.GetProjectileLevel(type);
+            _database.TryGetProjectileData(type, currentLevel + 1, out ProjectileDataSO projectileData);
+            return projectileData;
         }
     }
 }
