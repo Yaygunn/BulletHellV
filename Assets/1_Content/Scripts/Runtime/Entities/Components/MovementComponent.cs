@@ -1,5 +1,6 @@
 ﻿using System;
 using MEC;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace BH.Runtime.Entities
@@ -11,12 +12,8 @@ namespace BH.Runtime.Entities
         private Vector2 _direction;
         private float _defaultSpeed = 5f;
         private Vector2? _destination;
-        private float _destinationThreshold = 0.1f;
-        //private bool _isControlLocked;
-        
-        private CoroutineHandle _moveToDestinationCoroutine;
-
-        public event Action OnDestinationReached;
+        private Action _onReachDestination;
+        private float _closeEnough = 0.1f;
 
         private void Awake()
         {
@@ -30,17 +27,18 @@ namespace BH.Runtime.Entities
 
         private void FixedUpdate()
         {
-            //if (_isControlLocked) return;
-            
             if (_destination.HasValue)
             {
-                Vector2 directionToTarget = (_destination.Value - (Vector2)transform.position).normalized;
-                _rigidbody.velocity = directionToTarget * _defaultSpeed;
-
-                if (Vector2.Distance(transform.position, _destination.Value) <= _destinationThreshold)
+                Vector2 toDestination = _destination.Value - (Vector2)transform.position;
+                if (toDestination.magnitude <= _closeEnough)
                 {
-                    Stop();
-                    OnDestinationReached?.Invoke();
+                    _rigidbody.velocity = Vector2.zero;
+                    _destination = null;
+                    _onReachDestination?.Invoke();
+                }
+                else
+                {
+                    _rigidbody.velocity = toDestination.normalized * _defaultSpeed;
                 }
             }
             else
@@ -48,46 +46,37 @@ namespace BH.Runtime.Entities
                 _rigidbody.velocity = _direction.normalized * _defaultSpeed;
             }
         }
-        
+
         public void Move(Vector2 direction)
         {
-            //if (_isControlLocked) return;
-            
             _direction = direction;
+            _destination = null;
         }
         
         public void Move(Vector2 direction, float speed)
         {
-            //if (_isControlLocked) return;
-            
             _direction = direction;
             _defaultSpeed = speed;
+            _destination = null;
         }
         
-        public void MoveTo(Vector2 destination, float speed, float threshold = 0.1f)
+        public void MoveTo(Vector2 destination, float speed, Action onReachDestination = null)
         {
-            
+            _destination = destination;
+            _defaultSpeed = speed;
+            _onReachDestination = onReachDestination;
         }
-        
+
         public void AddForce(Vector2 direction, float force)
         {
             _rigidbody.AddForce(direction.normalized * force);
-            // TODO: fix hard code of lock
-            //Timing.RunCoroutine(TempLockControlCoroutine(0.5f));
         }
         
         public void Stop()
         {
-            //if (_isControlLocked) return;
-            
+            _destination = null;
             _direction = Vector2.zero;
+            _rigidbody.velocity = Vector2.zero;
         }
-        
-        // private IEnumerator<float> TempLockControlCoroutine(float duration)
-        // {
-        //     _isControlLocked = true;
-        //     yield return Timing.WaitForSeconds(duration);
-        //     _isControlLocked = false;
-        // }
     }
 }

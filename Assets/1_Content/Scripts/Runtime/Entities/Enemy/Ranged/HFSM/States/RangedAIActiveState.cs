@@ -1,6 +1,6 @@
 ﻿using BH.Runtime.StateMachines;
 
-namespace BH.Runtime.Entities.States
+namespace BH.Runtime.Entities
 {
     public class RangedAIActiveState : RangedAIState
     {
