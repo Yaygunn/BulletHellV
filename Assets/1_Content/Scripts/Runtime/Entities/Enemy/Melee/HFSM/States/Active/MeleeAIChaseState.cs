@@ -30,6 +30,7 @@ public class MeleeAIChaseState : MeleeAIActiveState
     {
         base.Exit();
         
+        _meleeAI.Movement.Stop();
         _meleeAI.Animator.SetBool(_meleeAI.AnimatorParams.IsMovingBool, false);
     }
     

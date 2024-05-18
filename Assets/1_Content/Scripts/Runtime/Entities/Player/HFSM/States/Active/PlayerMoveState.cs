@@ -42,6 +42,7 @@ namespace BH.Runtime.Entities
             base.Exit();
             
             _player.Animator.SetBool(_player.AnimatorParams.IsMovingBool, false);
+            _player.Movement.Stop();
         }
         
         private bool ShouldIdle()
