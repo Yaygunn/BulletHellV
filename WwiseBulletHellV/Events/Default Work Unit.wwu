@@ -42,6 +42,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="bullet_bounce" ID="{63AF202A-E98C-4E35-94CC-12FBD92F6E94}">
+									<ChildrenList>
+										<Action Name="" ID="{D9A875E4-8EB7-4490-AB27-87CBAE51D9A2}" ShortID="1015487512">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_bounce" ID="{EE6793AB-7D8D-4710-A4AC-35A2F916A8C7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="ENEMIES" ID="{DA2596E7-2794-49D8-A341-144FACAB74AB}" ShortID="76802006">
@@ -89,6 +100,17 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="squid_idle" ID="{B3ACEDBB-F3CD-4304-91E1-E0B1C28F9A17}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ene_mob_death" ID="{407EE978-6AB7-4AC2-9D26-02F5FF973707}">
+									<ChildrenList>
+										<Action Name="" ID="{CC003DAC-06F2-4927-A226-770F081F74CC}" ShortID="211207643">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ene_mob_death" ID="{868F6C51-7FE9-45CD-8D6B-F73C6FD15AD9}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -175,6 +197,70 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="ply_move_loop" ID="{76EF4ECC-810D-4E4E-A812-C0653867D0B7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Pause" ID="{A869EC7E-3756-4F26-A833-D9E324883349}">
+									<ChildrenList>
+										<Action Name="" ID="{87B5628B-3727-4FAA-998B-3BD5C4FC5867}" ShortID="125879656">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Play" ID="{1C66217E-3D73-4DF2-8DA2-9D58C90105B7}">
+									<ChildrenList>
+										<Action Name="" ID="{8ACB3A10-C003-4E9D-B383-7E03B7AAA7FA}" ShortID="392656208">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Resume" ID="{32058807-F9CE-415C-ABB5-3BAD4CE3FE98}">
+									<ChildrenList>
+										<Action Name="" ID="{A842E21F-A7B8-457A-AE7B-D292DD2A4ECF}" ShortID="748334184">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="9"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Stop" ID="{62B56447-C244-42E2-8359-78808D8069E8}">
+									<ChildrenList>
+										<Action Name="" ID="{8C0941CB-30A0-427B-804B-6C7BDA811332}" ShortID="696924451">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_hurt" ID="{A6E8FDB6-1046-431B-9D78-8D4B38820AB4}">
+									<ChildrenList>
+										<Action Name="" ID="{AF48FD66-6B6B-4774-A4AF-A44442440B67}" ShortID="252824361">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_hurt" ID="{7FECC791-05BC-4622-AD14-F08DA2834921}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
