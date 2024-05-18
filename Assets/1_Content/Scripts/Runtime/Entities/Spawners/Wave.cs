@@ -10,6 +10,8 @@ namespace BH.Runtime.Entities
         [field: FoldoutGroup("Spawning"), SerializeField]
         public int MeleeAICount { get; private set; } = 5;
         [field: FoldoutGroup("Spawning"), SerializeField]
+        public int RangedAICount { get; private set; } = 2;
+        [field: FoldoutGroup("Spawning"), SerializeField]
         public float MinSpawnInterval { get; private set; } = 1f;
         [field: FoldoutGroup("Spawning"), SerializeField]
         public float MaxSpawnInterval { get; private set; } = 3f;
