@@ -53,6 +53,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="bullet_expading" ID="{E9419BE0-262D-49D1-BABD-87358B082F44}">
+									<ChildrenList>
+										<Action Name="" ID="{A90522E8-EE04-4A86-B70A-9412032F808B}" ShortID="620215240">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_expading" ID="{1BCBD300-B3AB-4E7D-9F81-FDD7448D33C7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="ENEMIES" ID="{DA2596E7-2794-49D8-A341-144FACAB74AB}" ShortID="76802006">
