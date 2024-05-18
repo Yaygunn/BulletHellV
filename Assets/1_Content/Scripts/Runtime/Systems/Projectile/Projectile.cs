@@ -81,6 +81,8 @@ namespace BH.Runtime.Systems
         
         protected virtual void OnCollisionEnter2D(Collision2D other)
         {
+            if (_isInPool) return;
+            
             if ((_obsticleMask & (1 << other.gameObject.layer)) != 0)
             {
                 HandleObstacleCollision(other);

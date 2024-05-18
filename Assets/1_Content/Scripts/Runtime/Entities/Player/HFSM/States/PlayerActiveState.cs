@@ -19,8 +19,6 @@ namespace BH.Runtime.Entities
         {
             base.LogicUpdate();
             
-            FaceMouse();
-            
             if (ShouldDash())
             {
                 _stateMachine.ChangeState(_player.DashState);
@@ -34,6 +32,8 @@ namespace BH.Runtime.Entities
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
+            
+            FaceMouse();
         }
 
         public override void Exit()
@@ -67,7 +67,10 @@ namespace BH.Runtime.Entities
         {
             Vector2 mouseWorldPosition = GetMouseWorldPosition();
             Vector2 direction = (mouseWorldPosition - (Vector2)_player.transform.position).normalized;
-            _player.FlipCharacter(direction.x > 0);
+            
+            //_player.FlipCharacter(direction.x > 0);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            _player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
         
         protected Vector2 GetMouseWorldPosition()

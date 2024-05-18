@@ -123,7 +123,7 @@ namespace BH.Runtime.Entities
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
             Stats.TakeDamage(amount);
-            Movement.AddForce(direction, force);
+            //Movement.AddForce(direction, force);
         }
 
         public void FlipCharacter(bool faceRight)
