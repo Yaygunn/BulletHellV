@@ -49,6 +49,52 @@
 								<Property Name="Color" Type="int16" Value="10"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ChildrenList>
+								<Event Name="squidIdle" ID="{663B4560-4EA2-4E3A-BBDD-F36AE9491A7A}">
+									<ChildrenList>
+										<Action Name="" ID="{1C2C2734-B4A3-48EF-A960-24146B751B37}" ShortID="35637907">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_idle" ID="{B3ACEDBB-F3CD-4304-91E1-E0B1C28F9A17}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="squidShoot" ID="{D75DA56B-3230-4160-ADFD-6523F5BC0BA8}">
+									<ChildrenList>
+										<Action Name="" ID="{31177DAB-9C96-4A60-A83B-8F9C21901BA4}" ShortID="411977269">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_shoot" ID="{EF39915A-3839-4C1F-9C1E-07E3B3E0B287}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="squidDeath" ID="{C81B7BF1-ED2A-4D95-9ADC-D22FB2BB9560}">
+									<ChildrenList>
+										<Action Name="" ID="{8E0B11EC-7FF6-4941-90FC-E996FA0D039F}" ShortID="20924350">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_death" ID="{3C3ACE66-CFDB-4D3B-818D-9C8C9CCB35FA}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{00067E7B-C564-4EB3-85F1-CB0BF6A8BA1E}" ShortID="465461445">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="Delay" Type="Real64" Value="1.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_idle" ID="{B3ACEDBB-F3CD-4304-91E1-E0B1C28F9A17}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
 						</Folder>
 						<Folder Name="ENVIRONMENT" ID="{95F387AB-FA09-463E-949E-440CDADEA0A3}" ShortID="98198469">
 							<PropertyList>
@@ -170,6 +216,17 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="ui_open" ID="{3FF58B33-D5EF-4F84-B29A-443618642E37}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="uiDashReady" ID="{6A8B3317-0F46-4120-B1E4-9F2169182775}">
+									<ChildrenList>
+										<Action Name="" ID="{890C5750-5768-423A-AA89-0E88EE2E1CC7}" ShortID="381841575">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_dash_ready" ID="{3B4A36AA-8C79-4D88-AF0D-CB1277275F29}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

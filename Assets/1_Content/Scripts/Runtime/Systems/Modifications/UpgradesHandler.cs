@@ -67,7 +67,7 @@ namespace BH.Runtime.Systems
                 UpgradeType upgradeType = GetRandomUpgradeType();
                 ProjectileType projectileType = GetRandomValidProjectileType(upgradeType);
 
-                if (projectileType == ProjectileType.PlayerBasicBullet)
+                if (projectileType is ProjectileType.PlayerBasicBullet or ProjectileType.EnemyBasicBullet)
                 {
                     Debug.Log("No valid projectile types found.");
                     i--;
