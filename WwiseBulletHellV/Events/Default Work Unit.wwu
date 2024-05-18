@@ -64,6 +64,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="bullet_explosion" ID="{2257BC6D-9C2A-4697-966B-1E693F4EA2B6}">
+									<ChildrenList>
+										<Action Name="" ID="{B3734CB2-F7D4-493C-BD65-8C7B290B9AE5}" ShortID="483760370">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_explosion" ID="{ADAB6389-EA80-469A-9F03-5C7ED82F7FBC}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="ENEMIES" ID="{DA2596E7-2794-49D8-A341-144FACAB74AB}" ShortID="76802006">

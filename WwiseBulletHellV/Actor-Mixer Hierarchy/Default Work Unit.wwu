@@ -999,6 +999,168 @@
 								<ActiveSource Name="bullet_expading" ID="{72AB279D-476A-4B15-B2AE-6FAB11BAAA68}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<RandomSequenceContainer Name="bullet_explosion" ID="{ADAB6389-EA80-469A-9F03-5C7ED82F7FBC}" ShortID="633161782">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{353BC02F-4BCA-491F-8F3C-4726249F9B6F}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5AAB7BC9-C4F9-4189-B1A6-18E2D6D8C5C0}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+								</Reference>
+								<Reference Name="Effect0" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+									<ObjectRef Name="High_Impact" ID="{2AFD6FB0-C906-4683-A377-FEEEF72967B0}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="bullet_explosion_01" ID="{A1A0D089-23D4-406B-9B1F-6CFFEC3EF8C5}" ShortID="252669334">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PlayerMaster" ID="{DE5172FF-0D88-4042-AE10-C8EFAADA6348}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="bullet_explosion" ID="{6D6A37E0-DB5A-4884-836F-44C96D5D2C51}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0817258725071225"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.5"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>bullet_explosion.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="554466286"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="bullet_explosion" ID="{6D6A37E0-DB5A-4884-836F-44C96D5D2C51}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="bullet_explosion_02" ID="{8E9AA4CB-E822-4070-80B5-516CF468F151}" ShortID="577573043">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PlayerMaster" ID="{DE5172FF-0D88-4042-AE10-C8EFAADA6348}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="bullet_explosion" ID="{8FA5760F-A28A-4599-A420-BD7D5FDA9DFF}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.332741052350428"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.94390825320513"/>
+												<Property Name="TrimEnd" Type="Real64" Value="3.44"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>bullet_explosion.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="253937811"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="bullet_explosion" ID="{8FA5760F-A28A-4599-A420-BD7D5FDA9DFF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="bullet_explosion_03" ID="{40BDAC72-909E-44A8-BF7A-A04CDED05291}" ShortID="353157211">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PlayerMaster" ID="{DE5172FF-0D88-4042-AE10-C8EFAADA6348}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="bullet_explosion" ID="{43A88DE8-5EB7-4443-AC0D-4F6E44B71D20}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.998223157051283"/>
+												<Property Name="FadeOutShape" Type="int16" Value="2"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="3.93"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.43"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>bullet_explosion.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1015204574"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="bullet_explosion" ID="{43A88DE8-5EB7-4443-AC0D-4F6E44B71D20}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 					<StateInfo>
 						<StateGroupList>
