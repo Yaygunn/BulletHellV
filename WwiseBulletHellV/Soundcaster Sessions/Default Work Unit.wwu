@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B420803F-57D8-4238-8AD5-72152E7AA220}" SchemaVersion="110">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{B420803F-57D8-4238-8AD5-72152E7AA220}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B420803F-57D8-4238-8AD5-72152E7AA220}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Squid" ID="{E2AFE4B3-90F6-4D3C-BB84-3A9F7F1AE28C}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="squidIdle" ID="{663B4560-4EA2-4E3A-BBDD-F36AE9491A7A}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="squidDeath" ID="{C81B7BF1-ED2A-4D95-9ADC-D22FB2BB9560}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="Water_Intensity" ID="{AC7CDDBA-5B3F-4B17-B2E2-47125221F507}"/>
+							<Value>71</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

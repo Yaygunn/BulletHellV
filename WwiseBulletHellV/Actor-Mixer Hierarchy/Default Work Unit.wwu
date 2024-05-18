@@ -266,7 +266,11 @@
 							</CustomState>
 							<CustomState>
 								<StateRef Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
-								<CustomState Name="" ID="{06D7CF95-B7E2-41B6-B883-9772BE2251D6}" ShortID="921448976"/>
+								<CustomState Name="" ID="{06D7CF95-B7E2-41B6-B883-9772BE2251D6}" ShortID="921448976">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64" Value="-3"/>
+									</PropertyList>
+								</CustomState>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
@@ -752,7 +756,11 @@
 							</CustomState>
 							<CustomState>
 								<StateRef Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
-								<CustomState Name="" ID="{6124216A-578B-49BB-892F-BC18EE66E018}" ShortID="689144765"/>
+								<CustomState Name="" ID="{6124216A-578B-49BB-892F-BC18EE66E018}" ShortID="689144765">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64" Value="-3"/>
+									</PropertyList>
+								</CustomState>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
@@ -761,6 +769,11 @@
 					<PropertyList>
 						<Property Name="Color" Type="int16" Value="10"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
+						<Property Name="UserAuxSendVolume0" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -769,7 +782,805 @@
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
 						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="squid_death" ID="{3C3ACE66-CFDB-4D3B-818D-9C8C9CCB35FA}" ShortID="864849103">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="squid_death" ID="{FC0EE9CD-5DCC-46CD-B595-0826A5FD0BCF}">
+									<Language>SFX</Language>
+									<AudioFile>squid_death.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="601174450"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="squid_death" ID="{FC0EE9CD-5DCC-46CD-B595-0826A5FD0BCF}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<BlendContainer Name="squid_idle" ID="{B3ACEDBB-F3CD-4304-91E1-E0B1C28F9A17}" ShortID="315549896">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="squid_idle_loop" ID="{AC65924B-F6CA-4095-B474-C30BC8C99094}" ShortID="606779159">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="squid_idle_loop" ID="{530C766B-0ABD-4A20-8950-D10086064A4C}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="379.454"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0.224437300446999"/>
+												<Property Name="LoopEnd" Type="Real64" Value="8.77031912515964"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>squid_idle_loop.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1011003347"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="squid_idle_loop" ID="{530C766B-0ABD-4A20-8950-D10086064A4C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<RandomSequenceContainer Name="squid_breathe" ID="{B15F1336-1CBD-402E-8305-4A0E3BC4B76D}" ShortID="723927870">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>50</Value>
+											</ValueList>
+										</Property>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{C318607C-74B1-4194-A7ED-F04C9F376C31}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="10"/>
+															<Property Name="Min" Type="Real64" Value="-10"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="squid_idle_breathe" ID="{F3E8A8F1-1BCC-4130-8806-6286640DAEC0}" ShortID="326545221">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>30</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_breathe" ID="{B6F80C6D-76E3-41C9-AB0C-CBB4700A0DEF}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.241701708173691"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.48473906449553"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_breathe.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="240925643"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_breathe" ID="{B6F80C6D-76E3-41C9-AB0C-CBB4700A0DEF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="squid_idle_breathe_01" ID="{847FEFA7-BB26-4598-8801-7E46EF7129DF}" ShortID="701211561">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>40</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_breathe" ID="{A434872E-199B-49D1-B98A-5F0164C8AD7C}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0863220386334609"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="3.43561713761175"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.28157311621967"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_breathe.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="214792748"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_breathe" ID="{A434872E-199B-49D1-B98A-5F0164C8AD7C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="squid_idle_breathe_02" ID="{C4690AE0-6038-484B-8835-AFB60BF8FD91}" ShortID="681179848">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>45</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_breathe" ID="{FBFA5194-A53C-4F15-ABFD-9139C05AA86B}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0863220386334609"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="5.9734850734355"/>
+														<Property Name="TrimEnd" Type="Real64" Value="7.06114276021711"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_breathe.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="902632608"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_breathe" ID="{FBFA5194-A53C-4F15-ABFD-9139C05AA86B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="silence" ID="{A7CCB949-BD9C-4BBE-947E-D766885B787A}" ShortID="189042675">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>60</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{C3D6D1C9-DC44-4846-BE96-2264214F9B75}" ShortID="294060201" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<PropertyList>
+														<Property Name="Length" Type="Real32" Value="4"/>
+														<Property Name="LengthMax" Type="Real32" Value="2"/>
+														<Property Name="LengthMin" Type="Real32" Value="-2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{C3D6D1C9-DC44-4846-BE96-2264214F9B75}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="silence_01" ID="{727F9D56-D16C-4E1D-BFCB-8AB1CF1E4491}" ShortID="1027976529">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{14947E56-67F2-42F1-A08D-A45D77265280}" ShortID="1019510299" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<PropertyList>
+														<Property Name="Length" Type="Real32" Value="4"/>
+														<Property Name="LengthMax" Type="Real32" Value="2"/>
+														<Property Name="LengthMin" Type="Real32" Value="-2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{14947E56-67F2-42F1-A08D-A45D77265280}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="silence_02" ID="{22DE8808-2E8F-4A9B-A9F8-2213EED35C67}" ShortID="474186738">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{4B739855-B58F-4C0C-BD40-07F747914F85}" ShortID="140124021" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<PropertyList>
+														<Property Name="Length" Type="Real32" Value="4"/>
+														<Property Name="LengthMax" Type="Real32" Value="2"/>
+														<Property Name="LengthMin" Type="Real32" Value="-2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{4B739855-B58F-4C0C-BD40-07F747914F85}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="squid_speech" ID="{4AC64EBC-03A0-4AAC-B7EB-3434AFA9A08D}" ShortID="374163828">
+									<PropertyList>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{D1EF90DF-D876-46D2-844B-5012C3E2988B}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="10"/>
+															<Property Name="Min" Type="Real64" Value="-10"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="squid_idle_speech" ID="{3265C53B-3C13-4E57-A6B9-E569DD57E833}" ShortID="721888740">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>30</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_speech" ID="{A8F0391B-5842-436C-B68D-BE26E4D99317}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.63929667238749"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.97975743707094"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_speech.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="500362682"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_speech" ID="{A8F0391B-5842-436C-B68D-BE26E4D99317}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="squid_idle_speech_01" ID="{D499E8D1-6EFE-4606-8FE1-C0566AB50066}" ShortID="92429673">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>40</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_speech" ID="{48E36C1E-2801-4D82-BF01-1DF200057CEC}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="1.93851249046529"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.84590131578947"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_speech.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="468071575"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_speech" ID="{48E36C1E-2801-4D82-BF01-1DF200057CEC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="squid_idle_speech_02" ID="{AD5368A3-FC5C-4F79-8A8B-03EAFA29595D}" ShortID="1024174213">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>45</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_speech" ID="{DEC06E91-3BB4-4E96-A381-E36EAEB99891}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.103112366514111"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="2.784033895881"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.04200476735316"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_speech.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="978038408"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_speech" ID="{DEC06E91-3BB4-4E96-A381-E36EAEB99891}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="squid_idle_speech_03" ID="{068AED94-B16A-40E6-8B13-2D6E7D7C890A}" ShortID="447705677">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>55</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_speech" ID="{1427C9CF-DFB0-4A7B-AF24-EFFD18088728}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.103112366514111"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="4.1657396071701"/>
+														<Property Name="TrimEnd" Type="Real64" Value="5.48557789855072"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_speech.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="857908823"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_speech" ID="{1427C9CF-DFB0-4A7B-AF24-EFFD18088728}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="squid_idle_speech_04" ID="{4F618A67-9B4E-42BA-AC23-4C6AD057B0AA}" ShortID="285732997">
+											<PropertyList>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>35</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="squid_idle_speech" ID="{8321D298-0939-47DA-B4F8-82345F3B371D}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.103112366514111"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="5.73304757818459"/>
+														<Property Name="TrimEnd" Type="Real64" Value="7.85716232837528"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>squid_idle_speech.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="86740775"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="squid_idle_speech" ID="{8321D298-0939-47DA-B4F8-82345F3B371D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="silence" ID="{67193E0B-80A5-4FAE-83D0-D81E5467DC8A}" ShortID="1070332146">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>60</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{8966D1FC-58EB-4B61-B8C0-DB7324A0866E}" ShortID="215528933" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<PropertyList>
+														<Property Name="Length" Type="Real32" Value="4"/>
+														<Property Name="LengthMax" Type="Real32" Value="2"/>
+														<Property Name="LengthMin" Type="Real32" Value="-2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{8966D1FC-58EB-4B61-B8C0-DB7324A0866E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="silence_01" ID="{11674C93-C578-4F5F-8C76-64F52EDCE515}" ShortID="330135267">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{AF70C58C-EB68-489A-8166-E66B461D8F6F}" ShortID="256692165" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<PropertyList>
+														<Property Name="Length" Type="Real32" Value="4"/>
+														<Property Name="LengthMax" Type="Real32" Value="2"/>
+														<Property Name="LengthMin" Type="Real32" Value="-2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{AF70C58C-EB68-489A-8166-E66B461D8F6F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="silence_02" ID="{F8E1AA4C-1EFB-490D-B05E-40E14705DB24}" ShortID="772805274">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>55</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{8C9DA650-D4E2-42DC-930A-82DB838EAAC7}" ShortID="10495675" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<PropertyList>
+														<Property Name="Length" Type="Real32" Value="4"/>
+														<Property Name="LengthMax" Type="Real32" Value="2"/>
+														<Property Name="LengthMin" Type="Real32" Value="-2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{8C9DA650-D4E2-42DC-930A-82DB838EAAC7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<BlendTrackList>
+								<BlendTrack Name="New Blend Track" ID="{5B2E74A0-1F0D-4E0C-A8B4-94DECC67AD4B}" ShortID="761975878">
+									<BlendTrackAssocList>
+										<BlendTrackAssoc>
+											<ItemRef Name="squid_idle_loop" ID="{AC65924B-F6CA-4095-B474-C30BC8C99094}"/>
+										</BlendTrackAssoc>
+										<BlendTrackAssoc>
+											<ItemRef Name="squid_breathe" ID="{B15F1336-1CBD-402E-8305-4A0E3BC4B76D}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>0</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+										<BlendTrackAssoc>
+											<ItemRef Name="squid_speech" ID="{4AC64EBC-03A0-4AAC-B7EB-3434AFA9A08D}"/>
+										</BlendTrackAssoc>
+									</BlendTrackAssocList>
+								</BlendTrack>
+							</BlendTrackList>
+						</BlendContainer>
+						<RandomSequenceContainer Name="squid_shoot" ID="{EF39915A-3839-4C1F-9C1E-07E3B3E0B287}" ShortID="558959494">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{1471E517-C624-405F-808F-B367E0E51417}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+													<Property Name="Min" Type="Real64" Value="-10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="squid_shoot" ID="{4D4E5ACD-A73A-4209-97FB-976083F669F3}" ShortID="237750553">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="squid_shoot" ID="{5555F9B4-AD9D-4D5F-8498-E640DCFE6143}">
+											<Language>SFX</Language>
+											<AudioFile>squid_shoot.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="516410857"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="squid_shoot" ID="{5555F9B4-AD9D-4D5F-8498-E640DCFE6143}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="squid_shoot2" ID="{56C8C55D-45BE-4A86-8FE9-752217023CD4}" ShortID="614399388">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="squid_shoot2" ID="{E0B75E42-C5F5-4DFA-8FCB-76C786191324}">
+											<Language>SFX</Language>
+											<AudioFile>squid_shoot2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1004891463"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="squid_shoot2" ID="{E0B75E42-C5F5-4DFA-8FCB-76C786191324}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="squid_shoot3" ID="{E1A54B74-DA27-451F-B18C-A3F7DD10EB05}" ShortID="391210933">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="squid_shoot3" ID="{681488CE-41CC-460E-B10A-7014B8659C1E}">
+											<Language>SFX</Language>
+											<AudioFile>squid_shoot3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="502511595"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="squid_shoot3" ID="{681488CE-41CC-460E-B10A-7014B8659C1E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
 					<StateInfo>
 						<StateGroupList>
 							<StateGroupInfo>
@@ -783,7 +1594,11 @@
 							</CustomState>
 							<CustomState>
 								<StateRef Name="SFX_Paused" ID="{780B6450-9B20-4B4C-B033-1857CDA755CF}"/>
-								<CustomState Name="" ID="{93E00B4B-7CA1-4053-8AD7-A60F494EF450}" ShortID="272887930"/>
+								<CustomState Name="" ID="{93E00B4B-7CA1-4053-8AD7-A60F494EF450}" ShortID="272887930">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64" Value="-3"/>
+									</PropertyList>
+								</CustomState>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
@@ -894,6 +1709,32 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="ui_close" ID="{89E10624-3BBB-4CB4-870E-0EB5B5EB8626}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="ui_dash_ready" ID="{3B4A36AA-8C79-4D88-AF0D-CB1277275F29}" ShortID="787142472">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CF33D720-9EF3-451C-8C5B-44BD2F9FE118}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ui_dash_ready" ID="{79200827-43A5-4B51-B243-C5E25B80EA41}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.273599904397706"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>ui_dash_ready.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="268045550"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ui_dash_ready" ID="{79200827-43A5-4B51-B243-C5E25B80EA41}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -1025,6 +1866,11 @@
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="OverrideOutput" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>8</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
