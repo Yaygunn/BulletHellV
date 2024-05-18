@@ -24,7 +24,7 @@ namespace GH.Scriptables
         [field: BoxGroup("Modifications"), SerializeField]
         public float FireRateIncrease { get; private set; }
 
-        [field: BoxGroup("Modifications"), SerializeField, MinValue(1f)]
+        [field: BoxGroup("Modifications"), SerializeField]
         public float FireRateMultiplier { get; private set; } = 1f;
 
         public string GetDescription()

@@ -41,9 +41,11 @@ namespace BH.Runtime.Systems
         private bool _isInPool;
         protected float _initialSize;
         protected float _currentSize;
-        private float _currentSpeed;
+        protected float _currentSpeed;
         private CoroutineHandle _speedCheckCoroutine;
         private int _bounces;
+        private bool _hasEvolved;
+        private bool _hasActivated;
         private IProjectileFactory _projectileFactory;
         
         private ProjectileDataSO _currentProjData;
@@ -176,14 +178,22 @@ namespace BH.Runtime.Systems
             CurrentDirection = Vector2.Reflect(CurrentDirection, inNormal).normalized;
             _bounces++;
 
-            if (_evolutionProjData != null && _bounces >= _currentProjData.EvolutionBounces)
+            if (!_hasEvolved && _bounces >= _currentProjData.EvolutionBounces)
             {
-                Projectile projectile = _projectileFactory.CreateProjectile(_evolutionProjData.GetProjectileType());
-                projectile.SetUp(transform.position, CurrentDirection, _evolutionProjData,
-                    null, _weaponMod, true);
-                ReturnToPool();
+                if (_evolutionProjData != null)
+                {
+                    Projectile projectile = _projectileFactory.CreateProjectile(_evolutionProjData.GetProjectileType());
+                    projectile.SetUp(transform.position, CurrentDirection, _evolutionProjData,
+                        null, _weaponMod, true);
+                    ReturnToPool();
+                }
+                else
+                {
+                    HandleEvolution();
+                    _hasEvolved = true;
+                }
             }
-            else if (_bounces >= _currentProjData.ActivationBounces)
+            else if (!_hasActivated && _bounces >= _currentProjData.ActivationBounces)
             {
                 HandleActivation();
             }
@@ -217,6 +227,8 @@ namespace BH.Runtime.Systems
             _evolutionProjData = null;
             _weaponMod = null;
             _bounces = 0;
+            _hasEvolved = false;
+            _hasActivated = false;
             _isInPool = true;
         }
     }
