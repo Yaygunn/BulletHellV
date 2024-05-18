@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BH.Runtime.Entities;
 using BH.Runtime.Managers;
+using BH.Scriptables;
 using BH.Scriptables.Databases;
 using BH.Scripts.Runtime.UI;
 using BH.Utilities.Extensions;
@@ -63,7 +64,9 @@ namespace BH.Runtime.Systems
         private List<UpgradeOption> GenerateUpgradeOptions()
         {
             List<UpgradeOption> options = new();
-            for (int i = 0; i < 3; i++)
+            HashSet<string> usedDescriptions = new();
+
+            while (options.Count < 3)
             {
                 UpgradeType upgradeType = GetRandomUpgradeType();
                 ProjectileType projectileType = GetRandomValidProjectileType(upgradeType);
@@ -71,21 +74,23 @@ namespace BH.Runtime.Systems
                 if (projectileType is ProjectileType.PlayerBasicBullet or ProjectileType.EnemyBasicBullet)
                 {
                     Debug.Log("No valid projectile types found.");
-                    i--;
                     continue;
                 }
 
                 string description;
                 WeaponUpgradeSO weaponUpgrade = null;
                 StatUpgradeSO statUpgrade = null;
+                ProjectileDataSO projectileData = null;
 
                 switch (upgradeType)
                 {
                     case UpgradeType.AddBullet:
-                        description = $"Add {projectileType}";
+                        projectileData = GetProjectileEvolutionData(projectileType);
+                        description = $"Add {projectileData.Description}";
                         break;
                     case UpgradeType.UpgradeBullet:
-                        description = $"Upgrade {projectileType}";
+                        projectileData = GetNextProjectileEvolutionData(projectileType);
+                        description = $"Upgrade to {projectileData.Description}";
                         break;
                     case UpgradeType.UpgradeWeapon:
                         weaponUpgrade = GetRandomWeaponUpgrade();
@@ -99,8 +104,13 @@ namespace BH.Runtime.Systems
                         throw new ArgumentOutOfRangeException();
                 }
 
-                options.Add(new UpgradeOption(upgradeType, projectileType, description, weaponUpgrade, statUpgrade));
+                if (!usedDescriptions.Contains(description))
+                {
+                    options.Add(new UpgradeOption(upgradeType, projectileType, description, projectileData, weaponUpgrade, statUpgrade));
+                    usedDescriptions.Add(description);
+                }
             }
+
             return options;
         }
 
@@ -113,10 +123,10 @@ namespace BH.Runtime.Systems
             switch (selectedUpgrade.Type)
             {
                 case UpgradeType.AddBullet:
-                    playerWeapon.AddBulletEvolution(selectedUpgrade.ProjectileType);
+                    playerWeapon.AddBulletEvolution(selectedUpgrade.ProjectileType, selectedUpgrade.ProjectileData);
                     break;
                 case UpgradeType.UpgradeBullet:
-                    playerWeapon.UpgradeEvolutions(selectedUpgrade.ProjectileType);
+                    playerWeapon.UpgradeEvolutions(selectedUpgrade.ProjectileType, selectedUpgrade.ProjectileData);
                     break;
                 case UpgradeType.UpgradeWeapon:
                     playerWeapon.UpgradeWeapon(selectedUpgrade.WeaponUpgrade);
@@ -127,17 +137,32 @@ namespace BH.Runtime.Systems
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-    
+
             _levelManager.TogglePause(false);
             _levelStateHandler.SetLevelState(LevelState.NormalRound);
         }
 
-
         private UpgradeType GetRandomUpgradeType()
         {
-            return (UpgradeType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(UpgradeType)).Length);
+            List<UpgradeType> validUpgradeTypes = new()
+            {
+                UpgradeType.UpgradeWeapon,
+                UpgradeType.UpgradePlayer
+            };
+
+            WeaponComponent playerWeapon = _levelManager.Player.Weapon;
+            if (playerWeapon.CanAddBulletEvolution())
+            {
+                validUpgradeTypes.Add(UpgradeType.AddBullet);
+            }
+            if (playerWeapon.CanUpgradeAnyEvolution())
+            {
+                validUpgradeTypes.Add(UpgradeType.UpgradeBullet);
+            }
+
+            return validUpgradeTypes[UnityEngine.Random.Range(0, validUpgradeTypes.Count)];
         }
-        
+
         private ProjectileType GetRandomValidProjectileType(UpgradeType upgradeType)
         {
             List<ProjectileType> validTypes = Enum.GetValues(typeof(ProjectileType))
@@ -149,11 +174,11 @@ namespace BH.Runtime.Systems
 
             if (upgradeType == UpgradeType.AddBullet)
             {
-                validTypes = validTypes.Where(type => playerWeapon.CanAddBulletEvolution()).ToList();
+                validTypes = validTypes.Where(type => playerWeapon.CanAddBulletEvolution(type)).ToList();
             }
             else if (upgradeType == UpgradeType.UpgradeBullet)
             {
-                validTypes = validTypes.Where(type => playerWeapon.CanUpgradeEvolution(type)).ToList();
+                validTypes = validTypes.Where(type => playerWeapon.HasBulletEvolution(type) && playerWeapon.CanUpgradeEvolution(type)).ToList();
             }
 
             if (validTypes.Count == 0)
@@ -165,7 +190,23 @@ namespace BH.Runtime.Systems
             validTypes.Shuffle();
             return validTypes.First();
         }
-        
+
+        private ProjectileDataSO GetProjectileEvolutionData(ProjectileType type)
+        {
+            WeaponComponent playerWeapon = _levelManager.Player.Weapon;
+            int currentLevel = playerWeapon.GetProjectileLevel(type);
+            _database.TryGetProjectileData(type, currentLevel, out ProjectileDataSO projectileData);
+            return projectileData;
+        }
+
+        private ProjectileDataSO GetNextProjectileEvolutionData(ProjectileType type)
+        {
+            WeaponComponent playerWeapon = _levelManager.Player.Weapon;
+            int currentLevel = playerWeapon.GetProjectileLevel(type);
+            _database.TryGetProjectileData(type, currentLevel + 1, out ProjectileDataSO projectileData);
+            return projectileData;
+        }
+
         private WeaponUpgradeSO GetRandomWeaponUpgrade()
         {
             WeaponUpgradeSO[] upgrades = _database.WeaponUpgradeData.ToArray();
