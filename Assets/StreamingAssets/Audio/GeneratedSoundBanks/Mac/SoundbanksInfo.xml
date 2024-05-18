@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{328FC199-391A-B9A7-D358-6E96ABD36C9D}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{892FCDA9-7ECF-6F91-A29B-A584FE35C81B}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
@@ -59,7 +59,7 @@
 				</File>
 				<File Id="671312817" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ui_open.wav</ShortName>
-					<CachePath>SFX/ui_open_B621806C.wem</CachePath>
+					<CachePath>SFX/ui_open_75454800.wem</CachePath>
 				</File>
 				<File Id="785141224" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
@@ -67,7 +67,7 @@
 				</File>
 				<File Id="846594018" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ui_nav.wav</ShortName>
-					<CachePath>SFX/ui_nav_FD7744A0.wem</CachePath>
+					<CachePath>SFX/ui_nav_4FEFA156.wem</CachePath>
 				</File>
 				<File Id="872505889" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Player\dash-03.wav</ShortName>
@@ -83,7 +83,7 @@
 				</File>
 				<File Id="1042962566" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ui_close.wav</ShortName>
-					<CachePath>SFX/ui_close_4A479DDC.wem</CachePath>
+					<CachePath>SFX/ui_close_B71D557D.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -181,7 +181,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{E16E36C7-AD4D-C991-C598-D388F31C3EFC}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{9C896C91-E72B-396A-34D7-9BD6E744E1CE}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -228,6 +228,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs"/>
 			</AuxBusses>
 			<GameParameters>
+				<GameParameter Id="963702167" Name="ply_health"/>
 				<GameParameter Id="1348429472" Name="Water_Intensity"/>
 			</GameParameters>
 			<StateGroups>
@@ -236,6 +237,16 @@
 						<State Id="748895195" Name="None"/>
 						<State Id="3587590657" Name="SFX_Gameplay"/>
 						<State Id="3762574363" Name="SFX_Paused"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="792781730" Name="Music_System">
+					<States>
+						<State Id="320199936" Name="Boss_01"/>
+						<State Id="320199938" Name="Boss_03"/>
+						<State Id="320199939" Name="Boss_02"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2764240573" Name="Combat"/>
+						<State Id="3753286132" Name="Calm"/>
 					</States>
 				</StateGroup>
 				<StateGroup Id="3991942870" Name="Music">
@@ -252,5 +263,5 @@
 			<Path>MUSIC.bnk</Path>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{5F6A45B4-9D35-4394-8A30-3BAE7DDA43D7}</FileHash>
+	<FileHash>{778F76E3-CBC8-D94D-1D8B-9664B2CE81AB}</FileHash>
 </SoundBanksInfo>
