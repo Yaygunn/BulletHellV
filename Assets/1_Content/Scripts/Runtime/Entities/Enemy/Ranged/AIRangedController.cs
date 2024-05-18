@@ -25,6 +25,8 @@ namespace BH.Runtime.Entities
 
         public Transform AttackTarget { get; private set; }
 
+        [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
+        public AnimatorParams AnimatorParams { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -44,6 +46,7 @@ namespace BH.Runtime.Entities
         private EnemySpawner _spawner;
 
         #region Components
+        public Animator Animator { get; private set; }
         public MovementComponent Movement { get; private set; }
         public ShootPatternComponent ShootPattern { get; private set; }
         #endregion
@@ -65,6 +68,7 @@ namespace BH.Runtime.Entities
         {
             base.Awake();
 
+            Animator = GetComponentInChildren<Animator>();
             Movement = VerifyComponent<MovementComponent>();
             ShootPattern = VerifyComponent<ShootPatternComponent>();
 
@@ -139,9 +143,13 @@ namespace BH.Runtime.Entities
         
         private void OnDied()
         {
+            EnemyHFSM.ChangeState(DeadState);
+        }
+        
+        public void ReturnToPool()
+        {
             Stats.ResetStats();
             CurrentTouchDamage = _initialTouchDamage;
-            EnemyHFSM.ChangeState(BusyState);
             _spawner.EntityDied(this);
 
             if (_inPool) return;

@@ -15,6 +15,10 @@ namespace BH.Runtime.Entities
         public int CurrentDamage { get; private set; }
         [FoldoutGroup("Stats"), SerializeField]
         private int _initialDamage = 20;
+
+        [field: FoldoutGroup("Stats"), SerializeField]
+        public float AttackRange { get; private set; } = 1f;
+
         [field: FoldoutGroup("Stats"), SerializeField]
         public float PushForce { get; private set; } = 10f;
         
@@ -23,6 +27,8 @@ namespace BH.Runtime.Entities
 
         public Transform AttackTarget { get; private set; }
 
+        [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
+        public AnimatorParams AnimatorParams { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -39,13 +45,14 @@ namespace BH.Runtime.Entities
         private EnemySpawner _spawner;
 
         #region Components
+        public Animator Animator { get; private set; }
         public MovementComponent Movement { get; private set; }
         #endregion
 
         #region State Machine
         public StateMachine<MeleeAIState> EnemyHFSM { get; private set; }
 
-        public MeleeAIIdleState IdleState { get; private set; }
+        public MeleeAIAttackState AttackState { get; private set; }
         public MeleeAIChaseState ChaseState { get; private set; }
         
         public MeleeAIBusyState BusyState { get; private set; }
@@ -59,18 +66,19 @@ namespace BH.Runtime.Entities
         {
             base.Awake();
 
+            Animator = GetComponentInChildren<Animator>();
             Movement = VerifyComponent<MovementComponent>();
 
             EnemyHFSM = new StateMachine<MeleeAIState>();
 
             // Active States
-            IdleState = new MeleeAIIdleState(this, EnemyHFSM);
+            AttackState = new MeleeAIAttackState(this, EnemyHFSM);
             ChaseState = new MeleeAIChaseState(this, EnemyHFSM);
             
             BusyState = new MeleeAIBusyState(this, EnemyHFSM);
             DeadState = new MeleeAIDeadState(this, EnemyHFSM);
 
-            EnemyHFSM.Initialize(IdleState);
+            EnemyHFSM.Initialize(BusyState);
 
             // Plan to move to Enemy Spawner
             Stats.ResetStats();
@@ -132,9 +140,13 @@ namespace BH.Runtime.Entities
         
         private void OnDied()
         {
+            EnemyHFSM.ChangeState(DeadState);
+        }
+        
+        public void ReturnToPool()
+        {
             Stats.ResetStats();
             CurrentDamage = _initialDamage;
-            EnemyHFSM.ChangeState(BusyState);
             _spawner.EntityDied(this);
 
             if (_inPool) return;

@@ -15,11 +15,11 @@ namespace BH.Runtime.Entities
         
         public virtual void On2DCollisionEnter(Collision2D other)
         {
-            if (other.gameObject.TryGetComponent(out IDamageable damageable))
-            {
-                Vector2 direction = (other.transform.position - _meleeAI.transform.position).normalized;
-                damageable.HandleDamageWithForce(_meleeAI.CurrentDamage, direction, _meleeAI.PushForce);
-            }
+            // if (other.gameObject.TryGetComponent(out IDamageable damageable))
+            // {
+            //     Vector2 direction = (other.transform.position - _meleeAI.transform.position).normalized;
+            //     damageable.HandleDamageWithForce(_meleeAI.CurrentDamage, direction, _meleeAI.PushForce);
+            // }
         }
     }
 }

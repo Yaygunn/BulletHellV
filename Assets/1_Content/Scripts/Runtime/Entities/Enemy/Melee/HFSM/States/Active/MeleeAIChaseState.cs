@@ -13,7 +13,9 @@ public class MeleeAIChaseState : MeleeAIActiveState
         base.Enter();
         
         _meleeAI.StateName = "Chase";
+        _meleeAI.Animator.SetBool(_meleeAI.AnimatorParams.IsMovingBool, true);
     }
+    
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -23,20 +25,19 @@ public class MeleeAIChaseState : MeleeAIActiveState
         
         ShouldIdle();
     }
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
+    
     public override void Exit()
     {
         base.Exit();
+        
+        _meleeAI.Animator.SetBool(_meleeAI.AnimatorParams.IsMovingBool, false);
     }
     
     private void ShouldIdle()
     {
         if (!_meleeAI.AttackTarget.gameObject.activeSelf)
         {
-            _stateMachine.ChangeState(_meleeAI.IdleState);
+            _stateMachine.ChangeState(_meleeAI.AttackState);
         }
     }
     

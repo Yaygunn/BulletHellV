@@ -46,7 +46,7 @@ namespace BH.Runtime.Entities
         {
             AIMeleeController enemy = _aiFactory.CreateAIMelee();
             enemy.SetUp(this);
-            enemy.EnemyHFSM.ChangeState(enemy.IdleState);
+            enemy.EnemyHFSM.ChangeState(enemy.ChaseState);
 
             Vector2 spawnPosition = GetRandomSpawnOffCamera();
             enemy.transform.position = spawnPosition;
