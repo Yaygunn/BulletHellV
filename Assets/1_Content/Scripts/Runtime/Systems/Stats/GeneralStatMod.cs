@@ -18,5 +18,15 @@ namespace BH.Runtime.Systems
         public float IncreasedSpeed { get; set; }
         [field: SerializeField]
         public float SpeedMultiplier { get; set; } = 1f;
+        
+        public void Reset()
+        {
+            IncreasedHealth = 0;
+            HealthMultiplier = 1f;
+            IncreasedShield = 0;
+            ShieldMultiplier = 1f;
+            IncreasedSpeed = 0;
+            SpeedMultiplier = 1f;
+        }
     }
 }

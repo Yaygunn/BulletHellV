@@ -70,6 +70,20 @@ namespace BH.Runtime.Managers
             _signalBus.TryUnsubscribe<PlayerDiedSignal>(OnPlayerDied);
         }
         
+        public void TogglePause(bool pause)
+        {
+            if (pause)
+            {
+                _gameState.SetGameState(GameState.Paused);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                _gameState.SetGameState(GameState.Playing);
+                Time.timeScale = 1f;
+            }
+        }
+        
         private void SpawnPlayer()
         {
             SetLevelState(LevelState.SpawningPlayer);

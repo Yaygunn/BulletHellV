@@ -55,6 +55,7 @@ namespace BH.Runtime.Systems
             if (levelState != LevelState.Upgrading)
                 return;
 
+            _levelManager.TogglePause(true);
             _generatedChoices = GenerateUpgradeOptions();
             _signalBus.Fire(new UpgradesShowSignal(_generatedChoices));
         }
@@ -127,6 +128,7 @@ namespace BH.Runtime.Systems
                     throw new ArgumentOutOfRangeException();
             }
     
+            _levelManager.TogglePause(false);
             _levelStateHandler.SetLevelState(LevelState.NormalRound);
         }
 

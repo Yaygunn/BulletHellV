@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BH.Runtime.Managers;
 using DP.Utilities;
+using MEC;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -56,14 +58,20 @@ namespace BH.Scripts.Runtime.UI
             {
                 _upgradeUIs[i].SetDescription(signal.UpgradeOptions[i].Description);
             }
-            
-            Tools.ToggleVisibility(_canvasGroup, true);
+
+            StartCoroutine(ShowUpgradeOptionsDelayCoroutine());
         }
 
         private void OnUpgradeButtonClicked(int buttonIndex)
         {
             _signalBus.Fire(new UpgradeSelectedSignal(buttonIndex));
             Tools.ToggleVisibility(_canvasGroup, false);
+        }
+        
+        private IEnumerator ShowUpgradeOptionsDelayCoroutine()
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+            Tools.ToggleVisibility(_canvasGroup, true);
         }
     }
 }

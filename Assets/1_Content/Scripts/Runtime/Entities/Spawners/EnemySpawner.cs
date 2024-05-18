@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BH.Runtime.Factories;
 using BH.Runtime.Managers;
 using MEC;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -15,6 +16,7 @@ namespace BH.Runtime.Entities
         private bool _loopWaves = true;
         [SerializeField]
         private Wave[] _waves;
+        [SerializeField, ReadOnly]
         private int _currentWaveIndex = 0;
         
         private IAIFactory _aiFactory;
@@ -52,6 +54,11 @@ namespace BH.Runtime.Entities
             _spawnedEnemies.Add(enemy);
         }
         
+        public Wave GetCurrentWave()
+        {
+            return _waves[_currentWaveIndex];
+        }
+        
         public void EntityDied(Entity entity)
         {
             _spawnedEnemies.Remove(entity);
@@ -69,7 +76,7 @@ namespace BH.Runtime.Entities
         {
             if (_currentWaveIndex >= _waves.Length)
             {
-                if (_waves.Length > 0 && _loopWaves)
+                if (_loopWaves)
                 {
                     _currentWaveIndex = 0;
                 }
@@ -98,13 +105,17 @@ namespace BH.Runtime.Entities
             _levelStateHandler.SetLevelState(LevelState.Upgrading);
 
             _currentWaveIndex++;
-            if (_currentWaveIndex < _waves.Length && _loopWaves)
+            if (_currentWaveIndex >= _waves.Length)
             {
-                _currentWaveIndex = 0;
-            }
-            else
-            {
-                AllWavesCompletedEvent?.Invoke();
+                if (_loopWaves)
+                {
+                    _currentWaveIndex = 0;
+                }
+                else
+                {
+                    AllWavesCompletedEvent?.Invoke();
+                    yield break;
+                }
             }
         }
         

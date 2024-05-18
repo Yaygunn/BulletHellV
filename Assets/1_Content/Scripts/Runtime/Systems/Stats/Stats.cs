@@ -54,6 +54,8 @@ namespace BH.Runtime.Systems
             
             CurrentSpeed = _initialSpeed;
             SpeedChangedEvent?.Invoke(_initialSpeed, CurrentSpeed);
+            
+            StatMod.Reset();
         }
 
         public void TakeDamage(int amount)
@@ -78,6 +80,16 @@ namespace BH.Runtime.Systems
         public void ModifyStat(StatUpgradeSO statModification)
         {
             statModification.ApplyUpgrade(StatMod);
+            UpdateMaxHealth();
+            UpdateMaxShield();
+            UpdateSpeed();
+        }
+        
+        public void ModifyStatsManual(float healthMultiplier, float shieldMultiplier, float speedMultiplier)
+        {
+            StatMod.HealthMultiplier *= healthMultiplier;
+            StatMod.ShieldMultiplier *= shieldMultiplier;
+            StatMod.SpeedMultiplier *= speedMultiplier;
             UpdateMaxHealth();
             UpdateMaxShield();
             UpdateSpeed();
