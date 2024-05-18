@@ -18,6 +18,9 @@ namespace BH.Runtime.Entities.States.Active
         {
             base.Enter();
             
+            _rangedAI.StateName = "Move";
+            _rangedAI.Animator.SetBool(_rangedAI.AnimatorParams.IsMovingBool, true);
+            
             _movePoint = GetNextValidPoint();
             _rangedAI.Movement.MoveTo(_movePoint, _rangedAI.Stats.CurrentSpeed, OnReachDestination);
         }
@@ -26,6 +29,7 @@ namespace BH.Runtime.Entities.States.Active
         {
             base.Exit();
             
+            _rangedAI.Animator.SetBool(_rangedAI.AnimatorParams.IsMovingBool, false);
             _rangedAI.Movement.Stop();
         }
         

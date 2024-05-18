@@ -14,6 +14,9 @@ namespace BH.Runtime.Entities
     {
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
+        
+        [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
+        public AnimatorParams AnimatorParams { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -40,6 +43,7 @@ namespace BH.Runtime.Entities
 
         #region Components
         
+        public Animator Animator { get; private set; }
         public MovementComponent Movement { get; private set; }
         public DashComponent Dash { get; private set; }
         public WeaponComponent Weapon { get; private set; }
@@ -64,6 +68,7 @@ namespace BH.Runtime.Entities
         {
             base.Awake();
             
+            Animator = GetComponentInChildren<Animator>();
             Movement = VerifyComponent<MovementComponent>();
             Dash = VerifyComponent<DashComponent>();
             Weapon = VerifyComponent<WeaponComponent>();
@@ -140,8 +145,11 @@ namespace BH.Runtime.Entities
         
         private void OnDied()
         {
-            // TODO: need to request state change here too maybe?
             PlayerHFSM.ChangeState(DeadState);
+        }
+        
+        public void HandlePlayerDeath()
+        {
             _signalBus.Fire(new PlayerDiedSignal());
         }
     }

@@ -4,6 +4,9 @@ namespace BH.Runtime.Entities
 {
     public class RangedAIShootState : RangedAIActiveState
     {
+        private float _shootTimer;
+        private float _shootDuration;
+        
         public RangedAIShootState(AIRangedController rangedController, StateMachine<RangedAIState> stateMachine) : base(rangedController, stateMachine)
         {
         }
@@ -11,6 +14,9 @@ namespace BH.Runtime.Entities
         public override void Enter()
         {
             base.Enter();
+            
+            _rangedAI.StateName = "Shoot";
+            _rangedAI.Animator.SetTrigger(_rangedAI.AnimatorParams.IsAttackingTrigger);
             
             _rangedAI.ShootPattern.ShootPatternCompletedEvent += OnShootPatternCompleted;
             _rangedAI.ShootPattern.StartPattern();

@@ -14,6 +14,7 @@ namespace BH.Runtime.Entities
             base.Enter();
             
             _player.StateName = "Move";
+            _player.Animator.SetBool(_player.AnimatorParams.IsMovingBool, true);
         }
 
         public override void LogicUpdate()
@@ -39,6 +40,8 @@ namespace BH.Runtime.Entities
         public override void Exit()
         {
             base.Exit();
+            
+            _player.Animator.SetBool(_player.AnimatorParams.IsMovingBool, false);
         }
         
         private bool ShouldIdle()
