@@ -37,6 +37,21 @@ namespace AK
             } // namespace STATE
         } // namespace MUSIC
 
+        namespace MUSIC_SYSTEM
+        {
+            static const AkUniqueID GROUP = 792781730U;
+
+            namespace STATE
+            {
+                static const AkUniqueID BOSS_01 = 320199936U;
+                static const AkUniqueID BOSS_02 = 320199939U;
+                static const AkUniqueID BOSS_03 = 320199938U;
+                static const AkUniqueID CALM = 3753286132U;
+                static const AkUniqueID COMBAT = 2764240573U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace MUSIC_SYSTEM
+
         namespace SFX
         {
             static const AkUniqueID GROUP = 393239870U;
@@ -53,6 +68,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID PLY_HEALTH = 963702167U;
         static const AkUniqueID WATER_INTENSITY = 1348429472U;
     } // namespace GAME_PARAMETERS
 
