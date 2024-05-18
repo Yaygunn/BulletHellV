@@ -93,6 +93,16 @@
 						</Transition>
 					</TransitionList>
 				</StateGroup>
+				<StateGroup Name="Music_System" ID="{8FD91D1E-91FB-4652-A7CA-F04D26AC6FC5}">
+					<ChildrenList>
+						<State Name="None" ID="{F800D592-9F28-4DB8-BE7F-C7339F9CFA89}"/>
+						<State Name="Boss_01" ID="{BC74FA59-6E10-4715-8FC9-6D0F10C49399}"/>
+						<State Name="Boss_02" ID="{48183779-11FF-4C24-A1D6-A0944BC70937}"/>
+						<State Name="Boss_03" ID="{07E53F39-F0FD-4F0D-BB63-6B367FDE542B}"/>
+						<State Name="Combat" ID="{83D5B964-90AC-4A7B-8811-831C2BD3E45D}"/>
+						<State Name="Calm" ID="{E1FF79E9-7AA3-4A01-88F8-AC32E8609CE9}"/>
+					</ChildrenList>
+				</StateGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</States>
