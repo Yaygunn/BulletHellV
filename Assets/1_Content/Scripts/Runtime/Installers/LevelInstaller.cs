@@ -18,9 +18,6 @@ namespace BH.Runtime.Installers
         [BoxGroup("Player"), SerializeField, Tooltip("Name of the Player Prefab asset file in the resources folder.")]
         private string _playerObjectName = "Player";
         
-        [BoxGroup("Boss")]
-        private string _enemyBossName = "Enemies/AIBoss";
-        
         [BoxGroup("Projectiles"), SerializeField]
         private int _initialPoolSize = 50;
         
@@ -52,12 +49,6 @@ namespace BH.Runtime.Installers
                     .NonLazy();
             }
             Container.Bind<IAIFactory>().To<AIFactory>().AsSingle();
-            
-            // Boss
-            if (Tools.TryLoadResource(_enemyBossName, out GameObject bossPrefab))
-            {
-                Container.Bind<IBossFactory>().To<BossFactory>().AsSingle().WithArguments(bossPrefab);
-            }
             
             // Projectiles
             BindProjectilePools();

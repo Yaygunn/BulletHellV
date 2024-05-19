@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using BH.Runtime.Entities.States;
 using BH.Runtime.Entities.States.Active;
 using BH.Runtime.Factories;
 using BH.Runtime.Managers;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
-using BH.Scriptables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -23,9 +22,6 @@ namespace BH.Runtime.Entities
         
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
-        
-        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
-        public List<ProjectilePatternDataSO> ProjectilePatterns { get; private set; }
 
         public Transform AttackTarget { get; private set; }
 

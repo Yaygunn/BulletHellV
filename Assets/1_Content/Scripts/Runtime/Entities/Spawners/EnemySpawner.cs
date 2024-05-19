@@ -12,18 +12,14 @@ namespace BH.Runtime.Entities
 {
     public class EnemySpawner : Entity
     {
-        [BoxGroup("Waves"), SerializeField]
+        [SerializeField]
         private bool _loopWaves = true;
-        [BoxGroup("Waves"), SerializeField]
+        [SerializeField]
         private Wave[] _waves;
-        [BoxGroup("Waves"), SerializeField, ReadOnly]
+        [SerializeField, ReadOnly]
         private int _currentWaveIndex = 0;
-        
-        [BoxGroup("Boss"), SerializeField]
-        private Vector2 _bossSpawnPoint;
 
         private IAIFactory _aiFactory;
-        private IBossFactory _bossFactory;
         private ILevelStateHandler _levelStateHandler;
         private List<Entity> _spawnedEnemies = new();
         private bool _spawnerRunning;
@@ -35,10 +31,9 @@ namespace BH.Runtime.Entities
         public event Action AllWavesCompletedEvent;
 
         [Inject]
-        public void Construct(IAIFactory aiFactory, IBossFactory bossFactory, ILevelStateHandler levelStateHandler)
+        public void Construct(IAIFactory aiFactory, ILevelStateHandler levelStateHandler)
         {
             _aiFactory = aiFactory;
-            _bossFactory = bossFactory;
             _levelStateHandler = levelStateHandler;
             _levelStateHandler.OnLevelStateChanged += OnLevelStateChanged;
         }
@@ -81,12 +76,6 @@ namespace BH.Runtime.Entities
         {
             _spawnedEnemies.Remove(entity);
         }
-        
-        public void BossDied(AIBossController boss)
-        {
-            Destroy(boss.gameObject);
-            _levelStateHandler.SetLevelState(LevelState.GameOver);
-        }
 
         private void OnLevelStateChanged(LevelState levelState)
         {
@@ -112,7 +101,7 @@ namespace BH.Runtime.Entities
                 }
                 else
                 {
-                    AllWavesCompleted();
+                    AllWavesCompletedEvent?.Invoke();
                     yield break;
                 }
             }
@@ -154,7 +143,7 @@ namespace BH.Runtime.Entities
                 }
                 else
                 {
-                    AllWavesCompleted();
+                    AllWavesCompletedEvent?.Invoke();
                     yield break;
                 }
             }
@@ -168,14 +157,6 @@ namespace BH.Runtime.Entities
             {
                 yield return Timing.WaitForOneFrame;
             }
-        }
-        
-        private void AllWavesCompleted()
-        {
-            AllWavesCompletedEvent?.Invoke();
-
-            AIBossController boss = _bossFactory.CreateBoss();
-            boss.SetUp(this);
         }
 
         private Vector2 GetRandomSpawnOffCamera()
