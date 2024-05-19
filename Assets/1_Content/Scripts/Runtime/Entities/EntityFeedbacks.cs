@@ -13,5 +13,6 @@ namespace BH.Runtime.Entities
         public MMF_Player DieFeedbackPlayer { get; private set; }
         [field: SerializeField]
         public MMF_Player RespawnFeedbackPlayer { get; private set; }
+
     }
 }

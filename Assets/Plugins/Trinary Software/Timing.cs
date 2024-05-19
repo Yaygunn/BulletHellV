@@ -11,12 +11,12 @@ using UnityEngine.Profiling;
 // /////////////////////////////////////////////////////////////////////////////////////////
 //                              More Effective Coroutines Pro
 //                                        v3.11.0
-// 
+//
 // This is an improved implementation of coroutines that boasts zero per-frame memory allocations,
 // runs about twice as fast as Unity's built in coroutines, and has a range of extra features.
-// 
+//
 // For manual, support, or upgrade guide visit http://trinary.tech/
-// 
+//
 // Created by Teal Rogers
 // Trinary Software
 // All rights preserved
@@ -121,7 +121,7 @@ namespace MEC
         /// </summary>
         public static event System.Action OnPreExecute;
         /// <summary>
-        /// You can use "yield return Timing.WaitForOneFrame;" inside a coroutine function to go to the next frame. 
+        /// You can use "yield return Timing.WaitForOneFrame;" inside a coroutine function to go to the next frame.
         /// </summary>
         public const float WaitForOneFrame = float.NegativeInfinity;
         /// <summary>
@@ -1641,7 +1641,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="handle">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, CoroutineHandle handle, SingletonBehavior behaviorOnCollision)
@@ -1678,7 +1678,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, GameObject gameObj, SingletonBehavior behaviorOnCollision)
@@ -1691,7 +1691,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, int layer, SingletonBehavior behaviorOnCollision)
@@ -1734,7 +1734,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, string tag, SingletonBehavior behaviorOnCollision)
@@ -1773,13 +1773,13 @@ namespace MEC
         }
 
         /// <summary>
-        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that 
+        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that
         /// tag and layer.
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, GameObject gameObj, string tag, SingletonBehavior behaviorOnCollision)
@@ -1789,13 +1789,13 @@ namespace MEC
         }
 
         /// <summary>
-        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that 
+        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that
         /// tag and layer.
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, int layer, string tag, SingletonBehavior behaviorOnCollision)
@@ -1813,7 +1813,7 @@ namespace MEC
 
             if (behaviorOnCollision == SingletonBehavior.AbortAndUnpause)
                 ResumeCoroutines(layer, tag);
-            
+
             if (behaviorOnCollision == SingletonBehavior.Abort || behaviorOnCollision == SingletonBehavior.AbortAndUnpause)
             {
                 var matchesEnum = Instance._taggedProcesses[tag].GetEnumerator();
@@ -1848,7 +1848,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="handle">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, CoroutineHandle handle, Segment segment,
@@ -1887,7 +1887,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, Segment segment, GameObject gameObj,
@@ -1902,7 +1902,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, Segment segment, int layer, SingletonBehavior behaviorOnCollision)
@@ -1946,7 +1946,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, Segment segment, string tag, SingletonBehavior behaviorOnCollision)
@@ -1992,7 +1992,7 @@ namespace MEC
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, Segment segment, GameObject gameObj, string tag,
@@ -2009,7 +2009,7 @@ namespace MEC
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(IEnumerator<float> coroutine, Segment segment, int layer, string tag,
@@ -2061,7 +2061,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="handle">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, CoroutineHandle handle, SingletonBehavior behaviorOnCollision)
@@ -2098,7 +2098,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, GameObject gameObj, SingletonBehavior behaviorOnCollision)
@@ -2112,7 +2112,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, int layer, SingletonBehavior behaviorOnCollision)
@@ -2155,7 +2155,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, string tag, SingletonBehavior behaviorOnCollision)
@@ -2194,13 +2194,13 @@ namespace MEC
         }
 
         /// <summary>
-        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that 
+        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that
         /// tag and layer.
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, GameObject gameObj, string tag,
@@ -2211,13 +2211,13 @@ namespace MEC
         }
 
         /// <summary>
-        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that 
+        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that
         /// tag and layer.
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, int layer, string tag, SingletonBehavior behaviorOnCollision)
@@ -2269,7 +2269,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, Segment segment, GameObject gameObj,
@@ -2285,7 +2285,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, Segment segment, int layer, SingletonBehavior behaviorOnCollision)
@@ -2329,7 +2329,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, Segment segment, string tag, SingletonBehavior behaviorOnCollision)
@@ -2375,7 +2375,7 @@ namespace MEC
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, Segment segment, GameObject gameObj, string tag,
@@ -2392,7 +2392,7 @@ namespace MEC
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public CoroutineHandle RunCoroutineSingletonOnInstance(IEnumerator<float> coroutine, Segment segment, int layer, string tag,
@@ -2992,7 +2992,7 @@ namespace MEC
         /// <summary>
         /// This will kill all coroutines running on the main MEC instance and reset the context.
         /// NOTE: If you call this function from within a running coroutine then you MUST end the current
-        /// coroutine. If the running coroutine has more work to do you may run a new "part 2" coroutine 
+        /// coroutine. If the running coroutine has more work to do you may run a new "part 2" coroutine
         /// function to complete the task before ending the current one.
         /// </summary>
         /// <returns>The number of coroutines that were killed.</returns>
@@ -3002,9 +3002,9 @@ namespace MEC
         }
 
         /// <summary>
-        /// This will kill all coroutines running on the current MEC instance and reset the context. 
+        /// This will kill all coroutines running on the current MEC instance and reset the context.
         /// NOTE: If you call this function from within a running coroutine then you MUST end the current
-        /// coroutine. If the running coroutine has more work to do you may run a new "part 2" coroutine 
+        /// coroutine. If the running coroutine has more work to do you may run a new "part 2" coroutine
         /// function to complete the task before ending the current one.
         /// </summary>
         /// <returns>The number of coroutines that were killed.</returns>
@@ -3104,7 +3104,7 @@ namespace MEC
         {
             int count = 0;
             for (int i = 0;i < handles.Length;i++)
-                count += ActiveInstances[handles[i].Key] != null 
+                count += ActiveInstances[handles[i].Key] != null
                     ? GetInstance(handles[i].Key).KillCoroutinesOnInstance(handles[i]) : 0;
 
             return count;
@@ -3150,7 +3150,7 @@ namespace MEC
             return _instance == null ? 0 : _instance.KillCoroutinesOnInstance(gameObj.GetInstanceID());
         }
 
-        /// <summary> 
+        /// <summary>
         /// Kills all coroutines on the given layer.
         /// </summary>
         /// <param name="gameObj">All coroutines on the layer corresponding with this GameObject will be killed.</param>
@@ -3170,7 +3170,7 @@ namespace MEC
             return _instance == null ? 0 : _instance.KillCoroutinesOnInstance(layer);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Kills all coroutines on the given layer.
         /// </summary>
         /// <param name="layer">All coroutines on this layer will be killed.</param>
@@ -3216,7 +3216,7 @@ namespace MEC
             return _instance == null ? 0 : _instance.KillCoroutinesOnInstance(tag);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Kills all coroutines that have the given tag.
         /// </summary>
         /// <param name="tag">All coroutines with this tag will be killed.</param>
@@ -3264,7 +3264,7 @@ namespace MEC
             return _instance == null ? 0 : _instance.KillCoroutinesOnInstance(gameObj.GetInstanceID(), tag);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Kills all coroutines with the given tag on the given layer.
         /// </summary>
         /// <param name="gameObj">All coroutines on the layer corresponding with this GameObject will be killed.</param>
@@ -3286,7 +3286,7 @@ namespace MEC
             return _instance == null ? 0 : _instance.KillCoroutinesOnInstance(layer, tag);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Kills all coroutines with the given tag on the given layer.
         /// </summary>
         /// <param name="layer">All coroutines on this layer with the given tag will be killed.</param>
@@ -3739,7 +3739,7 @@ namespace MEC
         {
             int total = 0;
             for (int i = 0;i < handles.Length;i++)
-                total += ActiveInstances[handles[i].Key] != null 
+                total += ActiveInstances[handles[i].Key] != null
                     ? GetInstance(handles[i].Key).PauseCoroutinesOnInstance(handles[i]) : 0;
             return total;
         }
@@ -4042,7 +4042,7 @@ namespace MEC
         {
             return _instance == null ? 0 : _instance.ResumeCoroutinesOnInstance(handle);
         }
-        
+
         /// <summary>
         /// This will resume any matching coroutines that are paused.
         /// </summary>
@@ -5125,7 +5125,7 @@ namespace MEC
         }
 
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilDone(otherCoroutine);" to pause the current 
+        /// Use the command "yield return Timing.WaitUntilDone(otherCoroutine);" to pause the current
         /// coroutine until otherCoroutine is done.
         /// </summary>
         /// <param name="otherCoroutine">The coroutine to pause for.</param>
@@ -5135,7 +5135,7 @@ namespace MEC
         }
 
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilDone(otherCoroutine, false);" to pause the current 
+        /// Use the command "yield return Timing.WaitUntilDone(otherCoroutine, false);" to pause the current
         /// coroutine until otherCoroutine is done, supressing warnings.
         /// </summary>
         /// <param name="otherCoroutine">The coroutine to pause for.</param>
@@ -5365,7 +5365,7 @@ namespace MEC
 
 #if !UNITY_2018_3_OR_NEWER
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilDone(wwwObject);" to pause the current 
+        /// Use the command "yield return Timing.WaitUntilDone(wwwObject);" to pause the current
         /// coroutine until the wwwObject is done.
         /// </summary>
         /// <param name="wwwObject">The www object to pause for.</param>
@@ -5395,7 +5395,7 @@ namespace MEC
 #endif
 
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilDone(operation);" to pause the current 
+        /// Use the command "yield return Timing.WaitUntilDone(operation);" to pause the current
         /// coroutine until the operation is done.
         /// </summary>
         /// <param name="operation">The operation variable returned.</param>
@@ -5423,7 +5423,7 @@ namespace MEC
         }
 
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilDone(operation);" to pause the current 
+        /// Use the command "yield return Timing.WaitUntilDone(operation);" to pause the current
         /// coroutine until the operation is done.
         /// </summary>
         /// <param name="operation">The operation variable returned.</param>
@@ -5451,7 +5451,7 @@ namespace MEC
         }
 
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilTrue(evaluatorFunc);" to pause the current 
+        /// Use the command "yield return Timing.WaitUntilTrue(evaluatorFunc);" to pause the current
         /// coroutine until the evaluator function returns true.
         /// </summary>
         /// <param name="evaluatorFunc">The evaluator function.</param>
@@ -5469,7 +5469,7 @@ namespace MEC
         }
 
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilFalse(evaluatorFunc);" to pause the current 
+        /// Use the command "yield return Timing.WaitUntilFalse(evaluatorFunc);" to pause the current
         /// coroutine until the evaluator function returns false.
         /// </summary>
         /// <param name="evaluatorFunc">The evaluator function.</param>
@@ -5556,7 +5556,7 @@ namespace MEC
 
         /// <summary>
         /// This will create a one way link between two handles. If the master coroutine ends for any reason or is paused or resumed
-        /// that will also happen to the slave coroutine. If a two way link is desired then just call this funciton twice with 
+        /// that will also happen to the slave coroutine. If a two way link is desired then just call this funciton twice with
         /// parameters reversed.
         /// </summary>
         /// <param name="master">The coroutine that generates the link events</param>
@@ -5836,7 +5836,7 @@ namespace MEC
         /// </summary>
         /// <param name="delay">The number of seconds to wait before calling the action.</param>
         /// <param name="action">The action to call.</param>
-        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed 
+        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed
         /// before calling the action.</param>
         /// <returns>The handle to the coroutine that is started by this function.</returns>
         public static CoroutineHandle CallDelayed(float delay, System.Action action, GameObject gameObject)
@@ -5849,7 +5849,7 @@ namespace MEC
         /// </summary>
         /// <param name="delay">The number of seconds to wait before calling the action.</param>
         /// <param name="action">The action to call.</param>
-        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed 
+        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed
         /// before calling the action.</param>
         /// <returns>The handle to the coroutine that is started by this function.</returns>
         public CoroutineHandle CallDelayedOnInstance(float delay, System.Action action, GameObject gameObject)
@@ -5894,7 +5894,7 @@ namespace MEC
         /// </summary>
         /// <param name="delay">The number of seconds to wait before calling the action.</param>
         /// <param name="action">The action to call.</param>
-        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed 
+        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed
         /// before calling the action.</param>
         /// <param name="segment">The timing segment that the call should be made in.</param>
         /// <returns>The handle to the coroutine that is started by this function.</returns>
@@ -5908,7 +5908,7 @@ namespace MEC
         /// </summary>
         /// <param name="delay">The number of seconds to wait before calling the action.</param>
         /// <param name="action">The action to call.</param>
-        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed 
+        /// <param name="gameObject">A GameObject that will be tagged onto the coroutine and checked to make sure it hasn't been destroyed
         /// before calling the action.</param>
         /// <param name="segment">The timing segment that the call should be made in.</param>
         /// <returns>The handle to the coroutine that is started by this function.</returns>
@@ -6707,7 +6707,7 @@ namespace MEC
     }
 
     /// <summary>
-    /// How much debug info should be sent to the Unity profiler. NOTE: Setting this to anything above none shows up in the profiler as a 
+    /// How much debug info should be sent to the Unity profiler. NOTE: Setting this to anything above none shows up in the profiler as a
     /// decrease in performance and a memory alloc. Those effects do not translate onto device.
     /// </summary>
     public enum DebugInfoType
@@ -6744,7 +6744,7 @@ namespace MEC
         /// </summary>
         Wait,
         /// <summary>
-        /// Don't run this coroutine if there are any matches, but unpause the matches if they're paused. 
+        /// Don't run this coroutine if there are any matches, but unpause the matches if they're paused.
         /// (Does not resume any coroutines in a WaitUntilDone state.)
         /// </summary>
         AbortAndUnpause
@@ -6854,7 +6854,7 @@ namespace MEC
         }
 
         /// <summary>
-        /// Is true until the coroutine function ends or is killed. Paused or waiting coroutines count as running. 
+        /// Is true until the coroutine function ends or is killed. Paused or waiting coroutines count as running.
         /// Setting this to false will kill the coroutine.
         /// </summary>
         public bool IsRunning
@@ -6864,7 +6864,7 @@ namespace MEC
         }
 
         /// <summary>
-        /// Is true while the coroutine is paused. Setting this value will pause or resume the coroutine. 
+        /// Is true while the coroutine is paused. Setting this value will pause or resume the coroutine.
         /// </summary>
         public bool IsAliveAndPaused
         {
@@ -6881,8 +6881,8 @@ namespace MEC
         }
 
         /// <summary>
-        /// This will execute the function you pass in once the coroutine this handle is pointing to is ended. This works whether this 
-        /// coroutine gets to the end of its function, throws an exception, or is the target of a KillCoroutines command. NOTE: It is 
+        /// This will execute the function you pass in once the coroutine this handle is pointing to is ended. This works whether this
+        /// coroutine gets to the end of its function, throws an exception, or is the target of a KillCoroutines command. NOTE: It is
         /// generally a bad idea to use this function on any coroutine that you would use a CancelWith command on, because that will
         /// typically lead to exceptions when the gameObject is destroyed.
         /// </summary>
@@ -6899,8 +6899,8 @@ namespace MEC
         }
 
         /// <summary>
-        /// This will execute the coroutine you pass in once the coroutine this handle is pointing to is ended. This works whether this 
-        /// coroutine gets to the end of its function, throws an exception, or is the target of a KillCoroutines command. NOTE: It is 
+        /// This will execute the coroutine you pass in once the coroutine this handle is pointing to is ended. This works whether this
+        /// coroutine gets to the end of its function, throws an exception, or is the target of a KillCoroutines command. NOTE: It is
         /// generally a bad idea to use this function on any coroutine that you would use a CancelWith command on, because that will
         /// typically lead to exceptions when the gameObject is destroyed.
         /// </summary>
@@ -7081,7 +7081,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="handle">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, CoroutineHandle handle, SingletonBehavior behaviorOnCollision)
@@ -7094,7 +7094,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, GameObject gameObj, SingletonBehavior behaviorOnCollision)
@@ -7108,7 +7108,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, int layer, SingletonBehavior behaviorOnCollision)
@@ -7121,7 +7121,7 @@ namespace MEC
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, string tag, SingletonBehavior behaviorOnCollision)
@@ -7130,13 +7130,13 @@ namespace MEC
         }
 
         /// <summary>
-        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that 
+        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that
         /// tag and layer.
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, GameObject gameObj, string tag, SingletonBehavior behaviorOnCollision)
@@ -7146,13 +7146,13 @@ namespace MEC
         }
 
         /// <summary>
-        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that 
+        /// Run a new coroutine in the Update segment with the supplied graffitti unless there is already one or more coroutines running with both that
         /// tag and layer.
         /// </summary>
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, int layer, string tag, SingletonBehavior behaviorOnCollision)
@@ -7166,7 +7166,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="handle">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, CoroutineHandle handle, Segment segment,
@@ -7181,7 +7181,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, Segment segment, GameObject gameObj,
@@ -7197,7 +7197,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, Segment segment, int layer,
@@ -7212,7 +7212,7 @@ namespace MEC
         /// <param name="coroutine">The new coroutine's handle.</param>
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, Segment segment, string tag,
@@ -7228,7 +7228,7 @@ namespace MEC
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="gameObj">The new coroutine will be put on a layer corresponding to this gameObject.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, Segment segment, GameObject gameObj, string tag,
@@ -7245,7 +7245,7 @@ namespace MEC
         /// <param name="segment">The segment that the coroutine should run in.</param>
         /// <param name="layer">A layer to attach to the coroutine, and to check for existing instances.</param>
         /// <param name="tag">A tag to attach to the coroutine, and to check for existing instances.</param>
-        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are 
+        /// <param name="behaviorOnCollision">Should this coroutine fail to start, overwrite, or wait for any coroutines to finish if any matches are
         /// currently running.</param>
         /// <returns>The newly created or existing handle.</returns>
         public static CoroutineHandle RunCoroutineSingleton(this IEnumerator<float> coroutine, Segment segment, int layer, string tag,
@@ -7516,7 +7516,7 @@ public static class MECExtensionMethods2
     }
 
     /// <summary>
-    /// Cancels this coroutine when the supplied monobehavior is removed from its game object, or the game object is destroyed. Pauses the coroutine 
+    /// Cancels this coroutine when the supplied monobehavior is removed from its game object, or the game object is destroyed. Pauses the coroutine
     /// if the game object or script is disabled.
     /// </summary>
     /// <param name="coroutine">The coroutine handle to act upon.</param>
@@ -7685,7 +7685,7 @@ public static class MECExtensionMethods2
     }
 
     /// <summary>
-    /// This will send any exceptions thrown in this coroutine to the exception handler you define. If you pass in null then your exceptions 
+    /// This will send any exceptions thrown in this coroutine to the exception handler you define. If you pass in null then your exceptions
     /// will go unreported. NOTE: Any exceptions thrown will still terminate that coroutine function. The only way to avoid termination is
     /// to catch the exception inside your function (avoiding any yield return statements).
     /// </summary>

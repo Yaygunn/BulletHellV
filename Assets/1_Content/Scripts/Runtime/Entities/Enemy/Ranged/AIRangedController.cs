@@ -9,6 +9,7 @@ using BH.Scriptables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
+using MoreMountains.Tools;
 
 namespace BH.Runtime.Entities
 {
@@ -20,10 +21,11 @@ namespace BH.Runtime.Entities
         private int _initialTouchDamage = 20;
         [field: FoldoutGroup("Stats"), SerializeField]
         public float PushForce { get; private set; } = 10f;
-        
+
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
-        
+        public MMHealthBar healthBar;
+
         [field: FoldoutGroup("Projectile Patterns"), SerializeField]
         public List<ProjectilePatternDataSO> ProjectilePatterns { get; private set; }
 
@@ -31,13 +33,13 @@ namespace BH.Runtime.Entities
 
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
-        
+
         [field: FoldoutGroup("Feedbacks"), SerializeField, HideLabel]
         public EntityFeedbacks Feedbacks { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
-        
+
         [field: Inject(Id = "MainCamera")]
         public Camera Camera { get; }
 
@@ -47,9 +49,9 @@ namespace BH.Runtime.Entities
         // TODO: Add Enemy Signals
         //[Inject]
         //private SignalBus _signalBus;
-        
+
         private AIRangedPool _pool;
-        private bool _inPool; 
+        private bool _inPool;
         private EnemySpawner _spawner;
 
         #region Components
@@ -65,7 +67,7 @@ namespace BH.Runtime.Entities
 
         public RangedAIMoveState MoveState { get; private set; }
         public RangedAIShootState ShootState { get; private set; }
-        
+
         public RangedAIBusyState BusyState { get; private set; }
         public RangedAIDeadState DeadState { get; private set; }
 
@@ -76,7 +78,7 @@ namespace BH.Runtime.Entities
         protected override void Awake()
         {
             base.Awake();
-            
+
             Collider = GetComponent<CapsuleCollider2D>();
             Animator = GetComponentInChildren<Animator>();
             ModelRenderer = Animator.GetComponent<SpriteRenderer>();
@@ -88,7 +90,7 @@ namespace BH.Runtime.Entities
             // Active States
             MoveState = new RangedAIMoveState(this, EnemyHFSM);
             ShootState = new RangedAIShootState(this, EnemyHFSM);
-            
+
             BusyState = new RangedAIBusyState(this, EnemyHFSM);
             DeadState = new RangedAIDeadState(this, EnemyHFSM);
 
@@ -98,7 +100,7 @@ namespace BH.Runtime.Entities
             Stats.ResetStats();
             CurrentTouchDamage = _initialTouchDamage;
         }
-        
+
         private void Start()
         {
             AttackTarget = _levelManager.Player.transform;
@@ -109,7 +111,7 @@ namespace BH.Runtime.Entities
         {
             EnemyHFSM.CurrentState.LogicUpdate();
         }
-        
+
         private void FixedUpdate()
         {
             EnemyHFSM.CurrentState.PhysicsUpdate();
@@ -126,12 +128,12 @@ namespace BH.Runtime.Entities
         }
 
         #endregion
-        
+
         public void SetPool(AIRangedPool pool)
         {
             _pool = pool;
         }
-        
+
         public void SetUp(EnemySpawner spawner)
         {
             _spawner = spawner;
@@ -144,19 +146,21 @@ namespace BH.Runtime.Entities
         public void HandleDamage(int ammount)
         {
             Stats.TakeDamage(ammount);
+            healthBar?.UpdateBar(Stats.CurrentHealth, 0, Stats.MaxHealth, true);
+            Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(this.transform.position, ammount);
         }
-        
+
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
             Stats.TakeDamage(amount);
             Movement.AddForce(direction, force);
         }
-        
+
         private void OnDied()
         {
             EnemyHFSM.ChangeState(DeadState);
         }
-        
+
         public void ReturnToPool()
         {
             Stats.ResetStats();
@@ -164,7 +168,7 @@ namespace BH.Runtime.Entities
             _spawner.EntityDied(this);
 
             if (_inPool) return;
-            
+
             _inPool = true;
             _pool.Despawn(this);
         }

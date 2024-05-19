@@ -11,10 +11,14 @@ namespace BH.Scriptables
         [field: BoxGroup("General Info"), SerializeField, TextArea]
         public string Description { get; private set; }
         [field: BoxGroup("General Info"), SerializeField]
+        public string Advantage { get; private set; }
+        [field: BoxGroup("General Info"), SerializeField]
+        public string DisAdvantage { get; private set; }
+        [field: BoxGroup("General Info"), SerializeField]
         public Sprite Icon { get; private set; }
         [field: BoxGroup("General Info"), SerializeField]
         public Color Color { get; private set; } = Color.white;
-        
+
         [field: BoxGroup("General Settings"), SerializeField]
         public int Damage { get; private set; } = 10;
         [field: BoxGroup("General Settings"), SerializeField]

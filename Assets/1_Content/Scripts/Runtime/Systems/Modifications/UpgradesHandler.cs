@@ -78,23 +78,31 @@ namespace BH.Runtime.Systems
                 }
 
                 string description;
+
                 WeaponUpgradeSO weaponUpgrade = null;
                 StatUpgradeSO statUpgrade = null;
                 ProjectileDataSO projectileData = null;
+                string advantage = null;
+                string disadvantage = null;
 
                 switch (upgradeType)
                 {
                     case UpgradeType.AddBullet:
                         projectileData = GetProjectileEvolutionData(projectileType);
                         description = $"Add {projectileData.Description}";
+                        advantage = projectileData.Advantage;
+                        disadvantage = projectileData.DisAdvantage;
                         break;
                     case UpgradeType.UpgradeBullet:
                         projectileData = GetNextProjectileEvolutionData(projectileType);
                         description = $"Upgrade to {projectileData.Description}";
+                        advantage = projectileData.Advantage;
+                        disadvantage = projectileData.DisAdvantage;
                         break;
                     case UpgradeType.UpgradeWeapon:
                         weaponUpgrade = GetRandomWeaponUpgrade();
                         description = weaponUpgrade.UpgradeDisplay;
+
                         break;
                     case UpgradeType.UpgradePlayer:
                         statUpgrade = GetRandomStatUpgrade();
@@ -106,7 +114,7 @@ namespace BH.Runtime.Systems
 
                 if (!usedDescriptions.Contains(description))
                 {
-                    options.Add(new UpgradeOption(upgradeType, projectileType, description, projectileData, weaponUpgrade, statUpgrade));
+                    options.Add(new UpgradeOption(upgradeType, projectileType, description, projectileData, weaponUpgrade, statUpgrade, advantage, disadvantage));
                     usedDescriptions.Add(description);
                 }
             }
