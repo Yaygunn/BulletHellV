@@ -59,6 +59,7 @@ namespace BH.Runtime.Systems
             _levelManager.TogglePause(true);
             _generatedChoices = GenerateUpgradeOptions();
             _signalBus.Fire(new UpgradesShowSignal(_generatedChoices));
+            TogglePlayerUIInput(true);
         }
 
         private List<UpgradeOption> GenerateUpgradeOptions()
@@ -77,45 +78,37 @@ namespace BH.Runtime.Systems
                     continue;
                 }
 
-                string description;
-
+                string tracker;
                 WeaponUpgradeSO weaponUpgrade = null;
                 StatUpgradeSO statUpgrade = null;
                 ProjectileDataSO projectileData = null;
-                string advantage = null;
-                string disadvantage = null;
 
                 switch (upgradeType)
                 {
                     case UpgradeType.AddBullet:
                         projectileData = GetProjectileEvolutionData(projectileType);
-                        description = $"Add {projectileData.Description}";
-                        advantage = projectileData.Advantage;
-                        disadvantage = projectileData.DisAdvantage;
+                        tracker = $"{projectileData.ProjectileName}";
                         break;
                     case UpgradeType.UpgradeBullet:
                         projectileData = GetNextProjectileEvolutionData(projectileType);
-                        description = $"Upgrade to {projectileData.Description}";
-                        advantage = projectileData.Advantage;
-                        disadvantage = projectileData.DisAdvantage;
+                        tracker = $"{projectileData.ProjectileName}";
                         break;
                     case UpgradeType.UpgradeWeapon:
                         weaponUpgrade = GetRandomWeaponUpgrade();
-                        description = weaponUpgrade.UpgradeDisplay;
-
+                        tracker = $"{weaponUpgrade.UpgradeName}";
                         break;
                     case UpgradeType.UpgradePlayer:
                         statUpgrade = GetRandomStatUpgrade();
-                        description = statUpgrade.UpgradeDisplay;
+                        tracker = $"{statUpgrade.UpgradeName}";
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
 
-                if (!usedDescriptions.Contains(description))
+                if (!usedDescriptions.Contains(tracker))
                 {
-                    options.Add(new UpgradeOption(upgradeType, projectileType, description, projectileData, weaponUpgrade, statUpgrade, advantage, disadvantage));
-                    usedDescriptions.Add(description);
+                    options.Add(new UpgradeOption(upgradeType, projectileType, projectileData, weaponUpgrade, statUpgrade));
+                    usedDescriptions.Add(tracker);
                 }
             }
 
@@ -148,6 +141,7 @@ namespace BH.Runtime.Systems
 
             _levelManager.TogglePause(false);
             _levelStateHandler.SetLevelState(LevelState.NormalRound);
+            TogglePlayerUIInput(false);
         }
 
         private UpgradeType GetRandomUpgradeType()
@@ -227,6 +221,18 @@ namespace BH.Runtime.Systems
             StatUpgradeSO[] stats = _database.StatUpgradeData.ToArray();
             int randomIndex = UnityEngine.Random.Range(0, stats.Length);
             return stats[randomIndex];
+        }
+        
+        private void TogglePlayerUIInput(bool enable)
+        {
+            if (enable)
+            {
+                _levelManager.Player.InputProvider.EnableUIControls();
+            }
+            else
+            {
+                _levelManager.Player.InputProvider.EnablePlayerControls();
+            }
         }
     }
 }

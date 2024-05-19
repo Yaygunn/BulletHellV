@@ -9,7 +9,11 @@ namespace GH.Scriptables
     public class WeaponUpgradeSO : ScriptableObject
     {
         [field: BoxGroup("General"), SerializeField]
-        public string UpgradeDisplay { get; private set; } = "New Upgrade";
+        public string UpgradeName { get; private set; } = "New Upgrade";
+        [field: BoxGroup("General"), SerializeField, TextArea]
+        public string UpgradeDescription { get; private set; } = "New Upgrade";
+        [field: BoxGroup("General"), SerializeField]
+        public Sprite Icon { get; private set; }
         
         [field: BoxGroup("Modifications"), SerializeField]
         public int DamageIncrease { get; private set; }
@@ -38,7 +42,7 @@ namespace GH.Scriptables
             if (FireRateIncrease != 0) parts.Add($"Fire Rate +{FireRateIncrease}");
             if (FireRateMultiplier != 0) parts.Add($"Fire Rate x{1 + FireRateMultiplier:F2}");
 
-            return $"{UpgradeDisplay}: " + string.Join(", ", parts);
+            return $"{UpgradeName}: " + string.Join(", ", parts);
         }
 
         public void ApplyUpgrade(GeneralWeaponMod mod)

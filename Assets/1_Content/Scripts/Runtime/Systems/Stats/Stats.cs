@@ -1,5 +1,6 @@
 using System;
 using GH.Scriptables;
+using MoreMountains.Tools;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace BH.Runtime.Systems
     [Serializable]
     public class Stats
     {
+        [field: FoldoutGroup("Health"), SerializeField]
+        public MMHealthBar HealthBarVisaul { get; private set; }
         [field: FoldoutGroup("Health"), SerializeField, ReadOnly]
         public int CurrentHealth { get; private set; }
         [field: FoldoutGroup("Health"), SerializeField, ReadOnly]
@@ -42,6 +45,11 @@ namespace BH.Runtime.Systems
         public Action<float, float> SpeedChangedEvent;
         public Action DiedEvent;
 
+        public void Initialize()
+        {
+            HealthBarVisaul?.UpdateBar(CurrentHealth, 0, MaxHealth, false);
+        }
+        
         public void ResetStats()
         {
             MaxHealth = _initialHealth;
@@ -65,6 +73,7 @@ namespace BH.Runtime.Systems
 
             CurrentHealth = Math.Max(0, CurrentHealth - amount);
             HealthChangedEvent?.Invoke(MaxHealth, CurrentHealth);
+            HealthBarVisaul?.UpdateBar(CurrentHealth, 0, MaxHealth, true);
 
             if (CurrentHealth == 0)
             {
