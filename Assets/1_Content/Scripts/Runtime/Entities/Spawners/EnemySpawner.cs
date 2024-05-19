@@ -12,12 +12,17 @@ namespace BH.Runtime.Entities
 {
     public class EnemySpawner : Entity
     {
-        [SerializeField]
+        [BoxGroup("Waves"), SerializeField]
         private bool _loopWaves = true;
-        [SerializeField]
+        [BoxGroup("Waves"), SerializeField]
         private Wave[] _waves;
-        [SerializeField, ReadOnly]
+        [BoxGroup("Waves"), SerializeField, ReadOnly]
         private int _currentWaveIndex = 0;
+        
+        [BoxGroup("Boss"), SerializeField]
+        private AIBossController _bossPrefab;
+        [BoxGroup("Boss"), SerializeField]
+        private Vector2 _bossSpawnPoint;
 
         private IAIFactory _aiFactory;
         private ILevelStateHandler _levelStateHandler;
@@ -76,6 +81,12 @@ namespace BH.Runtime.Entities
         {
             _spawnedEnemies.Remove(entity);
         }
+        
+        public void BossDied(AIBossController boss)
+        {
+            Destroy(boss.gameObject);
+            _levelStateHandler.SetLevelState(LevelState.GameOver);
+        }
 
         private void OnLevelStateChanged(LevelState levelState)
         {
@@ -101,7 +112,7 @@ namespace BH.Runtime.Entities
                 }
                 else
                 {
-                    AllWavesCompletedEvent?.Invoke();
+                    AllWavesCompleted();
                     yield break;
                 }
             }
@@ -143,7 +154,7 @@ namespace BH.Runtime.Entities
                 }
                 else
                 {
-                    AllWavesCompletedEvent?.Invoke();
+                    AllWavesCompleted();
                     yield break;
                 }
             }
@@ -157,6 +168,14 @@ namespace BH.Runtime.Entities
             {
                 yield return Timing.WaitForOneFrame;
             }
+        }
+        
+        private void AllWavesCompleted()
+        {
+            AllWavesCompletedEvent?.Invoke();
+            
+            AIBossController boss = Instantiate(_bossPrefab, _bossSpawnPoint, Quaternion.identity);
+            boss.SetUp(this);
         }
 
         private Vector2 GetRandomSpawnOffCamera()

@@ -1,4 +1,6 @@
 ﻿using BH.Runtime.StateMachines;
+using BH.Scriptables;
+using UnityEngine;
 
 namespace BH.Runtime.Entities
 {
@@ -19,7 +21,8 @@ namespace BH.Runtime.Entities
             _rangedAI.Animator.SetTrigger(_rangedAI.AnimatorParams.IsAttackingTrigger);
             
             _rangedAI.ShootPattern.ShootPatternCompletedEvent += OnShootPatternCompleted;
-            _rangedAI.ShootPattern.StartPattern();
+            ProjectilePatternDataSO patternData = _rangedAI.ProjectilePatterns[Random.Range(0, _rangedAI.ProjectilePatterns.Count)];
+            _rangedAI.ShootPattern.StartPattern(patternData);
         }
 
         public override void LogicUpdate()
