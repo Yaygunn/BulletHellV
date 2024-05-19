@@ -25,6 +25,7 @@ namespace BH.Runtime.Entities
         private Vector2 _bossSpawnPoint;
 
         private IAIFactory _aiFactory;
+        private IBossFactory _bossFactory;
         private ILevelStateHandler _levelStateHandler;
         private List<Entity> _spawnedEnemies = new();
         private bool _spawnerRunning;
@@ -36,9 +37,10 @@ namespace BH.Runtime.Entities
         public event Action AllWavesCompletedEvent;
 
         [Inject]
-        public void Construct(IAIFactory aiFactory, ILevelStateHandler levelStateHandler)
+        public void Construct(IAIFactory aiFactory, IBossFactory bossFactory, ILevelStateHandler levelStateHandler)
         {
             _aiFactory = aiFactory;
+            _bossFactory = bossFactory;
             _levelStateHandler = levelStateHandler;
             _levelStateHandler.OnLevelStateChanged += OnLevelStateChanged;
         }
@@ -173,8 +175,8 @@ namespace BH.Runtime.Entities
         private void AllWavesCompleted()
         {
             AllWavesCompletedEvent?.Invoke();
-            
-            AIBossController boss = Instantiate(_bossPrefab, _bossSpawnPoint, Quaternion.identity);
+
+            AIBossController boss = _bossFactory.CreateBoss();
             boss.SetUp(this);
         }
 

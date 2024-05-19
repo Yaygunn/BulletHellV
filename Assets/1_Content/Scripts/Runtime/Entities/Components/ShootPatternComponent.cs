@@ -20,13 +20,17 @@ namespace BH.Runtime.Entities
         private float _defaultSpawnFrequency = 0.5f;
         private ProjectilePatternDataSO _patternData;
 
-        [Inject]
         private IProjectileFactory _projectileFactory;
-
-        [Inject]
         private DatabaseSO _database;
 
         public event Action ShootPatternCompletedEvent;
+        
+        [Inject]
+        private void Construct(DatabaseSO database, IProjectileFactory projectileFactory)
+        {
+            _database = database;
+            _projectileFactory = projectileFactory;
+        }
 
         private void Start()
         {
@@ -89,6 +93,8 @@ namespace BH.Runtime.Entities
         private void SpawnBullet(Vector3 velocity, Vector3 position)
         {
             _bulletCounter++;
+            if (_projectileFactory == null)
+                Debug.Log("PROJ FACTORY NULL");
             Projectile projectile = _projectileFactory.CreateProjectile(ProjectileType.EnemyBasicBullet);
             _database.TryGetProjectileData(ProjectileType.EnemyBasicBullet, 1, out ProjectileDataSO projectileData);
             projectile.SetUp(position, velocity.normalized, projectileData);

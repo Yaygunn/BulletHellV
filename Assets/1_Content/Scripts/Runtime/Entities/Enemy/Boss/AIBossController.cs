@@ -5,6 +5,7 @@ using BH.Runtime.Factories;
 using BH.Runtime.Managers;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
+using BH.Scriptables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -22,8 +23,15 @@ namespace BH.Runtime.Entities
         
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
-
-        public Transform AttackTarget { get; private set; }
+        
+        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
+        public ProjectilePatternDataSO PhaseOneCenter { get; private set; }
+        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
+        public ProjectilePatternDataSO PhasetwoLeft { get; private set; }
+        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
+        public ProjectilePatternDataSO PhasetwoRight { get; private set; }
+        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
+        public ProjectilePatternDataSO PhaseThree { get; private set; }
 
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
@@ -105,7 +113,6 @@ namespace BH.Runtime.Entities
         
         private void Start()
         {
-            AttackTarget = _levelManager.Player.transform;
             Stats.DiedEvent += OnDied;
         }
 
