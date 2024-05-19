@@ -7,11 +7,10 @@ namespace BH.Scriptables
     [CreateAssetMenu(fileName = "EnemyBasicProjectile", menuName = "BH/Projectiles/New Enemy Basic Projectile")]
     public class EnemyBasicProjectileDataSO : ProjectileDataSO
     {
-        [field: BoxGroup("Enemy Basic Projectile"), SerializeField, ReadOnly]
-        public ProjectileType Type { get; private set; } = ProjectileType.EnemyBasicBullet;
+        private const ProjectileType _type = ProjectileType.EnemyBasicBullet;
         public override ProjectileType GetProjectileType()
         {
-            return Type;
+            return _type;
         }
     }
 }

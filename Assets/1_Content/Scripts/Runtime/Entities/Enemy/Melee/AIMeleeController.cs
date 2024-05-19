@@ -25,10 +25,13 @@ namespace BH.Runtime.Entities
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
 
-        public Transform AttackTarget { get; private set; }
+        public PlayerController PlayerTarget { get; private set; }
 
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
+        
+        [field: FoldoutGroup("Feedbacks"), SerializeField, HideLabel]
+        public EntityFeedbacks Feedbacks { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -45,6 +48,8 @@ namespace BH.Runtime.Entities
         private EnemySpawner _spawner;
 
         #region Components
+        public SpriteRenderer ModelRenderer { get; private set; }
+        public CapsuleCollider2D Collider { get; private set; }
         public Animator Animator { get; private set; }
         public MovementComponent Movement { get; private set; }
         #endregion
@@ -66,7 +71,9 @@ namespace BH.Runtime.Entities
         {
             base.Awake();
 
+            Collider = GetComponent<CapsuleCollider2D>();
             Animator = GetComponentInChildren<Animator>();
+            ModelRenderer = Animator.GetComponent<SpriteRenderer>();
             Movement = VerifyComponent<MovementComponent>();
 
             EnemyHFSM = new StateMachine<MeleeAIState>();
@@ -87,7 +94,7 @@ namespace BH.Runtime.Entities
         
         private void Start()
         {
-            AttackTarget = _levelManager.Player.transform;
+            PlayerTarget = _levelManager.Player;
             Stats.DiedEvent += OnDied;
         }
 
@@ -122,6 +129,7 @@ namespace BH.Runtime.Entities
         {
             _spawner = spawner;
             _inPool = false;
+            ModelRenderer.color = Color.white;
             Wave wave = _spawner.GetCurrentWave();
             Stats.ModifyStatsManual(wave.HealthMultiplier, wave.ShieldMultiplier, wave.SpeedMultiplier);
             CurrentDamage = (int)(CurrentDamage * wave.DamageMultiplier);

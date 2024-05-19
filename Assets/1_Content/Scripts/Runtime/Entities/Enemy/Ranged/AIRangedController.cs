@@ -27,6 +27,9 @@ namespace BH.Runtime.Entities
 
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
+        
+        [field: FoldoutGroup("Feedbacks"), SerializeField, HideLabel]
+        public EntityFeedbacks Feedbacks { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -46,6 +49,8 @@ namespace BH.Runtime.Entities
         private EnemySpawner _spawner;
 
         #region Components
+        public SpriteRenderer ModelRenderer { get; private set; }
+        public CapsuleCollider2D Collider { get; private set; }
         public Animator Animator { get; private set; }
         public MovementComponent Movement { get; private set; }
         public ShootPatternComponent ShootPattern { get; private set; }
@@ -67,8 +72,10 @@ namespace BH.Runtime.Entities
         protected override void Awake()
         {
             base.Awake();
-
+            
+            Collider = GetComponent<CapsuleCollider2D>();
             Animator = GetComponentInChildren<Animator>();
+            ModelRenderer = Animator.GetComponent<SpriteRenderer>();
             Movement = VerifyComponent<MovementComponent>();
             ShootPattern = VerifyComponent<ShootPatternComponent>();
 

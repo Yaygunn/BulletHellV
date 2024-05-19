@@ -13,7 +13,6 @@ namespace BH.Runtime.Systems
     public enum ProjectileType
     {
         AttractorBullet,
-        ChainReactionBullet,
         EnemyBasicBullet,
         ExpandingBullet,
         ExplodingBullet,

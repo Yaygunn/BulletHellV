@@ -12,6 +12,7 @@ namespace BH.Runtime.Systems
         private CoroutineHandle _targetCheckCoroutine;
         
         private HomingProjectileDataSO _homingData;
+        private Quaternion _originalRotation;
 
         protected override void SetUpInternal(ProjectileDataSO projectileData)
         {
@@ -27,6 +28,12 @@ namespace BH.Runtime.Systems
             _targetCheckCoroutine = Timing.RunCoroutine(TargetCheckCoroutine().CancelWith(gameObject));
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            _originalRotation = transform.rotation;
+        }
+
         protected override void Update()
         {
             if (_target != null)
@@ -34,10 +41,12 @@ namespace BH.Runtime.Systems
                 Vector2 directionToTarget = (_target.position - transform.position).normalized;
                 ChangeDirection(Vector2.Lerp(CurrentDirection, directionToTarget, _homingData.HomingStrength * Time.deltaTime));
                 transform.position += new Vector3(CurrentDirection.x, CurrentDirection.y, 0) * (_homingData.Speed * Time.deltaTime);
+                RotateTowardsDirection(CurrentDirection);
             }
             else
             {
                 base.Update();
+                RotateTowardsDirection(CurrentDirection);
             }
         }
         
@@ -85,10 +94,17 @@ namespace BH.Runtime.Systems
             _target = closestTarget;
         }
 
+        private void RotateTowardsDirection(Vector2 direction)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
         protected override void ResetProperties()
         {
             base.ResetProperties();
             _target = null;
+            transform.rotation = _originalRotation;
         }
     }
 }

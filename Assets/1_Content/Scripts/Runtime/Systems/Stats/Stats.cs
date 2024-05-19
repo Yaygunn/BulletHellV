@@ -58,10 +58,10 @@ namespace BH.Runtime.Systems
             StatMod.Reset();
         }
 
-        public void TakeDamage(int amount)
+        public bool TakeDamage(int amount)
         {
-            if (_isInvincible || amount <= 0)
-                return;
+            if (_isInvincible || CurrentHealth <= 0)
+                return false;
             
             CurrentHealth = Math.Max(0, CurrentHealth - amount);
             HealthChangedEvent?.Invoke(MaxHealth, CurrentHealth);
@@ -70,6 +70,8 @@ namespace BH.Runtime.Systems
             {
                 DiedEvent?.Invoke();
             }
+
+            return true;
         }
         
         public void SetInvincibility(bool isInvincible)

@@ -21,9 +21,6 @@ namespace BH.Scriptables.Databases
         public List<AttractorProjectileDataSO> AttractorEvolutionData { get; private set; }
         
         [field: BoxGroup("Projectile Evolutions"), SerializeField]
-        public List<ChainReactionProjectileDataSO> ChainReactionEvolutionData { get; private set; }
-        
-        [field: BoxGroup("Projectile Evolutions"), SerializeField]
         public List<EnemyBasicProjectileDataSO> EnemyBasicProjectileData { get; private set; }
         
         [field: BoxGroup("Projectile Evolutions"), SerializeField]
@@ -48,7 +45,6 @@ namespace BH.Scriptables.Databases
             _dataAccessors = new Dictionary<ProjectileType, Func<List<ProjectileDataSO>>>
             {
                 { ProjectileType.AttractorBullet, () => AttractorEvolutionData.Cast<ProjectileDataSO>().ToList() },
-                { ProjectileType.ChainReactionBullet, () => ChainReactionEvolutionData.Cast<ProjectileDataSO>().ToList() },
                 { ProjectileType.EnemyBasicBullet, () => EnemyBasicProjectileData.Cast<ProjectileDataSO>().ToList() },
                 { ProjectileType.ExpandingBullet, () => ExpandingEvolutionData.Cast<ProjectileDataSO>().ToList() },
                 { ProjectileType.ExplodingBullet, () => ExplodingEvolutionData.Cast<ProjectileDataSO>().ToList() },

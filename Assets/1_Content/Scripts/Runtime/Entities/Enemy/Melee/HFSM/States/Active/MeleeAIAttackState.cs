@@ -53,16 +53,16 @@ namespace BH.Runtime.Entities
         
         private void AttackPlayer()
         {
-            if (_meleeAI.AttackTarget.gameObject.TryGetComponent(out IDamageable damageable))
+            if (_meleeAI.PlayerTarget.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                Vector2 direction = (_meleeAI.AttackTarget.position - _meleeAI.transform.position).normalized;
+                Vector2 direction = (_meleeAI.PlayerTarget.transform.position - _meleeAI.transform.position).normalized;
                 damageable.HandleDamageWithForce(_meleeAI.CurrentDamage, direction, _meleeAI.PushForce);
             }
         }
         
         private bool ShouldAttackAgain()
         {
-            Vector2 distance = _meleeAI.AttackTarget.position - _meleeAI.transform.position;
+            Vector2 distance = _meleeAI.PlayerTarget.transform.position - _meleeAI.transform.position;
             return distance.magnitude <= _meleeAI.AttackRange;
         }
     }

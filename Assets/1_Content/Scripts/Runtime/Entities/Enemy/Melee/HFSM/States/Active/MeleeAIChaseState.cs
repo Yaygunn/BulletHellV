@@ -20,10 +20,17 @@ public class MeleeAIChaseState : MeleeAIActiveState
     {
         base.LogicUpdate();
 
-        Vector2 direction = GetAttackTargetDirection();
-        _meleeAI.Movement.Move(direction, _meleeAI.Stats.CurrentSpeed);
-        
-        ShouldIdle();
+        if (ShouldMove())
+        {
+            Vector2 direction = GetAttackTargetDirection();
+            _meleeAI.Movement.Move(direction, _meleeAI.Stats.CurrentSpeed);
+        }
+        else if (ShouldAttack())
+        {
+            _meleeAI.EnemyHFSM.ChangeState(_meleeAI.AttackState);
+        }
+
+        ShouldAttack();
     }
     
     public override void Exit()
@@ -34,17 +41,23 @@ public class MeleeAIChaseState : MeleeAIActiveState
         _meleeAI.Animator.SetBool(_meleeAI.AnimatorParams.IsMovingBool, false);
     }
     
-    private void ShouldIdle()
+    private bool ShouldMove()
     {
-        if (!_meleeAI.AttackTarget.gameObject.activeSelf)
-        {
-            _stateMachine.ChangeState(_meleeAI.AttackState);
-        }
+        if (_meleeAI.PlayerTarget.PlayerHFSM.CurrentState == _meleeAI.PlayerTarget.DeadState)
+            return false;
+        
+        Vector2 distance = _meleeAI.PlayerTarget.transform.position - _meleeAI.transform.position;
+        return distance.magnitude > _meleeAI.AttackRange;
+    }
+    
+    private bool ShouldAttack()
+    {
+        return _meleeAI.PlayerTarget.PlayerHFSM.CurrentState != _meleeAI.PlayerTarget.DeadState;
     }
     
     private Vector2 GetAttackTargetDirection()
     {
-        Vector2 attackTaget = (Vector2)_meleeAI.AttackTarget.transform.position;
+        Vector2 attackTaget = (Vector2)_meleeAI.PlayerTarget.transform.position;
         Vector2 attackTargetDirection = (attackTaget - (Vector2)_meleeAI.transform.position).normalized;
         return attackTargetDirection;
     }

@@ -7,8 +7,6 @@ namespace BH.Scriptables
     [CreateAssetMenu(fileName = "HomingEvolution", menuName = "BH/Projectiles/New Homing Evolution")]
     public class HomingProjectileDataSO : ProjectileDataSO
     {
-        [field: BoxGroup("Homing Evolution"), SerializeField, ReadOnly]
-        public ProjectileType Type { get; private set; } = ProjectileType.HomingBullet;
         [field: BoxGroup("Homing Evolution"), SerializeField]
         public float HomingStrength { get; private set; } = 0.1f;
         [field: BoxGroup("Homing Evolution"), SerializeField]
@@ -16,6 +14,8 @@ namespace BH.Scriptables
         [field: BoxGroup("Homing Evolution"), SerializeField]
         public float TargetCheckInterval { get; private set; } = 1f;
         
-        public override ProjectileType GetProjectileType() => Type;
+        private const ProjectileType _type = ProjectileType.HomingBullet;
+        
+        public override ProjectileType GetProjectileType() => _type;
     }
 }

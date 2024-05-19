@@ -21,6 +21,9 @@ namespace BH.Runtime.Entities
             
             _deadDuration = _rangedAI.AnimatorParams.IsDeadDuration;
             _deadTimer = 0f;
+            
+            _rangedAI.Collider.enabled = false;
+            _rangedAI.Feedbacks.DieFeedbackPlayer?.PlayFeedbacks();
         }
         
         public override void LogicUpdate()
@@ -33,6 +36,15 @@ namespace BH.Runtime.Entities
             {
                 _rangedAI.ReturnToPool();
             }
+        }
+        
+        public override void Exit()
+        {
+            base.Exit();
+            
+            _rangedAI.Feedbacks.DieFeedbackPlayer?.StopFeedbacks();
+            _rangedAI.Collider.enabled = true;
+            _rangedAI.ModelRenderer.color = Color.white;
         }
     }
 }

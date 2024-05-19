@@ -21,6 +21,9 @@ namespace BH.Runtime.Entities
             
             _deadDuration = _player.AnimatorParams.IsDeadDuration;
             _deadTimer = 0f;
+            
+            _player.Collider.enabled = false;
+            _player.ModelRenderer.enabled = false;
         }
         
         public override void LogicUpdate()
@@ -33,6 +36,14 @@ namespace BH.Runtime.Entities
             {
                 _player.HandlePlayerDeath();
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            
+            _player.Collider.enabled = true;
+            _player.ModelRenderer.enabled = true;
         }
     }
 }

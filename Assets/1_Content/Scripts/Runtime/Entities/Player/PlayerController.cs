@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using BH.Runtime.Input;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
+using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -46,6 +48,9 @@ namespace BH.Runtime.Entities
 
         #region Components
         
+        public SpriteRenderer ModelRenderer { get; private set; } 
+        public Rigidbody2D Rigidbody { get; private set; }
+        public CapsuleCollider2D Collider { get; private set; }
         public Animator Animator { get; private set; }
         public MovementComponent Movement { get; private set; }
         public DashComponent Dash { get; private set; }
@@ -71,7 +76,10 @@ namespace BH.Runtime.Entities
         {
             base.Awake();
             
+            Rigidbody = GetComponent<Rigidbody2D>();
+            Collider = GetComponent<CapsuleCollider2D>();
             Animator = GetComponentInChildren<Animator>();
+            ModelRenderer = Animator.GetComponent<SpriteRenderer>();
             Movement = VerifyComponent<MovementComponent>();
             Dash = VerifyComponent<DashComponent>();
             Weapon = VerifyComponent<WeaponComponent>();
@@ -117,23 +125,41 @@ namespace BH.Runtime.Entities
             InputProvider = inputProvider;
         }
 
-        public void Activate()
+        public void Activate(bool isRespawn)
         {
             Stats.ResetStats();
             PlayerHFSM.ChangeState(IdleState);
+            Timing.RunCoroutine(InvulnerableTimerCoroutine(1f).CancelWith(gameObject));
+            
+            if (isRespawn)
+            {
+                Feedbacks.RespawnFeedbackPlayer?.PlayFeedbacks();
+            }
+        }
+        
+        private IEnumerator<float> InvulnerableTimerCoroutine(float duration)
+        {
+            Stats.SetInvincibility(true);
+            yield return Timing.WaitForSeconds(duration);
+            Feedbacks.RespawnFeedbackPlayer?.StopFeedbacks();
+            Stats.SetInvincibility(false);
         }
 
         public void HandleDamage(int amount)
         {
-            Feedbacks.HitFeedbackPlayer.PlayFeedbacks();
-            Stats.TakeDamage(amount);
+            if (Stats.TakeDamage(amount))
+            {
+                Feedbacks.HitFeedbackPlayer?.PlayFeedbacks();
+            }
         }
         
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
-            Feedbacks.HitFeedbackPlayer.PlayFeedbacks();
-            Stats.TakeDamage(amount);
-            //Movement.AddForce(direction, force);
+            if (Stats.TakeDamage(amount))
+            {
+                Feedbacks.HitFeedbackPlayer?.PlayFeedbacks();
+                //Movement.AddForce(direction, force);
+            }
         }
 
         public void FlipCharacter(bool faceRight)
@@ -150,7 +176,6 @@ namespace BH.Runtime.Entities
         
         private void OnDied()
         {
-            Feedbacks.HitFeedbackPlayer.StopFeedbacks();
             PlayerHFSM.ChangeState(DeadState);
         }
         

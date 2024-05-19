@@ -22,7 +22,7 @@ namespace BH.Runtime.Entities
         private ProjectileType _baseProjectile = ProjectileType.PlayerBasicBullet;
 
         [SerializeField, ReadOnly]
-        private ProjectileDataSO[] _evolutionsList = new ProjectileDataSO[6];
+        private ProjectileDataSO[] _evolutionsList = new ProjectileDataSO[5];
         
         [FoldoutGroup("Weapon Mod"), SerializeField, HideLabel]
         private GeneralWeaponMod _generalWeaponMod;

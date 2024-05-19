@@ -22,6 +22,7 @@ namespace BH.Runtime.Entities
         private IAIFactory _aiFactory;
         private ILevelStateHandler _levelStateHandler;
         private List<Entity> _spawnedEnemies = new();
+        private bool _spawnerRunning;
 
         [Inject(Id = "MainCamera")]
         private Camera _mainCamera;
@@ -78,8 +79,14 @@ namespace BH.Runtime.Entities
 
         private void OnLevelStateChanged(LevelState levelState)
         {
-            if (levelState == LevelState.NormalRound)
+            if (levelState == LevelState.BossRound)
             {
+                _spawnerRunning = false;
+                //TODO: implement boss phase
+            }
+            else if (!_spawnerRunning && levelState == LevelState.NormalRound)
+            {
+                _spawnerRunning = true;
                 Timing.RunCoroutine(StartNextWaveCoroutine());
             }
         }
@@ -140,6 +147,8 @@ namespace BH.Runtime.Entities
                     yield break;
                 }
             }
+            
+            _spawnerRunning = false;
         }
 
         private IEnumerator<float> WaitForAllEnemiesDefeated()

@@ -21,6 +21,9 @@ namespace BH.Runtime.Entities
             
             _deadDuration = _meleeAI.AnimatorParams.IsDeadDuration;
             _deadTimer = 0f;
+            
+            _meleeAI.Collider.enabled = false;
+            _meleeAI.Feedbacks.DieFeedbackPlayer?.PlayFeedbacks();
         }
         
         public override void LogicUpdate()
@@ -33,6 +36,15 @@ namespace BH.Runtime.Entities
             {
                 _meleeAI.ReturnToPool();
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            _meleeAI.Feedbacks.DieFeedbackPlayer?.StopFeedbacks();
+            _meleeAI.Collider.enabled = true;
+            _meleeAI.ModelRenderer.color = Color.white;
         }
     }
 }

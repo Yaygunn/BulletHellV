@@ -106,7 +106,7 @@ namespace BH.Runtime.Managers
             // TODO: Any setup on player spawn...
             Player.transform.position = _playerSpawnPosition;
             // TODO: We need to request state, not directly change it like this...
-            Player.Activate();
+            Player.Activate(false);
         }
         
         private void RespawnPlayer()
@@ -126,7 +126,7 @@ namespace BH.Runtime.Managers
             Player.gameObject.SetActive(true);
             SetLevelState(_previousLevelState);
             // TODO: Need to request state change here
-            Player.Activate();
+            Player.Activate(true);
         }
 
         public void SetLevelState(LevelState newState)
