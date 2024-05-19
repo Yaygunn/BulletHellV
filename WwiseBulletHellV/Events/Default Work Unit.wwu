@@ -75,6 +75,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="bullet_health" ID="{025914E3-6176-4408-8040-9ED82785ED58}">
+									<ChildrenList>
+										<Action Name="" ID="{D5652C35-64E1-4933-A0A0-6E1024F0892C}" ShortID="140963215">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_health" ID="{3478EF42-46E7-4FAF-9832-26858433E22A}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="ENEMIES" ID="{DA2596E7-2794-49D8-A341-144FACAB74AB}" ShortID="76802006">
