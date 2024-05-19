@@ -17,6 +17,9 @@ namespace BH.Runtime.Entities
         
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
+        
+        [field: FoldoutGroup("Feedbacks"), SerializeField, HideLabel]
+        public EntityFeedbacks Feedbacks { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -122,11 +125,13 @@ namespace BH.Runtime.Entities
 
         public void HandleDamage(int amount)
         {
+            Feedbacks.HitFeedbackPlayer.PlayFeedbacks();
             Stats.TakeDamage(amount);
         }
         
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
+            Feedbacks.HitFeedbackPlayer.PlayFeedbacks();
             Stats.TakeDamage(amount);
             //Movement.AddForce(direction, force);
         }
@@ -145,6 +150,7 @@ namespace BH.Runtime.Entities
         
         private void OnDied()
         {
+            Feedbacks.HitFeedbackPlayer.StopFeedbacks();
             PlayerHFSM.ChangeState(DeadState);
         }
         

@@ -68,6 +68,9 @@ namespace BH.Runtime.Managers
             
             // Signals
             _signalBus.TryUnsubscribe<PlayerDiedSignal>(OnPlayerDied);
+            
+            if (_respawnTimer != null)
+                _respawnTimer.OnTimerStop -= HandleRespawnTimerStop;
         }
         
         public void TogglePause(bool pause)
