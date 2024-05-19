@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
+using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -8,6 +10,14 @@ namespace BH.Runtime.UI
 {
     public class MenuPanel : PanelView
     {
+        [SerializeField]
+        private TMP_Text _versionText;
+
+        private void Start()
+        {
+            _versionText.text = $"Version: {Application.version}";
+        }
+
         public void OnClick_ExitButton()
         {
 #if UNITY_EDITOR

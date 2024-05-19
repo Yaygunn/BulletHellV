@@ -8,8 +8,8 @@ namespace BH.Scriptables.Scenes
     {
         Loader,
         MainMenu,
-        Game,
-        Credits
+        GameEasy,
+        GameHard
     }
     
     [CreateAssetMenu(fileName = "SceneSettings", menuName = "BH/Scenes/SceneSettings")]
