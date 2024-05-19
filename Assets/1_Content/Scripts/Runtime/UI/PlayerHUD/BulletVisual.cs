@@ -15,9 +15,10 @@ namespace BH.Runtime.UI
             _levelText = GetComponentInChildren<TMP_Text>();
         }
 
-        public void SetBulletVisual(Color color, int level)
+        public void SetBulletVisual(Sprite sprite, int level)
         {
-            _bulletImage.color = color;
+            _bulletImage.color = Color.white;
+            _bulletImage.sprite = sprite;
             
             if (level != 0)
                 _levelText.text = level.ToString();

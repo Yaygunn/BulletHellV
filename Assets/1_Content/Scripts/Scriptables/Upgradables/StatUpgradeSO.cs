@@ -9,7 +9,11 @@ namespace GH.Scriptables
     public class StatUpgradeSO : ScriptableObject
     {
         [field: BoxGroup("General"), SerializeField]
-        public string UpgradeDisplay { get; private set; } = "New Upgrade";
+        public string UpgradeName { get; private set; } = "New Upgrade";
+        [field: BoxGroup("General"), SerializeField, TextArea]
+        public string UpgradeDescription { get; private set; } = "New Upgrade";
+        [field: BoxGroup("General"), SerializeField]
+        public Sprite Icon { get; private set; }
         
         [field: BoxGroup("Modifications"), SerializeField]
         public int HealthIncrease { get; private set; }
@@ -37,7 +41,7 @@ namespace GH.Scriptables
             if (SpeedIncrease != 0) parts.Add($"Speed +{SpeedIncrease}");
             if (SpeedMultiplier != 0) parts.Add($"Speed x{1 + SpeedMultiplier:F2}");
 
-            return $"{UpgradeDisplay}: " + string.Join(", ", parts);
+            return $"{UpgradeName}: " + string.Join(", ", parts);
         }
 
         public void ApplyUpgrade(GeneralStatMod mod)

@@ -54,7 +54,7 @@ namespace BH.Runtime.Entities
         {
             _patternData = patternData;
             _bulletCounter = 0;
-            _angleOffset = 0f;
+            //_angleOffset = 0f;
             _spawnTimer.Reset(_patternData.SpawnFrequency);
             _spawnTimer.Start();
         }

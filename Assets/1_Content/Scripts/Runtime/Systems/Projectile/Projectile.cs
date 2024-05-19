@@ -26,6 +26,8 @@ namespace BH.Runtime.Systems
 
         [BoxGroup("General"), SerializeField]
         private LayerMask _obsticleMask;
+        [BoxGroup("General"), SerializeField]
+        private float _stuckPreventionFactor = 0.1f;
         
         [BoxGroup("Speed Monitor"), SerializeField]
         private bool _enableSpeedMonitoring = true;
@@ -175,6 +177,9 @@ namespace BH.Runtime.Systems
         {
             Vector2 inNormal = other.GetContact(0).normal;
             CurrentDirection = Vector2.Reflect(CurrentDirection, inNormal).normalized;
+            
+            transform.position += (Vector3)inNormal * _stuckPreventionFactor;
+            
             _bounces++;
 
             if (!_hasEvolved && _bounces >= _currentProjData.EvolutionBounces)

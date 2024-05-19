@@ -130,6 +130,7 @@ namespace BH.Runtime.Entities
             Stats.ResetStats();
             PlayerHFSM.ChangeState(IdleState);
             Timing.RunCoroutine(InvulnerableTimerCoroutine(1f).CancelWith(gameObject));
+            InputProvider.EnablePlayerControls();
             
             if (isRespawn)
             {
