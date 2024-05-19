@@ -21,6 +21,7 @@
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Combat" ID="{83D5B964-90AC-4A7B-8811-831C2BD3E45D}"/>
 						<CurrentStateRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
