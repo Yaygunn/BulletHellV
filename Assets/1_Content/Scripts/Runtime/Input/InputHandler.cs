@@ -33,7 +33,7 @@ namespace BH.Runtime.Input
 
         private void OnEnable()
         {
-            EnableUIControls();
+            _inputActions.Player.Enable();
         }
 
         private void Update()

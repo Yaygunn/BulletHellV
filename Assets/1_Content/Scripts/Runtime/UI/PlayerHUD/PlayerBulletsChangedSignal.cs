@@ -6,12 +6,12 @@ namespace BH.Runtime.UI
 {
     public struct PlayerBulletsChangedSignal
     {
-        public List<Sprite> EvolutionIcons { get; }
+        public List<Color> EvolutionColors { get; }
         public List<int> EvolutionLevels { get; }
         
-        public PlayerBulletsChangedSignal(List<Sprite> evolutionIcons, List<int> evolutionLevels)
+        public PlayerBulletsChangedSignal(List<Color> evolutionColors, List<int> evolutionLevels)
         {
-            EvolutionIcons = evolutionIcons;
+            EvolutionColors = evolutionColors;
             EvolutionLevels = evolutionLevels;
         }
     }

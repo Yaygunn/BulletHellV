@@ -52,7 +52,7 @@ namespace BH.Runtime.UI
         {
             for (int i = 0; i < _bulletVisuals.Count; i++)
             {
-                _bulletVisuals[i].SetBulletVisual(signal.EvolutionIcons[i], signal.EvolutionLevels[i]);
+                _bulletVisuals[i].SetBulletVisual(signal.EvolutionColors[i], signal.EvolutionLevels[i]);
             }
         }
     }

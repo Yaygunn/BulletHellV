@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using BH.Runtime.Entities;
 using BH.Runtime.Factories;
-using BH.Runtime.Scenes;
 using BH.Scriptables;
-using BH.Scriptables.Scenes;
 using BH.Utilities.ImprovedTimers;
-using MEC;
 using UnityEngine;
 using Zenject;
 
@@ -30,7 +26,6 @@ namespace BH.Runtime.Managers
         private IGameStateHandler _gameState;
         private IPLayerFactory _playerFactory;
         private SignalBus _signalBus;
-        private SceneLoader _sceneLoader;
         
         
         private Vector3 _playerSpawnPosition;
@@ -44,13 +39,12 @@ namespace BH.Runtime.Managers
         public event Action<LevelState> OnLevelStateChanged;
         
         private LevelManager(LevelSettingsSO levelSettings, IGameStateHandler gameState, IPLayerFactory playerFactory, 
-            SignalBus signalBus, SceneLoader sceneLoader)
+            SignalBus signalBus)
         {
             _levelSettings = levelSettings;
             _gameState = gameState;
             _playerFactory = playerFactory;
             _signalBus = signalBus;
-            _sceneLoader = sceneLoader;
         }
         
         public void Initialize()
@@ -145,12 +139,6 @@ namespace BH.Runtime.Managers
             OnLevelStateChanged?.Invoke(CurrentLevelState);
             _signalBus.Fire(new LevelStateChangedSignal(CurrentLevelState));
             Debug.Log($"[LevelManager] State changed to: {CurrentLevelState}");
-
-            if (CurrentLevelState == LevelState.GameOver)
-            {
-                TogglePause(false);
-                Timing.RunCoroutine(GameOverCoroutine());
-            }
         }
         
         private void OnPlayerDied(PlayerDiedSignal signal)
@@ -159,12 +147,6 @@ namespace BH.Runtime.Managers
                 RespawnPlayer();
             else
                 SetLevelState(LevelState.GameOver);
-        }
-        
-        private IEnumerator<float> GameOverCoroutine()
-        {
-            yield return Timing.WaitForSeconds(2f);
-            _sceneLoader.LoadSceneAsync(SceneType.MainMenu);
         }
     }
 }

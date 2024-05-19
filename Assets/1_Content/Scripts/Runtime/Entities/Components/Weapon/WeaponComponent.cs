@@ -176,16 +176,16 @@ namespace BH.Runtime.Entities
         
         private void UpdatePlayerHUD()
         {
-            List<Sprite> icons = new ();
+            List<Color> colors = new ();
             List<int> levels = new ();
             
             foreach (ProjectileDataSO evolution in _evolutionsList)
             {
-                icons.Add(evolution.Icon);
+                colors.Add(evolution.Color);
                 levels.Add(_bulletLevels[evolution.GetProjectileType()]);
             }
             
-            _signalBus.Fire(new PlayerBulletsChangedSignal(icons, levels));
+            _signalBus.Fire(new PlayerBulletsChangedSignal(colors, levels));
         }
         
         private void OnCooldownEnd() => IsOnCooldown = false;

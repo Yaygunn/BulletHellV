@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using BH.Runtime.Managers;
 using DP.Utilities;
+using MEC;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -52,7 +56,9 @@ namespace BH.Scripts.Runtime.UI
         {
             for (int i = 0; i < _upgradeUIs.Count; i++)
             {
-                _upgradeUIs[i].UpdateUpgradeDisplay(signal.UpgradeOptions[i]);
+                _upgradeUIs[i].SetDescription(signal.UpgradeOptions[i].Description);
+                _upgradeUIs[i].SetAdvantage(signal.UpgradeOptions[i].Advantage);
+                _upgradeUIs[i].SetDisAdvantage(signal.UpgradeOptions[i].DisAdvantage);
             }
 
             StartCoroutine(ShowUpgradeOptionsDelayCoroutine());

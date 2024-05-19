@@ -1,8 +1,5 @@
 ﻿using System;
-using BH.Runtime.Systems;
-using BH.Scriptables;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +8,11 @@ namespace BH.Scripts.Runtime.UI
     public class UpgradeUI : MonoBehaviour
     {
         [SerializeField]
-        private Image _iconImage;
-        [SerializeField]
         private TMP_Text _descriptionText;
+        [SerializeField]
+        private TMP_Text _advantageText;
+        [SerializeField]
+        private TMP_Text _disAdvantageText;
 
         private Button _button;
         private int _buttonIndex;
@@ -40,46 +39,22 @@ namespace BH.Scripts.Runtime.UI
             _buttonIndex = index;
         }
 
-        public void UpdateUpgradeDisplay(UpgradeOption upgradeOption)
+        public void SetDescription(string description)
         {
-            switch (upgradeOption.Type)
-            {
-                case UpgradeType.AddBullet:
-                    _iconImage.sprite = upgradeOption.ProjectileData.Icon;
-                    _descriptionText.text = BuildProjectileDescription(upgradeOption.ProjectileData);
-                    break;
-                case UpgradeType.UpgradeBullet:
-                    _iconImage.sprite = upgradeOption.ProjectileData.Icon;
-                    _descriptionText.text = BuildProjectileDescription(upgradeOption.ProjectileData);
-                    break;
-                case UpgradeType.UpgradeWeapon:
-                    _iconImage.sprite = upgradeOption.WeaponUpgrade.Icon;
-                    _descriptionText.text = BuildBasicDescription(upgradeOption.WeaponUpgrade.UpgradeName, 
-                        upgradeOption.WeaponUpgrade.UpgradeDescription);
-                    break;
-                case UpgradeType.UpgradePlayer:
-                    _iconImage.sprite = upgradeOption.StatUpgrade.Icon;
-                    _descriptionText.text = BuildBasicDescription(upgradeOption.StatUpgrade.UpgradeName, 
-                        upgradeOption.StatUpgrade.UpgradeDescription);
-                    break;
-            }
+            _descriptionText.text = description;
         }
-        
-        private string BuildProjectileDescription(ProjectileDataSO projectileData)
+
+
+        public void SetAdvantage(string description)
         {
-            string description = $"{projectileData.ProjectileName}\n\n" +
-                                 $"{projectileData.Description}\n\n" +
-                                 $"<color=green>{projectileData.PosativeEffect}</color>\n\n" +
-                                 $"<color=red>{projectileData.NegativeEffect}</color>";
-            return description;
+            _advantageText.text = description;
         }
-        
-        private string BuildBasicDescription(string upgradeName, string upgradeDescription)
+
+        public void SetDisAdvantage(string description)
         {
-            string description = $"{upgradeName}\n\n" +
-                                 $"{upgradeDescription}";
-            return description;
+            _disAdvantageText.text = description;
         }
+
 
         private void OnButtonClicked()
         {

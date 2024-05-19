@@ -24,6 +24,7 @@ namespace BH.Runtime.Entities
 
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
+        public MMHealthBar healthBar;
 
         [field: FoldoutGroup("Projectile Patterns"), SerializeField]
         public List<ProjectilePatternDataSO> ProjectilePatterns { get; private set; }
@@ -140,20 +141,19 @@ namespace BH.Runtime.Entities
             Wave wave = _spawner.GetCurrentWave();
             Stats.ModifyStatsManual(wave.HealthMultiplier, wave.ShieldMultiplier, wave.SpeedMultiplier);
             CurrentTouchDamage = (int)(CurrentTouchDamage * wave.DamageMultiplier);
-            Stats.Initialize();
         }
 
-        public void HandleDamage(int amount)
+        public void HandleDamage(int ammount)
         {
-            Stats.TakeDamage(amount);
-            Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
+            Stats.TakeDamage(ammount);
+            healthBar?.UpdateBar(Stats.CurrentHealth, 0, Stats.MaxHealth, true);
+            Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(this.transform.position, ammount);
         }
 
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
             Stats.TakeDamage(amount);
             Movement.AddForce(direction, force);
-            Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
         }
 
         private void OnDied()

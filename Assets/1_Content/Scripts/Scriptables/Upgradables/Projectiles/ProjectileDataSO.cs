@@ -10,10 +10,10 @@ namespace BH.Scriptables
         public string ProjectileName { get; private set; }
         [field: BoxGroup("General Info"), SerializeField, TextArea]
         public string Description { get; private set; }
-        [field: BoxGroup("General Info"), SerializeField, TextArea]
-        public string PosativeEffect { get; private set; }
-        [field: BoxGroup("General Info"), SerializeField, TextArea]
-        public string NegativeEffect { get; private set; }
+        [field: BoxGroup("General Info"), SerializeField]
+        public string Advantage { get; private set; }
+        [field: BoxGroup("General Info"), SerializeField]
+        public string DisAdvantage { get; private set; }
         [field: BoxGroup("General Info"), SerializeField]
         public Sprite Icon { get; private set; }
         [field: BoxGroup("General Info"), SerializeField]
