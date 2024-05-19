@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BH.Runtime.Audio;
 using BH.Runtime.Factories;
 using BH.Runtime.Systems;
 using BH.Runtime.UI;
@@ -33,6 +34,7 @@ namespace BH.Runtime.Entities
         public bool IsOnCooldown { get; private set; }
 
         private IProjectileFactory _projectileFactory;
+        private IWwiseEventHandler _wwiseEventHandler;
         private ProjectileDataSO _baseProjectileData;
         private CountdownTimer _cooldownCountdown;
         private DatabaseSO _database;
@@ -40,9 +42,10 @@ namespace BH.Runtime.Entities
         private SignalBus _signalBus;
 
         [Inject] 
-        private void Construct(IProjectileFactory projectileFactory, DatabaseSO database, SignalBus signalBus)
+        private void Construct(IProjectileFactory projectileFactory, IWwiseEventHandler wwiseEventHandler, DatabaseSO database, SignalBus signalBus)
         {
             _projectileFactory = projectileFactory;
+            _wwiseEventHandler = wwiseEventHandler;
             _database = database;
             _signalBus = signalBus;
         }
@@ -86,6 +89,7 @@ namespace BH.Runtime.Entities
             IsOnCooldown = true;
             _cooldownCountdown.Reset(GetFireRate());
             _cooldownCountdown.Start();
+            _wwiseEventHandler.PostAudioEvent(ProjectileSFX.Fired);
         }
         
         private void SpawnBullet(Vector3 velocity, Vector2 position)

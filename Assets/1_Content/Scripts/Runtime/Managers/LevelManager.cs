@@ -137,6 +137,7 @@ namespace BH.Runtime.Managers
             _previousLevelState = CurrentLevelState;
             CurrentLevelState = newState;
             OnLevelStateChanged?.Invoke(CurrentLevelState);
+            _signalBus.Fire(new LevelStateChangedSignal(CurrentLevelState));
             Debug.Log($"[LevelManager] State changed to: {CurrentLevelState}");
         }
         
