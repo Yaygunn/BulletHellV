@@ -9,13 +9,21 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{892FCDA9-7ECF-6F91-A29B-A584FE35C81B}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{B2AA8535-12B9-9885-1B91-C0B4F9AF90EF}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
 				<File Id="19329742" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
 					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_21630847.wem</CachePath>
+				</File>
+				<File Id="86740775" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_speech.wav</ShortName>
+					<CachePath>SFX/squid_idle_speech_10D671F9.wem</CachePath>
+				</File>
+				<File Id="129670444" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ply_heatlh.wav</ShortName>
+					<CachePath>SFX/ply_heatlh_883B9F73.wem</CachePath>
 				</File>
 				<File Id="144925876" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Player\dash-04.wav</ShortName>
@@ -29,6 +37,10 @@
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
 					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1733C08D.wem</CachePath>
 				</File>
+				<File Id="214792748" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_breathe.wav</ShortName>
+					<CachePath>SFX/squid_idle_breathe_4369AF4D.wem</CachePath>
+				</File>
 				<File Id="227329552" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience, Underwater, Complex 01 SND12354.wav</ShortName>
 					<CachePath>SFX/Ambience, Underwater, Complex 01 SND12354_EC0D8036.wem</CachePath>
@@ -37,9 +49,25 @@
 					<ShortName>Player\dash-02.wav</ShortName>
 					<CachePath>SFX/Player/dash-02_EFD29FCF.wem</CachePath>
 				</File>
+				<File Id="240925643" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_breathe.wav</ShortName>
+					<CachePath>SFX/squid_idle_breathe_A6520919.wem</CachePath>
+				</File>
+				<File Id="253937811" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_explosion.wav</ShortName>
+					<CachePath>SFX/bullet_explosion_A29234B5.wem</CachePath>
+				</File>
+				<File Id="268045550" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ui_dash_ready.wav</ShortName>
+					<CachePath>SFX/ui_dash_ready_26FE799F.wem</CachePath>
+				</File>
 				<File Id="284901163" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Player\dash.wav</ShortName>
 					<CachePath>SFX/Player/dash_E7AA3AB6.wem</CachePath>
+				</File>
+				<File Id="286510258" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_bounce.wav</ShortName>
+					<CachePath>SFX/bullet_bounce_B0C19989.wem</CachePath>
 				</File>
 				<File Id="294914401" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Player\movement_loop.wav</ShortName>
@@ -53,9 +81,53 @@
 					<ShortName>Player\dash-01.wav</ShortName>
 					<CachePath>SFX/Player/dash-01_FF31AA45.wem</CachePath>
 				</File>
+				<File Id="348944056" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_bounce.wav</ShortName>
+					<CachePath>SFX/bullet_bounce_FC2B8E50.wem</CachePath>
+				</File>
+				<File Id="424305235" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_expading.wav</ShortName>
+					<CachePath>SFX/bullet_expading_C2304FD5.wem</CachePath>
+				</File>
+				<File Id="468071575" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_speech.wav</ShortName>
+					<CachePath>SFX/squid_idle_speech_9F395858.wem</CachePath>
+				</File>
+				<File Id="481642438" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ply_hurt.wav</ShortName>
+					<CachePath>SFX/ply_hurt_A88C8CEC.wem</CachePath>
+				</File>
+				<File Id="500362682" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_speech.wav</ShortName>
+					<CachePath>SFX/squid_idle_speech_91461402.wem</CachePath>
+				</File>
+				<File Id="502511595" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_shoot3.wav</ShortName>
+					<CachePath>SFX/squid_shoot3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="516410857" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_shoot.wav</ShortName>
+					<CachePath>SFX/squid_shoot_10C4C929.wem</CachePath>
+				</File>
 				<File Id="535973059" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133.wav</ShortName>
 					<CachePath>SFX/Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="554466286" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_explosion.wav</ShortName>
+					<CachePath>SFX/bullet_explosion_50216A77.wem</CachePath>
+				</File>
+				<File Id="601174450" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_death.wav</ShortName>
+					<CachePath>SFX/squid_death_10C4C929.wem</CachePath>
+				</File>
+				<File Id="608943065" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_health.wav</ShortName>
+					<CachePath>SFX/bullet_health_B2E59392.wem</CachePath>
+				</File>
+				<File Id="667125383" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ene_mob_death.wav</ShortName>
+					<CachePath>SFX/ene_mob_death_10C4C929.wem</CachePath>
 				</File>
 				<File Id="671312817" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ui_open.wav</ShortName>
@@ -69,23 +141,74 @@
 					<ShortName>ui_nav.wav</ShortName>
 					<CachePath>SFX/ui_nav_4FEFA156.wem</CachePath>
 				</File>
+				<File Id="857908823" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_speech.wav</ShortName>
+					<CachePath>SFX/squid_idle_speech_D4463492.wem</CachePath>
+				</File>
 				<File Id="872505889" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Player\dash-03.wav</ShortName>
 					<CachePath>SFX/Player/dash-03_DDE185F9.wem</CachePath>
+				</File>
+				<File Id="873474779" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_bounce.wav</ShortName>
+					<CachePath>SFX/bullet_bounce_88F61131.wem</CachePath>
+				</File>
+				<File Id="902632608" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_breathe.wav</ShortName>
+					<CachePath>SFX/squid_idle_breathe_82A18733.wem</CachePath>
 				</File>
 				<File Id="971597346" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793.wav</ShortName>
 					<CachePath>SFX/Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_0A94827C.wem</CachePath>
 				</File>
+				<File Id="978038408" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_speech.wav</ShortName>
+					<CachePath>SFX/squid_idle_speech_C9426F64.wem</CachePath>
+				</File>
+				<File Id="981989817" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_bounce.wav</ShortName>
+					<CachePath>SFX/bullet_bounce_085FDA8E.wem</CachePath>
+				</File>
 				<File Id="1001388230" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1.wav</ShortName>
 					<CachePath>SFX/Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1_9EAC2E3C.wem</CachePath>
+				</File>
+				<File Id="1004891463" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_shoot2.wav</ShortName>
+					<CachePath>SFX/squid_shoot2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1011003347" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>squid_idle_loop.wav</ShortName>
+					<CachePath>SFX/squid_idle_loop_969105F7.wem</CachePath>
+				</File>
+				<File Id="1015204574" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_explosion.wav</ShortName>
+					<CachePath>SFX/bullet_explosion_A612CAC6.wem</CachePath>
+				</File>
+				<File Id="1021034262" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>bullet_bounce.wav</ShortName>
+					<CachePath>SFX/bullet_bounce_1CF48303.wem</CachePath>
 				</File>
 				<File Id="1042962566" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ui_close.wav</ShortName>
 					<CachePath>SFX/ui_close_B71D557D.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="10495675" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="140124021" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="215528933" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="256692165" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="294060201" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="1019510299" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+				</Custom>
+				<ShareSets>
+					<Plugin Id="1458448755" Name="bullet_expading_tremolo" LibName="Wwise Tremolo" LibId="8585219"/>
+					<Plugin Id="2566640997" Name="ply_healt" LibName="Wwise Time Stretch" LibId="8519683"/>
+					<Plugin Id="3043085106" Name="High_Impact" LibName="Wwise Compressor" LibId="7077891"/>
+				</ShareSets>
+			</Plugins>
 			<Events>
 				<Event Id="2338340215" Name="ambTest" DurationType="Infinite">
 					<MediaRefs>
@@ -108,6 +231,54 @@
 						<ActionSetStateEntry GroupId="393239870" Id="3587590657" Name="SFX_Gameplay"/>
 					</ActionSetState>
 				</Event>
+				<Event Id="2484480848" Name="bullet_bounce" DurationType="OneShot" DurationMin="0.39769617" DurationMax="0.4023172">
+					<MediaRefs>
+						<MediaRef Id="286510258"/>
+						<MediaRef Id="348944056"/>
+						<MediaRef Id="873474779"/>
+						<MediaRef Id="981989817"/>
+						<MediaRef Id="1021034262"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="1097487594" Name="bullet_expading" DurationType="OneShot" DurationMin="14.800864" DurationMax="14.800864">
+					<MediaRefs>
+						<MediaRef Id="424305235"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1458448755"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="2798586757" Name="bullet_explosion" DurationType="OneShot" DurationMin="1.3328662" DurationMax="1.683693">
+					<MediaRefs>
+						<MediaRef Id="253937811"/>
+						<MediaRef Id="554466286"/>
+						<MediaRef Id="1015204574"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3043085106"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="2721115098" Name="bullet_health" DurationType="OneShot" DurationMin="0.89965886" DurationMax="0.93138534">
+					<MediaRefs>
+						<MediaRef Id="608943065"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
+				</Event>
 				<Event Id="1248641489" Name="bulletTest" DurationType="OneShot" DurationMin="0.4197055" DurationMax="0.5407576">
 					<MediaRefs>
 						<MediaRef Id="19329742"/>
@@ -122,6 +293,38 @@
 					<ActionSetState>
 						<ActionSetStateEntry GroupId="393239870" Id="3587590657" Name="SFX_Gameplay"/>
 					</ActionSetState>
+				</Event>
+				<Event Id="1195401469" Name="ene_mob_death" DurationType="OneShot" DurationMin="1.4635102" DurationMax="2.0697157">
+					<MediaRefs>
+						<MediaRef Id="667125383"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="545330280" Name="ply_health_Pause" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4032423056" Name="ply_health_Play" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="129670444"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2566640997"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="567373571" Name="ply_health_Resume" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2381008178" Name="ply_health_Stop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3511115374" Name="ply_hurt" DurationType="OneShot" DurationMin="1.3398188" DurationMax="1.688066">
+					<MediaRefs>
+						<MediaRef Id="481642438"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2213237662" Name="Underwater"/>
+					</AuxBusRefs>
 				</Event>
 				<Event Id="474402578" Name="plyDash" DurationType="OneShot" DurationMin="0.61085445" DurationMax="1.0025519">
 					<MediaRefs>
@@ -143,9 +346,61 @@
 						<AuxBusRef Id="2213237662" Name="Underwater"/>
 					</AuxBusRefs>
 				</Event>
+				<Event Id="2782996605" Name="squidDeath" DurationType="OneShot" DurationMin="1.9077916" DurationMax="1.9077916">
+					<MediaRefs>
+						<MediaRef Id="601174450"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="1480519155" Name="squidIdle" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="86740775"/>
+						<MediaRef Id="214792748"/>
+						<MediaRef Id="240925643"/>
+						<MediaRef Id="468071575"/>
+						<MediaRef Id="500362682"/>
+						<MediaRef Id="857908823"/>
+						<MediaRef Id="902632608"/>
+						<MediaRef Id="978038408"/>
+						<MediaRef Id="1011003347"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="10495675"/>
+							<PluginRef Id="140124021"/>
+							<PluginRef Id="215528933"/>
+							<PluginRef Id="256692165"/>
+							<PluginRef Id="294060201"/>
+							<PluginRef Id="1019510299"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3280154138" Name="squidShoot" DurationType="OneShot" DurationMin="0.85357606" DurationMax="0.8634942">
+					<MediaRefs>
+						<MediaRef Id="502511595"/>
+						<MediaRef Id="516410857"/>
+						<MediaRef Id="1004891463"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
+				</Event>
 				<Event Id="3030481697" Name="uiClose" DurationType="OneShot" DurationMin="0.16322917" DurationMax="0.16322917">
 					<MediaRefs>
 						<MediaRef Id="1042962566"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="393239870" Name="SFX"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="2214371868" Name="uiDashReady" DurationType="OneShot" DurationMin="1.38925" DurationMax="1.38925">
+					<MediaRefs>
+						<MediaRef Id="268045550"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="393239870" Name="SFX"/>
@@ -169,6 +424,7 @@
 				</Event>
 			</Events>
 			<GameParameters>
+				<GameParameter Id="963702167" Name="ply_health"/>
 				<GameParameter Id="1348429472" Name="Water_Intensity"/>
 			</GameParameters>
 			<StateGroups>
@@ -181,7 +437,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{9C896C91-E72B-396A-34D7-9BD6E744E1CE}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{DBB17379-BED1-42FD-8DD2-019D9B6DF076}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -258,10 +514,64 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{0E3E9487-2562-8161-CF73-30D6CFA3E27A}">
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{9E0F3859-9C4D-05A0-6433-0E88CC5F83B1}">
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
+			<Media>
+				<File Id="219768656" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Draft1.wav</ShortName>
+					<CachePath>SFX/Draft1_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3991942870" Name="music" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="792781730" Id="320199936"/>
+							<MediaRefs>
+								<MediaRef Id="219768656"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="792781730" Id="320199939"/>
+							<MediaRefs>
+								<MediaRef Id="219768656"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="792781730" Id="320199938"/>
+							<MediaRefs>
+								<MediaRef Id="219768656"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="792781730" Id="2764240573"/>
+							<MediaRefs>
+								<MediaRef Id="219768656"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="792781730" Id="0"/>
+							<MediaRefs>
+								<MediaRef Id="219768656"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+			</Events>
+			<StateGroups>
+				<StateGroup Id="792781730" Name="Music_System">
+					<States>
+						<State Id="320199936" Name="Boss_01"/>
+						<State Id="320199938" Name="Boss_03"/>
+						<State Id="320199939" Name="Boss_02"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2764240573" Name="Combat"/>
+						<State Id="3753286132" Name="Calm"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{778F76E3-CBC8-D94D-1D8B-9664B2CE81AB}</FileHash>
+	<FileHash>{CCBD7A5B-130A-656B-3312-48979D55BFCE}</FileHash>
 </SoundBanksInfo>

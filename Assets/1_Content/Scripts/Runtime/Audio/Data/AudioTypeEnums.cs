@@ -4,13 +4,16 @@
     {
         Dash,
         Hurt,
-        Die
+        Die,
+        Health,
+        Move
     }
     
     public enum EnemySFX
     {
         Hurt,
-        Die
+        Die,
+        Fire
     }
 
     public enum ProjectileSFX
@@ -29,10 +32,16 @@
 
     public enum AudioState
     {
-        Loading,
-        MainMenu,
         GameActive,
         GamePaused,
-        Credits
+        Calm,
+        Combat,
+        Boss_01,
+        Boss_02,
+        Boss_03
+    }
+    public enum Music
+    {
+        Play
     }
 }

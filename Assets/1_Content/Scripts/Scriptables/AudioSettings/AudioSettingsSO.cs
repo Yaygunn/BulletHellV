@@ -23,10 +23,14 @@ namespace BH.Scriptables
         
         [field: BoxGroup("UI SFX"), SerializeField]
         public List<AudioEventData<UISFX>> UISFX { get; private set; }
-        
+
+        [field: BoxGroup("Music"), SerializeField]
+        public List<AudioEventData<Music>> Music { get; private set; }
+
         [field: BoxGroup("Audio States"), SerializeField]
         public List<AudioStateData> AudioStates { get; private set; }
-        
+
+
         public List<AudioEventData<T>> GetEventList<T>() where T : Enum
         {
             if (typeof(T) == typeof(PlayerSFX))
@@ -37,6 +41,8 @@ namespace BH.Scriptables
                 return ProjectileSFX as List<AudioEventData<T>>;
             if (typeof(T) == typeof(UISFX))
                 return UISFX as List<AudioEventData<T>>;
+            if (typeof(T) == typeof(Music))
+                return Music as List<AudioEventData<T>>;
 
             throw new ArgumentException("[AudioSettingsSO] Unsupported type passed...");
         }

@@ -28,7 +28,7 @@
 				<Property Name="SoundBankGenerateEstimatedDuration" Type="bool" Value="True"/>
 				<Property Name="SoundBankGenerateHeaderFile" Type="bool" Value="True"/>
 				<Property Name="SoundBankGenerateMaxAttenuationInfo" Type="bool" Value="True"/>
-				<Property Name="SoundBankHeaderFilePath" Type="string" Value="Z:\Users\lisette\Documents\GitHub\BulletHellV\Assets\StreamingAssets\Audio\GeneratedSoundBanks"/>
+				<Property Name="SoundBankHeaderFilePath" Type="string" Value="..\Assets\StreamingAssets\Audio\GeneratedSoundBanks"/>
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
 						<Value Platform="Mac">..\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Mac\</Value>

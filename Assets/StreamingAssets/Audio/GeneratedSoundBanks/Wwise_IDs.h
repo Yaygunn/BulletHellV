@@ -15,10 +15,25 @@ namespace AK
     {
         static const AkUniqueID AMBTEST = 2338340215U;
         static const AkUniqueID AMBUNDERWATER = 3813711432U;
+        static const AkUniqueID BULLET_BOUNCE = 2484480848U;
+        static const AkUniqueID BULLET_EXPADING = 1097487594U;
+        static const AkUniqueID BULLET_EXPLOSION = 2798586757U;
+        static const AkUniqueID BULLET_HEALTH = 2721115098U;
         static const AkUniqueID BULLETTEST = 1248641489U;
+        static const AkUniqueID ENE_MOB_DEATH = 1195401469U;
+        static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID PLY_HEALTH_PAUSE = 545330280U;
+        static const AkUniqueID PLY_HEALTH_PLAY = 4032423056U;
+        static const AkUniqueID PLY_HEALTH_RESUME = 567373571U;
+        static const AkUniqueID PLY_HEALTH_STOP = 2381008178U;
+        static const AkUniqueID PLY_HURT = 3511115374U;
         static const AkUniqueID PLYDASH = 474402578U;
         static const AkUniqueID PLYMOVE = 216950137U;
+        static const AkUniqueID SQUIDDEATH = 2782996605U;
+        static const AkUniqueID SQUIDIDLE = 1480519155U;
+        static const AkUniqueID SQUIDSHOOT = 3280154138U;
         static const AkUniqueID UICLOSE = 3030481697U;
+        static const AkUniqueID UIDASHREADY = 2214371868U;
         static const AkUniqueID UINAV = 1038020662U;
         static const AkUniqueID UIOPEN = 1389761091U;
     } // namespace EVENTS

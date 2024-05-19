@@ -7,6 +7,7 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="BULLETS" ID="{E13A1D07-B3AE-43DA-8FC3-753608B9BB24}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI" ID="{3C5E327F-A10E-4500-8426-660F062A8D0E}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="ENEMIES" ID="{DA2596E7-2794-49D8-A341-144FACAB74AB}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PLAYER" ID="{6915E4DF-929E-4A84-94D8-4456C6426F30}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AMBIENCE" ID="{8CA5A897-0168-4F97-8991-A7C02EAB325D}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
@@ -14,7 +15,9 @@
 					<GameSyncExclusionList/>
 				</SoundBank>
 				<SoundBank Name="MUSIC" ID="{AE244DE5-C351-4DB2-BDBF-D79B129962FD}">
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="MUSIC" ID="{283BA409-654B-49DD-923A-7F05A654A91F}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
