@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{B2AA8535-12B9-9885-1B91-C0B4F9AF90EF}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{E46796FE-A61C-57C5-EE6C-04EFABA2934C}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
@@ -123,7 +123,7 @@
 				</File>
 				<File Id="608943065" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>bullet_health.wav</ShortName>
-					<CachePath>SFX/bullet_health_B2E59392.wem</CachePath>
+					<CachePath>SFX/bullet_health_76AE4227.wem</CachePath>
 				</File>
 				<File Id="667125383" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ene_mob_death.wav</ShortName>
@@ -514,13 +514,57 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{9E0F3859-9C4D-05A0-6433-0E88CC5F83B1}">
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{3EB621B1-EC27-2F6C-DDC7-AF93DFE91D6E}">
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
 			<Media>
-				<File Id="219768656" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Draft1.wav</ShortName>
-					<CachePath>SFX/Draft1_D79FB2B7.wem</CachePath>
+				<File Id="106147584" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LowPulse_Intro.wav</ShortName>
+					<CachePath>SFX/LowPulse_Intro_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="126081005" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Kick_A.wav</ShortName>
+					<CachePath>SFX/Kick_A_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="134397767" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>GlitchPulse.wav</ShortName>
+					<CachePath>SFX/GlitchPulse_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="139858294" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>HiHat.wav</ShortName>
+					<CachePath>SFX/HiHat_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="264313587" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Lead_Boss.wav</ShortName>
+					<CachePath>SFX/Lead_Boss_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="433155837" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>GuitarScreech.wav</ShortName>
+					<CachePath>SFX/GuitarScreech_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="434760262" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Kick_Intro.wav</ShortName>
+					<CachePath>SFX/Kick_Intro_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="512305861" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LowPulse_A.wav</ShortName>
+					<CachePath>SFX/LowPulse_A_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="632645785" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Lead_Combat.wav</ShortName>
+					<CachePath>SFX/Lead_Combat_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="774375649" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Bass_Intro.wav</ShortName>
+					<CachePath>SFX/Bass_Intro_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="833247482" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>HiBlock_B.wav</ShortName>
+					<CachePath>SFX/HiBlock_B_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="928265480" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Bass_A.wav</ShortName>
+					<CachePath>SFX/Bass_A_D79FB2B7.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -529,31 +573,49 @@
 						<SwitchContainer>
 							<SwitchValue GroupType="State" GroupId="792781730" Id="320199936"/>
 							<MediaRefs>
-								<MediaRef Id="219768656"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="792781730" Id="320199939"/>
-							<MediaRefs>
-								<MediaRef Id="219768656"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="State" GroupId="792781730" Id="320199938"/>
-							<MediaRefs>
-								<MediaRef Id="219768656"/>
+								<MediaRef Id="106147584"/>
+								<MediaRef Id="126081005"/>
+								<MediaRef Id="134397767"/>
+								<MediaRef Id="139858294"/>
+								<MediaRef Id="264313587"/>
+								<MediaRef Id="433155837"/>
+								<MediaRef Id="434760262"/>
+								<MediaRef Id="512305861"/>
+								<MediaRef Id="774375649"/>
+								<MediaRef Id="833247482"/>
+								<MediaRef Id="928265480"/>
 							</MediaRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="State" GroupId="792781730" Id="2764240573"/>
 							<MediaRefs>
-								<MediaRef Id="219768656"/>
+								<MediaRef Id="106147584"/>
+								<MediaRef Id="126081005"/>
+								<MediaRef Id="134397767"/>
+								<MediaRef Id="139858294"/>
+								<MediaRef Id="433155837"/>
+								<MediaRef Id="434760262"/>
+								<MediaRef Id="512305861"/>
+								<MediaRef Id="632645785"/>
+								<MediaRef Id="774375649"/>
+								<MediaRef Id="833247482"/>
+								<MediaRef Id="928265480"/>
 							</MediaRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="State" GroupId="792781730" Id="0"/>
 							<MediaRefs>
-								<MediaRef Id="219768656"/>
+								<MediaRef Id="106147584"/>
+								<MediaRef Id="126081005"/>
+								<MediaRef Id="134397767"/>
+								<MediaRef Id="139858294"/>
+								<MediaRef Id="433155837"/>
+								<MediaRef Id="434760262"/>
+								<MediaRef Id="512305861"/>
+								<MediaRef Id="632645785"/>
+								<MediaRef Id="774375649"/>
+								<MediaRef Id="833247482"/>
+								<MediaRef Id="928265480"/>
 							</MediaRefs>
 						</SwitchContainer>
 					</SwitchContainers>
@@ -573,5 +635,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E67D827A-8F7A-2219-A420-B5F5BF157644}</FileHash>
+	<FileHash>{660F97F3-FD86-8025-7240-66803CAE7FC5}</FileHash>
 </SoundBanksInfo>
