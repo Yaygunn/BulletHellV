@@ -18,7 +18,7 @@ namespace BH.Runtime.Entities
         private Wave[] _waves;
         [BoxGroup("Waves"), SerializeField, ReadOnly]
         private int _currentWaveIndex = 0;
-        
+
         [BoxGroup("Boss"), SerializeField]
         private Vector2 _bossSpawnPoint;
 
@@ -81,7 +81,7 @@ namespace BH.Runtime.Entities
         {
             _spawnedEnemies.Remove(entity);
         }
-        
+
         public void BossDied(AIBossController boss)
         {
             Destroy(boss.gameObject);
@@ -158,7 +158,7 @@ namespace BH.Runtime.Entities
                     yield break;
                 }
             }
-            
+
             _spawnerRunning = false;
         }
 
@@ -169,7 +169,7 @@ namespace BH.Runtime.Entities
                 yield return Timing.WaitForOneFrame;
             }
         }
-        
+
         private void AllWavesCompleted()
         {
             AllWavesCompletedEvent?.Invoke();

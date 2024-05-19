@@ -18,7 +18,7 @@ namespace BH.Runtime.Systems
         //private int _healthRecoveryRate;
         [FoldoutGroup("Health"), SerializeField]
         private bool _isInvincible;
-        
+
         // TODO: Implement shield....
         [field: FoldoutGroup("Shield"), SerializeField, ReadOnly]
         public int CurrentShield { get; private set; }
@@ -33,28 +33,28 @@ namespace BH.Runtime.Systems
         public float CurrentSpeed { get; private set; }
         [FoldoutGroup("Speed"), SerializeField]
         private int _initialSpeed;
-      
+
         [field: FoldoutGroup("Modifications"), SerializeField, HideLabel]
         public GeneralStatMod StatMod { get; private set; }
-        
+
         public Action<int, int> HealthChangedEvent;
         public Action<int, int> ShieldChangedEvent;
         public Action<float, float> SpeedChangedEvent;
         public Action DiedEvent;
-        
+
         public void ResetStats()
         {
             MaxHealth = _initialHealth;
             CurrentHealth = MaxHealth;
             HealthChangedEvent?.Invoke(MaxHealth, CurrentHealth);
-            
+
             MaxShield = _initialShield;
             CurrentShield = MaxShield;
             ShieldChangedEvent?.Invoke(MaxShield, CurrentShield);
-            
+
             CurrentSpeed = _initialSpeed;
             SpeedChangedEvent?.Invoke(_initialSpeed, CurrentSpeed);
-            
+
             StatMod.Reset();
         }
 
@@ -62,7 +62,7 @@ namespace BH.Runtime.Systems
         {
             if (_isInvincible || CurrentHealth <= 0)
                 return false;
-            
+
             CurrentHealth = Math.Max(0, CurrentHealth - amount);
             HealthChangedEvent?.Invoke(MaxHealth, CurrentHealth);
 
@@ -73,12 +73,12 @@ namespace BH.Runtime.Systems
 
             return true;
         }
-        
+
         public void SetInvincibility(bool isInvincible)
         {
             _isInvincible = isInvincible;
         }
-        
+
         public void ModifyStat(StatUpgradeSO statModification)
         {
             statModification.ApplyUpgrade(StatMod);
@@ -86,7 +86,7 @@ namespace BH.Runtime.Systems
             UpdateMaxShield();
             UpdateSpeed();
         }
-        
+
         public void ModifyStatsManual(float healthMultiplier, float shieldMultiplier, float speedMultiplier)
         {
             StatMod.HealthMultiplier *= healthMultiplier;

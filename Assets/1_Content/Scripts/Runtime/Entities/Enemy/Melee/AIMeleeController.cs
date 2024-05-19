@@ -6,6 +6,7 @@ using BH.Runtime.Systems;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
+using MoreMountains.Tools;
 
 namespace BH.Runtime.Entities
 {
@@ -21,17 +22,22 @@ namespace BH.Runtime.Entities
 
         [field: FoldoutGroup("Stats"), SerializeField]
         public float PushForce { get; private set; } = 10f;
-        
+
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
+
+        //Health
+        public MMHealthBar healthBar;
 
         public PlayerController PlayerTarget { get; private set; }
 
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
-        
+
         [field: FoldoutGroup("Feedbacks"), SerializeField, HideLabel]
         public EntityFeedbacks Feedbacks { get; private set; }
+
+
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
@@ -42,9 +48,9 @@ namespace BH.Runtime.Entities
         // TODO: Add Enemy Signals
         //[Inject]
         //private SignalBus _signalBus;
-        
+
         private AIMeleePool _pool;
-        private bool _inPool; 
+        private bool _inPool;
         private EnemySpawner _spawner;
 
         #region Components
@@ -59,7 +65,7 @@ namespace BH.Runtime.Entities
 
         public MeleeAIAttackState AttackState { get; private set; }
         public MeleeAIChaseState ChaseState { get; private set; }
-        
+
         public MeleeAIBusyState BusyState { get; private set; }
         public MeleeAIDeadState DeadState { get; private set; }
 
@@ -81,7 +87,7 @@ namespace BH.Runtime.Entities
             // Active States
             AttackState = new MeleeAIAttackState(this, EnemyHFSM);
             ChaseState = new MeleeAIChaseState(this, EnemyHFSM);
-            
+
             BusyState = new MeleeAIBusyState(this, EnemyHFSM);
             DeadState = new MeleeAIDeadState(this, EnemyHFSM);
 
@@ -91,7 +97,7 @@ namespace BH.Runtime.Entities
             Stats.ResetStats();
             CurrentDamage = _initialDamage;
         }
-        
+
         private void Start()
         {
             PlayerTarget = _levelManager.Player;
@@ -102,7 +108,7 @@ namespace BH.Runtime.Entities
         {
             EnemyHFSM.CurrentState.LogicUpdate();
         }
-        
+
         private void FixedUpdate()
         {
             EnemyHFSM.CurrentState.PhysicsUpdate();
@@ -119,12 +125,12 @@ namespace BH.Runtime.Entities
         }
 
         #endregion
-        
+
         public void SetPool(AIMeleePool pool)
         {
             _pool = pool;
         }
-        
+
         public void SetUp(EnemySpawner spawner)
         {
             _spawner = spawner;
@@ -138,19 +144,21 @@ namespace BH.Runtime.Entities
         public void HandleDamage(int ammount)
         {
             Stats.TakeDamage(ammount);
+            healthBar?.UpdateBar(Stats.CurrentHealth, 0, Stats.MaxHealth, true);
+            Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(this.transform.position, ammount);
         }
-        
+
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
             Stats.TakeDamage(amount);
             Movement.AddForce(direction, force);
         }
-        
+
         private void OnDied()
         {
             EnemyHFSM.ChangeState(DeadState);
         }
-        
+
         public void ReturnToPool()
         {
             Stats.ResetStats();
@@ -158,7 +166,7 @@ namespace BH.Runtime.Entities
             _spawner.EntityDied(this);
 
             if (_inPool) return;
-            
+
             _inPool = true;
             _pool.Despawn(this);
         }
