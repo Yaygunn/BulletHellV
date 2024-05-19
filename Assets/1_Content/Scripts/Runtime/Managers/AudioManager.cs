@@ -14,7 +14,7 @@ namespace BH.Runtime.Managers
         private GameObject _postableObject;
         private SignalBus _signalBus;
         
-        private AudioState _currentAudioState = AudioState.Loading;
+        private AudioState _currentAudioState = AudioState.GamePaused;
         private readonly Dictionary<Enum, Event> _eventCache = new ();
 
         public AudioManager(GameObject postableObject, AudioSettingsSO audioSettings, SignalBus signalBus)

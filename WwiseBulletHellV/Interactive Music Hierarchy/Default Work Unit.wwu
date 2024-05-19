@@ -709,6 +709,27 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="Music" ID="{8D372099-E9CB-4F0E-AAC1-31A625EA67BF}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
+								<CustomState Name="" ID="{2EEC5071-B9AB-43D0-B6DE-F7BBE89D0D52}" ShortID="428620730"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
+								<CustomState Name="" ID="{4EB92D18-D42A-4B6C-BC63-C3E0C7F4D665}" ShortID="317104522">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16" Value="50"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 					<TransitionList>
 						<MusicTransition Name="Root" ID="{6FA01C4A-08C7-442E-84AA-A6EA6431BD01}">
 							<PropertyList>
@@ -768,6 +789,14 @@
 							</Path>
 							<AudioNodeInfo>
 								<NoObject Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Music_System" ID="{8FD91D1E-91FB-4652-A7CA-F04D26AC6FC5}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Combat" ID="{0E68EB51-A043-4835-8E0A-EFB4EEBA1B05}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 					</EntryList>

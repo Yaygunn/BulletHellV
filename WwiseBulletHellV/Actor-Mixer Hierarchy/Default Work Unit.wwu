@@ -1201,7 +1201,7 @@
 										<Property Name="FadeOutDuration" Type="Real64" Value="0.299145299145299"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 										<Property Name="TrimBegin" Type="Real64" Value="0.0329059829059829"/>
-										<Property Name="TrimEnd" Type="Real64" Value="1.02008547008547"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.948290598290598"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>bullet_health.wav</AudioFile>

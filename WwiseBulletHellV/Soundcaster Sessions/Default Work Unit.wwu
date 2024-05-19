@@ -32,7 +32,11 @@
 							<Value>56</Value>
 						</RTPCValue>
 					</RTPCValueList>
-					<CurrentStateList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{F800D592-9F28-4DB8-BE7F-C7339F9CFA89}"/>
+						<CurrentStateRef Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
+						<CurrentStateRef Name="None" ID="{208BF124-7991-450D-BB26-C0E688F89CB3}"/>
+					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
 			</ChildrenList>

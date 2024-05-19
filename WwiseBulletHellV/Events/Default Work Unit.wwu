@@ -8,6 +8,19 @@
 						<Property Name="Color" Type="int16" Value="9"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
+					<ChildrenList>
+						<Event Name="music" ID="{9F43DDE3-9C08-4F93-8DD7-42053E8A2AFE}">
+							<ChildrenList>
+								<Action Name="" ID="{11A3AE96-CF2B-4DC9-B927-C35EBF47B145}" ShortID="353657371">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MUSIC_SYSTEM" ID="{91650141-EC06-42BD-8C36-0E04885A85C4}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
 				</Folder>
 				<Folder Name="SFX" ID="{CB758310-CA9A-43BC-9AA3-C568A4CF5531}" ShortID="596989588">
 					<PropertyList>
