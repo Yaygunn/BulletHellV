@@ -20,8 +20,6 @@ namespace BH.Runtime.Entities
         private int _currentWaveIndex = 0;
         
         [BoxGroup("Boss"), SerializeField]
-        private AIBossController _bossPrefab;
-        [BoxGroup("Boss"), SerializeField]
         private Vector2 _bossSpawnPoint;
 
         private IAIFactory _aiFactory;
