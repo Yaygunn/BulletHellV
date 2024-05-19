@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using BH.Runtime.Entities.States;
 using BH.Runtime.Entities.States.Active;
 using BH.Runtime.Factories;
 using BH.Runtime.Managers;
@@ -12,7 +12,7 @@ using Zenject;
 
 namespace BH.Runtime.Entities
 {
-    public class AIRangedController : Entity, IDamageable
+    public class AIBossController : Entity, IDamageable
     {
         [field: FoldoutGroup("Stats"), SerializeField, ReadOnly]
         public int CurrentTouchDamage { get; private set; }
@@ -25,9 +25,13 @@ namespace BH.Runtime.Entities
         public Stats Stats { get; private set; }
         
         [field: FoldoutGroup("Projectile Patterns"), SerializeField]
-        public List<ProjectilePatternDataSO> ProjectilePatterns { get; private set; }
-
-        public Transform AttackTarget { get; private set; }
+        public ProjectilePatternDataSO PhaseOneCenter { get; private set; }
+        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
+        public ProjectilePatternDataSO PhasetwoLeft { get; private set; }
+        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
+        public ProjectilePatternDataSO PhasetwoRight { get; private set; }
+        [field: FoldoutGroup("Projectile Patterns"), SerializeField]
+        public ProjectilePatternDataSO PhaseThree { get; private set; }
 
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
@@ -48,8 +52,6 @@ namespace BH.Runtime.Entities
         //[Inject]
         //private SignalBus _signalBus;
         
-        private AIRangedPool _pool;
-        private bool _inPool; 
         private EnemySpawner _spawner;
 
         #region Components
@@ -61,13 +63,17 @@ namespace BH.Runtime.Entities
         #endregion
 
         #region State Machine
-        public StateMachine<RangedAIState> EnemyHFSM { get; private set; }
+        public StateMachine<BossAIState> EnemyHFSM { get; private set; }
 
-        public RangedAIMoveState MoveState { get; private set; }
-        public RangedAIShootState ShootState { get; private set; }
+        public BossAIMoveOneState MoveOneState { get; private set; }
+        public BossAIShootOneState ShootOneState { get; private set; }
+        public BossAIMoveTwoState MoveTwoState { get; private set; }
+        public BossAIShootTwoState ShootTwoState { get; private set; }
+        public BossAIMoveThreeState MoveThreeState { get; private set; }
+        public BossAIShootThreeState ShootThreeState { get; private set; }
         
-        public RangedAIBusyState BusyState { get; private set; }
-        public RangedAIDeadState DeadState { get; private set; }
+        public BossAIBusyState BusyState { get; private set; }
+        public BossAIDeadState DeadState { get; private set; }
 
         #endregion State Machine
 
@@ -83,16 +89,22 @@ namespace BH.Runtime.Entities
             Movement = VerifyComponent<MovementComponent>();
             ShootPattern = VerifyComponent<ShootPatternComponent>();
 
-            EnemyHFSM = new StateMachine<RangedAIState>();
+            EnemyHFSM = new StateMachine<BossAIState>();
 
-            // Active States
-            MoveState = new RangedAIMoveState(this, EnemyHFSM);
-            ShootState = new RangedAIShootState(this, EnemyHFSM);
+            // Active One States
+            MoveOneState = new BossAIMoveOneState(this, EnemyHFSM);
+            ShootOneState = new BossAIShootOneState(this, EnemyHFSM);
+            // Active Two States
+            MoveTwoState = new BossAIMoveTwoState(this, EnemyHFSM);
+            ShootTwoState = new BossAIShootTwoState(this, EnemyHFSM);
+            // Active Three States
+            MoveThreeState = new BossAIMoveThreeState(this, EnemyHFSM);
+            ShootThreeState = new BossAIShootThreeState(this, EnemyHFSM);
             
-            BusyState = new RangedAIBusyState(this, EnemyHFSM);
-            DeadState = new RangedAIDeadState(this, EnemyHFSM);
+            BusyState = new BossAIBusyState(this, EnemyHFSM);
+            DeadState = new BossAIDeadState(this, EnemyHFSM);
 
-            EnemyHFSM.Initialize(MoveState);
+            EnemyHFSM.Initialize(BusyState);
 
             // Plan to move to Enemy Spawner
             Stats.ResetStats();
@@ -101,7 +113,6 @@ namespace BH.Runtime.Entities
         
         private void Start()
         {
-            AttackTarget = _levelManager.Player.transform;
             Stats.DiedEvent += OnDied;
         }
 
@@ -127,18 +138,10 @@ namespace BH.Runtime.Entities
 
         #endregion
         
-        public void SetPool(AIRangedPool pool)
-        {
-            _pool = pool;
-        }
-        
         public void SetUp(EnemySpawner spawner)
         {
             _spawner = spawner;
-            _inPool = false;
-            Wave wave = _spawner.GetCurrentWave();
-            Stats.ModifyStatsManual(wave.HealthMultiplier, wave.ShieldMultiplier, wave.SpeedMultiplier);
-            CurrentTouchDamage = (int)(CurrentTouchDamage * wave.DamageMultiplier);
+            EnemyHFSM.ChangeState(MoveOneState);
         }
 
         public void HandleDamage(int ammount)
@@ -155,18 +158,8 @@ namespace BH.Runtime.Entities
         private void OnDied()
         {
             EnemyHFSM.ChangeState(DeadState);
-        }
-        
-        public void ReturnToPool()
-        {
             Stats.ResetStats();
-            CurrentTouchDamage = _initialTouchDamage;
-            _spawner.EntityDied(this);
-
-            if (_inPool) return;
-            
-            _inPool = true;
-            _pool.Despawn(this);
+            _spawner.BossDied(this);
         }
 
         // TODO: Impliment Health Features
