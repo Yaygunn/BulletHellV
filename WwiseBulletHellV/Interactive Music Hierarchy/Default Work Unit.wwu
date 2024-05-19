@@ -2675,6 +2675,9 @@
 							</TransitionList>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{17F3D802-9D01-4C28-9000-07AE00BBF872}" ShortID="696376407">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
 									<ChildrenList>
 										<MusicPlaylistItem Name="" ID="{7873EE0E-3EBA-464E-8AAA-77837EA24B66}" ShortID="57816434">
 											<PropertyList>
@@ -2686,6 +2689,7 @@
 											<ChildrenList>
 												<MusicPlaylistItem Name="" ID="{FA9A7CF6-1852-4C85-921D-F983AD6ED7D0}" ShortID="370166639">
 													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="2"/>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 													</PropertyList>
 													<SegmentRef Name="Boss_A" ID="{DECE12AD-CAFB-4DCF-A62F-E36D8D73D9C4}"/>
@@ -2703,6 +2707,13 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Boss_02" ID="{28A72BF0-9DB5-4956-B2BF-1785A058BFCE}" ShortID="1053206723">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -2870,6 +2881,13 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Boss_03" ID="{688B237D-A528-4344-88EF-A62A10836831}" ShortID="535754733">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -5660,6 +5678,9 @@
 							</TransitionList>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{2FE12DF5-0F88-4F9D-B3BE-A7B26ED0EED4}" ShortID="598182499">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
 									<ChildrenList>
 										<MusicPlaylistItem Name="" ID="{F64EE293-3F50-4446-A1F3-3035EAD83731}" ShortID="476361834">
 											<PropertyList>
@@ -5689,6 +5710,13 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Calm" ID="{9426AF95-4E14-4D55-92DE-C75DE6373967}" ShortID="320071119">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -5823,11 +5851,18 @@
 							<StateGroupInfo>
 								<StateGroupRef Name="Music" ID="{8D372099-E9CB-4F0E-AAC1-31A625EA67BF}"/>
 							</StateGroupInfo>
+							<StateGroupInfo>
+								<StateGroupRef Name="Music_System" ID="{8FD91D1E-91FB-4652-A7CA-F04D26AC6FC5}"/>
+							</StateGroupInfo>
 						</StateGroupList>
 						<CustomStateList>
 							<CustomState>
 								<StateRef Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
 								<CustomState Name="" ID="{2EEC5071-B9AB-43D0-B6DE-F7BBE89D0D52}" ShortID="428620730"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Boss_01" ID="{BC74FA59-6E10-4715-8FC9-6D0F10C49399}"/>
+								<CustomState Name="" ID="{93BBDCCA-0191-4993-8946-9880414354C8}" ShortID="635317051"/>
 							</CustomState>
 							<CustomState>
 								<StateRef Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
@@ -5836,6 +5871,22 @@
 										<Property Name="Highpass" Type="int16" Value="50"/>
 									</PropertyList>
 								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Calm" ID="{E1FF79E9-7AA3-4A01-88F8-AC32E8609CE9}"/>
+								<CustomState Name="" ID="{2DD95BF6-ECF3-4D5C-A65A-6F7B56B634F5}" ShortID="81438835"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Combat" ID="{83D5B964-90AC-4A7B-8811-831C2BD3E45D}"/>
+								<CustomState Name="" ID="{C0DE70AF-01D5-460F-92CA-5F5B5B9574E3}" ShortID="623462288"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Boss_02" ID="{48183779-11FF-4C24-A1D6-A0944BC70937}"/>
+								<CustomState Name="" ID="{9AA69868-3048-4939-A856-CCA9A03284B6}" ShortID="1063049468"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Boss_03" ID="{07E53F39-F0FD-4F0D-BB63-6B367FDE542B}"/>
+								<CustomState Name="" ID="{1F119BE0-DDF9-4652-B9F1-61F945951A8E}" ShortID="682348202"/>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
@@ -5848,8 +5899,42 @@
 								<MusicTransition Name="Transition" ID="{1F1EF37B-AC21-4AEB-99B8-6BD90AB484CF}">
 									<PropertyList>
 										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="3"/>
 									</PropertyList>
+									<TransitionInfo/>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{0C19F301-1E64-4299-B4B2-75F280C9C27B}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Boss_01" ID="{6F6DB63B-55CF-4882-ADEE-A93521C90FC8}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="Combat" ID="{0E68EB51-A043-4835-8E0A-EFB4EEBA1B05}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo/>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{5388213B-9321-4F3E-B333-8DFACD5D80CB}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Combat" ID="{0E68EB51-A043-4835-8E0A-EFB4EEBA1B05}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="Boss_01" ID="{6F6DB63B-55CF-4882-ADEE-A93521C90FC8}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+										</Reference>
+									</ReferenceList>
 									<TransitionInfo/>
 								</MusicTransition>
 							</ChildrenList>

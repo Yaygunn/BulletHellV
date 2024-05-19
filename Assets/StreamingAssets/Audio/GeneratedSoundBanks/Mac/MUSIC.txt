@@ -20,5 +20,16 @@ Custom State	ID	Name	State Group	Owner		Notes
 	317104522	Music_Paused	Music	\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM		
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	219768656	Draft1	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Draft1_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_01\Draft1		6144096
+	106147584	LowPulse_Intro	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\LowPulse_Intro_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_Bridge\LowPulse_Intro		3072096
+	126081005	Kick_A	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Kick_A_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\Kick_A		1536096
+	134397767	GlitchPulse	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\GlitchPulse_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\GlitchPulse		3072096
+	139858294	HiHat	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\HiHat_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\HiHat		1536096
+	264313587	Lead_Boss	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Lead_Boss_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\Lead_Boss		3072096
+	433155837	GuitarScreech	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\GuitarScreech_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\GuitarScreech		3072096
+	434760262	Kick_Intro	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Kick_Intro_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_Bridge\Kick_Intro		1536096
+	512305861	LowPulse_A	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\LowPulse_A_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\LowPulse_A		3072096
+	632645785	Lead_Combat	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Lead_Combat_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Combat\Combat_A\Lead_Combat		3072096
+	774375649	Bass_Intro	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Bass_Intro_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_Bridge\Bass_Intro		3072096
+	833247482	HiBlock_B	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\HiBlock_B_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\HiBlock_B		1536096
+	928265480	Bass_A	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Mac\SFX\Bass_A_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\Bass_A		3072096
 
