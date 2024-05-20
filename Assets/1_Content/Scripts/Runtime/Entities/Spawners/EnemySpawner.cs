@@ -26,8 +26,10 @@ namespace BH.Runtime.Entities
         private IBossFactory _bossFactory;
         private ILevelStateHandler _levelStateHandler;
         private List<Entity> _spawnedEnemies = new();
+        private int _killedWaveEnemies;
         private bool _spawnerRunning;
-
+        private SignalBus _signalBus;
+        
         [Inject(Id = "MainCamera")]
         private Camera _mainCamera;
 
@@ -35,12 +37,14 @@ namespace BH.Runtime.Entities
         public event Action AllWavesCompletedEvent;
 
         [Inject]
-        public void Construct(IAIFactory aiFactory, IBossFactory bossFactory, ILevelStateHandler levelStateHandler)
+        public void Construct(IAIFactory aiFactory, IBossFactory bossFactory, ILevelStateHandler levelStateHandler,
+            SignalBus signalBus)
         {
             _aiFactory = aiFactory;
             _bossFactory = bossFactory;
             _levelStateHandler = levelStateHandler;
             _levelStateHandler.OnLevelStateChanged += OnLevelStateChanged;
+            _signalBus = signalBus;
         }
 
         private void OnDestroy()
@@ -80,6 +84,8 @@ namespace BH.Runtime.Entities
         public void EntityDied(Entity entity)
         {
             _spawnedEnemies.Remove(entity);
+            _killedWaveEnemies++;
+            UpdateEnemyCount();
         }
         
         public void BossDied(AIBossController boss)
@@ -139,9 +145,13 @@ namespace BH.Runtime.Entities
                 float interval = Random.Range(currentWave.MinSpawnInterval, currentWave.MaxSpawnInterval);
                 yield return Timing.WaitForSeconds(interval);
             }
+            
+            UpdateEnemyCount();
 
             yield return Timing.WaitUntilDone(WaitForAllEnemiesDefeated());
 
+            _killedWaveEnemies = 0;
+            UpdateEnemyCount(true);
             WaveFinishedEvent?.Invoke();
             _levelStateHandler.SetLevelState(LevelState.Upgrading);
 
@@ -177,6 +187,18 @@ namespace BH.Runtime.Entities
             AIBossController boss = _bossFactory.CreateBoss();
             boss.transform.position = _bossSpawnPoint;
             boss.SetUp(this);
+        }
+        
+        private void UpdateEnemyCount(bool waveDone = false)
+        {
+            int total = _waves[_currentWaveIndex].MeleeAICount + _waves[_currentWaveIndex].RangedAICount;
+            int remaining = total - _killedWaveEnemies;
+            if (waveDone)
+            {
+                total = 0;
+                remaining = 0;
+            }
+            _signalBus.Fire(new EnemiesUpdatedSignal(total, remaining));
         }
 
         private Vector2 GetRandomSpawnOffCamera()

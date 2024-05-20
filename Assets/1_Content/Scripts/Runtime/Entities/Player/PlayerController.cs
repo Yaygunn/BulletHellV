@@ -99,11 +99,13 @@ namespace BH.Runtime.Entities
         private void OnEnable()
         {
             Stats.HealthChangedEvent += OnHealthChanged;
+            Stats.ShieldChangedEvent += OnShieldChanged;
             Stats.DiedEvent += OnDied;
         }
 
         private void Update()
         {
+            Stats.LogicUpdate(Time.deltaTime);
             PlayerHFSM.CurrentState.LogicUpdate();
         }
 
@@ -115,6 +117,7 @@ namespace BH.Runtime.Entities
         private void OnDisable()
         {
             Stats.HealthChangedEvent -= OnHealthChanged;
+            Stats.ShieldChangedEvent -= OnShieldChanged;
             Stats.DiedEvent -= OnDied;
         }
         
@@ -173,6 +176,11 @@ namespace BH.Runtime.Entities
         private void OnHealthChanged(int maxHealth, int currentHealth)
         {
             _signalBus.Fire(new PlayerHealthChangedSignal(maxHealth, currentHealth));
+        }
+        
+        private void OnShieldChanged(int maxShield, int currentShield)
+        {
+            _signalBus.Fire(new PlayerShieldChangedSignal(maxShield, currentShield));
         }
         
         private void OnDied()

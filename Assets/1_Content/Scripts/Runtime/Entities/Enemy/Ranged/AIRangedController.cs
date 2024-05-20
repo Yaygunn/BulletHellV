@@ -108,6 +108,7 @@ namespace BH.Runtime.Entities
 
         private void Update()
         {
+            Stats.LogicUpdate(Time.deltaTime);
             EnemyHFSM.CurrentState.LogicUpdate();
         }
 

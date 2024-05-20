@@ -30,7 +30,7 @@ namespace BH.Runtime.Systems
         [FoldoutGroup("Shield"), SerializeField]
         private int _initialShield;
         [FoldoutGroup("Shield"), SerializeField]
-        private int _shieldRecoveryRate;
+        private float _shieldRecoveryRate;
 
         [field: FoldoutGroup("Speed"), SerializeField, ReadOnly]
         public float CurrentSpeed { get; private set; }
@@ -45,9 +45,25 @@ namespace BH.Runtime.Systems
         public Action<float, float> SpeedChangedEvent;
         public Action DiedEvent;
 
+        private float _shieldRegenTimer;
+
         public void Initialize()
         {
             HealthBarVisaul?.UpdateBar(CurrentHealth, 0, MaxHealth, false);
+        }
+        
+        public void LogicUpdate(float deltaTime)
+        {
+            if (CurrentShield < MaxShield)
+            {
+                _shieldRegenTimer += deltaTime;
+                if (_shieldRegenTimer >= _shieldRecoveryRate)
+                {
+                    CurrentShield = Math.Min(CurrentShield + 1, MaxShield);
+                    ShieldChangedEvent?.Invoke(MaxShield, CurrentShield);
+                    _shieldRegenTimer = 0;
+                }
+            }
         }
         
         public void ResetStats()
@@ -70,6 +86,16 @@ namespace BH.Runtime.Systems
         {
             if (_isInvincible || CurrentHealth <= 0)
                 return false;
+            
+            if (CurrentShield > 0)
+            {
+                CurrentShield = Math.Max(0, CurrentShield - amount);
+                ShieldChangedEvent?.Invoke(MaxShield, CurrentShield);
+                if (CurrentShield > 0)
+                    return true;
+                else
+                    amount = Math.Abs(CurrentShield);
+            }
 
             CurrentHealth = Math.Max(0, CurrentHealth - amount);
             HealthChangedEvent?.Invoke(MaxHealth, CurrentHealth);
