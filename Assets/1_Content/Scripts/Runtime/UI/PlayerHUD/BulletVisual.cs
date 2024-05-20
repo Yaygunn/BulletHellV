@@ -26,7 +26,7 @@ namespace BH.Runtime.UI
             _bulletImage.SetNativeSize();
             float width = _rectTransform.rect.width;
             float aspectRatio = _rectTransform.rect.height / width; 
-            _rectTransform.sizeDelta = new Vector2 (50, 50 * aspectRatio);
+            _rectTransform.sizeDelta = new Vector2 (75, 75 * aspectRatio);
 
             
             if (level != 0)
