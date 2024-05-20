@@ -28,6 +28,16 @@
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
 				<SoundcasterSession Name="New Soundcaster Session" ID="{65697E95-FB80-4B29-9675-E98DC39FDCF8}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="music" ID="{9F43DDE3-9C08-4F93-8DD7-42053E8A2AFE}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="music_Stop" ID="{649072C6-DE8C-4282-98E4-7D267710322C}" WorkUnitID="{5B743C41-FB7B-4F04-AE32-732510F47CBD}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="SFX_Volume" ID="{F884B12A-BF23-49E0-BF64-E896C0255C81}"/>
@@ -48,8 +58,8 @@
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="None" ID="{F800D592-9F28-4DB8-BE7F-C7339F9CFA89}"/>
-						<CurrentStateRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
-						<CurrentStateRef Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
+						<CurrentStateRef Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
+						<CurrentStateRef Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>

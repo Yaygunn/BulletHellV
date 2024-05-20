@@ -27,7 +27,9 @@ namespace BH.Runtime.Managers
         public void Initialize()
         {
             LoadSoundbanks();
-            PostAudioEvent(Music.Stop);
+            //PostAudioEvent(Music.Stop);
+            PostAudioEvent(Music.Play);
+
 
             _signalBus.Subscribe<AudioStateSignal>(x => ChangeAudioState(x.AudioState));
             _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
@@ -117,8 +119,8 @@ namespace BH.Runtime.Managers
             switch (signal.GameState)
             {
                 case GameState.Menu:
-
-                    PostAudioEvent(Music.Play);
+                    //PostAudioEvent(Music.Stop);
+                    //PostAudioEvent(Music.Play);
                     ChangeAudioState(AudioState.GamePaused);
                     break;
                 case GameState.Playing:
