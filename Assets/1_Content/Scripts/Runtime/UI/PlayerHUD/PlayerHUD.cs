@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BH.Runtime.Entities;
 using BH.Runtime.Systems;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -12,7 +14,13 @@ namespace BH.Runtime.UI
     public class PlayerHUD : MonoBehaviour
     {
         [BoxGroup("UI Elements"), SerializeField]
-        private Slider _slider;
+        private Slider _healthSlider;
+        [BoxGroup("UI Elements"), SerializeField]
+        private Slider _shieldSlider;
+        [BoxGroup("UI Elements"), SerializeField]
+        private TMP_Text _waveText;
+        [BoxGroup("UI Elements"), SerializeField]
+        private TMP_Text _enemiesText;
         
         private List<BulletVisual> _bulletVisuals;
 
@@ -28,24 +36,41 @@ namespace BH.Runtime.UI
         {
             _signalBus = signalBus;
             _signalBus.Subscribe<PlayerHealthChangedSignal>(OnHealthChanged);
+            _signalBus.Subscribe<PlayerShieldChangedSignal>(OnShieldChanged);
             _signalBus.Subscribe<PlayerBulletsChangedSignal>(OnBulletsChanged);
+            _signalBus.Subscribe<EnemiesUpdatedSignal>(OnEnemiesUpdated);
         }
 
         private void OnDestroy()
         {
             _signalBus.TryUnsubscribe<PlayerHealthChangedSignal>(OnHealthChanged);
+            _signalBus.TryUnsubscribe<PlayerShieldChangedSignal>(OnShieldChanged);
             _signalBus.TryUnsubscribe<PlayerBulletsChangedSignal>(OnBulletsChanged);
+            _signalBus.TryUnsubscribe<EnemiesUpdatedSignal>(OnEnemiesUpdated);
         }
 
         private void OnHealthChanged(PlayerHealthChangedSignal signal)
         {
-            _slider.maxValue = signal.MaxHealth;
-            _slider.value = signal.CurrentHealth;
+            _healthSlider.maxValue = signal.MaxHealth;
+            _healthSlider.value = signal.CurrentHealth;
         }
         
-        public float GetSliderValue()
+        private void OnShieldChanged(PlayerShieldChangedSignal signal)
         {
-            return _slider.value;
+            _shieldSlider.maxValue = signal.MaxShield;
+            _shieldSlider.value = signal.CurrentShield;
+        }
+        
+        private void OnEnemiesUpdated(EnemiesUpdatedSignal signal)
+        {
+            if (signal.RemainingEnemies == 0)
+            {
+                _waveText.text = "";
+                _enemiesText.text = "";
+            }
+            
+            _waveText.text = $"Wave: {signal.Wave}";
+            _enemiesText.text = $"Enemies Remaining: {signal.RemainingEnemies}";
         }
         
         private void OnBulletsChanged(PlayerBulletsChangedSignal signal)

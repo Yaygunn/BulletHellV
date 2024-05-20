@@ -30,5 +30,15 @@ namespace BH.Runtime.Scenes
         {
             _sceneLoader.LoadSceneAsync(_scene);
         }
+        
+        public void ChangeToEasyGameScene()
+        {
+            _sceneLoader.LoadSceneAsync(SceneType.GameEasy);
+        }
+        
+        public void ChangeToHardGameScene()
+        {
+            _sceneLoader.LoadSceneAsync(SceneType.GameHard);
+        }
     }
 }
