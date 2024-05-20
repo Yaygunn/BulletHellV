@@ -83,8 +83,8 @@ namespace BH.Scripts.Runtime.UI
         {
             string description = $"{projectileData.ProjectileName}\n\n" +
                                  $"{projectileData.Description}\n\n" +
-                                 $"<color=green>{projectileData.PosativeEffect}</color>\n\n" +
-                                 $"<color=red>{projectileData.NegativeEffect}</color>";
+                                 $"<color=#AEDF63>{projectileData.PosativeEffect}</color>\n\n" +
+                                 $"<color=#D55151>{projectileData.NegativeEffect}</color>";
             return description;
         }
         
