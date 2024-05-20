@@ -8,7 +8,7 @@
         Health,
         Move
     }
-    
+
     public enum EnemySFX
     {
         Hurt,

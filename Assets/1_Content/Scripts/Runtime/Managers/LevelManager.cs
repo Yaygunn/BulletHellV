@@ -179,7 +179,7 @@ namespace BH.Runtime.Managers
         private IEnumerator<float> GameWonCoroutine()
         {
             yield return Timing.WaitForSeconds(2f);
-            _sceneLoader.LoadSceneAsync(SceneType.GameOver);
+            _sceneLoader.LoadSceneAsync(SceneType.GameWon);
         }
     }
 }

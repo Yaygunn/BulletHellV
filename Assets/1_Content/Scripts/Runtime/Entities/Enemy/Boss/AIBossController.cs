@@ -25,17 +25,17 @@ namespace BH.Runtime.Entities
                 Debug.LogError("Renderer or material not found!");
             }
         }
-        
+
         [field: FoldoutGroup("Stats"), SerializeField, ReadOnly]
         public int CurrentTouchDamage { get; private set; }
         [FoldoutGroup("Stats"), SerializeField]
         private int _initialTouchDamage = 20;
         [field: FoldoutGroup("Stats"), SerializeField]
         public float PushForce { get; private set; } = 10f;
-        
+
         [field: FoldoutGroup("Stats"), SerializeField, HideLabel]
         public Stats Stats { get; private set; }
-        
+
         [field: FoldoutGroup("Projectile Patterns"), SerializeField]
         public ProjectilePatternDataSO PhaseOneCenter { get; private set; }
         [field: FoldoutGroup("Projectile Patterns"), SerializeField]
@@ -47,25 +47,25 @@ namespace BH.Runtime.Entities
 
         [field: FoldoutGroup("Animator Params"), SerializeField, HideLabel]
         public AnimatorParams AnimatorParams { get; private set; }
-        
+
         [field: FoldoutGroup("Feedbacks"), SerializeField, HideLabel]
         public EntityFeedbacks Feedbacks { get; private set; }
 
         [field: BoxGroup("Debug"), SerializeField, ReadOnly]
         public string StateName { get; set; }
-        
+
         [field: Inject(Id = "MainCamera")]
         public Camera Camera { get; }
 
         [Inject]
         private LevelManager _levelManager;
-        
+
         public IWwiseEventHandler WwiseEventHandler { get; private set; }
 
         // TODO: Add Enemy Signals
         //[Inject]
         //private SignalBus _signalBus;
-        
+
         private EnemySpawner _spawner;
 
         #region Components
@@ -85,7 +85,7 @@ namespace BH.Runtime.Entities
         public BossAIShootTwoState ShootTwoState { get; private set; }
         public BossAIMoveThreeState MoveThreeState { get; private set; }
         public BossAIShootThreeState ShootThreeState { get; private set; }
-        
+
         public BossAIBusyState BusyState { get; private set; }
         public BossAIDeadState DeadState { get; private set; }
 
@@ -96,7 +96,7 @@ namespace BH.Runtime.Entities
         protected override void Awake()
         {
             base.Awake();
-            
+
             Collider = GetComponent<CapsuleCollider2D>();
             Animator = GetComponentInChildren<Animator>();
             ModelRenderer = Animator.GetComponent<SpriteRenderer>();
@@ -114,7 +114,7 @@ namespace BH.Runtime.Entities
             // Active Three States
             MoveThreeState = new BossAIMoveThreeState(this, EnemyHFSM);
             ShootThreeState = new BossAIShootThreeState(this, EnemyHFSM);
-            
+
             BusyState = new BossAIBusyState(this, EnemyHFSM);
             DeadState = new BossAIDeadState(this, EnemyHFSM);
 
@@ -124,7 +124,7 @@ namespace BH.Runtime.Entities
             Stats.ResetStats();
             CurrentTouchDamage = _initialTouchDamage;
         }
-        
+
         private void Start()
         {
             Stats.DiedEvent += OnDied;
@@ -135,7 +135,7 @@ namespace BH.Runtime.Entities
             Stats.LogicUpdate(Time.deltaTime);
             EnemyHFSM.CurrentState.LogicUpdate();
         }
-        
+
         private void FixedUpdate()
         {
             EnemyHFSM.CurrentState.PhysicsUpdate();
@@ -152,7 +152,7 @@ namespace BH.Runtime.Entities
         }
 
         #endregion
-        
+
         public void SetUp(EnemySpawner spawner, IWwiseEventHandler wwiseEventHandler)
         {
             WwiseEventHandler = wwiseEventHandler;
@@ -166,7 +166,7 @@ namespace BH.Runtime.Entities
             Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
             WwiseEventHandler.PostAudioEvent(EnemySFX.Hurt, gameObject);
         }
-        
+
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
             Stats.TakeDamage(amount);
@@ -174,7 +174,7 @@ namespace BH.Runtime.Entities
             Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
             WwiseEventHandler.PostAudioEvent(EnemySFX.Hurt, gameObject);
         }
-        
+
         private void OnDied()
         {
             EnemyHFSM.ChangeState(DeadState);

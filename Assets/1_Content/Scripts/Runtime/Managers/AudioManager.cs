@@ -13,7 +13,7 @@ namespace BH.Runtime.Managers
         private AudioSettingsSO _audioSettings;
         private GameObject _postableObject;
         private SignalBus _signalBus;
-        
+
         private AudioState _currentAudioState = AudioState.GamePaused;
         private readonly Dictionary<Enum, Event> _eventCache = new ();
 
@@ -23,24 +23,24 @@ namespace BH.Runtime.Managers
             _audioSettings = audioSettings;
             _signalBus = signalBus;
         }
-    
+
         public void Initialize()
         {
             LoadSoundbanks();
-            PostAudioEvent(Music.Stop);
+            PostAudioEvent(Music.Play);
 
             _signalBus.Subscribe<AudioStateSignal>(x => ChangeAudioState(x.AudioState));
             _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
             _signalBus.Subscribe<LevelStateChangedSignal>(OnLevelStateChanged);
         }
-        
+
         public void Dispose()
         {
             _signalBus.TryUnsubscribe<AudioStateSignal>(x => ChangeAudioState(x.AudioState));
             _signalBus.TryUnsubscribe<GameStateChangedSignal>(OnGameStateChanged);
             _signalBus.TryUnsubscribe<LevelStateChangedSignal>(OnLevelStateChanged);
         }
-    
+
         private void LoadSoundbanks()
         {
             if (_audioSettings.Soundbanks.Count < 1)
@@ -61,19 +61,19 @@ namespace BH.Runtime.Managers
         {
             if (newState == _currentAudioState)
                 return;
-            
+
             AK.Wwise.State state = _audioSettings.AudioStates.Find(x => x.Type == newState).WwiseState;
             if (state == null)
             {
                 Debug.LogError($"[AudioManager] {newState} is not found, make sure it's in AudioSettings");
                 return;
             }
-        
+
             state.SetValue();
             _currentAudioState = newState;
             Debug.Log($"[AudioManager] New Audio State: {state}");
         }
-        
+
         public void PostAudioEvent<T>(T eventType) where T : Enum
         {
             PostAudioEvent(eventType, _postableObject);
@@ -110,7 +110,7 @@ namespace BH.Runtime.Managers
             wwiseEvent.Post(postableObject);
             Debug.Log($"[AudioManager] Posted audio event for {eventType}.");
         }
-        
+
         // GAME STATE SIGNALS
         private void OnGameStateChanged(GameStateChangedSignal signal)
         {
@@ -118,7 +118,7 @@ namespace BH.Runtime.Managers
             {
                 case GameState.Menu:
 
-                    PostAudioEvent(Music.Play);
+                    /*PostAudioEvent(Music.Play);*/
                     ChangeAudioState(AudioState.GamePaused);
                     break;
                 case GameState.Playing:
@@ -132,7 +132,7 @@ namespace BH.Runtime.Managers
                     break;
             }
         }
-        
+
         // LEVEL STATE SIGNALS
         private void OnLevelStateChanged(LevelStateChangedSignal signal)
         {
@@ -146,7 +146,7 @@ namespace BH.Runtime.Managers
                     break;
             }
         }
-        
+
         public void SetMusicVolume(float value)
         {
             _audioSettings.MusicVolume.SetGlobalValue(value);
