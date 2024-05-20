@@ -31,14 +31,15 @@ State	ID	Name	State Group			Notes
 	3762574363	SFX_Paused	SFX			
 
 Custom State	ID	Name	State Group	Owner		Notes
-	272887930	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES		
-	306943755	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE		
-	689144765	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\BULLETS		
-	921448976	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\PLAYER		
+	272887930	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES		
+	306943755	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\SFX\AMBIENCE		
+	689144765	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS		
+	921448976	SFX_Paused	SFX	\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER		
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	963702167	ply_health			\Default Work Unit\ply_health	
 	1348429472	Water_Intensity			\Default Work Unit\Water_Intensity	
+	1564184899	SFX_Volume			\Default Work Unit\SFX_Volume	
 
 Modulator Time	ID	Name			Wwise Object Path	Notes
 	768029662	New Modulator Time			\Default Work Unit\New Modulator Time	
@@ -49,57 +50,57 @@ Effect plug-ins	ID	Name	Type				Notes
 	3043085106	High_Impact	Wwise Compressor			
 
 Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
-	10495675	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\silence_02\Silence	
-	140124021	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_breathe\silence_02\Silence	
-	215528933	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\silence\Silence	
-	256692165	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\silence_01\Silence	
-	294060201	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_breathe\silence\Silence	
-	1019510299	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_breathe\silence_01\Silence	
+	10495675	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\silence_02\Silence	
+	140124021	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_breathe\silence_02\Silence	
+	215528933	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\silence\Silence	
+	256692165	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\silence_01\Silence	
+	294060201	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_breathe\silence\Silence	
+	1019510299	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_breathe\silence_01\Silence	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	19329742	shoot_03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_21630847.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_03		83360
-	86740775	squid_idle_speech_04	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_10D671F9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\squid_idle_speech_04		407928
-	129670444	ply_health	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ply_heatlh_883B9F73.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_health\ply_health		1506536
-	144925876	dash-04	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-04_A3B5FC3C.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-04		182404
-	149755117	shoot_04	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_E59E0B85.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_04		90148
-	201371888	shoot_02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1733C08D.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_02		103320
-	214792748	squid_idle_breathe_01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_breathe_4369AF4D.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_breathe\squid_idle_breathe_01		162516
-	227329552	UnderwaterBed	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Complex 01 SND12354_EC0D8036.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\UnderwaterBed		23040144
-	239347221	dash-02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-02_EFD29FCF.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-02		172916
-	240925643	squid_idle_breathe	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_breathe_A6520919.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_breathe\squid_idle_breathe		285164
-	253937811	bullet_explosion_02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_explosion_A29234B5.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_explosion\bullet_explosion_02		287344
-	268045550	ui_dash_ready	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_dash_ready_26FE799F.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\ui_dash_ready		133464
-	284901163	dash	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash_E7AA3AB6.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash		152708
-	286510258	bullet_bounce_02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_B0C19989.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_bounce\bullet_bounce_02		76896
-	294914401	ply_move_loop	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\movement_loop_C83A4088.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_move_loop		2691440
-	305928203	HighIntensity	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048_A826F326.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\HighIntensity		12040048
-	322638156	dash-01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-01_FF31AA45.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-01		118060
-	348944056	bullet_bounce	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_FC2B8E50.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_bounce\bullet_bounce		76896
-	424305235	bullet_expading	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_expading_C2304FD5.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_expading		2841860
-	468071575	squid_idle_speech_01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_9F395858.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\squid_idle_speech_01		174312
-	481642438	ply_hurt	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ply_hurt_A88C8CEC.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_hurt		288844
-	500362682	squid_idle_speech	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_91461402.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\squid_idle_speech		257464
-	502511595	squid_shoot3	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_shoot3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_shoot\squid_shoot3		164932
-	516410857	squid_shoot	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_shoot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_shoot\squid_shoot		164932
-	535973059	ambTest	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\ambTest		2945274
-	554466286	bullet_explosion_01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_explosion_50216A77.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_explosion\bullet_explosion_01		288096
-	601174450	squid_death	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_death_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_death		366392
-	608943065	bullet_health	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_health_76AE4227.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_health		175852
-	667125383	ene_mob_death	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ene_mob_death_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\ene_mob_death		334256
-	671312817	ui_open	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_open_75454800.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\ui_open		56372
-	785141224	shoot_01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1EBF40A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot_01		84568
-	846594018	ui_nav	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_nav_4FEFA156.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\ui_nav		41296
-	857908823	squid_idle_speech_03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_D4463492.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\squid_idle_speech_03		253504
-	872505889	dash-03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-03_DDE185F9.wem		\Actor-Mixer Hierarchy\Default Work Unit\PLAYER\ply_dash\dash-03		191476
-	873474779	bullet_bounce_04	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_88F61131.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_bounce\bullet_bounce_04		76896
-	902632608	squid_idle_breathe_02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_breathe_82A18733.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_breathe\squid_idle_breathe_02		208928
-	971597346	shoot	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_0A94827C.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_shoot\shoot		81148
-	978038408	squid_idle_speech_02	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_C9426F64.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_speech\squid_idle_speech_02		241624
-	981989817	bullet_bounce_01	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_085FDA8E.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_bounce\bullet_bounce_01		76896
-	1001388230	LowIntensity	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1_9EAC2E3C.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMBIENCE\3D\amb_underwater\LowIntensity		7426052
-	1004891463	squid_shoot2	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_shoot2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_shoot\squid_shoot2		164932
-	1011003347	squid_idle_loop	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_loop_969105F7.wem		\Actor-Mixer Hierarchy\Default Work Unit\ENEMIES\squid_idle\squid_idle_loop		1730452
-	1015204574	bullet_explosion_03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_explosion_A612CAC6.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_explosion\bullet_explosion_03		288096
-	1021034262	bullet_bounce_03	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_1CF48303.wem		\Actor-Mixer Hierarchy\Default Work Unit\BULLETS\bullet_bounce\bullet_bounce_03		76896
-	1042962566	ui_close	Y:\Documents\GitHub\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_close_B71D557D.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\ui_close		31436
+	19329742	shoot_03	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_21630847.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_shoot\shoot_03		83360
+	86740775	squid_idle_speech_04	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_10D671F9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\squid_idle_speech_04		407928
+	129670444	ply_health	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ply_heatlh_883B9F73.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_health\ply_health		1506536
+	144925876	dash-04	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-04_A3B5FC3C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_dash\dash-04		182404
+	149755117	shoot_04	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_E59E0B85.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_shoot\shoot_04		90148
+	201371888	shoot_02	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1733C08D.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_shoot\shoot_02		103320
+	214792748	squid_idle_breathe_01	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_breathe_4369AF4D.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_breathe\squid_idle_breathe_01		162516
+	227329552	UnderwaterBed	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Complex 01 SND12354_EC0D8036.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\AMBIENCE\3D\amb_underwater\UnderwaterBed		23040144
+	239347221	dash-02	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-02_EFD29FCF.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_dash\dash-02		172916
+	240925643	squid_idle_breathe	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_breathe_A6520919.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_breathe\squid_idle_breathe		285164
+	253937811	bullet_explosion_02	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_explosion_A29234B5.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_explosion\bullet_explosion_02		287344
+	268045550	ui_dash_ready	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_dash_ready_26FE799F.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\UI\ui_dash_ready		133464
+	284901163	dash	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash_E7AA3AB6.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_dash\dash		152708
+	286510258	bullet_bounce_02	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_B0C19989.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_bounce\bullet_bounce_02		76896
+	294914401	ply_move_loop	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\movement_loop_C83A4088.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_move_loop		2691440
+	305928203	HighIntensity	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 08 SND77048_A826F326.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\AMBIENCE\3D\amb_underwater\HighIntensity		12040048
+	322638156	dash-01	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-01_FF31AA45.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_dash\dash-01		118060
+	348944056	bullet_bounce	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_FC2B8E50.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_bounce\bullet_bounce		76896
+	424305235	bullet_expading	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_expading_C2304FD5.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_expading		2841860
+	468071575	squid_idle_speech_01	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_9F395858.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\squid_idle_speech_01		174312
+	481642438	ply_hurt	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ply_hurt_A88C8CEC.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_hurt		288844
+	500362682	squid_idle_speech	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_91461402.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\squid_idle_speech		257464
+	502511595	squid_shoot3	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_shoot3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_shoot\squid_shoot3		164932
+	516410857	squid_shoot	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_shoot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_shoot\squid_shoot		164932
+	535973059	ambTest	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Grassland, Countryside, Wheat Field, Meadow, Summer, Wind, Birds, High Insects (LCR) SND37133_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\AMBIENCE\3D\ambTest		2945274
+	554466286	bullet_explosion_01	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_explosion_50216A77.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_explosion\bullet_explosion_01		288096
+	601174450	squid_death	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_death_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_death		366392
+	608943065	bullet_health	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_health_76AE4227.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_health		175852
+	667125383	ene_mob_death	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ene_mob_death_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\ene_mob_death		334256
+	671312817	ui_open	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_open_75454800.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\UI\ui_open		56372
+	785141224	shoot_01	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_1EBF40A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_shoot\shoot_01		84568
+	846594018	ui_nav	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_nav_4FEFA156.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\UI\ui_nav		41296
+	857908823	squid_idle_speech_03	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_D4463492.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\squid_idle_speech_03		253504
+	872505889	dash-03	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Player\dash-03_DDE185F9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PLAYER\ply_dash\dash-03		191476
+	873474779	bullet_bounce_04	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_88F61131.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_bounce\bullet_bounce_04		76896
+	902632608	squid_idle_breathe_02	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_breathe_82A18733.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_breathe\squid_idle_breathe_02		208928
+	971597346	shoot	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Water, Underwater, Movement, Designed, Object Pass By, Fast, Dive, Underwater 02 SND58793_0A94827C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_shoot\shoot		81148
+	978038408	squid_idle_speech_02	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_speech_C9426F64.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_speech\squid_idle_speech_02		241624
+	981989817	bullet_bounce_01	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_085FDA8E.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_bounce\bullet_bounce_01		76896
+	1001388230	LowIntensity	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Ambience, Underwater, Designed Water, Aquarium, Bubbles 11 SND77045 1_9EAC2E3C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\AMBIENCE\3D\amb_underwater\LowIntensity		7426052
+	1004891463	squid_shoot2	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_shoot2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_shoot\squid_shoot2		164932
+	1011003347	squid_idle_loop	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\squid_idle_loop_969105F7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\ENEMIES\squid_idle\squid_idle_loop		1730452
+	1015204574	bullet_explosion_03	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_explosion_A612CAC6.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_explosion\bullet_explosion_03		288096
+	1021034262	bullet_bounce_03	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\bullet_bounce_1CF48303.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\BULLETS\bullet_bounce\bullet_bounce_03		76896
+	1042962566	ui_close	L:\Bullet Hell Jam\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\ui_close_B71D557D.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\UI\ui_close		31436
 
