@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}" PersistMode="Standalone">
 			<ChildrenList>
 				<MusicSwitchContainer Name="MUSIC_SYSTEM" ID="{91650141-EC06-42BD-8C36-0E04885A85C4}" ShortID="613318541">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-1</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{499319C0-5305-48E3-B53D-E1E09A4B9A18}"/>
@@ -5866,7 +5873,8 @@
 								<StateRef Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
 								<CustomState Name="" ID="{4EB92D18-D42A-4B6C-BC63-C3E0C7F4D665}" ShortID="317104522">
 									<PropertyList>
-										<Property Name="Highpass" Type="int16" Value="50"/>
+										<Property Name="Highpass" Type="int16" Value="36"/>
+										<Property Name="Lowpass" Type="int16" Value="26"/>
 									</PropertyList>
 								</CustomState>
 							</CustomState>

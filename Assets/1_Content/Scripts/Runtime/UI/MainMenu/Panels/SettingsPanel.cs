@@ -28,15 +28,15 @@ namespace BH.Runtime.UI
             _sfxSlider.onValueChanged.AddListener(OnSFXSliderValueChanged);
             _masterSlider.onValueChanged.AddListener(OnMasterSliderValueChanged);
             
-            _wwiseEventHandler.SetMusicVolume(50f);
+            _wwiseEventHandler.SetMusicVolume(80f);
             _musicSlider.maxValue = 100f;
-            _musicSlider.value = 50f;
-            _wwiseEventHandler.SetSFXVolume(50f);
+            _musicSlider.value = 80f;
+            _wwiseEventHandler.SetSFXVolume(80f);
             _sfxSlider.maxValue = 100f;
-            _sfxSlider.value = 50f;
-            _wwiseEventHandler.SetMasterVolume(50f);
+            _sfxSlider.value = 80f;
+            _wwiseEventHandler.SetMasterVolume(80f);
             _masterSlider.maxValue = 100f;
-            _masterSlider.value = 50f;
+            _masterSlider.value = 80f;
         }
 
         private void OnDestroy()

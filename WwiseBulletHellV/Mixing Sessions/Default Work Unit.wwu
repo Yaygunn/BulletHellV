@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{1DEF0386-C6F5-46F5-9644-A006C8C8913B}" SchemaVersion="110">
 	<MixingSessions>
-		<WorkUnit Name="Default Work Unit" ID="{1DEF0386-C6F5-46F5-9644-A006C8C8913B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{1DEF0386-C6F5-46F5-9644-A006C8C8913B}" PersistMode="Standalone">
+			<ChildrenList>
+				<MixingSession Name="SFX" ID="{DAC9BC1D-E8B5-4B88-B543-4DDD5AE5E110}">
+					<ObjectList>
+						<ObjectRef Name="bullet_bounce" ID="{EE6793AB-7D8D-4710-A4AC-35A2F916A8C7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="bullet_explosion" ID="{ADAB6389-EA80-469A-9F03-5C7ED82F7FBC}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="bullet_shoot" ID="{500A73FE-BA34-4A1B-BD6C-785C65A1AA85}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="squid_shoot" ID="{EF39915A-3839-4C1F-9C1E-07E3B3E0B287}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="ene_mob_death" ID="{868F6C51-7FE9-45CD-8D6B-F73C6FD15AD9}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="squid_death" ID="{3C3ACE66-CFDB-4D3B-818D-9C8C9CCB35FA}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="ply_hurt" ID="{7FECC791-05BC-4622-AD14-F08DA2834921}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="SFX" ID="{10DF3409-1DA4-44E7-BFBA-EA2B42153582}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+						<ObjectRef Name="MUSIC_SYSTEM" ID="{91650141-EC06-42BD-8C36-0E04885A85C4}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+					</ObjectList>
+				</MixingSession>
+			</ChildrenList>
+		</WorkUnit>
 	</MixingSessions>
 </WwiseDocument>
