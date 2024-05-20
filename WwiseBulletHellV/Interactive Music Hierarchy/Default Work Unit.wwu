@@ -5866,7 +5866,8 @@
 								<StateRef Name="Music_Paused" ID="{01C4E290-05DB-4869-84FC-4353CC52F8B9}"/>
 								<CustomState Name="" ID="{4EB92D18-D42A-4B6C-BC63-C3E0C7F4D665}" ShortID="317104522">
 									<PropertyList>
-										<Property Name="Highpass" Type="int16" Value="50"/>
+										<Property Name="Highpass" Type="int16" Value="40"/>
+										<Property Name="Lowpass" Type="int16" Value="30"/>
 									</PropertyList>
 								</CustomState>
 							</CustomState>

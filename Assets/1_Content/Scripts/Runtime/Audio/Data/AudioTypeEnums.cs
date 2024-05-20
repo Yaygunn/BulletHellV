@@ -42,6 +42,7 @@
     }
     public enum Music
     {
-        Play
+        Play,
+        Stop
     }
 }

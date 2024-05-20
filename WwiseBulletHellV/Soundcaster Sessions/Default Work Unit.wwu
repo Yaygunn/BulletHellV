@@ -48,8 +48,8 @@
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="None" ID="{F800D592-9F28-4DB8-BE7F-C7339F9CFA89}"/>
-						<CurrentStateRef Name="None" ID="{B6974C7F-3C5E-4C61-8B6E-C5DA6A252F92}"/>
-						<CurrentStateRef Name="None" ID="{208BF124-7991-450D-BB26-C0E688F89CB3}"/>
+						<CurrentStateRef Name="SFX_Gameplay" ID="{90350EF5-C16C-4874-AD87-6426A140086D}"/>
+						<CurrentStateRef Name="Music_Gameplay" ID="{545CEC19-5346-455E-9CBD-D5F1061BEC3D}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>

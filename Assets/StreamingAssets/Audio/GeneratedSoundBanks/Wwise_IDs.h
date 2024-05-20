@@ -22,6 +22,7 @@ namespace AK
         static const AkUniqueID BULLETTEST = 1248641489U;
         static const AkUniqueID ENE_MOB_DEATH = 1195401469U;
         static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID MUSIC_STOP = 3227181061U;
         static const AkUniqueID PLY_HEALTH_PAUSE = 545330280U;
         static const AkUniqueID PLY_HEALTH_PLAY = 4032423056U;
         static const AkUniqueID PLY_HEALTH_RESUME = 567373571U;

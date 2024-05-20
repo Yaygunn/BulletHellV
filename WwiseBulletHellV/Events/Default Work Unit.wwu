@@ -20,6 +20,23 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="music_Stop" ID="{649072C6-DE8C-4282-98E4-7D267710322C}">
+							<ChildrenList>
+								<Action Name="" ID="{D08DC93C-21FC-469B-AD7A-8BCC0A5297C7}" ShortID="596773318">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+										<Property Name="FadeTime" Type="Real64" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MUSIC_SYSTEM" ID="{91650141-EC06-42BD-8C36-0E04885A85C4}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="SFX" ID="{CB758310-CA9A-43BC-9AA3-C568A4CF5531}" ShortID="596989588">
