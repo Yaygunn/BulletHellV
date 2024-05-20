@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{A4ECCAA6-EF2F-1EA7-49CA-1C53B5D9361A}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{8E3D6657-752E-FD25-8408-531B4DD6990A}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
@@ -325,7 +325,7 @@
 						<MediaRef Id="294914401"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2782996605" Name="squidDeath" DurationType="OneShot" DurationMin="1.9077916" DurationMax="1.9077916">
+				<Event Id="2782996605" Name="squidDeath" DurationType="OneShot" DurationMin="1.5326945" DurationMax="2.2753212">
 					<MediaRefs>
 						<MediaRef Id="601174450"/>
 					</MediaRefs>
@@ -476,7 +476,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{1219EF84-7EBE-EEBF-85A4-24C8A28BBD8E}">
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{85D0F561-0D89-0790-F006-27AF2ECBFB49}">
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
 			<Media>
@@ -600,5 +600,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4B3C41BE-97AD-B2E4-1641-D3F49AB058B5}</FileHash>
+	<FileHash>{4C4DE393-0307-B5CB-A7E5-E0FE8C329D12}</FileHash>
 </SoundBanksInfo>
