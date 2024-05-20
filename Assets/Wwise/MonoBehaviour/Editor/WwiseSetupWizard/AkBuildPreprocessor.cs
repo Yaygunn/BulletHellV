@@ -116,7 +116,6 @@ public partial class AkBuildPreprocessor : UnityEditor.Build.IPreprocessBuild, U
 		if (string.IsNullOrEmpty(destinationFolder))
 			return;
 
-		//UnityEngine.Debug.Log("SKIPPING DELETION OF STREAMING ASSETS FOLDER");
 		System.IO.Directory.Delete(destinationFolder, true);
 		UnityEngine.Debug.LogFormat("WwiseUnity: Deleting streaming assets folder <{0}>", destinationFolder);
 	}
