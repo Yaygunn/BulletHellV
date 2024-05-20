@@ -21,10 +21,12 @@ namespace BH.Runtime.UI
         private TMP_Text _waveText;
         [BoxGroup("UI Elements"), SerializeField]
         private TMP_Text _enemiesText;
-        
+
         private List<BulletVisual> _bulletVisuals;
 
         private SignalBus _signalBus;
+
+
 
         private void Awake()
         {
@@ -54,13 +56,13 @@ namespace BH.Runtime.UI
             _healthSlider.maxValue = signal.MaxHealth;
             _healthSlider.value = signal.CurrentHealth;
         }
-        
+
         private void OnShieldChanged(PlayerShieldChangedSignal signal)
         {
             _shieldSlider.maxValue = signal.MaxShield;
             _shieldSlider.value = signal.CurrentShield;
         }
-        
+
         private void OnEnemiesUpdated(EnemiesUpdatedSignal signal)
         {
             if (signal.RemainingEnemies == 0)
@@ -68,11 +70,11 @@ namespace BH.Runtime.UI
                 _waveText.text = "";
                 _enemiesText.text = "";
             }
-            
-            _waveText.text = $"Wave: {signal.Wave}";
+
+            _waveText.text = $"Wave: {signal.Wave} / {signal.TotalWaves}";
             _enemiesText.text = $"Enemies Remaining: {signal.RemainingEnemies}";
         }
-        
+
         private void OnBulletsChanged(PlayerBulletsChangedSignal signal)
         {
             for (int i = 0; i < _bulletVisuals.Count; i++)

@@ -9,9 +9,11 @@ namespace BH.Scriptables.Scenes
         Loader,
         MainMenu,
         GameEasy,
-        GameHard
+        GameHard,
+        GameOver,
+        GameWon
     }
-    
+
     [CreateAssetMenu(fileName = "SceneSettings", menuName = "BH/Scenes/SceneSettings")]
     public class SceneSettingsSO : ScriptableObject
     {
