@@ -1,4 +1,5 @@
-﻿using BH.Runtime.Entities;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.Entities;
 using BH.Runtime.Input;
 using UnityEngine;
 using Zenject;
@@ -10,12 +11,14 @@ namespace BH.Runtime.Factories
         private readonly DiContainer _container;
         private readonly GameObject _playerPrefab;
         private IInputProvider _inputProvider;
+        private IWwiseEventHandler _wwiseEventHandler;
         
-        public PlayerFactory(DiContainer container, GameObject playerPrefab, IInputProvider inputProvider)
+        public PlayerFactory(DiContainer container, GameObject playerPrefab, IInputProvider inputProvider, IWwiseEventHandler wwiseEventHandler)
         {
             _container = container;
             _playerPrefab = playerPrefab;
             _inputProvider = inputProvider;
+            _wwiseEventHandler = wwiseEventHandler;
         }
         
         public PlayerController CreatePlayer()
@@ -25,7 +28,7 @@ namespace BH.Runtime.Factories
             if (player != null)
             {
                 // TODO: Any player setup here before returning...
-                player.Initialize(_inputProvider);
+                player.Initialize(_inputProvider, _wwiseEventHandler);
                 return player;
             }
             

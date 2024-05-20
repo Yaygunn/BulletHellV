@@ -1,4 +1,5 @@
 using System;
+using BH.Runtime.Audio;
 using BH.Runtime.Factories;
 using BH.Runtime.Managers;
 using BH.Runtime.StateMachines;
@@ -41,6 +42,8 @@ namespace BH.Runtime.Entities
 
         [Inject]
         private LevelManager _levelManager;
+        [field: Inject]
+        public IWwiseEventHandler WwiseEventHandler { get; private set; }
 
         // TODO: Add Enemy Signals
         //[Inject]
@@ -144,6 +147,7 @@ namespace BH.Runtime.Entities
         {
             Stats.TakeDamage(amount);
             Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
+            WwiseEventHandler.PostAudioEvent(EnemySFX.Hurt, gameObject);
         }
 
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
@@ -151,6 +155,7 @@ namespace BH.Runtime.Entities
             Stats.TakeDamage(amount);
             Movement.AddForce(direction, force);
             Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
+            WwiseEventHandler.PostAudioEvent(EnemySFX.Hurt, gameObject);
         }
 
         private void OnDied()

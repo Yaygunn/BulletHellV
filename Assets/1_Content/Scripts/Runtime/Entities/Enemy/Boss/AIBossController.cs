@@ -1,4 +1,5 @@
-﻿using BH.Runtime.Managers;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.Managers;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
 using BH.Scriptables;
@@ -58,6 +59,8 @@ namespace BH.Runtime.Entities
 
         [Inject]
         private LevelManager _levelManager;
+        
+        public IWwiseEventHandler WwiseEventHandler { get; private set; }
 
         // TODO: Add Enemy Signals
         //[Inject]
@@ -150,8 +153,9 @@ namespace BH.Runtime.Entities
 
         #endregion
         
-        public void SetUp(EnemySpawner spawner)
+        public void SetUp(EnemySpawner spawner, IWwiseEventHandler wwiseEventHandler)
         {
+            WwiseEventHandler = wwiseEventHandler;
             _spawner = spawner;
             EnemyHFSM.ChangeState(MoveOneState);
         }
@@ -160,6 +164,7 @@ namespace BH.Runtime.Entities
         {
             Stats.TakeDamage(amount);
             Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
+            WwiseEventHandler.PostAudioEvent(EnemySFX.Hurt, gameObject);
         }
         
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
@@ -167,6 +172,7 @@ namespace BH.Runtime.Entities
             Stats.TakeDamage(amount);
             //Movement.AddForce(direction, force);
             Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
+            WwiseEventHandler.PostAudioEvent(EnemySFX.Hurt, gameObject);
         }
         
         private void OnDied()

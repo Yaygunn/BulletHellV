@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BH.Runtime.Audio;
 using BH.Runtime.Entities;
 using BH.Runtime.Factories;
 using BH.Scriptables;
@@ -48,6 +49,7 @@ namespace BH.Runtime.Systems
         private bool _hasEvolved;
         private bool _hasActivated;
         private IProjectileFactory _projectileFactory;
+        protected IWwiseEventHandler _wwiseEventHandler;
         
         private ProjectileDataSO _currentProjData;
         private ProjectileDataSO _evolutionProjData;
@@ -56,9 +58,10 @@ namespace BH.Runtime.Systems
         public Vector2 CurrentDirection { get; private set; }
         
         [Inject]
-        private void Construct(IProjectileFactory projectileFactory)
+        private void Construct(IProjectileFactory projectileFactory, IWwiseEventHandler wwiseEventHandler)
         {
             _projectileFactory = projectileFactory;
+            _wwiseEventHandler = wwiseEventHandler;
         }
 
         #region Unity Callbacks
@@ -175,6 +178,7 @@ namespace BH.Runtime.Systems
         
         protected virtual void HandleObstacleCollision(Collision2D other)
         {
+            _wwiseEventHandler.PostAudioEvent(ProjectileSFX.Impact, gameObject);
             Vector2 inNormal = other.GetContact(0).normal;
             CurrentDirection = Vector2.Reflect(CurrentDirection, inNormal).normalized;
             

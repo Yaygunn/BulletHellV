@@ -1,4 +1,5 @@
-﻿using BH.Runtime.StateMachines;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.StateMachines;
 using UnityEngine;
 
 namespace BH.Runtime.Entities
@@ -24,6 +25,7 @@ namespace BH.Runtime.Entities
             
             _rangedAI.Collider.enabled = false;
             _rangedAI.Feedbacks.DieFeedbackPlayer?.PlayFeedbacks();
+            _rangedAI.WwiseEventHandler.PostAudioEvent(EnemySFX.Die, _rangedAI.gameObject);
         }
         
         public override void LogicUpdate()

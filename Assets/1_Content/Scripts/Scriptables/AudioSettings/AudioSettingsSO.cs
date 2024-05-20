@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AK.Wwise;
 using BH.Runtime.Audio;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,6 +10,13 @@ namespace BH.Scriptables
     [CreateAssetMenu(fileName = "AudioSettings", menuName = "BH/Audio/New Audio Settings")]
     public class AudioSettingsSO : ScriptableObject
     {
+        [field: BoxGroup("RTPCs"), SerializeField]
+        public RTPC MusicVolume { get; private set; }
+        [field: BoxGroup("RTPCs"), SerializeField]
+        public RTPC SFXVolume { get; private set; }
+        [field: BoxGroup("RTPCs"), SerializeField]
+        public RTPC MasterVolume { get; private set; }
+        
         [field: BoxGroup("Sound Banks"), SerializeField]
         public List<AK.Wwise.Bank> Soundbanks { get; private set; }
         

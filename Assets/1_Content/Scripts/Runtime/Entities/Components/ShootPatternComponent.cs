@@ -1,4 +1,5 @@
 ﻿using System;
+using BH.Runtime.Audio;
 using BH.Runtime.Factories;
 using BH.Runtime.Systems;
 using BH.Scriptables;
@@ -22,14 +23,16 @@ namespace BH.Runtime.Entities
 
         private IProjectileFactory _projectileFactory;
         private DatabaseSO _database;
+        private IWwiseEventHandler _wwiseEventHandler;
 
         public event Action ShootPatternCompletedEvent;
         
         [Inject]
-        private void Construct(DatabaseSO database, IProjectileFactory projectileFactory)
+        private void Construct(DatabaseSO database, IProjectileFactory projectileFactory, IWwiseEventHandler wwiseEventHandler)
         {
             _database = database;
             _projectileFactory = projectileFactory;
+            _wwiseEventHandler = wwiseEventHandler;
         }
 
         private void Start()
@@ -77,6 +80,7 @@ namespace BH.Runtime.Entities
             float currentAngle = _patternData.StartAngle;
             Vector3 spawnPosition = transform.position;
 
+            _wwiseEventHandler.PostAudioEvent(EnemySFX.Fire, gameObject);
             for (int i = 0; i < _patternData.NumBullets; i++)
             {
                 float angleRadius = (currentAngle + _angleOffset) * Mathf.Deg2Rad;

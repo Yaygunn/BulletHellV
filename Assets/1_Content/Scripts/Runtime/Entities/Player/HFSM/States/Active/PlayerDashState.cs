@@ -1,4 +1,5 @@
-﻿using BH.Runtime.StateMachines;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.StateMachines;
 using UnityEngine;
 
 namespace BH.Runtime.Entities
@@ -17,6 +18,7 @@ namespace BH.Runtime.Entities
             
             _player.Dash.DashCompletedEvent += OnDashCompleted;
 
+            _player.WwiseEventHandler.PostAudioEvent(PlayerSFX.Dash, _player.gameObject);
             _player.Stats.SetInvincibility(true);
             _player.Dash.StartDash(GetDashDirection());
         }

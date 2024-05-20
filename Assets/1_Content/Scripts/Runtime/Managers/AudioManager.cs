@@ -116,6 +116,7 @@ namespace BH.Runtime.Managers
             switch (signal.GameState)
             {
                 case GameState.Menu:
+                    PostAudioEvent(Music.Play);
                     ChangeAudioState(AudioState.GamePaused);
                     break;
                 case GameState.Playing:

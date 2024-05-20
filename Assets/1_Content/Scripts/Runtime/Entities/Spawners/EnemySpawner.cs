@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BH.Runtime.Audio;
 using BH.Runtime.Factories;
 using BH.Runtime.Managers;
 using MEC;
@@ -25,6 +26,7 @@ namespace BH.Runtime.Entities
         private IAIFactory _aiFactory;
         private IBossFactory _bossFactory;
         private ILevelStateHandler _levelStateHandler;
+        private IWwiseEventHandler _wwiseEventHandler;
         private List<Entity> _spawnedEnemies = new();
         private int _killedWaveEnemies;
         private bool _spawnerRunning;
@@ -38,13 +40,14 @@ namespace BH.Runtime.Entities
 
         [Inject]
         public void Construct(IAIFactory aiFactory, IBossFactory bossFactory, ILevelStateHandler levelStateHandler,
-            SignalBus signalBus)
+            SignalBus signalBus, IWwiseEventHandler wwiseEventHandler)
         {
             _aiFactory = aiFactory;
             _bossFactory = bossFactory;
             _levelStateHandler = levelStateHandler;
             _levelStateHandler.OnLevelStateChanged += OnLevelStateChanged;
             _signalBus = signalBus;
+            _wwiseEventHandler = wwiseEventHandler;
         }
 
         private void OnDestroy()
@@ -186,7 +189,7 @@ namespace BH.Runtime.Entities
 
             AIBossController boss = _bossFactory.CreateBoss();
             boss.transform.position = _bossSpawnPoint;
-            boss.SetUp(this);
+            boss.SetUp(this, _wwiseEventHandler);
         }
         
         private void UpdateEnemyCount(bool waveDone = false)

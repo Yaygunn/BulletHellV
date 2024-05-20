@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using BH.Runtime.Audio;
 using BH.Scriptables;
 using MEC;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace BH.Runtime.Systems
@@ -36,6 +36,7 @@ namespace BH.Runtime.Systems
 
         private void Explode()
         {
+            _wwiseEventHandler.PostAudioEvent(ProjectileSFX.Explosion, gameObject);
             Collider2D[] affectedObjects = Physics2D.OverlapCircleAll(transform.position, _explodingData.ExplosionRadius);
             foreach (Collider2D hit in affectedObjects)
             {

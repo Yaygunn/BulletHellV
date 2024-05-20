@@ -1,4 +1,5 @@
-﻿using BH.Runtime.StateMachines;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.StateMachines;
 using UnityEngine;
 
 namespace BH.Runtime.Entities
@@ -24,6 +25,7 @@ namespace BH.Runtime.Entities
             
             _meleeAI.Collider.enabled = false;
             _meleeAI.Feedbacks.DieFeedbackPlayer?.PlayFeedbacks();
+            _meleeAI.WwiseEventHandler.PostAudioEvent(EnemySFX.Die, _meleeAI.gameObject);
         }
         
         public override void LogicUpdate()

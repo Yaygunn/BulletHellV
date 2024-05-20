@@ -1,4 +1,5 @@
-﻿using BH.Runtime.StateMachines;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.StateMachines;
 using UnityEngine;
 
 namespace BH.Runtime.Entities
@@ -22,6 +23,7 @@ namespace BH.Runtime.Entities
             _deadDuration = _player.AnimatorParams.IsDeadDuration;
             _deadTimer = 0f;
             
+            _player.WwiseEventHandler.PostAudioEvent(PlayerSFX.Die, _player.gameObject);
             _player.Collider.enabled = false;
             _player.ModelRenderer.enabled = false;
         }

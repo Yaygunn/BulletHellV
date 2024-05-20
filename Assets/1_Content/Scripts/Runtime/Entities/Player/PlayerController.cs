@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BH.Runtime.Audio;
 using BH.Runtime.Input;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
@@ -39,6 +40,7 @@ namespace BH.Runtime.Entities
         public bool IsFacingRight => transform.localScale.x > 0;
         
         public IInputProvider InputProvider { get; private set; }
+        public IWwiseEventHandler WwiseEventHandler { get; private set; }
         
         // TODO: Add animator params..?
         
@@ -123,9 +125,10 @@ namespace BH.Runtime.Entities
         
         #endregion
 
-        public void Initialize(IInputProvider inputProvider)
+        public void Initialize(IInputProvider inputProvider, IWwiseEventHandler wwiseEventHandler)
         {
             InputProvider = inputProvider;
+            WwiseEventHandler = wwiseEventHandler;
         }
 
         public void Activate(bool isRespawn)
@@ -153,6 +156,7 @@ namespace BH.Runtime.Entities
         {
             if (Stats.TakeDamage(amount))
             {
+                WwiseEventHandler.PostAudioEvent(PlayerSFX.Hurt, gameObject);
                 Feedbacks.HitFeedbackPlayer?.PlayFeedbacks();
             }
         }
@@ -161,6 +165,7 @@ namespace BH.Runtime.Entities
         {
             if (Stats.TakeDamage(amount))
             {
+                WwiseEventHandler.PostAudioEvent(PlayerSFX.Hurt, gameObject);
                 Feedbacks.HitFeedbackPlayer?.PlayFeedbacks();
                 //Movement.AddForce(direction, force);
             }

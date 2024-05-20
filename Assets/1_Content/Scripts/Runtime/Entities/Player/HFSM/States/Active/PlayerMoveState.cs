@@ -1,4 +1,5 @@
-﻿using BH.Runtime.StateMachines;
+﻿using BH.Runtime.Audio;
+using BH.Runtime.StateMachines;
 using UnityEngine;
 
 namespace BH.Runtime.Entities
