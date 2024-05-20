@@ -35,8 +35,10 @@ namespace BH.Runtime.Entities
             
             _attackTimer += Time.deltaTime;
             
+            
             if (_attackTimer >= _attackDuration && _patternCompleted)
             {
+                _patternCompleted = false;
                 _bossAI.Animator.SetTrigger(_bossAI.AnimatorParams.IsAttackingTrigger);
                 ProjectilePatternDataSO patternData = _bossAI.PhaseOneCenter;
                 _bossAI.ShootPattern.StartPattern(patternData);
@@ -60,8 +62,15 @@ namespace BH.Runtime.Entities
 
         private void OnShootPatternCompleted()
         {
-            _patternCompleted = true;
-            //_stateMachine.ChangeState(_bossAI.MoveState);
+            Debug.Log($"Current Health: {_bossAI.Stats.CurrentHealth} Max Health %: {_bossAI.Stats.MaxHealth * 0.70f}");
+            if (_bossAI.Stats.CurrentHealth <= _bossAI.Stats.MaxHealth * 0.70f)
+            {
+                _stateMachine.ChangeState(_bossAI.MoveTwoState);
+            }
+            else
+            {
+                _patternCompleted = true;
+            }
         }
     }
 }
