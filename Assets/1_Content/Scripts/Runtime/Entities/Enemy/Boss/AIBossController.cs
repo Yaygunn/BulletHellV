@@ -1,8 +1,4 @@
-﻿using System;
-using BH.Runtime.Entities.States;
-using BH.Runtime.Entities.States.Active;
-using BH.Runtime.Factories;
-using BH.Runtime.Managers;
+﻿using BH.Runtime.Managers;
 using BH.Runtime.StateMachines;
 using BH.Runtime.Systems;
 using BH.Scriptables;
@@ -14,6 +10,21 @@ namespace BH.Runtime.Entities
 {
     public class AIBossController : Entity, IDamageable
     {
+        [Button(ButtonSizes.Large)]
+        public void TestMatButton()
+        {
+            // Ensure the Renderer and its Material are not null
+            if (ModelRenderer != null && ModelRenderer.material != null)
+            {
+                ModelRenderer.material.SetFloat("_GhostColorBoost", 1.0f);
+                ModelRenderer.material.SetFloat("_GhostBlend", 1.0f);
+            }
+            else
+            {
+                Debug.LogError("Renderer or material not found!");
+            }
+        }
+        
         [field: FoldoutGroup("Stats"), SerializeField, ReadOnly]
         public int CurrentTouchDamage { get; private set; }
         [FoldoutGroup("Stats"), SerializeField]
@@ -144,15 +155,17 @@ namespace BH.Runtime.Entities
             EnemyHFSM.ChangeState(MoveOneState);
         }
 
-        public void HandleDamage(int ammount)
+        public void HandleDamage(int amount)
         {
-            Stats.TakeDamage(ammount);
+            Stats.TakeDamage(amount);
+            Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
         }
         
         public void HandleDamageWithForce(int amount, Vector2 direction, float force)
         {
             Stats.TakeDamage(amount);
-            Movement.AddForce(direction, force);
+            //Movement.AddForce(direction, force);
+            Feedbacks.HitFeedbackPlayer?.PlayFeedbacks(transform.position, amount);
         }
         
         private void OnDied()
