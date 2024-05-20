@@ -30,6 +30,18 @@
 				<SoundcasterSession Name="New Soundcaster Session" ID="{65697E95-FB80-4B29-9675-E98DC39FDCF8}">
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
+							<GameParameterRef Name="SFX_Volume" ID="{F884B12A-BF23-49E0-BF64-E896C0255C81}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Music_Volume" ID="{EFD0F86C-5B1D-4B54-A207-469CC88BCB03}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Master_Volume" ID="{5E8FD651-CFE2-4B7D-9F43-336998AEE779}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
 							<GameParameterRef Name="ply_health" ID="{C2A664AC-F31A-4FF9-81EA-36E648E705F3}"/>
 							<Value>56</Value>
 						</RTPCValue>

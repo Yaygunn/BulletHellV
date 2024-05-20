@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{E46796FE-A61C-57C5-EE6C-04EFABA2934C}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{A4ECCAA6-EF2F-1EA7-49CA-1C53B5D9361A}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
@@ -252,9 +252,6 @@
 							<PluginRef Id="1458448755"/>
 						</ShareSets>
 					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2213237662" Name="Underwater"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="2798586757" Name="bullet_explosion" DurationType="OneShot" DurationMin="1.3328662" DurationMax="1.683693">
 					<MediaRefs>
@@ -267,17 +264,11 @@
 							<PluginRef Id="3043085106"/>
 						</ShareSets>
 					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2213237662" Name="Underwater"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="2721115098" Name="bullet_health" DurationType="OneShot" DurationMin="0.89965886" DurationMax="0.93138534">
 					<MediaRefs>
 						<MediaRef Id="608943065"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2213237662" Name="Underwater"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="1248641489" Name="bulletTest" DurationType="OneShot" DurationMin="0.4197055" DurationMax="0.5407576">
 					<MediaRefs>
@@ -287,9 +278,6 @@
 						<MediaRef Id="785141224"/>
 						<MediaRef Id="971597346"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2213237662" Name="Underwater"/>
-					</AuxBusRefs>
 					<ActionSetState>
 						<ActionSetStateEntry GroupId="393239870" Id="3587590657" Name="SFX_Gameplay"/>
 					</ActionSetState>
@@ -298,9 +286,6 @@
 					<MediaRefs>
 						<MediaRef Id="667125383"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="545330280" Name="ply_health_Pause" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="4032423056" Name="ply_health_Play" DurationType="Infinite">
@@ -334,25 +319,16 @@
 						<MediaRef Id="322638156"/>
 						<MediaRef Id="872505889"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2213237662" Name="Underwater"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="216950137" Name="plyMove" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="294914401"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2213237662" Name="Underwater"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="2782996605" Name="squidDeath" DurationType="OneShot" DurationMin="1.9077916" DurationMax="1.9077916">
 					<MediaRefs>
 						<MediaRef Id="601174450"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="1480519155" Name="squidIdle" DurationType="Infinite">
 					<MediaRefs>
@@ -376,9 +352,6 @@
 							<PluginRef Id="1019510299"/>
 						</Custom>
 					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="3280154138" Name="squidShoot" DurationType="OneShot" DurationMin="0.85357606" DurationMax="0.8634942">
 					<MediaRefs>
@@ -386,46 +359,32 @@
 						<MediaRef Id="516410857"/>
 						<MediaRef Id="1004891463"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="3030481697" Name="uiClose" DurationType="OneShot" DurationMin="0.16322917" DurationMax="0.16322917">
 					<MediaRefs>
 						<MediaRef Id="1042962566"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="2214371868" Name="uiDashReady" DurationType="OneShot" DurationMin="1.38925" DurationMax="1.38925">
 					<MediaRefs>
 						<MediaRef Id="268045550"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="1038020662" Name="uiNav" DurationType="OneShot" DurationMin="0.21458334" DurationMax="0.21458334">
 					<MediaRefs>
 						<MediaRef Id="846594018"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="1389761091" Name="uiOpen" DurationType="OneShot" DurationMin="0.29310417" DurationMax="0.29310417">
 					<MediaRefs>
 						<MediaRef Id="671312817"/>
 					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="393239870" Name="SFX"/>
-					</AuxBusRefs>
 				</Event>
 			</Events>
 			<GameParameters>
 				<GameParameter Id="963702167" Name="ply_health"/>
 				<GameParameter Id="1348429472" Name="Water_Intensity"/>
+				<GameParameter Id="1564184899" Name="SFX_Volume"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="393239870" Name="SFX">
@@ -437,7 +396,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{911190F6-531D-66D2-C072-9A945CC4BA88}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{D2CD0CA6-35DA-F970-F0B8-4DFE137DBF35}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -485,7 +444,10 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="963702167" Name="ply_health"/>
+				<GameParameter Id="1006694123" Name="Music_Volume"/>
 				<GameParameter Id="1348429472" Name="Water_Intensity"/>
+				<GameParameter Id="1564184899" Name="SFX_Volume"/>
+				<GameParameter Id="4179668880" Name="Master_Volume"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="393239870" Name="SFX">
@@ -514,7 +476,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{3EB621B1-EC27-2F6C-DDC7-AF93DFE91D6E}">
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{1219EF84-7EBE-EEBF-85A4-24C8A28BBD8E}">
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
 			<Media>
@@ -621,6 +583,9 @@
 					</SwitchContainers>
 				</Event>
 			</Events>
+			<GameParameters>
+				<GameParameter Id="1006694123" Name="Music_Volume"/>
+			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="792781730" Name="Music_System">
 					<States>
@@ -635,5 +600,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{660F97F3-FD86-8025-7240-66803CAE7FC5}</FileHash>
+	<FileHash>{4867364C-A671-8226-89F4-5259EF03153F}</FileHash>
 </SoundBanksInfo>

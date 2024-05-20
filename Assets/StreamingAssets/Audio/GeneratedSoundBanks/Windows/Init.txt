@@ -17,6 +17,9 @@ State	ID	Name	State Group			Notes
 	748895195	None	Music			
 	2993614867	Music_Paused	Music			
 
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	4179668880	Master_Volume			\Default Work Unit\Master_Volume	
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	1387833709	2DAmb			\Default Work Unit\Master Audio Bus\AmbMaster\2DAmb	
 	2033911932	NPCMaster			\Default Work Unit\Master Audio Bus\NPCMaster	

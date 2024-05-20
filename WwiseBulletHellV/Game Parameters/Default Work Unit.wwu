@@ -9,6 +9,9 @@
 						<Property Name="InitialValue" Type="Real64" Value="0"/>
 					</PropertyList>
 				</GameParameter>
+				<GameParameter Name="Master_Volume" ID="{5E8FD651-CFE2-4B7D-9F43-336998AEE779}"/>
+				<GameParameter Name="Music_Volume" ID="{EFD0F86C-5B1D-4B54-A207-469CC88BCB03}"/>
+				<GameParameter Name="SFX_Volume" ID="{F884B12A-BF23-49E0-BF64-E896C0255C81}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>
