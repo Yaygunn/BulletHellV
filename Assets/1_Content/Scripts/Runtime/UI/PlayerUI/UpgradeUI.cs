@@ -14,6 +14,8 @@ namespace BH.Scripts.Runtime.UI
         private Image _iconImage;
         [SerializeField]
         private TMP_Text _descriptionText;
+        [SerializeField]
+        private RectTransform _rectTransform;
 
         private Button _button;
         private int _buttonIndex;
@@ -63,14 +65,26 @@ namespace BH.Scripts.Runtime.UI
                         upgradeOption.StatUpgrade.UpgradeDescription);
                     break;
             }
+
+            //reset scale while maintaining width
+            _iconImage.SetNativeSize();
+            float width = _rectTransform.rect.width;
+            float height = _rectTransform.rect.height;
+
+            if (height != width)
+            {
+                float aspectRatio = _rectTransform.rect.height / width; 
+                _rectTransform.sizeDelta = new Vector2 (width, width * aspectRatio);
+            }
+            
         }
         
         private string BuildProjectileDescription(ProjectileDataSO projectileData)
         {
             string description = $"{projectileData.ProjectileName}\n\n" +
                                  $"{projectileData.Description}\n\n" +
-                                 $"<color=green>{projectileData.PosativeEffect}</color>\n\n" +
-                                 $"<color=red>{projectileData.NegativeEffect}</color>";
+                                 $"<color=#AEDF63>{projectileData.PosativeEffect}</color>\n\n" +
+                                 $"<color=#D55151>{projectileData.NegativeEffect}</color>";
             return description;
         }
         
