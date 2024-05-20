@@ -144,5 +144,20 @@ namespace BH.Runtime.Managers
                     break;
             }
         }
+        
+        public void SetMusicVolume(float value)
+        {
+            _audioSettings.MusicVolume.SetGlobalValue(value);
+        }
+
+        public void SetSFXVolume(float value)
+        {
+            _audioSettings.SFXVolume.SetGlobalValue(value);
+        }
+
+        public void SetMasterVolume(float value)
+        {
+            _audioSettings.MasterVolume.SetGlobalValue(value);
+        }
     }
 }
