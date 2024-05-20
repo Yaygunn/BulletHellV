@@ -62,6 +62,7 @@ namespace BH.Runtime.Entities
             enemy.transform.position = spawnPosition;
 
             _spawnedEnemies.Add(enemy);
+            UpdateEnemyCount();
         }
 
         private void SpawnRangedAI()
@@ -74,6 +75,7 @@ namespace BH.Runtime.Entities
             enemy.transform.position = spawnPosition;
 
             _spawnedEnemies.Add(enemy);
+            UpdateEnemyCount();
         }
 
         public Wave GetCurrentWave()
@@ -122,7 +124,7 @@ namespace BH.Runtime.Entities
                     yield break;
                 }
             }
-
+            
             Wave currentWave = _waves[_currentWaveIndex];
             int meleeSpawned = 0;
             int rangedSpawned = 0;
@@ -146,8 +148,6 @@ namespace BH.Runtime.Entities
                 yield return Timing.WaitForSeconds(interval);
             }
             
-            UpdateEnemyCount();
-
             yield return Timing.WaitUntilDone(WaitForAllEnemiesDefeated());
 
             _killedWaveEnemies = 0;
@@ -198,7 +198,7 @@ namespace BH.Runtime.Entities
                 total = 0;
                 remaining = 0;
             }
-            _signalBus.Fire(new EnemiesUpdatedSignal(total, remaining));
+            _signalBus.Fire(new EnemiesUpdatedSignal(_currentWaveIndex + 1, total, remaining));
         }
 
         private Vector2 GetRandomSpawnOffCamera()
