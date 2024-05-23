@@ -1,0 +1,35 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3991942870	music			\Default Work Unit\MUSIC\music	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	792781730	Music_System			\Default Work Unit\Music_System	
+	3991942870	Music			\Default Work Unit\Music	
+
+State	ID	Name	State Group			Notes
+	320199936	Boss_01	Music_System			
+	320199938	Boss_03	Music_System			
+	320199939	Boss_02	Music_System			
+	748895195	None	Music_System			
+	2764240573	Combat	Music_System			
+	3753286132	Calm	Music_System			
+	620878633	Music_Gameplay	Music			
+	748895195	None	Music			
+	2993614867	Music_Paused	Music			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	317104522	Music_Paused	Music	\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM		
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	106147584	LowPulse_Intro	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\LowPulse_Intro_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_Bridge\LowPulse_Intro		3072096
+	126081005	Kick_A	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Kick_A_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\Kick_A		1536096
+	134397767	GlitchPulse	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\GlitchPulse_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\GlitchPulse		3072096
+	139858294	HiHat	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\HiHat_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\HiHat		1536096
+	264313587	Lead_Boss	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Lead_Boss_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\Lead_Boss		3072096
+	433155837	GuitarScreech	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\GuitarScreech_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\GuitarScreech		3072096
+	434760262	Kick_Intro	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Kick_Intro_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_Bridge\Kick_Intro		1536096
+	512305861	LowPulse_A	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\LowPulse_A_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\LowPulse_A		3072096
+	632645785	Lead_Combat	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Lead_Combat_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Combat\Combat_A\Lead_Combat		3072096
+	774375649	Bass_Intro	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Bass_Intro_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_Bridge\Bass_Intro		3072096
+	833247482	HiBlock_B	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\HiBlock_B_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\HiBlock_B		1536096
+	928265480	Bass_A	C:\Users\ukr81\Documents\Game Dev\GameJams\BulletHellV\WwiseBulletHellV\.cache\Windows\SFX\Bass_A_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUSIC_SYSTEM\Boss_01\Boss_A\Bass_A		3072096
+

@@ -1,18 +1,30 @@
-﻿using Sirenix.OdinInspector;
+﻿using BH.Scriptables;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace BH.Runtime.Systems
 {
     public class HealingBullet : Projectile
     {
-        [BoxGroup("Healing Bullet"), SerializeField]
-        private int _healAmount = 25;
+        private HealingProjectileDataSO _healingData;
+        
+        protected override void SetUpInternal(ProjectileDataSO projectileData)
+        {
+            if (projectileData is HealingProjectileDataSO healingData)
+            {
+                _healingData = healingData;
+            }
+            else
+            {
+                Debug.LogError("[HealingBullet] HealingProjectileDataSO is not set for HealingBullet");
+            }
+        }
         
         protected override void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.Damage(-_healAmount);
+                damageable.HandleDamage(-_healingData.HealAmount);
                 ReturnToPool();
                 return;
             }

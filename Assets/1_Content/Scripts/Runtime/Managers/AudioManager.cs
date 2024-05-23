@@ -14,7 +14,7 @@ namespace BH.Runtime.Managers
         private GameObject _postableObject;
         private SignalBus _signalBus;
         
-        private AudioState _currentAudioState = AudioState.Loading;
+        private AudioState _currentAudioState = AudioState.GamePaused;
         private readonly Dictionary<Enum, Event> _eventCache = new ();
 
         public AudioManager(GameObject postableObject, AudioSettingsSO audioSettings, SignalBus signalBus)
@@ -29,11 +29,15 @@ namespace BH.Runtime.Managers
             LoadSoundbanks();
             
             _signalBus.Subscribe<AudioStateSignal>(x => ChangeAudioState(x.AudioState));
+            _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
+            _signalBus.Subscribe<LevelStateChangedSignal>(OnLevelStateChanged);
         }
         
         public void Dispose()
         {
             _signalBus.TryUnsubscribe<AudioStateSignal>(x => ChangeAudioState(x.AudioState));
+            _signalBus.TryUnsubscribe<GameStateChangedSignal>(OnGameStateChanged);
+            _signalBus.TryUnsubscribe<LevelStateChangedSignal>(OnLevelStateChanged);
         }
     
         private void LoadSoundbanks()
@@ -104,6 +108,56 @@ namespace BH.Runtime.Managers
 
             wwiseEvent.Post(postableObject);
             Debug.Log($"[AudioManager] Posted audio event for {eventType}.");
+        }
+        
+        // GAME STATE SIGNALS
+        private void OnGameStateChanged(GameStateChangedSignal signal)
+        {
+            switch (signal.GameState)
+            {
+                case GameState.Menu:
+                    PostAudioEvent(Music.Play);
+                    ChangeAudioState(AudioState.GamePaused);
+                    break;
+                case GameState.Playing:
+                    ChangeAudioState(AudioState.GameActive);
+                    break;
+                case GameState.Paused:
+                    ChangeAudioState(AudioState.GamePaused);
+                    break;
+                case GameState.GameOver:
+                    ChangeAudioState(AudioState.GamePaused);
+                    break;
+            }
+        }
+        
+        // LEVEL STATE SIGNALS
+        private void OnLevelStateChanged(LevelStateChangedSignal signal)
+        {
+            switch (signal.LevelState)
+            {
+                case LevelState.NormalRound:
+                    ChangeAudioState(AudioState.GameActive);
+                    break;
+                case LevelState.BossRound:
+                    ChangeAudioState(AudioState.GameActive);
+                    break;
+            }
+        }
+        
+        public void SetMusicVolume(float value)
+        {
+            _audioSettings.MusicVolume.SetGlobalValue(value);
+        }
+
+        public void SetSFXVolume(float value)
+        {
+            _audioSettings.SFXVolume.SetGlobalValue(value);
+        }
+
+        public void SetMasterVolume(float value)
+        {
+            _audioSettings.MasterVolume.SetGlobalValue(value);
         }
     }
 }

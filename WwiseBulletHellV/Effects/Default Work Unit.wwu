@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B495AEC8-A5B4-4D6A-BA1D-49734DBC3FFE}" SchemaVersion="110">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{B495AEC8-A5B4-4D6A-BA1D-49734DBC3FFE}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B495AEC8-A5B4-4D6A-BA1D-49734DBC3FFE}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="ply_healt" ID="{39366836-B673-4930-B63C-CA34A390C19D}" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3">
+					<PropertyList>
+						<Property Name="TimeStretchRandom" Type="Real32" Value="1"/>
+					</PropertyList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{B1158722-1583-41F4-B6B9-A51E614CF045}" ShortID="149342538">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="TimeStretch"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="ply_health" ID="{C2A664AC-F31A-4FF9-81EA-36E648E705F3}" WorkUnitID="{84B3F3AE-4AD3-44CF-BE7B-C25D26FC9F18}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{3A27F8C7-C49A-4B9C-9494-BB5D9C74E389}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>45.81544</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Exp3</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>49.98372</XPos>
+																<YPos>58.61776</YPos>
+																<Flags>0</Flags>
+																<SegmentShape>Log2</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>102</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</Effect>
+				<Effect Name="bullet_expading_tremolo" ID="{033FE145-49BC-48F7-BB8E-D9D8469A7D33}" PluginName="Wwise Tremolo" CompanyID="0" PluginID="131" PluginType="3">
+					<PropertyList>
+						<Property Name="ModDepth" Type="Real32" Value="0"/>
+					</PropertyList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{E3D1920A-BAC5-499B-B0C7-3282314B4270}" ShortID="677386982">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="ModDepth"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="New Modulator Time" ID="{D866EC1B-DD8D-42FB-9AE5-E055FA9D5AC3}" WorkUnitID="{8E7502EB-B0CE-4196-92EA-0FC9391A9BC9}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{B30E4FF0-6A63-412F-9013-572DC5411AD1}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>100</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Log2</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>5.586072</XPos>
+																<YPos>-0.20683</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>8</XPos>
+																<YPos>0.8</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>

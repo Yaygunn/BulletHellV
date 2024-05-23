@@ -1,6 +1,6 @@
 ﻿using BH.Runtime.Audio;
+using BH.Runtime.Managers;
 using BH.Runtime.Systems;
-using BH.Runtime.Test;
 using Zenject;
 
 namespace BH.Runtime.Installers
@@ -11,11 +11,12 @@ namespace BH.Runtime.Installers
         {
             SignalBusInstaller.Install(Container);
             
-            Container.DeclareSignal<TestSpawnSignal>();
-            Container.DeclareSignal<PlayerHealthChangedSignal>();
-            
             // Audio
             Container.DeclareSignal<AudioStateSignal>();
+            
+            // Game/Level States
+            Container.DeclareSignal<GameStateChangedSignal>();
+            Container.DeclareSignal<LevelStateChangedSignal>();
         }
     }
 }

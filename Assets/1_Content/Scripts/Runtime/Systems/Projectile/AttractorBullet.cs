@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BH.Scriptables;
 using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -7,14 +8,19 @@ namespace BH.Runtime.Systems
 {
     public class AttractorBullet : Projectile
     {
-        [BoxGroup("Attractor Bullet"), SerializeField]
-        private float _attractionRadius = 5f;
-        [BoxGroup("Attractor Bullet"), SerializeField]
-        private float _minDistanceThreshold = 1f;
-        [BoxGroup("Attractor Bullet"), SerializeField]
-        private float _attractionForce = 0.2f;
-        [BoxGroup("Attractor Bullet"), SerializeField]
-        private float _attractionDuration = 5f;
+        private AttractorProjectileDataSO _attractorData;
+        
+        protected override void SetUpInternal(ProjectileDataSO projectileData)
+        {
+            if (projectileData is AttractorProjectileDataSO attractorData)
+            {
+                _attractorData = attractorData;
+            }
+            else
+            {
+                Debug.LogError("[AttractorBullet] AttractorEvolutionDataSO is not set for AttractorBullet");
+            }
+        }
 
         protected override void HandleActivation()
         {
@@ -23,7 +29,7 @@ namespace BH.Runtime.Systems
 
         private IEnumerator<float> AttractionCoroutine()
         {
-            float endTime = Time.time + _attractionDuration;
+            float endTime = Time.time + _attractorData.AttractionDuration;
             
             while (Time.time < endTime)
             {
@@ -36,7 +42,7 @@ namespace BH.Runtime.Systems
 
         private void AttractNearbyProjectiles()
         {
-            Collider2D[] affectedObjects = Physics2D.OverlapCircleAll(transform.position, _attractionRadius);
+            Collider2D[] affectedObjects = Physics2D.OverlapCircleAll(transform.position, _attractorData.AttractionRadius);
             foreach (Collider2D hit in affectedObjects)
             {
                 if (hit.TryGetComponent(out Projectile projectile) && projectile != this && projectile is not AttractorBullet)
@@ -44,9 +50,9 @@ namespace BH.Runtime.Systems
                     Vector2 directionToAttractor = (transform.position - projectile.transform.position).normalized;
                     float distance = Vector2.Distance(transform.position, projectile.transform.position);
 
-                    if (distance > _minDistanceThreshold)
+                    if (distance > _attractorData.MinDistanceThreshold)
                     {
-                        projectile.ChangeDirection(projectile.CurrentDirection + directionToAttractor * _attractionForce);
+                        projectile.ChangeDirection(projectile.CurrentDirection + directionToAttractor * _attractorData.AttractionForce);
                     }
                 }
             }

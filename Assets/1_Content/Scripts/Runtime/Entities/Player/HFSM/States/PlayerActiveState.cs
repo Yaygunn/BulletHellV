@@ -25,13 +25,15 @@ namespace BH.Runtime.Entities
             }
             else if (ShouldShoot())
             {
-                _player.Weapon.Fire(GetMouseDirection(), ProjectileType.PlayerBasicBullet);
+                _player.Weapon.Fire(GetMouseDirection());
             }
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
+            
+            FaceMouse();
         }
 
         public override void Exit()
@@ -59,6 +61,16 @@ namespace BH.Runtime.Entities
                 return false;
             
             return _player.InputProvider.FireInput.Pressed;
+        }
+        
+        private void FaceMouse()
+        {
+            Vector2 mouseWorldPosition = GetMouseWorldPosition();
+            Vector2 direction = (mouseWorldPosition - (Vector2)_player.transform.position).normalized;
+            
+            //_player.FlipCharacter(direction.x > 0);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            _player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
         
         protected Vector2 GetMouseWorldPosition()

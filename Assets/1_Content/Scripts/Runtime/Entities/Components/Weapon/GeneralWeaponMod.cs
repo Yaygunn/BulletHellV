@@ -7,7 +7,7 @@ namespace BH.Runtime.Entities
     public class GeneralWeaponMod
     {
         [field: SerializeField]
-        public float IncreasedDamage { get; set; } = 0;
+        public int IncreasedDamage { get; set; } = 0;
 
         [field: SerializeField]
         public float DamageMultiplier { get; set; } = 1;

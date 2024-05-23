@@ -11,9 +11,19 @@ namespace BH.Runtime.Test
         [SerializeField]
         private AudioState _stateToTest = AudioState.GameActive;
 
+
         [SerializeField]
         private PlayerSFX _playerSFXToTest = PlayerSFX.Hurt;
-        
+        [SerializeField]
+        private EnemySFX _enemySFXToTest = EnemySFX.Die;
+        [SerializeField]
+        private ProjectileSFX _projectileSFXToTest = ProjectileSFX.Impact;
+        [SerializeField]
+        private UISFX _uiSFXToTest = UISFX.MenuPositive;
+        [SerializeField]
+        private Music _musicToTest = Music.Play;
+
+
         private IWwiseEventHandler _wwiseEventHandler;
         private SignalBus _signalBus;
         
@@ -29,11 +39,37 @@ namespace BH.Runtime.Test
         {
             _signalBus.Fire(new AudioStateSignal(_stateToTest));
         }
-        
+
         [Button(ButtonSizes.Large)]
         public void PlayTestSFX()
         {
             _wwiseEventHandler.PostAudioEvent(_playerSFXToTest);
         }
+        
+        [Button(ButtonSizes.Large)]
+        public void EnemyTestSFX()
+        {
+            _wwiseEventHandler.PostAudioEvent(_enemySFXToTest);
+        }
+
+        [Button(ButtonSizes.Large)]
+        public void ProjectileTestSFX()
+        {
+            _wwiseEventHandler.PostAudioEvent(_projectileSFXToTest);
+        }
+
+        [Button(ButtonSizes.Large)]
+        public void UITestSFX()
+        {
+            _wwiseEventHandler.PostAudioEvent(_uiSFXToTest);
+        }
+
+
+        [Button(ButtonSizes.Large)]
+        public void MusicTest()
+        {
+            _wwiseEventHandler.PostAudioEvent(_musicToTest);
+        }
+
     }
 }

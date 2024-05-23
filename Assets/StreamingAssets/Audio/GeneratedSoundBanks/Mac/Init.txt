@@ -1,14 +1,24 @@
 State Group	ID	Name			Wwise Object Path	Notes
 	393239870	SFX			\Default Work Unit\SFX	
+	792781730	Music_System			\Default Work Unit\Music_System	
 	3991942870	Music			\Default Work Unit\Music	
 
 State	ID	Name	State Group			Notes
 	748895195	None	SFX			
 	3587590657	SFX_Gameplay	SFX			
 	3762574363	SFX_Paused	SFX			
+	320199936	Boss_01	Music_System			
+	320199938	Boss_03	Music_System			
+	320199939	Boss_02	Music_System			
+	748895195	None	Music_System			
+	2764240573	Combat	Music_System			
+	3753286132	Calm	Music_System			
 	620878633	Music_Gameplay	Music			
 	748895195	None	Music			
 	2993614867	Music_Paused	Music			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	4179668880	Master_Volume			\Default Work Unit\Master_Volume	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	1387833709	2DAmb			\Default Work Unit\Master Audio Bus\AmbMaster\2DAmb	

@@ -8,6 +8,19 @@
 						<Property Name="Color" Type="int16" Value="9"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
+					<ChildrenList>
+						<Event Name="music" ID="{9F43DDE3-9C08-4F93-8DD7-42053E8A2AFE}">
+							<ChildrenList>
+								<Action Name="" ID="{11A3AE96-CF2B-4DC9-B927-C35EBF47B145}" ShortID="353657371">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MUSIC_SYSTEM" ID="{91650141-EC06-42BD-8C36-0E04885A85C4}" WorkUnitID="{4EB00E7F-DB6D-4C52-801B-E3EB9031FC4B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
 				</Folder>
 				<Folder Name="SFX" ID="{CB758310-CA9A-43BC-9AA3-C568A4CF5531}" ShortID="596989588">
 					<PropertyList>
@@ -42,6 +55,50 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="bullet_bounce" ID="{63AF202A-E98C-4E35-94CC-12FBD92F6E94}">
+									<ChildrenList>
+										<Action Name="" ID="{D9A875E4-8EB7-4490-AB27-87CBAE51D9A2}" ShortID="1015487512">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_bounce" ID="{EE6793AB-7D8D-4710-A4AC-35A2F916A8C7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="bullet_expading" ID="{E9419BE0-262D-49D1-BABD-87358B082F44}">
+									<ChildrenList>
+										<Action Name="" ID="{A90522E8-EE04-4A86-B70A-9412032F808B}" ShortID="620215240">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_expading" ID="{1BCBD300-B3AB-4E7D-9F81-FDD7448D33C7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="bullet_explosion" ID="{2257BC6D-9C2A-4697-966B-1E693F4EA2B6}">
+									<ChildrenList>
+										<Action Name="" ID="{B3734CB2-F7D4-493C-BD65-8C7B290B9AE5}" ShortID="483760370">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_explosion" ID="{ADAB6389-EA80-469A-9F03-5C7ED82F7FBC}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="bullet_health" ID="{025914E3-6176-4408-8040-9ED82785ED58}">
+									<ChildrenList>
+										<Action Name="" ID="{D5652C35-64E1-4933-A0A0-6E1024F0892C}" ShortID="140963215">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="bullet_health" ID="{3478EF42-46E7-4FAF-9832-26858433E22A}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="ENEMIES" ID="{DA2596E7-2794-49D8-A341-144FACAB74AB}" ShortID="76802006">
@@ -49,6 +106,63 @@
 								<Property Name="Color" Type="int16" Value="10"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ChildrenList>
+								<Event Name="squidIdle" ID="{663B4560-4EA2-4E3A-BBDD-F36AE9491A7A}">
+									<ChildrenList>
+										<Action Name="" ID="{1C2C2734-B4A3-48EF-A960-24146B751B37}" ShortID="35637907">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_idle" ID="{B3ACEDBB-F3CD-4304-91E1-E0B1C28F9A17}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="squidShoot" ID="{D75DA56B-3230-4160-ADFD-6523F5BC0BA8}">
+									<ChildrenList>
+										<Action Name="" ID="{31177DAB-9C96-4A60-A83B-8F9C21901BA4}" ShortID="411977269">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_shoot" ID="{EF39915A-3839-4C1F-9C1E-07E3B3E0B287}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="squidDeath" ID="{C81B7BF1-ED2A-4D95-9ADC-D22FB2BB9560}">
+									<ChildrenList>
+										<Action Name="" ID="{8E0B11EC-7FF6-4941-90FC-E996FA0D039F}" ShortID="20924350">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_death" ID="{3C3ACE66-CFDB-4D3B-818D-9C8C9CCB35FA}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{00067E7B-C564-4EB3-85F1-CB0BF6A8BA1E}" ShortID="465461445">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="Delay" Type="Real64" Value="1.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="squid_idle" ID="{B3ACEDBB-F3CD-4304-91E1-E0B1C28F9A17}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ene_mob_death" ID="{407EE978-6AB7-4AC2-9D26-02F5FF973707}">
+									<ChildrenList>
+										<Action Name="" ID="{CC003DAC-06F2-4927-A226-770F081F74CC}" ShortID="211207643">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ene_mob_death" ID="{868F6C51-7FE9-45CD-8D6B-F73C6FD15AD9}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
 						</Folder>
 						<Folder Name="ENVIRONMENT" ID="{95F387AB-FA09-463E-949E-440CDADEA0A3}" ShortID="98198469">
 							<PropertyList>
@@ -111,12 +225,146 @@
 								<Property Name="Color" Type="int16" Value="2"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ChildrenList>
+								<Event Name="plyDash" ID="{924B1269-2DB2-49AF-9936-389DD0B48EC9}">
+									<ChildrenList>
+										<Action Name="" ID="{6473A12F-0419-4C85-820E-5E7D6A13EE18}" ShortID="834746892">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_dash" ID="{983F2BD9-283F-42B0-BC71-DD371605DF83}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="plyMove" ID="{39444151-F73C-438C-AF5B-F47669F3D8AD}">
+									<ChildrenList>
+										<Action Name="" ID="{8831C1AB-99A0-4EC8-9171-F8BEF2096392}" ShortID="778245282">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_move_loop" ID="{76EF4ECC-810D-4E4E-A812-C0653867D0B7}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Pause" ID="{A869EC7E-3756-4F26-A833-D9E324883349}">
+									<ChildrenList>
+										<Action Name="" ID="{87B5628B-3727-4FAA-998B-3BD5C4FC5867}" ShortID="125879656">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Play" ID="{1C66217E-3D73-4DF2-8DA2-9D58C90105B7}">
+									<ChildrenList>
+										<Action Name="" ID="{8ACB3A10-C003-4E9D-B383-7E03B7AAA7FA}" ShortID="392656208">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Resume" ID="{32058807-F9CE-415C-ABB5-3BAD4CE3FE98}">
+									<ChildrenList>
+										<Action Name="" ID="{A842E21F-A7B8-457A-AE7B-D292DD2A4ECF}" ShortID="748334184">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="9"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_health_Stop" ID="{62B56447-C244-42E2-8359-78808D8069E8}">
+									<ChildrenList>
+										<Action Name="" ID="{8C0941CB-30A0-427B-804B-6C7BDA811332}" ShortID="696924451">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_health" ID="{9A6C99EB-5D67-4C7E-95C2-6BBAC8138233}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ply_hurt" ID="{A6E8FDB6-1046-431B-9D78-8D4B38820AB4}">
+									<ChildrenList>
+										<Action Name="" ID="{AF48FD66-6B6B-4774-A4AF-A44442440B67}" ShortID="252824361">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ply_hurt" ID="{7FECC791-05BC-4622-AD14-F08DA2834921}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
 						</Folder>
 						<Folder Name="UI" ID="{3C5E327F-A10E-4500-8426-660F062A8D0E}" ShortID="620142276">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="24"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ChildrenList>
+								<Event Name="uiNav" ID="{FB8D99CD-C7B7-46EB-9A1F-4AAB39DD3DC8}">
+									<ChildrenList>
+										<Action Name="" ID="{F5E77FAB-13B5-4E13-BA55-192ACA3DD6B9}" ShortID="122421558">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_nav" ID="{16DFBE20-CA5B-4016-B3EC-1083838B6898}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="uiClose" ID="{A95825D4-31F8-41C2-A718-0C025EF602B6}">
+									<ChildrenList>
+										<Action Name="" ID="{FFEFC9ED-1A96-4E71-BF0D-55299CF9BE0C}" ShortID="795775702">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_close" ID="{6B1A85AD-6B26-4F64-8C06-4476CCB2EBFC}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="uiOpen" ID="{A93D8E02-92CE-4FD3-8947-81AC42DE5321}">
+									<ChildrenList>
+										<Action Name="" ID="{535966B3-3D9B-484D-9EE2-9AD3A0F0A2B3}" ShortID="656655222">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_open" ID="{3FF58B33-D5EF-4F84-B29A-443618642E37}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="uiDashReady" ID="{6A8B3317-0F46-4120-B1E4-9F2169182775}">
+									<ChildrenList>
+										<Action Name="" ID="{890C5750-5768-423A-AA89-0E88EE2E1CC7}" ShortID="381841575">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ui_dash_ready" ID="{3B4A36AA-8C79-4D88-AF0D-CB1277275F29}" WorkUnitID="{C3565565-7650-4F97-878D-064BF81AAC95}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
 						</Folder>
 					</ChildrenList>
 				</Folder>

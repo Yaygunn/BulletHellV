@@ -1,16 +1,25 @@
-﻿namespace BH.Runtime.Systems
+﻿using BH.Scriptables;
+using GH.Scriptables;
+using UnityEngine;
+
+namespace BH.Runtime.Systems
 {
-    public struct UpgradeOption
+    public class UpgradeOption
     {
-        public UpgradeType Type { get; private set; }
-        public ProjectileType ProjectileType { get; private set; }
-        public string Description { get; private set; }
-        
-        public UpgradeOption(UpgradeType type, ProjectileType projectileType, string description)
+        public UpgradeType Type { get; }
+        public ProjectileType ProjectileType { get; }
+        public WeaponUpgradeSO WeaponUpgrade { get; }
+        public StatUpgradeSO StatUpgrade { get; }
+        public ProjectileDataSO ProjectileData { get; }
+
+        public UpgradeOption(UpgradeType type, ProjectileType projectileType, ProjectileDataSO projectileData = null, 
+            WeaponUpgradeSO weaponUpgrade = null, StatUpgradeSO statUpgrade = null)
         {
             Type = type;
             ProjectileType = projectileType;
-            Description = description;
+            ProjectileData = projectileData;
+            WeaponUpgrade = weaponUpgrade;
+            StatUpgrade = statUpgrade;
         }
     }
 }

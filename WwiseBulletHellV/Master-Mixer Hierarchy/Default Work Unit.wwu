@@ -12,9 +12,7 @@
 					<ChildrenList>
 						<Bus Name="AmbMaster" ID="{71E26BBA-D855-48B9-A951-F26F7767A5F7}">
 							<ChildrenList>
-								<Bus Name="3DAmb" ID="{1DE7C1A6-1A5B-4D24-A054-11CBA26CE292}">
-									<ReferenceList/>
-								</Bus>
+								<Bus Name="3DAmb" ID="{1DE7C1A6-1A5B-4D24-A054-11CBA26CE292}"/>
 								<Bus Name="2DAmb" ID="{D2441E1A-1A54-4E57-A35E-9E587152BF04}"/>
 							</ChildrenList>
 						</Bus>
@@ -23,6 +21,13 @@
 						<AuxBus Name="Reverbs" ID="{90A53895-37A0-4193-85A6-BA5289E7AE7C}">
 							<ChildrenList>
 								<AuxBus Name="Underwater" ID="{91909A70-C85E-4BDD-A084-9A4F01E2EE62}">
+									<PropertyList>
+										<Property Name="OutputBusLowpass" Type="int16">
+											<ValueList>
+												<Value>70</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 											<ObjectRef Name="Hall_Large_Dark" ID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
@@ -33,6 +38,18 @@
 									</ReferenceList>
 								</AuxBus>
 								<AuxBus Name="SFX" ID="{2BBF72C8-0FFF-49F8-A714-831DEB7FB925}">
+									<PropertyList>
+										<Property Name="OutputBusHighpass" Type="int16">
+											<ValueList>
+												<Value>10</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OutputBusLowpass" Type="int16">
+											<ValueList>
+												<Value>40</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 											<ObjectRef Name="Not_A_Yellow_Submarine" ID="{B5719071-C58D-49FA-8766-B1D986D017EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
@@ -42,6 +59,46 @@
 							</ChildrenList>
 						</AuxBus>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{CE7A3E2F-42BA-4C77-BD06-D847B018A312}" ShortID="483148008">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Volume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Master_Volume" ID="{5E8FD651-CFE2-4B7D-9F43-336998AEE779}" WorkUnitID="{84B3F3AE-4AD3-44CF-BE7B-C25D26FC9F18}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{45D2EC51-F838-48CE-B8D1-B4AB103A9115}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Exp2</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

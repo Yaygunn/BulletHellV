@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AK.Wwise;
 using BH.Runtime.Audio;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,6 +10,13 @@ namespace BH.Scriptables
     [CreateAssetMenu(fileName = "AudioSettings", menuName = "BH/Audio/New Audio Settings")]
     public class AudioSettingsSO : ScriptableObject
     {
+        [field: BoxGroup("RTPCs"), SerializeField]
+        public RTPC MusicVolume { get; private set; }
+        [field: BoxGroup("RTPCs"), SerializeField]
+        public RTPC SFXVolume { get; private set; }
+        [field: BoxGroup("RTPCs"), SerializeField]
+        public RTPC MasterVolume { get; private set; }
+        
         [field: BoxGroup("Sound Banks"), SerializeField]
         public List<AK.Wwise.Bank> Soundbanks { get; private set; }
         
@@ -23,10 +31,14 @@ namespace BH.Scriptables
         
         [field: BoxGroup("UI SFX"), SerializeField]
         public List<AudioEventData<UISFX>> UISFX { get; private set; }
-        
+
+        [field: BoxGroup("Music"), SerializeField]
+        public List<AudioEventData<Music>> Music { get; private set; }
+
         [field: BoxGroup("Audio States"), SerializeField]
         public List<AudioStateData> AudioStates { get; private set; }
-        
+
+
         public List<AudioEventData<T>> GetEventList<T>() where T : Enum
         {
             if (typeof(T) == typeof(PlayerSFX))
@@ -37,6 +49,8 @@ namespace BH.Scriptables
                 return ProjectileSFX as List<AudioEventData<T>>;
             if (typeof(T) == typeof(UISFX))
                 return UISFX as List<AudioEventData<T>>;
+            if (typeof(T) == typeof(Music))
+                return Music as List<AudioEventData<T>>;
 
             throw new ArgumentException("[AudioSettingsSO] Unsupported type passed...");
         }
